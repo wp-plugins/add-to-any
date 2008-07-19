@@ -3,27 +3,27 @@ Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.5.1
-Stable tag: 0.9.3
+Tested up to: 2.6
+Stable tag: 0.9.4
 
-Lets readers share, save, and bookmark your posts and pages using any service, such as Delicious, Digg, Facebook, MySpace, and all the rest.
+Helps readers share, save, and bookmark your posts and pages using any service, such as Delicious, Digg, Facebook, MySpace, and all the rest.
 
 == Description ==
 
-Lets readers share, save, and bookmark your posts and pages using any service, such as Delicious, Digg, Facebook, MySpace, and all the rest.  The button comes with a drop-down menu that appears on rollover.
+Helps readers **share**, **save**, and **bookmark** your posts and pages using **any service**, such as Delicious, Digg, Facebook, MySpace, and all the rest.  The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
 Within the menu, users are additionally given an e-mail option, and an option to bookmark in-browser (Internet Explorer, Firefox, Opera, Safari, etc.), with directions on how to bookmark if their browser does not support auto-bookmarking from links/shortcuts.
 
-* Works instantly on mouse-over
+* Add to Any Smart Menu
 * Includes all services
-* Searchable on key-down
 * Services updated automatically
+* Searchable on key-down
 * Keyboard navigation
 * Google Analytics integration
 
-Demo: <a href="http://www.addtoany.com/">http://www.addtoany.com/</a>
+Demo: <a href="http://www.addtoany.com/" title="Share, Save, Subscribe buttons">http://www.addtoany.com/</a>
 
-See also, the <a href="/extend/plugins/add-to-any-subscribe/">Subscribe button</a> plugin.
+See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin.
 
 == Installation ==
 
@@ -31,10 +31,6 @@ See also, the <a href="/extend/plugins/add-to-any-subscribe/">Subscribe button</
 1. Activate the plugin through the `Plugins` menu in WordPress
 
 == Frequently Asked Questions ==
-
-= How long will this service be around? =
-
-Forever.
 
 = How often is the list of services updated? =
 
