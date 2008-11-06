@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, and bookmark your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.1
+Version: .9.8.2
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -63,10 +63,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON($output_buffering=false) {
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Save/Bookmark"/>';
 	?>
 
-    <a class="a2a_dd addtoany_share_save" <?php 
-		if( !is_feed() ) {
-			echo (get_option('A2A_SHARE_SAVE_onclick')=='1') ? 'onclick="a2a_show_dropdown(this);return false"' : 'onmouseover="a2a_show_dropdown(this)"'; echo ' onmouseout="a2a_onMouseOut_delay()" '; 
-		} ?>href="http://www.addtoany.com/share_save?sitename=<?php echo $sitename_enc; ?>&amp;siteurl=<?php echo $siteurl_enc; ?>&amp;linkname=<?php echo $linkname_enc; ?>&amp;linkurl=<?php echo $linkurl_enc; ?>"<?php echo $style; ?>><?php echo $button; ?></a>
+    <a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?sitename=<?php echo $sitename_enc; ?>&amp;siteurl=<?php echo $siteurl_enc; ?>&amp;linkname=<?php echo $linkname_enc; ?>&amp;linkurl=<?php echo $linkurl_enc; ?>"<?php echo $style; ?>><?php echo $button; ?></a>
 
 	<?php
 	
@@ -83,6 +80,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON($output_buffering=false) {
 			. A2A_menu_locale()
 			. 'a2a_linkname="' . js_escape($linkname) . '";' . "\n"
 			. 'a2a_linkurl="' . $linkurl . '";' . "\n"
+			. ((get_option('A2A_SHARE_SAVE_onclick')=='1') ? 'a2a_onclick=1;' . "\n" : '')
 			. ((get_option('A2A_SHARE_SAVE_hide_embeds')=='-1') ? 'a2a_hide_embeds=0;' . "\n" : '')
 			. ((get_option('A2A_SHARE_SAVE_show_title')=='1') ? 'a2a_show_title=1;' . "\n" : '')
 			. stripslashes(get_option('A2A_SHARE_SAVE_additional_js_variables')) . "\n"
