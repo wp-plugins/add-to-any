@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, and bookmark your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.2
+Version: .9.8.3
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -113,6 +113,8 @@ if (!function_exists('A2A_menu_locale')) {
 	Share: "' . __("Share", "add-to-any") . '",
 	Save: "' . __("Save", "add-to-any") . '",
 	Subscribe: "' . __("Subscribe", "add-to-any") . '",
+	Email: "' . __("E-mail") . '",
+    Bookmark: "' . __("Bookmark") . '",
 	ShowAll: "' . __("Show all", "add-to-any") . '",
 	ShowLess: "' . __("Show less", "add-to-any") . '",
 	FindServices: "' . __("Find service(s)", "add-to-any") . '",
@@ -121,8 +123,10 @@ if (!function_exists('A2A_menu_locale')) {
 	ShareViaEmail: "' . __("Share via e-mail", "add-to-any") . '",
 	SubscribeViaEmail: "' . __("Subscribe via e-mail", "add-to-any") . '",
 	BookmarkInYourBrowser: "' . __("Bookmark in your browser", "add-to-any") . '",
-	BookmarkInstructions: "' . __("After clicking OK, press Ctrl+D or Cmd+D to bookmark this page", "add-to-any") . '",
+	BookmarkInstructions: "' . __("Press Ctrl+D or Cmd+D to bookmark this page", "add-to-any") . '",
 	AddToYourFavorites: "' . __("Add to your favorites", "add-to-any") . '"
+	SendFromWebOrProgram: "' . __("Send from any e-mail address or e-mail program") . '",
+    EmailProgram: "' . __("E-mail program") . '"
 };
 ';
 		return $A2A_locale;

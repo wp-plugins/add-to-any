@@ -4,7 +4,7 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7
-Stable tag: 0.9.8.2
+Stable tag: 0.9.8.3
 
 Helps readers share, save, and bookmark your posts and pages using any service, such as Delicious, Digg, Facebook, MySpace, and all the rest.
 
@@ -60,11 +60,16 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Screenshots ==
 
-1. Add to Any Share/Save button
+1. Add to Any Share/Save button, featuring the Open <a href="http://www.shareicon.com/">Share Icon</a>
 2. Drop-down menu that appears instantly when visitors move the mouse over the Share/Save button
-3. This is the drop-down menu showing the services available to the user within the Share/Save menu.  Services are constantly added/updated.
+3. E-mail tab, with direct links to the most popular web-based e-mailers' auto-filled Compose page, a web-based sender for use with any e-mail address
 
 == Changelog ==
+
+.9.8.3:
+
+* Language & localization update
+ * "After clicking OK," removed from the Bookmark tab
 
 .9.8.2:
 
