@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, and bookmark your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.6.1
+Version: .9.8.6.2
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -32,7 +32,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 	
 	$sitename_enc	= rawurlencode( get_bloginfo('name') );
 	$siteurl_enc	= rawurlencode( trailingslashit( get_bloginfo('url') ) );
-	$linkname		= ( $linkname ) ? $linkname : get_the_title();
+	$linkname		= ( in_the_loop() ) ? get_the_title() : wp_title('-', false,'right').get_bloginfo('name');
 	$linkname_enc	= rawurlencode( $linkname );
 	$linkurl		= ( in_the_loop() ) ?
 						/* Current post (if within loop) or current page */
