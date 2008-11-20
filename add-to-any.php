@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, and bookmark your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.6
+Version: .9.8.6.1
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -47,7 +47,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 		$button_fname	= 'share_save_120_16.gif';
 		$button_width	= ' width="120"';
 		$button_height	= ' height="16"';
-		$button_src		= trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/'.$button_fname;
+		$button_src		= trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/'.$button_fname;
 	} else if( get_option('A2A_SHARE_SAVE_button') == 'CUSTOM' ) {
 		$button_src		= get_option('A2A_SHARE_SAVE_button_custom');
 		$button_width	= '';
@@ -59,10 +59,10 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 		$button_fname	= $button_attrs[0];
 		$button_width	= ' width="'.$button_attrs[1].'"';
 		$button_height	= ' height="'.$button_attrs[2].'"';
-		$button_src		= trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/'.$button_fname;
+		$button_src		= trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/'.$button_fname;
 	}
 	if( $button_attrs[0] == 'favicon.png' ) {
-		$style_bg		= 'background:url('.trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/'.$button_fname.') no-repeat scroll 0px 0px';
+		$style_bg		= 'background:url('.trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/'.$button_fname.') no-repeat scroll 0px 0px';
 		$style_bg		= ';' . $style_bg . ' !important;';
 		$style			= ' style="'.$style_bg.'padding:1px 5px 5px 22px"';
 		$button			= 'Share/Save';
@@ -122,8 +122,8 @@ if (!function_exists('A2A_menu_locale')) {
 	Share: "' . __("Share", "add-to-any") . '",
 	Save: "' . __("Save", "add-to-any") . '",
 	Subscribe: "' . __("Subscribe", "add-to-any") . '",
-	Email: "' . __("E-mail") . '",
-    Bookmark: "' . __("Bookmark") . '",
+	Email: "' . __("E-mail", "add-to-any") . '",
+    Bookmark: "' . __("Bookmark", "add-to-any") . '",
 	ShowAll: "' . __("Show all", "add-to-any") . '",
 	ShowLess: "' . __("Show less", "add-to-any") . '",
 	FindServices: "' . __("Find service(s)", "add-to-any") . '",
@@ -134,8 +134,8 @@ if (!function_exists('A2A_menu_locale')) {
 	BookmarkInYourBrowser: "' . __("Bookmark in your browser", "add-to-any") . '",
 	BookmarkInstructions: "' . __("Press Ctrl+D or Cmd+D to bookmark this page", "add-to-any") . '",
 	AddToYourFavorites: "' . __("Add to your favorites", "add-to-any") . '",
-	SendFromWebOrProgram: "' . __("Send from any e-mail address or e-mail program") . '",
-    EmailProgram: "' . __("E-mail program") . '"
+	SendFromWebOrProgram: "' . __("Send from any e-mail address or e-mail program", "add-to-any") . '",
+    EmailProgram: "' . __("E-mail program", "add-to-any") . '"
 };
 ';
 		return $A2A_locale;
@@ -221,25 +221,25 @@ function A2A_SHARE_SAVE_options_page() {
             	<label>
                 	<input name="A2A_SHARE_SAVE_button" value="favicon.png|16|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='favicon.png|16|16') echo ' checked="checked"'; ?>
                     	 style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
+                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_120_16.gif|120|16" type="radio"<?php if( !get_option('A2A_SHARE_SAVE_button') || get_option('A2A_SHARE_SAVE_button' )=='share_save_120_16.gif|120|16') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/share_save_120_16.gif'; ?>" width="120" height="16" border="0" style="padding:9px;vertical-align:middle"
+                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/share_save_120_16.gif'; ?>" width="120" height="16" border="0" style="padding:9px;vertical-align:middle"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_171_16.gif|171|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='share_save_171_16.gif|171|16') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/share_save_171_16.gif'; ?>" width="171" height="16" border="0" style="padding:9px;vertical-align:middle"
+                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/share_save_171_16.gif'; ?>" width="171" height="16" border="0" style="padding:9px;vertical-align:middle"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_256_24.gif|256|24" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='share_save_256_24.gif|256|24') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_bloginfo('url')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/share_save_256_24.gif'; ?>" width="256" height="24" border="0" style="padding:9px;vertical-align:middle"
+                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/share_save_256_24.gif'; ?>" width="256" height="24" border="0" style="padding:9px;vertical-align:middle"
                     	onclick="this.parentNode.firstChild.checked=true"/>
 				</label><br>
                 <label>
