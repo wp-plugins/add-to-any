@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, and bookmark your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.6.2
+Version: .9.8.6.3
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -216,7 +216,7 @@ function A2A_SHARE_SAVE_options_page() {
     
         <table class="form-table">
         	<tr valign="top">
-            <th scope="row"><? _e("Button", "add-to-any"); ?></th>
+            <th scope="row"><?php _e("Button", "add-to-any"); ?></th>
             <td><fieldset>
             	<label>
                 	<input name="A2A_SHARE_SAVE_button" value="favicon.png|16|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='favicon.png|16|16') echo ' checked="checked"'; ?>
@@ -269,79 +269,79 @@ function A2A_SHARE_SAVE_options_page() {
                         onchange="e=getElementsByName('A2A_SHARE_SAVE_display_in_posts_on_front_page')[0];f=getElementsByName('A2A_SHARE_SAVE_display_in_feed')[0];
                         	if(!this.checked){e.checked=false;e.disabled=true; f.checked=false;f.disabled=true}else{e.checked=true;e.disabled=false; f.checked=true;f.disabled=false}"
                         type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_display_in_posts')!='-1') echo ' checked="checked"'; ?> value="1"/>
-                	<? _e('Display Share/Save button at the bottom of posts', 'add-to-any'); ?> <strong>*</strong>
+                	<?php _e('Display Share/Save button at the bottom of posts', 'add-to-any'); ?> <strong>*</strong>
                 </label><br/>
                 <label>
                 	&nbsp; &nbsp; &nbsp; <input name="A2A_SHARE_SAVE_display_in_posts_on_front_page" type="checkbox"<?php 
 						if(get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')!='-1') echo ' checked="checked"';
 						if(get_option('A2A_SHARE_SAVE_display_in_posts')=='-1') echo ' disabled="disabled"';
 						?> value="1"/>
-                    <? _e('Display Share/Save button at the bottom of posts on the front page', 'add-to-any'); ?>
+                    <?php _e('Display Share/Save button at the bottom of posts on the front page', 'add-to-any'); ?>
 				</label><br/>
                 <label>
                 	&nbsp; &nbsp; &nbsp; <input name="A2A_SHARE_SAVE_display_in_feed" type="checkbox"<?php 
 						if(get_option('A2A_SHARE_SAVE_display_in_feed')!='-1') echo ' checked="checked"'; 
 						if(get_option('A2A_SHARE_SAVE_display_in_posts')=='-1') echo ' disabled="disabled"';
 						?> value="1"/>
-                    <? _e('Display Share/Save button at the bottom of posts in the feed', 'add-to-any'); ?>
+                    <?php _e('Display Share/Save button at the bottom of posts in the feed', 'add-to-any'); ?>
 				</label><br/>
                 <label>
                 	<input name="A2A_SHARE_SAVE_display_in_pages" type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_display_in_pages')!='-1') echo ' checked="checked"'; ?> value="1"/>
-                    <? _e('Display Share/Save button at the bottom of pages', 'add-to-any'); ?> <strong>*</strong>
+                    <?php _e('Display Share/Save button at the bottom of pages', 'add-to-any'); ?> <strong>*</strong>
 				</label>
                 <br/><br/>
-                <strong>*</strong> <? _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>:<br/>
+                <strong>*</strong> <?php _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>:<br/>
                 <code>&lt;?php if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?&gt;</code>
             </fieldset></td>
             </tr>
             <tr valign="top">
-            <th scope="row"><? _e('Menu Style', 'add-to-any'); ?></th>
+            <th scope="row"><?php _e('Menu Style', 'add-to-any'); ?></th>
             <td><fieldset>
-                    	<? _e("Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below.", "add-to-any"); ?>
+                    	<?php _e("Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below.", "add-to-any"); ?>
                     <p>
-                		<a href="http://www.addtoany.com/buttons/share_save/menu_style/wordpress" class="button-secondary" title="<? _e("Open the Add to Any Menu Styler in a new window", "add-to-any"); ?>" target="_blank"
+                		<a href="http://www.addtoany.com/buttons/share_save/menu_style/wordpress" class="button-secondary" title="<?php _e("Open the Add to Any Menu Styler in a new window", "add-to-any"); ?>" target="_blank"
                         	onclick="document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();
-                            	document.getElementById('A2A_SHARE_SAVE_menu_styler_note').style.display='';"><? _e("Open Menu Styler", "add-to-any"); ?></a>
+                            	document.getElementById('A2A_SHARE_SAVE_menu_styler_note').style.display='';"><?php _e("Open Menu Styler", "add-to-any"); ?></a>
 					</p>
             </fieldset></td>
             </tr>
             <tr valign="top">
-            <th scope="row"><? _e('Menu Options', 'add-to-any'); ?></th>
+            <th scope="row"><?php _e('Menu Options', 'add-to-any'); ?></th>
             <td><fieldset>
             	<label>
                 	<input name="A2A_SHARE_SAVE_hide_embeds" 
                         type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_hide_embeds')!='-1') echo ' checked="checked"'; ?> value="1"/>
-                	<? _e('Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed', 'add-to-any'); ?>
+                	<?php _e('Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed', 'add-to-any'); ?>
                 </label><br />
                 <label>
                 	<input name="A2A_SHARE_SAVE_show_title" 
                         type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_show_title')=='1') echo ' checked="checked"'; ?> value="1"/>
-                	<? _e('Show the title of the post (or page) within the menu', 'add-to-any'); ?>
+                	<?php _e('Show the title of the post (or page) within the menu', 'add-to-any'); ?>
                 </label><br />
 				<label>
                 	<input name="A2A_SHARE_SAVE_onclick" 
                         type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_onclick')=='1') echo ' checked="checked"'; ?> value="1"/>
-                	<? _e('Only show the menu when the user clicks the Share/Save button', 'add-to-any'); ?>
+                	<?php _e('Only show the menu when the user clicks the Share/Save button', 'add-to-any'); ?>
                 </label>
             </fieldset></td>
             </tr>
             <tr valign="top">
-            <th scope="row"><? _e('Additional Options', 'add-to-any'); ?></th>
+            <th scope="row"><?php _e('Additional Options', 'add-to-any'); ?></th>
             <td><fieldset>
             		<p id="A2A_SHARE_SAVE_menu_styler_note" style="display:none">
                         <label for="A2A_SHARE_SAVE_additional_js_variables">
-                            <strong><? _e("Paste the code from Add to Any's Menu Styler in the box below!", 'add-to-any'); ?></strong>
+                            <strong><?php _e("Paste the code from Add to Any's Menu Styler in the box below!", 'add-to-any'); ?></strong>
                         </label>
                     </p>
                     <label for="A2A_SHARE_SAVE_additional_js_variables">
-                    	<? _e('Below you can set special JavaScript variables to apply to each Share/Save menu.', 'add-to-any'); ?>
-                    	<? _e("Advanced users might want to check out the code generated by Add to Any's general <a href=\"http://www.addtoany.com/buttons/share_save\">Share/Save button generator</a>.", "add-to-any"); ?>
+                    	<?php _e('Below you can set special JavaScript variables to apply to each Share/Save menu.', 'add-to-any'); ?>
+                    	<?php _e("Advanced users might want to check out the code generated by Add to Any's general <a href=\"http://www.addtoany.com/buttons/share_save\">Share/Save button generator</a>.", "add-to-any"); ?>
 					</label>
                     <p>
                 		<textarea name="A2A_SHARE_SAVE_additional_js_variables" id="A2A_SHARE_SAVE_additional_js_variables" class="code" style="width: 98%; font-size: 12px;" rows="5" cols="50"><?php echo stripslashes(get_option('A2A_SHARE_SAVE_additional_js_variables')); ?></textarea>
 					</p>
                     <?php if( get_option('A2A_SHARE_SAVE_additional_js_variables')!='' ) { ?>
-                    <label for="A2A_SHARE_SAVE_additional_js_variables"><? _e("<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>", 'add-to-any'); ?>
+                    <label for="A2A_SHARE_SAVE_additional_js_variables"><?php _e("<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>", 'add-to-any'); ?>
                     <?php } ?>
             </fieldset></td>
             </tr>
