@@ -4,24 +4,24 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7
-Stable tag: 0.9.8.6.4
+Stable tag: 0.9.8.6.5
 
-Helps readers share, save, and bookmark your posts and pages using any service, such as Delicious, Digg, Facebook, MySpace, and all the rest.
+Helps readers share, save, and bookmark your posts and pages using any service, such as Delicious, Digg, Facebook, Twitter, and over 100 more.
 
 == Description ==
 
-Helps readers **share**, **save**, and **bookmark** your posts and pages using **any service**, such as Delicious, Digg, Facebook, MySpace, and all the rest.  The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
+Helps readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Delicious, Digg, Facebook, Twitter, and over 100 more. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
-Within the menu, users are additionally given an e-mail option, and an option to bookmark in-browser (Internet Explorer, Firefox, Opera, Safari, etc.), with directions on how to bookmark if their browser does not support auto-bookmarking from links/shortcuts.
+The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The Bookmark or Add to Favorites tab helps users bookmark using any browser (Internet Explorer, Firefox, Opera, Safari, etc.).
 
 * Add to Any Smart Menu
 * Includes all services
 * Services updated automatically
-* Searchable on key-down
-* Keyboard navigation
+* WordPress optimized
 * Google Analytics integration
+* Many more publisher and user features
 
-Demo: <a href="http://www.addtoany.com/" title="Share, Save, Subscribe buttons">http://www.addtoany.com/</a>
+<a href="http://www.addtoany.com/" title="Sharing button">Demo</a> | <a href="other_notes/">Changelog</a>
 
 See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin.
 
@@ -65,6 +65,11 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 3. E-mail tab, with direct links to the most popular web-based e-mailers' auto-filled Compose page, a web-based sender for use with any e-mail address
 
 == Changelog ==
+
+.9.8.6.5:
+
+* Less JavaScript redundancy from Additional Options (saves bandwidth)
+* Compressed PNGs added, select a button from settings to begin using PNG (saves bandwidth)
 
 .9.8.6.4:
 
