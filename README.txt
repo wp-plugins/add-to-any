@@ -66,6 +66,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
+.9.8.7:
+
+* Removes unnecessary inline styling in feeds per W3C recommendation
+
 .9.8.6.9:
 
 * Compressed Open Share Icon
