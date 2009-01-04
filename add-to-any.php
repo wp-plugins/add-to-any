@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.6.9
+Version: .9.8.7
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -68,9 +68,11 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 		$button_src		= trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/'.$button_fname;
 	}
 	if( $button_attrs[0] == 'favicon.png' || $button_attrs[0] == 'share_16_16.png' ) {
-		$style_bg		= 'background:url('.trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/'.$button_fname.') no-repeat scroll 0px 0px';
-		$style_bg		= ';' . $style_bg . ' !important;';
-		$style			= ' style="'.$style_bg.'padding:1px 5px 5px 22px"';
+		if( !is_feed() ) {
+			$style_bg	= 'background:url('.trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/'.$button_fname.') no-repeat scroll 0px 0px';
+			$style_bg	= ';' . $style_bg . ' !important;';
+			$style		= ' style="'.$style_bg.'padding:1px 5px 5px 22px"';
+		}
 		$button			= 'Share/Save';
 	} else if( $button_text ) {
 		$button			= $button_text;
