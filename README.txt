@@ -1,10 +1,10 @@
 === Add to Any Share/Save/Bookmark Button ===
 Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
-Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, addtoany, add, any
+Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7
-Stable tag: 0.9.8.7
+Stable tag: 0.9.8.7.1
 
 Helps readers share, save, bookmark, and email your posts and pages using any service, such as Delicious, Digg, Facebook, Twitter, and over 100 more.
 
@@ -38,7 +38,13 @@ Constantly... and it's done automatically, without having to upgrade the plugin!
 
 = Where can I choose which button to display and other options? =
 
-Go to `Settings` > `Share/Save Buttons`. 
+Go to `Settings` > `Share/Save Buttons`.
+
+= Why isn't the drop-down menu appearing? =
+
+It's likely because your your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  Using the Theme Editor, make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
+
+`<?php wp_footer(); ?>`
 
 = How can I force the button to appear in individual posts and pages? =
 
@@ -47,12 +53,6 @@ If your button isn't already set up to appear (it is by default), type the follo
 = How can I remove a button from individual posts and pages? =
 
 Type the following tag into the page or post that you do not want the button to appear in: `<!--nosharesave-->`
-
-= Why isn't the drop-down menu appearing? =
-
-It's likely because your your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  Using the Theme Editor, make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
-
-`<?php wp_footer(); ?>`
 
 = Why do embedded objects (like Flash) disappear when the menu is displayed? =
 
@@ -65,6 +65,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 3. E-mail tab, with direct links to the most popular web-based e-mailers' auto-filled Compose page, a web-based sender for use with any e-mail address
 
 == Changelog ==
+
+.9.8.7.1:
+
+* Text-only button stripslashes
 
 .9.8.7:
 

@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.7
+Version: .9.8.7.1
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -59,7 +59,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 		$button_width	= '';
 		$button_height	= '';
 	} else if( get_option('A2A_SHARE_SAVE_button') == 'TEXT' ) {
-		$button_text	= get_option('A2A_SHARE_SAVE_button_text');
+		$button_text	= stripslashes(get_option('A2A_SHARE_SAVE_button_text'));
 	} else {
 		$button_attrs	= explode( '|', get_option('A2A_SHARE_SAVE_button') );
 		$button_fname	= $button_attrs[0];
@@ -272,7 +272,7 @@ function A2A_SHARE_SAVE_options_page() {
 					<span style="margin:0 9px;vertical-align:middle"><? _e("Text only"); ?>:</span>
 				</label>
                 <input name="A2A_SHARE_SAVE_button_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-1].checked=true" style="vertical-align:middle"
-                	value="<?php echo ( trim(get_option('A2A_SHARE_SAVE_button_text')) != '' ) ? get_option('A2A_SHARE_SAVE_button_text') : "Share/Save"; ?>" />
+                	value="<?php echo ( trim(get_option('A2A_SHARE_SAVE_button_text')) != '' ) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : "Share/Save"; ?>" />
                 
             </fieldset></td>
             </tr>
