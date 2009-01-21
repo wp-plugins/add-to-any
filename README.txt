@@ -4,24 +4,24 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7
-Stable tag: 0.9.8.7.1
+Stable tag: 0.9.8.7.2
 
 Helps readers share, save, bookmark, and email your posts and pages using any service, such as Delicious, Digg, Facebook, Twitter, and over 100 more.
 
 == Description ==
 
-Helps readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Delicious, Digg, Facebook, Twitter, and over 100 more. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
+Helps readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Delicious, Digg, Facebook, Twitter, and over 100 more social bookmarking and sharing sites. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
 The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The Bookmark or Add to Favorites tab helps users bookmark using any browser (Internet Explorer, Firefox, Opera, Safari, etc.).
 
-* Add to Any Smart Menu
+* Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Includes all services
 * Services updated automatically
-* WordPress optimized
+* WordPress optimized, localized (i18n)
 * Google Analytics integration
 * Many more publisher and user features
 
-<a href="http://www.addtoany.com/" title="Sharing button">Demo</a> | <a href="other_notes/">Changelog</a>
+<a href="http://www.addtoany.com/" title="Sharing button" target="_blank">Demo</a> | <a href="other_notes/">Changelog</a>
 
 See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin.
 
@@ -46,6 +46,11 @@ It's likely because your your theme wasn't <a href="http://codex.wordpress.org/T
 
 `<?php wp_footer(); ?>`
 
+= How can I move the button to another area of my theme? =
+
+Directions are located within the plugin's settings panel located in `Settings` > `Share/Save Buttons` under `Button Placement`. In the Theme Editor, you will place this line of code where you want the button to appear in your theme:
+`<?php if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?>`
+
 = How can I force the button to appear in individual posts and pages? =
 
 If your button isn't already set up to appear (it is by default), type the following tag into the page or post that you want the button to appear in: `<!--sharesave-->`
@@ -65,6 +70,11 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 3. E-mail tab, with direct links to the most popular web-based e-mailers' auto-filled Compose page, a web-based sender for use with any e-mail address
 
 == Changelog ==
+
+.9.8.7.2:
+
+* Additional options / JavaScript API clarification
+* i18n update 
 
 .9.8.7.1:
 
