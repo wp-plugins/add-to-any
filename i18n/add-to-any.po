@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-20 18:27-0800\n"
+"POT-Creation-Date: 2009-01-20 19:30-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: \n"
@@ -179,7 +179,7 @@ msgid "Below you can set special JavaScript variables to apply to each Share/Sav
 msgstr ""
 
 #: add-to-any.php:365
-msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target="
+msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
 msgstr ""
 
 #: add-to-any.php:371
