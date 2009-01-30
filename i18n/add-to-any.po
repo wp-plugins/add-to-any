@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-20 19:30-0800\n"
+"POT-Creation-Date: 2009-01-29 18:33-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: \n"
@@ -81,120 +81,120 @@ msgstr ""
 msgid "E-mail program"
 msgstr ""
 
-#: add-to-any.php:211
+#: add-to-any.php:218
 msgid "Settings saved."
 msgstr ""
 
-#: add-to-any.php:220
+#: add-to-any.php:227
 msgid "Add to Any: Share/Save "
 msgstr ""
 
-#: add-to-any.php:220
-#: add-to-any.php:391
+#: add-to-any.php:227
+#: add-to-any.php:402
 msgid "Settings"
 msgstr ""
 
-#: add-to-any.php:230
+#: add-to-any.php:237
 msgid "Button"
 msgstr ""
 
-#: add-to-any.php:265
+#: add-to-any.php:276
 msgid "Image URL"
 msgstr ""
 
-#: add-to-any.php:272
+#: add-to-any.php:283
 msgid "Text only"
 msgstr ""
 
-#: add-to-any.php:280
+#: add-to-any.php:291
 msgid "Button Placement"
 msgstr ""
 
-#: add-to-any.php:289
+#: add-to-any.php:300
 msgid "Display Share/Save button at the bottom of posts"
 msgstr ""
 
-#: add-to-any.php:296
+#: add-to-any.php:307
 msgid "Display Share/Save button at the bottom of posts on the front page"
 msgstr ""
 
-#: add-to-any.php:303
+#: add-to-any.php:314
 msgid "Display Share/Save button at the bottom of posts in the feed"
 msgstr ""
 
-#: add-to-any.php:307
+#: add-to-any.php:318
 msgid "Display Share/Save button at the bottom of pages"
 msgstr ""
 
-#: add-to-any.php:311
+#: add-to-any.php:322
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
 msgstr ""
 
-#: add-to-any.php:317
+#: add-to-any.php:328
 msgid "Menu Style"
 msgstr ""
 
-#: add-to-any.php:319
+#: add-to-any.php:330
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
 msgstr ""
 
-#: add-to-any.php:321
+#: add-to-any.php:332
 msgid "Open the Add to Any Menu Styler in a new window"
 msgstr ""
 
-#: add-to-any.php:323
+#: add-to-any.php:334
 msgid "Open Menu Styler"
 msgstr ""
 
-#: add-to-any.php:328
+#: add-to-any.php:339
 msgid "Menu Options"
 msgstr ""
 
-#: add-to-any.php:333
+#: add-to-any.php:344
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
 msgstr ""
 
-#: add-to-any.php:338
+#: add-to-any.php:349
 msgid "Show the title of the post (or page) within the menu"
 msgstr ""
 
-#: add-to-any.php:345
+#: add-to-any.php:356
 msgid "Only show the menu when the user clicks the Share/Save button"
 msgstr ""
 
-#: add-to-any.php:351
+#: add-to-any.php:362
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
 msgstr ""
 
-#: add-to-any.php:356
+#: add-to-any.php:367
 msgid "Additional Options"
 msgstr ""
 
-#: add-to-any.php:360
+#: add-to-any.php:371
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
 msgstr ""
 
-#: add-to-any.php:364
+#: add-to-any.php:375
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
 msgstr ""
 
-#: add-to-any.php:365
+#: add-to-any.php:376
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
 msgstr ""
 
-#: add-to-any.php:371
+#: add-to-any.php:382
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
 msgstr ""
 
-#: add-to-any.php:378
+#: add-to-any.php:389
 msgid "Save Changes"
 msgstr ""
 
-#: add-to-any.php:391
+#: add-to-any.php:402
 msgid "Share/Save"
 msgstr ""
 
-#: add-to-any.php:392
+#: add-to-any.php:403
 msgid "Share/Save Buttons"
 msgstr ""
 
