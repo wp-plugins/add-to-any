@@ -1,200 +1,203 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: add-to-any\n"
+"Project-Id-Version: Add to Any Share/Save/Bookmark\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-11 16:28-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
-"Language-Team: \n"
+"Language-Team: Danish team <g.s.adamsen@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-KeywordsList: __;_e;ngettext:1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: add-to-any.php:131
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: add-to-any.php:132
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 #: add-to-any.php:133
 msgid "Subscribe"
-msgstr ""
+msgstr "Subskribér"
 
 #: add-to-any.php:134
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 #: add-to-any.php:135
 msgid "Bookmark"
-msgstr ""
+msgstr "Bogmærk"
 
 #: add-to-any.php:136
 msgid "Show all"
-msgstr ""
+msgstr "Vis alle"
 
 #: add-to-any.php:137
 msgid "Show less"
-msgstr ""
+msgstr "Vis mindre"
 
 #: add-to-any.php:138
 msgid "Find service(s)"
-msgstr ""
+msgstr "Find service(s)"
 
 #: add-to-any.php:139
 msgid "Instantly find any service to add to"
-msgstr ""
+msgstr "Find øjeblikkelig alle services at tilføje til"
 
 #: add-to-any.php:140
 msgid "Powered by"
-msgstr ""
+msgstr "Kører på"
 
 #: add-to-any.php:141
 msgid "Share via e-mail"
-msgstr ""
+msgstr "Del via e-mail"
 
 #: add-to-any.php:142
 msgid "Subscribe via e-mail"
-msgstr ""
+msgstr "Subskribér via e-mail"
 
 #: add-to-any.php:143
 msgid "Bookmark in your browser"
-msgstr ""
+msgstr "Bogmærk i din browswer"
 
 #: add-to-any.php:144
 msgid "Press Ctrl+D or Cmd+D to bookmark this page"
-msgstr ""
+msgstr "Press Ctrl-D eller Cmd-D for at bogmærke denne side"
 
 #: add-to-any.php:145
 msgid "Add to your favorites"
-msgstr ""
+msgstr "Tilføj til dine favoritter"
 
 #: add-to-any.php:146
 msgid "Send from any e-mail address or e-mail program"
-msgstr ""
+msgstr "Send fra enhver e-mail-adreses eller e-mail-program"
 
 #: add-to-any.php:147
 msgid "E-mail program"
-msgstr ""
+msgstr "E-mail-program"
 
 #: add-to-any.php:229
 msgid "Settings saved."
-msgstr ""
+msgstr "Indstillinger gemt"
 
 #: add-to-any.php:238
 msgid "Add to Any: Share/Save "
-msgstr ""
+msgstr "Tilføj til enhver: Del/gem"
 
 #: add-to-any.php:238
 #: add-to-any.php:413
 msgid "Settings"
-msgstr ""
+msgstr "Indstillinger"
 
 #: add-to-any.php:248
 msgid "Button"
-msgstr ""
+msgstr "Knap"
 
 #: add-to-any.php:287
 msgid "Image URL"
-msgstr ""
+msgstr "Billed-URL"
 
 #: add-to-any.php:294
 msgid "Text only"
-msgstr ""
+msgstr "Kun tekst"
 
 #: add-to-any.php:302
 msgid "Button Placement"
-msgstr ""
+msgstr "Placering af knap"
 
 #: add-to-any.php:311
 msgid "Display Share/Save button at the bottom of posts"
-msgstr ""
+msgstr "Vis Del-/Gem-knap i bunden af indlæg"
 
 #: add-to-any.php:318
 msgid "Display Share/Save button at the bottom of posts on the front page"
-msgstr ""
+msgstr "Vis Del-/Gem-knap i bunden af indlæg på forsiden"
 
 #: add-to-any.php:325
 msgid "Display Share/Save button at the bottom of posts in the feed"
-msgstr ""
+msgstr "Vis Del-/Gem-knap i bunden af indlæg i feeds"
 
 #: add-to-any.php:329
 msgid "Display Share/Save button at the bottom of pages"
-msgstr ""
+msgstr "Vis Del-/Gem-knap i bunden af sider"
 
 #: add-to-any.php:333
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
-msgstr ""
+msgstr "Hvis du ikke vælger dette, skal du sørge for at placere den følgende kode i <a href=\"theme-editor.php\">dine skabelonsider</a> (i <code>index.php</code>, <code>single.php</code>, og/eller <code>page.php</code>)"
 
 #: add-to-any.php:339
 msgid "Menu Style"
-msgstr ""
+msgstr "Menutypografi"
 
 #: add-to-any.php:341
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
-msgstr ""
+msgstr "Ved at bruge Add to Any's menutypograf, kan du tilpasse farverne på din Del-/Gem-menu! Når du er færdig, skal du sørge for at indsætte den genererede kode i <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Yderligere indstillinger</a>-boksen nedenfor."
 
 #: add-to-any.php:343
 msgid "Open the Add to Any Menu Styler in a new window"
-msgstr ""
+msgstr "Åben Add to Any's menutypograf i et nyt vindue"
 
 #: add-to-any.php:345
 msgid "Open Menu Styler"
-msgstr ""
+msgstr "Åben menutypografen"
 
 #: add-to-any.php:350
 msgid "Menu Options"
-msgstr ""
+msgstr "Menuvalgmuligheder"
 
 #: add-to-any.php:355
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
-msgstr ""
+msgstr "Skjul indlejrede objekter (flash, video, osv.) som kan påvirke menuen, når den vises"
 
 #: add-to-any.php:360
 msgid "Show the title of the post (or page) within the menu"
-msgstr ""
+msgstr "Vis titlen på indlægget (eller siden) i menuen"
 
 #: add-to-any.php:367
 msgid "Only show the menu when the user clicks the Share/Save button"
-msgstr ""
+msgstr "Vis kun menuen når bruger klikker på Del-/Gem-knappen"
 
 #: add-to-any.php:373
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
-msgstr ""
+msgstr "Åben menusiden på addtoany.com i en ny fane eller vindue hvis brugeren klikker på Del-/Gem-knappen"
 
 #: add-to-any.php:378
 msgid "Additional Options"
-msgstr ""
+msgstr "Yderligere indstillinger"
 
 #: add-to-any.php:382
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
-msgstr ""
+msgstr "Indsæt koden fra Add to Any's menutypograf i boksen nedenfor!"
 
 #: add-to-any.php:386
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
-msgstr ""
+msgstr "Nedenfor kan du angive specielle JavaScript-variabler, som skal bruges på din Del-/Gem-menu."
 
 #: add-to-any.php:387
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
-msgstr ""
+msgstr "Avancerede brugere kan se nærmere på Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
 
 #: add-to-any.php:393
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
-msgstr ""
+msgstr "<strong>Bemærk</strong>: Hvis du tilføjer ny kode, så vær forsigtig, så du ikke ved et uheld overskriver eksisterende kode."
 
 #: add-to-any.php:400
 msgid "Save Changes"
-msgstr ""
+msgstr "Gem ændringer"
 
 #: add-to-any.php:413
 msgid "Share/Save"
-msgstr ""
+msgstr "Del/Gem"
 
 #: add-to-any.php:414
 msgid "Share/Save Buttons"
-msgstr ""
+msgstr "Del-/Gem-knapper"
 

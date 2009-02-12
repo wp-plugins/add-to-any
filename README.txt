@@ -3,8 +3,8 @@ Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.7
-Stable tag: 0.9.8.8
+Tested up to: 2.7.1
+Stable tag: 0.9.8.8.1
 
 Helps readers share, save, bookmark, and email your posts and pages using any service, such as Delicious, Digg, Facebook, Twitter, and over 100 more.
 
@@ -17,11 +17,11 @@ The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any 
 * Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Includes all services
 * Services updated automatically
-* WordPress optimized, localized (i18n)
+* WordPress optimized, localized (i18n for English, Chinese, Danish)
 * Google Analytics integration
 * Many more publisher and user features
 
-<a href="http://www.addtoany.com/" title="Sharing button" target="_blank">Demo</a> | <a href="other_notes/">Changelog</a>
+<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button Demo</a> | <a href="other_notes/">Changelog</a>
 
 See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin.
 
@@ -70,6 +70,12 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 3. E-mail tab, with direct links to the most popular web-based e-mailers' auto-filled Compose page, a web-based sender for use with any e-mail address
 
 == Changelog ==
+
+.9.8.8.1:
+
+* Refine conditionals
+* Highlight admin notices
+* Danish translation (by <a href="http://wordpress.blogos.dk/" target="_blank">Georg</a>)
 
 .9.8.8:
 

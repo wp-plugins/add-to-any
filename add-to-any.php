@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.8
+Version: .9.8.8.1
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -84,6 +84,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 
 	<?php
 	
+	// If not a feed
 	if( !is_feed() ) {
 	
 		global $A2A_javascript, $A2A_SHARE_SAVE_external_script_called;
@@ -153,18 +154,28 @@ if (!function_exists('A2A_menu_locale')) {
 
 function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	if ( 
-		( (strpos($content, '<!--sharesave-->')===false) ) && (														// <!--sharesave-->
-			( !is_page() && get_option('A2A_SHARE_SAVE_display_in_posts')=='-1' ) || 								// All posts
-			( !is_page() && !is_single() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  // Front page posts
-			( is_page() && get_option('A2A_SHARE_SAVE_display_in_pages')=='-1' ) ||									// Pages
-			( (strpos($content, '<!--nosharesave-->')!==false ) ) ||												// <!--nosharesave-->
-			( is_feed() && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1') )									// Display in feed?
+		( 
+			// Tags
+			strpos($content, '<!--sharesave-->')===false || 										// <!--sharesave--> tag
+			strpos($content, '<!--nosharesave-->')!==false											// <!--nosharesave--> tag
+		) &&											
+		(
+			// Posts
+			( is_single() && get_option('A2A_SHARE_SAVE_display_in_posts')=='-1' ) || 				// All posts
+			( is_home() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Front page posts
+			( is_feed() && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1' ) || 				// Posts in feed
+			
+			// Pages
+			( is_page() && get_option('A2A_SHARE_SAVE_display_in_pages')=='-1' ) ||					// Individual pages
+			( (strpos($content, '<!--nosharesave-->')!==false) )									// <!--nosharesave-->
+		)
 		)
 	)	
 		return $content;
 	
 	$A2A_SHARE_SAVE_options = array(
-		"output_buffering" => true);
+		"output_buffering" => true
+	);
 	
 	$content .= '<p class="addtoany_share_save_container">'.ADDTOANY_SHARE_SAVE_BUTTON( $A2A_SHARE_SAVE_options ).'</p>';
 	return $content;
@@ -367,7 +378,7 @@ function A2A_SHARE_SAVE_options_page() {
             <th scope="row"><?php _e('Additional Options', 'add-to-any'); ?></th>
             <td><fieldset>
             		<p id="A2A_SHARE_SAVE_menu_styler_note" style="display:none">
-                        <label for="A2A_SHARE_SAVE_additional_js_variables">
+                        <label for="A2A_SHARE_SAVE_additional_js_variables" class="updated">
                             <strong><?php _e("Paste the code from Add to Any's Menu Styler in the box below!", 'add-to-any'); ?></strong>
                         </label>
                     </p>

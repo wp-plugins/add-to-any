@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-29 18:32-0800\n"
+"POT-Creation-Date: 2009-02-11 16:28-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: \n"
@@ -16,189 +16,189 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: add-to-any.php:130
+#: add-to-any.php:131
 msgid "Share"
 msgstr "分享"
 
-#: add-to-any.php:131
+#: add-to-any.php:132
 msgid "Save"
 msgstr "收藏"
 
-#: add-to-any.php:132
+#: add-to-any.php:133
 msgid "Subscribe"
 msgstr "订阅"
 
-#: add-to-any.php:133
+#: add-to-any.php:134
 msgid "E-mail"
 msgstr "电子邮件"
 
-#: add-to-any.php:134
+#: add-to-any.php:135
 msgid "Bookmark"
 msgstr "书签"
 
-#: add-to-any.php:135
+#: add-to-any.php:136
 msgid "Show all"
 msgstr "显示全部服务"
 
-#: add-to-any.php:136
+#: add-to-any.php:137
 msgid "Show less"
 msgstr "显示部分服务"
 
-#: add-to-any.php:137
+#: add-to-any.php:138
 msgid "Find service(s)"
 msgstr "查找服务"
 
-#: add-to-any.php:138
+#: add-to-any.php:139
 msgid "Instantly find any service to add to"
 msgstr "动态查找任何用以添加的服务"
 
-#: add-to-any.php:139
+#: add-to-any.php:140
 msgid "Powered by"
 msgstr "Powered by"
 
-#: add-to-any.php:140
+#: add-to-any.php:141
 msgid "Share via e-mail"
 msgstr "通过电子邮件分享"
 
-#: add-to-any.php:141
+#: add-to-any.php:142
 msgid "Subscribe via e-mail"
 msgstr "通过电子邮件订阅"
 
-#: add-to-any.php:142
+#: add-to-any.php:143
 msgid "Bookmark in your browser"
 msgstr "添加为浏览器书签"
 
-#: add-to-any.php:143
+#: add-to-any.php:144
 msgid "Press Ctrl+D or Cmd+D to bookmark this page"
 msgstr "按下 [Ctrl+D] 或 [Cmd+D] 将本页加为书签"
 
-#: add-to-any.php:144
+#: add-to-any.php:145
 msgid "Add to your favorites"
 msgstr "添加至收藏夹"
 
-#: add-to-any.php:145
+#: add-to-any.php:146
 msgid "Send from any e-mail address or e-mail program"
 msgstr "从任何电子邮件地址或电子邮件程序发送"
 
-#: add-to-any.php:146
+#: add-to-any.php:147
 msgid "E-mail program"
 msgstr "电子邮件程序"
 
-#: add-to-any.php:218
+#: add-to-any.php:229
 msgid "Settings saved."
 msgstr "设置已保存"
 
-#: add-to-any.php:227
+#: add-to-any.php:238
 msgid "Add to Any: Share/Save "
 msgstr "Add to Any: 分享/收藏"
 
-#: add-to-any.php:227
-#: add-to-any.php:402
+#: add-to-any.php:238
+#: add-to-any.php:413
 msgid "Settings"
 msgstr "设置"
 
-#: add-to-any.php:237
+#: add-to-any.php:248
 msgid "Button"
 msgstr "按钮"
 
-#: add-to-any.php:276
+#: add-to-any.php:287
 msgid "Image URL"
 msgstr "图片 URL"
 
-#: add-to-any.php:283
+#: add-to-any.php:294
 msgid "Text only"
 msgstr "仅用文字"
 
-#: add-to-any.php:291
+#: add-to-any.php:302
 msgid "Button Placement"
 msgstr "按钮位置"
 
-#: add-to-any.php:300
+#: add-to-any.php:311
 msgid "Display Share/Save button at the bottom of posts"
 msgstr "在文章底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:307
+#: add-to-any.php:318
 msgid "Display Share/Save button at the bottom of posts on the front page"
 msgstr "在首页的文章底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:314
+#: add-to-any.php:325
 msgid "Display Share/Save button at the bottom of posts in the feed"
 msgstr "在 Feed 的文章底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:318
+#: add-to-any.php:329
 msgid "Display Share/Save button at the bottom of pages"
 msgstr "在页面底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:322
+#: add-to-any.php:333
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
 msgstr "如果不选，请确定将以下代码置入于 <a href=\"theme-editor.php\">您的模板页面</a> 中 (包括 <code>index.php</code>，<code>single.php</code>，与/或 <code>page.php</code>)"
 
-#: add-to-any.php:328
+#: add-to-any.php:339
 msgid "Menu Style"
 msgstr "菜单风格"
 
-#: add-to-any.php:330
+#: add-to-any.php:341
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
 msgstr "使用 Add to Any 的菜单风格设置器，您可以自定义您的 分享/收藏 菜单的颜色！完成后，请将生成的代码粘贴于下方 <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">附加选项</a> 框内。"
 
-#: add-to-any.php:332
+#: add-to-any.php:343
 msgid "Open the Add to Any Menu Styler in a new window"
 msgstr "在新窗口中打开 Add to Any 菜单风格设置器"
 
-#: add-to-any.php:334
+#: add-to-any.php:345
 msgid "Open Menu Styler"
 msgstr "打开菜单风格设置器"
 
-#: add-to-any.php:339
+#: add-to-any.php:350
 msgid "Menu Options"
 msgstr "菜单选项"
 
-#: add-to-any.php:344
+#: add-to-any.php:355
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
 msgstr "菜单显示时隐藏与菜单相交的嵌入式对象(Flash，视频，等) "
 
-#: add-to-any.php:349
+#: add-to-any.php:360
 msgid "Show the title of the post (or page) within the menu"
 msgstr "菜单中显示文章(或页面)的标题"
 
-#: add-to-any.php:356
+#: add-to-any.php:367
 msgid "Only show the menu when the user clicks the Share/Save button"
 msgstr "仅当用户点击 分享/收藏 按钮时显示菜单"
 
-#: add-to-any.php:362
+#: add-to-any.php:373
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
 msgstr "如用户点击 分享/收藏 按钮，在新标签页或新窗口中打开 addtoany.com 菜单页面"
 
-#: add-to-any.php:367
+#: add-to-any.php:378
 msgid "Additional Options"
 msgstr "附加选项"
 
-#: add-to-any.php:371
+#: add-to-any.php:382
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
 msgstr "粘贴 Add to Any 菜单风格设置器生成的代码于下方框内！"
 
-#: add-to-any.php:375
+#: add-to-any.php:386
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
 msgstr "您可以设置特殊 JavaScript 变量以应用于全部 分享/收藏 菜单。"
 
-#: add-to-any.php:376
+#: add-to-any.php:387
 #, fuzzy
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
 msgstr "高级用户可能希望尝试 Add to Any 的 <a href=\"http://www.addtoany.com/buttons/api/\">JavaScript API</a> 所生成的代码。"
 
-#: add-to-any.php:382
+#: add-to-any.php:393
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
 msgstr "<strong>注意</strong>: 如果您打算添加新代码，请小心不要意外覆盖任何先前代码。</label>"
 
-#: add-to-any.php:389
+#: add-to-any.php:400
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: add-to-any.php:402
+#: add-to-any.php:413
 msgid "Share/Save"
 msgstr "分享/收藏"
 
-#: add-to-any.php:403
+#: add-to-any.php:414
 msgid "Share/Save Buttons"
 msgstr "分享/收藏 按钮"
 
