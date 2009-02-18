@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.8.2
+Version: .9.8.8.3
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -164,6 +164,10 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 			( get_option('A2A_SHARE_SAVE_display_in_posts')=='-1' ) || 									// All posts
 			( is_home() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Front page posts
 			( is_category() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Category posts (same as Front page option)
+			( is_tag() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Tag Cloud posts (same as Front page option)
+			( is_date() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Date-based archives posts (same as Front page option)
+			( is_author() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Author posts (same as Front page option)
+			( is_search() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Search results posts (same as Front page option)
 			( is_feed() && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1' ) || 					// Posts in feed
 			
 			// Pages
