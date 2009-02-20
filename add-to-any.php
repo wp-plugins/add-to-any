@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.8.3
+Version: .9.8.8.4
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -242,7 +242,7 @@ function A2A_SHARE_SAVE_options_page() {
 
 	<h2><?php _e( 'Add to Any: Share/Save ', 'add-to-any' ) . _e( 'Settings' ); ?></h2>
 
-    <form method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+    <form method="post" action="">
     
 	<?php wp_nonce_field('update-options'); ?>
     
