@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-23 19:37-0800\n"
 "PO-Revision-Date: \n"
-"Last-Translator: MicroPat\n"
+"Last-Translator: Pablo Poo <pablo@poo.cl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,71 +15,71 @@ msgstr ""
 
 #: add-to-any.php:131
 msgid "Share"
-msgstr ""
+msgstr "Compartir"
 
 #: add-to-any.php:132
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: add-to-any.php:133
 msgid "Subscribe"
-msgstr ""
+msgstr "Suscribirse"
 
 #: add-to-any.php:134
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 #: add-to-any.php:135
 msgid "Bookmark"
-msgstr ""
+msgstr "Marcador"
 
 #: add-to-any.php:136
 msgid "Show all"
-msgstr ""
+msgstr "Mostrar todo"
 
 #: add-to-any.php:137
 msgid "Show less"
-msgstr ""
+msgstr "Mostrar menos"
 
 #: add-to-any.php:138
 msgid "Find service(s)"
-msgstr ""
+msgstr "Buscar servicios(s)"
 
 #: add-to-any.php:139
 msgid "Instantly find any service to add to"
-msgstr ""
+msgstr "Buscar servicio"
 
 #: add-to-any.php:140
 msgid "Powered by"
-msgstr ""
+msgstr "Servicio ofrecido por"
 
 #: add-to-any.php:141
 msgid "Share via e-mail"
-msgstr ""
+msgstr "Compartir por e-mail"
 
 #: add-to-any.php:142
 msgid "Subscribe via e-mail"
-msgstr ""
+msgstr "Suscribirse por e-mail"
 
 #: add-to-any.php:143
 msgid "Bookmark in your browser"
-msgstr ""
+msgstr "Agregar a marcadores de tu navegador"
 
 #: add-to-any.php:144
 msgid "Press Ctrl+D or Cmd+D to bookmark this page"
-msgstr ""
+msgstr "Presione Ctrl+D o Cmd+D para marcar esta pagina"
 
 #: add-to-any.php:145
 msgid "Add to your favorites"
-msgstr ""
+msgstr "Agregar a favoritos"
 
 #: add-to-any.php:146
 msgid "Send from any e-mail address or e-mail program"
-msgstr ""
+msgstr "Enviar de cualquier dirección de e-mail o programa de e-mail"
 
 #: add-to-any.php:147
 msgid "E-mail program"
-msgstr ""
+msgstr "Programa de e-mail"
 
 #: add-to-any.php:172
 msgid "Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file."
@@ -87,118 +87,118 @@ msgstr ""
 
 #: add-to-any.php:257
 msgid "Settings saved."
-msgstr ""
+msgstr "Configuración guardada."
 
 #: add-to-any.php:268
 msgid "Add to Any: Share/Save "
-msgstr ""
+msgstr "Add to Any: Compartir/Guardar "
 
 #: add-to-any.php:268
 #: add-to-any.php:443
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #: add-to-any.php:278
 msgid "Button"
-msgstr ""
+msgstr "Botón"
 
 #: add-to-any.php:317
 msgid "Image URL"
-msgstr ""
+msgstr "URL de la imagen"
 
 #: add-to-any.php:324
 msgid "Text only"
-msgstr ""
+msgstr "Solo texto"
 
 #: add-to-any.php:332
 msgid "Button Placement"
-msgstr ""
+msgstr "Ubicación del botón"
 
 #: add-to-any.php:341
 msgid "Display Share/Save button at the bottom of posts"
-msgstr ""
+msgstr "Mostrar el botón Compartir/Guardar al final de cada entrada"
 
 #: add-to-any.php:348
 msgid "Display Share/Save button at the bottom of posts on the front page"
-msgstr ""
+msgstr "Mostrar el botón Compartir/Guardar al final de las entradas en la pagina principal"
 
 #: add-to-any.php:355
 msgid "Display Share/Save button at the bottom of posts in the feed"
-msgstr ""
+msgstr "Mostrar el botón Compartir/Guardar al final de las entradas en el feed"
 
 #: add-to-any.php:359
 msgid "Display Share/Save button at the bottom of pages"
-msgstr ""
+msgstr "Mostrar el botón Compartir/Guardar al final de las paginas"
 
 #: add-to-any.php:363
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
-msgstr ""
+msgstr "Si no está habilitado se debe agregar el siguiente código en  <a href=\"theme-editor.php\">la  plantilla de su tema</a>(dentro de <code>index.php</code>, <code>single.php</code>, y/o <code>page.php</code>)"
 
 #: add-to-any.php:369
 msgid "Menu Style"
-msgstr ""
+msgstr "Estilo del menú"
 
 #: add-to-any.php:371
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
-msgstr ""
+msgstr "Usar el personalizador de estilo de Add to Any, usted puede personalizar los colores de su menú Compartir/Guardar! Cuando finalice, debe copiar el código generado en el recuadro de <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">opciones adicionales</a> más abajo."
 
 #: add-to-any.php:373
 msgid "Open the Add to Any Menu Styler in a new window"
-msgstr ""
+msgstr "Abrir el personalizador de estilo de Add to Any en una nueva ventana"
 
 #: add-to-any.php:375
 msgid "Open Menu Styler"
-msgstr ""
+msgstr "Abrir el personalizador de estilos"
 
 #: add-to-any.php:380
 msgid "Menu Options"
-msgstr ""
+msgstr "Menú de opciones"
 
 #: add-to-any.php:385
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
-msgstr ""
+msgstr "Ocultar los objetos embebidos (Flash, video, etc) que intersectan con el manú cuando se muestra."
 
 #: add-to-any.php:390
 msgid "Show the title of the post (or page) within the menu"
-msgstr ""
+msgstr "Mostrar el título de la entrada (o de la pagina) dentro del menú"
 
 #: add-to-any.php:397
 msgid "Only show the menu when the user clicks the Share/Save button"
-msgstr ""
+msgstr "Mostrar el menú solo cuando un usuario haga click sobre el botón Compartir/Guardar"
 
 #: add-to-any.php:403
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
-msgstr ""
+msgstr "Abrir el menu de addtoany.com en una nueva pestaña o ventana si el usuario hace click en el botón Compartir/Guardar"
 
 #: add-to-any.php:408
 msgid "Additional Options"
-msgstr ""
+msgstr "Opciones adicionales"
 
 #: add-to-any.php:412
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
-msgstr ""
+msgstr "Pegue el código del  personalizador de estilo en el siguiente recuadro"
 
 #: add-to-any.php:416
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
-msgstr ""
+msgstr "Abajo puede inicializar las variables JavaScript especiales para aplicar a cada menú Compartir/Guardar"
 
 #: add-to-any.php:417
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
-msgstr ""
+msgstr "Los usuarios avanzados podrían preferir explorar la <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">API JavaScript</a> de Add to Any."
 
 #: add-to-any.php:423
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
-msgstr ""
+msgstr "<strong>Nota</strong>: Si usted agrega código nuevo, sea cuidadoso de no sobreescribir accidentalmente cualquier código ingresado anteriormente.</label>"
 
 #: add-to-any.php:430
 msgid "Save Changes"
-msgstr ""
+msgstr "Guardar cambios"
 
 #: add-to-any.php:443
 msgid "Share/Save"
-msgstr ""
+msgstr "Compartir/Guardar"
 
 #: add-to-any.php:444
 msgid "Share/Save Buttons"
-msgstr ""
+msgstr "Botones Compartir/Guardar"
 

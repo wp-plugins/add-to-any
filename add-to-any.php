@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.8.4
+Version: .9.8.9
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -151,6 +151,29 @@ if (!function_exists('A2A_menu_locale')) {
 	}
 }
 
+if (!function_exists('A2A_wp_footer_check')) {
+	function A2A_wp_footer_check()
+	{
+		// If footer.php exists in the current theme, scan for "wp_footer"
+		$file = get_template_directory() . '/footer.php';
+		if( is_file($file) ) {
+			$search_string = "wp_footer";
+			$file_lines = @file($file);
+			
+			foreach($file_lines as $line) {
+				$searchCount = substr_count($line, $search_string);
+				if($searchCount > 0) {
+					return true;
+					break;
+				}
+			}
+			
+			// wp_footer() not found:
+			echo "<div class=\"plugin-update\">" . __("Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file.") . "</div>";
+		}
+	}  
+}
+
 
 function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	if ( 
@@ -238,6 +261,8 @@ function A2A_SHARE_SAVE_options_page() {
 
     ?>
     
+    <?php A2A_wp_footer_check(); ?>
+    
     <div class="wrap">
 
 	<h2><?php _e( 'Add to Any: Share/Save ', 'add-to-any' ) . _e( 'Settings' ); ?></h2>
@@ -289,14 +314,14 @@ function A2A_SHARE_SAVE_options_page() {
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="CUSTOM" type="radio"<?php if( get_option('A2A_SHARE_SAVE_button') == 'CUSTOM' ) echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-					<span style="margin:0 9px;vertical-align:middle"><? _e("Image URL"); ?>:</span>
+					<span style="margin:0 9px;vertical-align:middle"><?php _e("Image URL"); ?>:</span>
 				</label>
   				<input name="A2A_SHARE_SAVE_button_custom" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-2].checked=true" style="vertical-align:middle"
                 	value="<?php echo get_option('A2A_SHARE_SAVE_button_custom'); ?>" /><br>
 				<label>
                 	<input name="A2A_SHARE_SAVE_button" value="TEXT" type="radio"<?php if( get_option('A2A_SHARE_SAVE_button') == 'TEXT' ) echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-					<span style="margin:0 9px;vertical-align:middle"><? _e("Text only"); ?>:</span>
+					<span style="margin:0 9px;vertical-align:middle"><?php _e("Text only"); ?>:</span>
 				</label>
                 <input name="A2A_SHARE_SAVE_button_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-1].checked=true" style="vertical-align:middle;width:150px"
                 	value="<?php echo ( trim(get_option('A2A_SHARE_SAVE_button_text')) != '' ) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : "Share/Save"; ?>" />
@@ -304,7 +329,7 @@ function A2A_SHARE_SAVE_options_page() {
             </fieldset></td>
             </tr>
             <tr valign="top">
-            <th scope="row"><? _e('Button Placement', 'add-to-any'); ?></th>
+            <th scope="row"><?php _e('Button Placement', 'add-to-any'); ?></th>
             <td><fieldset>
                 <label>
                 	<input name="A2A_SHARE_SAVE_display_in_posts" 
