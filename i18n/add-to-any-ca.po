@@ -1,0 +1,206 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: add-to-any\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-06 18:50-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: MicroPat\n"
+"Language-Team:  <robert.buj@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Language: Catalan\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: add-to-any.php:131
+msgid "Share"
+msgstr "Compartir"
+
+#: add-to-any.php:132
+msgid "Save"
+msgstr "Guardar"
+
+#: add-to-any.php:133
+msgid "Subscribe"
+msgstr "Subscriures"
+
+#: add-to-any.php:134
+msgid "E-mail"
+msgstr "Correu electrònic"
+
+#: add-to-any.php:135
+msgid "Bookmark"
+msgstr "Preferit"
+
+#: add-to-any.php:136
+msgid "Show all"
+msgstr "Mostrar tots"
+
+#: add-to-any.php:137
+msgid "Show less"
+msgstr "Mostrar menys"
+
+#: add-to-any.php:138
+msgid "Find service(s)"
+msgstr "Buscar servei(s)"
+
+#: add-to-any.php:139
+msgid "Instantly find any service to add to"
+msgstr ""
+
+#: add-to-any.php:140
+msgid "Powered by"
+msgstr "Potenciat per"
+
+#: add-to-any.php:141
+msgid "Share via e-mail"
+msgstr "Compartir per correu electrònic"
+
+#: add-to-any.php:142
+msgid "Subscribe via e-mail"
+msgstr "Subscriure per correu electrònic"
+
+#: add-to-any.php:143
+msgid "Bookmark in your browser"
+msgstr "Afegir l'adreça d'interès al vostre navegador"
+
+#: add-to-any.php:144
+msgid "Press Ctrl+D or Cmd+D to bookmark this page"
+msgstr "Pressioneu Ctrl+D o Cmd+D per afegir a preferits aquesta pàgina"
+
+#: add-to-any.php:145
+msgid "Add to your favorites"
+msgstr "Afegir als vostres favorits"
+
+#: add-to-any.php:146
+msgid "Send from any e-mail address or e-mail program"
+msgstr ""
+
+#: add-to-any.php:147
+msgid "E-mail program"
+msgstr "Programa de correu electrònic"
+
+#: add-to-any.php:172
+msgid "Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file."
+msgstr ""
+
+#: add-to-any.php:257
+msgid "Settings saved."
+msgstr "Preferències guardades."
+
+#: add-to-any.php:268
+msgid "Add to Any: Share/Save "
+msgstr "Add to Any: Compartir/Guardar "
+
+#: add-to-any.php:268
+#: add-to-any.php:443
+msgid "Settings"
+msgstr "Preferències"
+
+#: add-to-any.php:278
+msgid "Button"
+msgstr "Botó"
+
+#: add-to-any.php:317
+msgid "Image URL"
+msgstr "URL de l'imatge"
+
+#: add-to-any.php:324
+msgid "Text only"
+msgstr "Només texte"
+
+#: add-to-any.php:332
+msgid "Button Placement"
+msgstr "Emplaçament del botó"
+
+#: add-to-any.php:341
+msgid "Display Share/Save button at the bottom of posts"
+msgstr "Mostar el botó de Compartir/Guardar debaix de tots els escrits"
+
+#: add-to-any.php:348
+msgid "Display Share/Save button at the bottom of posts on the front page"
+msgstr "Mostar el botó de Compartir/Guardar a la pàgina principal"
+
+#: add-to-any.php:355
+msgid "Display Share/Save button at the bottom of posts in the feed"
+msgstr "Mostar el botó de Compartir/Guardar debaix de tots els escrits al feed"
+
+#: add-to-any.php:359
+msgid "Display Share/Save button at the bottom of pages"
+msgstr "Mostar el botó de Compartir/Guardar debaix de les pàgines"
+
+#: add-to-any.php:363
+msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
+msgstr ""
+
+#: add-to-any.php:369
+msgid "Menu Style"
+msgstr "Estil del menú"
+
+#: add-to-any.php:371
+msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
+msgstr ""
+
+#: add-to-any.php:373
+msgid "Open the Add to Any Menu Styler in a new window"
+msgstr ""
+
+#: add-to-any.php:375
+msgid "Open Menu Styler"
+msgstr ""
+
+#: add-to-any.php:380
+msgid "Menu Options"
+msgstr "Opcions del menú"
+
+#: add-to-any.php:385
+msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
+msgstr ""
+
+#: add-to-any.php:390
+msgid "Show the title of the post (or page) within the menu"
+msgstr ""
+
+#: add-to-any.php:397
+msgid "Only show the menu when the user clicks the Share/Save button"
+msgstr ""
+
+#: add-to-any.php:403
+msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
+msgstr ""
+
+#: add-to-any.php:408
+msgid "Additional Options"
+msgstr "Opcions adicionals"
+
+#: add-to-any.php:412
+msgid "Paste the code from Add to Any's Menu Styler in the box below!"
+msgstr ""
+
+#: add-to-any.php:416
+msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
+msgstr ""
+
+#: add-to-any.php:417
+msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
+msgstr ""
+
+#: add-to-any.php:423
+msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
+msgstr ""
+
+#: add-to-any.php:430
+msgid "Save Changes"
+msgstr "Guardar els canvis"
+
+#: add-to-any.php:443
+msgid "Share/Save"
+msgstr "compartir/guardar"
+
+#: add-to-any.php:444
+msgid "Share/Save Buttons"
+msgstr "Botons de Compartir/Guardar"
+
