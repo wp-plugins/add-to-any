@@ -2,18 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Add to Any Share/Save/Bookmark\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-05 14:26-0800\n"
+"POT-Creation-Date: 2009-03-08 16:07-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
-"Language-Team: Danish team <g.s.adamsen@gmail.com>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Danish\n"
 "X-Poedit-Country: DENMARK\n"
-"X-Poedit-KeywordsList: __;_e;ngettext:1,2\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c;__ngettext_noop:1,2\n"
 "X-Poedit-Basepath: ../\n"
+"X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: add-to-any.php:131
@@ -86,7 +87,7 @@ msgstr "E-mail-program"
 
 #: add-to-any.php:172
 msgid "Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file."
-msgstr ""
+msgstr "Dit tema skal repareres. For at gøre det skal du bruge <a href=\"theme-editor.php\">temaeditoren</a> til at indsætte koden <code>&lt;?php wp_footer(); ?&gt;</code> lige før <code>&lt;/body&gt;</code>-linjen i dit temas <code>footer.php</code>-fil."
 
 #: add-to-any.php:257
 msgid "Settings saved."
