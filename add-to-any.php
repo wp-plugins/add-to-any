@@ -60,6 +60,9 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 	
 	$ind_html = "";
 	
+	if( !$active_services )
+		$active_services = Array();
+	
 	foreach($active_services as $active_service) {
 		
 		// Skip unknown

@@ -14,7 +14,7 @@ Helps readers **share**, **save**, **bookmark**, and **email** your posts and pa
 
 The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The Bookmark or Add to Favorites tab helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera etc.).
 
-Individual service icons let you optimize your blog posts for specific social destinations.
+**Individual service icons** let you optimize your blog posts for specific social destinations.
 
 * Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Includes all services
