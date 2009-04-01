@@ -406,7 +406,9 @@ function A2A_SHARE_SAVE_options_page() {
 				<?php
 					// Show all services
 					$active_services = get_option('A2A_SHARE_SAVE_active_services');
-				
+					if( !$active_services )
+						$active_services = Array();
+					
                     foreach ($A2A_SHARE_SAVE_services as $service_safe_name=>$site) { ?>
                         <li id="a2a_wp_<?php echo $service_safe_name; ?>"
                             title="<?php echo $site['name']; ?>">
@@ -677,6 +679,8 @@ function A2A_SHARE_SAVE_admin_head() {
 		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']);
 		$active_services = ( $admin_services_saved )
 			? $_POST['A2A_SHARE_SAVE_active_services'] : get_option('A2A_SHARE_SAVE_active_services');
+		if( !$active_services )
+			$active_services = Array();
 		$active_services_last = end($active_services);
 		$active_services_quoted = '';
 		foreach ($active_services as $service) {
