@@ -4,9 +4,9 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 0.9.8.9.2
+Stable tag: 0.9.9
 
-Helps readers share, save, bookmark, and email your posts and pages using any service, such as Delicious, Digg, Facebook, Twitter, and over 100 more.
+Helps readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
@@ -14,8 +14,11 @@ Helps readers **share**, **save**, **bookmark**, and **email** your posts and pa
 
 The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The Bookmark or Add to Favorites tab helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera etc.).
 
+Individual service icons let you optimize your blog posts for specific social destinations.
+
 * Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Includes all services
+* Individual service links (**new!**)
 * Services updated automatically
 * WordPress optimized, localized (i18n for English, Spanish, Chinese, Danish)
 * Google Analytics integration
@@ -36,7 +39,7 @@ See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress R
 
 Constantly... and it's done automatically, without having to upgrade the plugin!
 
-= Where can I choose which button to display and other options? =
+= Where can I choose which button and individual icons to display and other options? =
 
 Go to `Settings` > `Share/Save Buttons`.
 
@@ -51,6 +54,30 @@ It's likely because your your theme wasn't <a href="http://codex.wordpress.org/T
 Directions are located within the plugin's settings panel located in `Settings` > `Share/Save Buttons` under `Button Placement`. In the Theme Editor, you will place this line of code where you want the button to appear in your theme:
 
 `<?php if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?>`
+
+= How can I move the individual icons to another area of my theme? =
+
+In the Theme Editor, place this line of code where you want the individual icons to appear in your theme (within an HTML list):
+
+`<?php echo '<ul class="addtoany_list">';
+if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )
+	ADDTOANY_SHARE_SAVE_ICONS( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
+echo '</ul>'; ?>`
+
+Or you can place the icons as individual links (without being wrapped in an HTML list):
+
+`<?php if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) { ADDTOANY_SHARE_SAVE_ICONS(); } ?>`
+
+= How can I move both the individual icon and the button to another area of my theme? =
+
+In the Theme Editor, place this code block where you want the individual icons to appear in your theme:
+
+`<?php echo '<ul class="addtoany_list">';
+if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )
+	ADDTOANY_SHARE_SAVE_ICONS( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
+if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )
+	ADDTOANY_SHARE_SAVE_BUTTON( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
+echo '</ul>'; ?>`
 
 = How can I force the button to appear in individual posts and pages? =
 
@@ -73,6 +100,12 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+.9.9:
+
+* Individual service icons & links!
+* .addtoany_share_save_container is now <div>, not <p>
+* Add to Any button now wrapped within <ul><li> (unless standalone)
 
 .9.8.9.2:
 

@@ -3,37 +3,34 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.8.9.2
+Version: .9.9
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
-
 
 if( !isset($A2A_javascript) )
 	$A2A_javascript = '';
 if( !isset($A2A_locale) )
 	$A2A_locale = '';
 
-$A2A_SHARE_SAVE_plugin_basename = plugin_basename(__FILE__);
+// Pre-2.6 compatibility
+if ( !defined('WP_CONTENT_URL') )
+    define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
+if ( ! defined( 'WP_PLUGIN_URL' ) )
+      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+
+$A2A_SHARE_SAVE_plugin_basename = plugin_basename(dirname(__FILE__));
+$A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL.'/'.$A2A_SHARE_SAVE_plugin_basename; // /wp-content/plugins/add-to-any
 
 function A2A_SHARE_SAVE_textdomain() {
-	global $A2A_SHARE_SAVE_plugin_basename;
+	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_plugin_basename;
 	load_plugin_textdomain('add-to-any',
-		PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/i18n',
-		dirname($A2A_SHARE_SAVE_plugin_basename).'/i18n');
+		$A2A_SHARE_SAVE_plugin_url_path.'/i18n',
+		$A2A_SHARE_SAVE_plugin_basename.'/i18n');
 }
 add_action('init', 'A2A_SHARE_SAVE_textdomain');
 
-
-function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
-
-	global $A2A_SHARE_SAVE_plugin_basename;
-	
-	if( $args )
-		extract( $args );
-	
-	if($output_buffering) ob_start();
-	
+function A2A_SHARE_SAVE_link_vars() {
 	$sitename_enc	= rawurlencode( get_bloginfo('name') );
 	$siteurl_enc	= rawurlencode( trailingslashit( get_bloginfo('url') ) );
 	$linkname		= ( in_the_loop() ) ? get_the_title() : wp_title('-', false,'right').get_bloginfo('name');
@@ -45,7 +42,69 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 							$_SERVER["HTTP_HOST"] .
 							( ($_SERVER["SERVER_PORT"] != "80") ? ":".	$_SERVER["SERVER_PORT"] : '') .
 							$_SERVER["REQUEST_URI"] ;
-	$linkurl_enc	= rawurlencode( $linkurl );
+	$linkurl_enc	= rawurlencode( $linkurl );	
+	
+	return compact( 'sitename_enc', 'siteurl_enc', 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
+}
+
+include_once('services.php');
+
+function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
+	if( $args )
+		extract( $args ); // output_buffering, html_wrap_open, html_wrap_close
+	extract(A2A_SHARE_SAVE_link_vars()); // linkname_enc, etc.
+		
+	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
+	
+	$active_services = get_option('A2A_SHARE_SAVE_active_services');
+	
+	$ind_html = "";
+	
+	foreach($active_services as $active_service) {
+		
+		// Skip unknown
+		if( !in_array($active_service, array_keys($A2A_SHARE_SAVE_services)) )
+			continue;
+
+		$service = $A2A_SHARE_SAVE_services[$active_service];
+		$safe_name = $active_service;
+		$icon = $service['icon'];
+		$url = "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
+		if(isset($service['description']) && $service['description'] != "") {
+			$description = $service['description'];
+		} else {
+			$description = $service['safe'];
+		}
+		$link = $html_wrap_open."<a href=\"$url\" title=\"$description\" rel=\"nofollow\" target=\"_blank\">";
+		$link .= "<img src=\"".$A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png\" title=\"$description\" alt=\"$description\"/>";
+		$link .= "</a>".$html_wrap_close;
+		
+		$ind_html .= apply_filters('addtoany_link', $link);
+	}
+	
+	if($output_buffering) ob_start();
+	
+	echo $ind_html;
+	
+	if($output_buffering) {
+		$button = ob_get_contents();
+		ob_end_clean();
+		return $ind_html;
+	}
+}
+
+function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
+
+	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
+	
+	if( $args )
+		extract( $args ); // output_buffering, html_wrap_open, html_wrap_close
+	
+	if($output_buffering) ob_start();
+	
+	extract(A2A_SHARE_SAVE_link_vars()); // linkname_enc, etc.
+	
+	/* Add to Any button */
 	
 	$button_target	= (get_option('A2A_SHARE_SAVE_button_opens_new_window')=='1' && (get_option('A2A_SHARE_SAVE_onclick')!='1')) ? ' target="_blank"' : '';
 	
@@ -53,7 +112,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 		$button_fname	= 'share_save_120_16.png';
 		$button_width	= ' width="120"';
 		$button_height	= ' height="16"';
-		$button_src		= trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/'.$button_fname;
+		$button_src		= $A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname;
 	} else if( get_option('A2A_SHARE_SAVE_button') == 'CUSTOM' ) {
 		$button_src		= get_option('A2A_SHARE_SAVE_button_custom');
 		$button_width	= '';
@@ -65,24 +124,26 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false) {
 		$button_fname	= $button_attrs[0];
 		$button_width	= ' width="'.$button_attrs[1].'"';
 		$button_height	= ' height="'.$button_attrs[2].'"';
-		$button_src		= trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/'.$button_fname;
+		$button_src		= $A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname;
 	}
 	if( $button_attrs[0] == 'favicon.png' || $button_attrs[0] == 'share_16_16.png' ) {
 		if( !is_feed() ) {
-			$style_bg	= 'background:url('.trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/'.$button_fname.') no-repeat scroll 0px 0px';
+			$style_bg	= 'background:url('.$A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname.') no-repeat scroll 9px 0px'; // padding-left:9 (9=other icons padding)
 			$style_bg	= ';' . $style_bg . ' !important;';
-			$style		= ' style="'.$style_bg.'padding:1px 5px 5px 22px"';
+			$style		= ' style="'.$style_bg.'padding:0 0 0 39px;display:inline-block;height:16px;line-height:16px;vertical-align:middle;"'; // padding-left:30+9 (9=other icons padding)
 		}
 		$button			= stripslashes(get_option('A2A_SHARE_SAVE_button_text'));
 	} else if( $button_text ) {
 		$button			= $button_text;
 	} else
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Save/Bookmark"/>';
-	?>
-
-    <a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?sitename=<?php echo $sitename_enc; ?>&amp;siteurl=<?php echo $siteurl_enc; ?>&amp;linkname=<?php echo $linkname_enc; ?>&amp;linkurl=<?php echo $linkurl_enc; ?>"<?php echo $style . $button_target; ?>><?php echo $button; ?></a>
-
-	<?php
+	
+	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?sitename='.$sitename_enc
+		.'&amp;siteurl='.$siteurl_enc
+		.'&amp;linkname='.$linkname_enc
+		.'&amp;linkurl='.$linkurl_enc
+		.'"' . $style . $button_target
+		.'>'.$button.'</a>'.$html_wrap_close;
 	
 	// If not a feed
 	if( !is_feed() ) {
@@ -201,11 +262,19 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	)	
 		return $content;
 	
-	$A2A_SHARE_SAVE_options = array(
-		"output_buffering" => true
+	$icons_args = array(
+		"output_buffering" => true,
+		"html_wrap_open" => "<li>",
+		"html_wrap_close" => "</li>",
 	);
 	
-	$content .= '<p class="addtoany_share_save_container">'.ADDTOANY_SHARE_SAVE_BUTTON( $A2A_SHARE_SAVE_options ).'</p>';
+	$A2A_SHARE_SAVE_options = array(
+		"output_buffering" => true,
+		"html_wrap_open" => "<li>",
+		"html_wrap_close" => "</li>",
+	);
+	
+	$content .= '<div class="addtoany_share_save_container"><ul class="addtoany_list">'.ADDTOANY_SHARE_SAVE_ICONS( $icons_args ).ADDTOANY_SHARE_SAVE_BUTTON( $A2A_SHARE_SAVE_options ).'</ul></div>';
 	return $content;
 }
 
@@ -213,7 +282,45 @@ add_action('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
 
 
 function A2A_SHARE_SAVE_button_css() {
-	?><style type="text/css">.addtoany_share_save img{border:0;}</style>
+	?><style type="text/css">
+	.addtoany_share_save_container{margin:16px 0;}
+	ul.addtoany_list{
+		display:inline;
+		margin:0 !important;
+		padding:0 !important;
+	}
+	ul.addtoany_list li{
+		background:none;
+		border:0;
+		display:inline !important;
+		list-style-type:none;
+		margin:0 !important;
+		padding:0 !important;
+		line-height:32px;<?php // For vertical space in the event of wrapping ?>
+	}
+	ul.addtoany_list li:before{content:"";}
+	ul.addtoany_list li a{padding:0 9px}
+	ul.addtoany_list img{
+		float:none;
+		width:16px;
+		height:16px;
+		border:0;
+		margin:0;
+		padding:0;
+		vertical-align:middle;
+	}
+	ul.addtoany_list a img{
+		opacity:.6;
+		-moz-opacity:.6;
+		filter: alpha(opacity=60);
+	}
+	ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
+		opacity:1;
+		-moz-opacity:1;
+		filter:alpha(opacity=100);
+	}
+	a.addtoany_share_save img{border:0;width:auto;height:auto;}<?php // Must declare after "ul.addtoany_list img"  ?>
+    </style>
 <?php
 }
 
@@ -229,7 +336,7 @@ add_action('wp_head', 'A2A_SHARE_SAVE_button_css');
 
 function A2A_SHARE_SAVE_options_page() {
 
-	global $A2A_SHARE_SAVE_plugin_basename;
+	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
 
     if( $_POST[ 'A2A_SHARE_SAVE_submit_hidden' ] == 'Y' ) {
 
@@ -252,6 +359,17 @@ function A2A_SHARE_SAVE_options_page() {
 			update_option( 'A2A_SHARE_SAVE_button_text', $_POST['A2A_SHARE_SAVE_button_share_16_16_text'] );
 		else
 			update_option( 'A2A_SHARE_SAVE_button_text', ( trim($_POST['A2A_SHARE_SAVE_button_text']) != '' ) ? $_POST['A2A_SHARE_SAVE_button_text'] : "Share/Save" );
+			
+		// Store chosen individual services to make active
+		$active_services = Array();
+		if( !$_POST['A2A_SHARE_SAVE_active_services'] )
+			$_POST['A2A_SHARE_SAVE_active_services'] = Array();
+		foreach( $_POST['A2A_SHARE_SAVE_active_services'] as $dummy=>$sitename )
+			$active_services[] = substr($sitename, 7);
+		update_option('A2A_SHARE_SAVE_active_services', $active_services);
+		// Delete then re-add to ensure sorting works (re-sorting doesn't effect associated array equality in PHP so update doesn't hit the dB for identical arrays
+		delete_option('A2A_SHARE_SAVE_active_services', $active_services);
+		add_option('A2A_SHARE_SAVE_active_services', $active_services);
 		
 		?>
     	<div class="updated fade"><p><strong><?php _e('Settings saved.'); ?></strong></p></div>
@@ -275,12 +393,34 @@ function A2A_SHARE_SAVE_options_page() {
     
         <table class="form-table">
         	<tr valign="top">
+            <th scope="row"><?php _e("Services", "add-to-any"); ?></th>
+			<td><fieldset>
+            	<ul id="addtoany_services_sortable" class="addtoany_admin_list">
+                	<li class="dummy"><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path; ?>/icons/transparent.gif" width="16" height="16" alt="" /></li>
+                </ul>
+                <p id="addtoany_services_info"><?php _e("Choose the services you want below. &nbsp;Click a chosen service again to remove. &nbsp;Reorder services by dragging and dropping as they appear above.", "add-to-any"); ?></p>
+            	<ul id="addtoany_services_selectable" class="addtoany_admin_list">
+				<?php
+					// Show all services
+					$active_services = get_option('A2A_SHARE_SAVE_active_services');
+				
+                    foreach ($A2A_SHARE_SAVE_services as $service_safe_name=>$site) { ?>
+                        <li id="a2a_wp_<?php echo $service_safe_name; ?>"
+                            title="<?php echo $site['name']; ?>">
+                            <span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon']; ?>.png" width="16" height="16" alt="" /><?php echo $site['name']; ?></span>
+                        </li>
+				<?php
+                    } ?>
+                </ul>
+            </fieldset></td>
+            </tr>
+        	<tr valign="top">
             <th scope="row"><?php _e("Button", "add-to-any"); ?></th>
             <td><fieldset>
             	<label>
                 	<input name="A2A_SHARE_SAVE_button" value="favicon.png|16|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='favicon.png|16|16') echo ' checked="checked"'; ?>
                     	 style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label>
                 <input name="A2A_SHARE_SAVE_button_favicon_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-7].checked=true" style="vertical-align:middle;width:150px"
@@ -288,7 +428,7 @@ function A2A_SHARE_SAVE_options_page() {
                 <label style="padding-left:9px">
                 	<input name="A2A_SHARE_SAVE_button" value="share_16_16.png|16|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='share_16_16.png|16|16') echo ' checked="checked"'; ?>
                     	 style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/share_16_16.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_16_16.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label>
                 <input name="A2A_SHARE_SAVE_button_share_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-6].checked=true" style="vertical-align:middle;width:150px"
@@ -296,19 +436,19 @@ function A2A_SHARE_SAVE_options_page() {
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_120_16.png|120|16" type="radio"<?php if( !get_option('A2A_SHARE_SAVE_button') || get_option('A2A_SHARE_SAVE_button' )=='share_save_120_16.png|120|16' ) echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/share_save_120_16.png'; ?>" width="120" height="16" border="0" style="padding:9px;vertical-align:middle"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_save_120_16.png'; ?>" width="120" height="16" border="0" style="padding:9px;vertical-align:middle"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_171_16.png|171|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='share_save_171_16.png|171|16') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/share_save_171_16.png'; ?>" width="171" height="16" border="0" style="padding:9px;vertical-align:middle"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_save_171_16.png'; ?>" width="171" height="16" border="0" style="padding:9px;vertical-align:middle"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_256_24.png|256|24" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='share_save_256_24.png|256|24') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo trailingslashit(get_option('siteurl')).PLUGINDIR.'/'.dirname($A2A_SHARE_SAVE_plugin_basename).'/share_save_256_24.png'; ?>" width="256" height="24" border="0" style="padding:9px;vertical-align:middle"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_save_256_24.png'; ?>" width="256" height="24" border="0" style="padding:9px;vertical-align:middle"
                     	onclick="this.parentNode.firstChild.checked=true"/>
 				</label><br>
                 <label>
@@ -329,7 +469,7 @@ function A2A_SHARE_SAVE_options_page() {
             </fieldset></td>
             </tr>
             <tr valign="top">
-            <th scope="row"><?php _e('Button Placement', 'add-to-any'); ?></th>
+            <th scope="row"><?php _e('Placement', 'add-to-any'); ?></th>
             <td><fieldset>
                 <label>
                 	<input name="A2A_SHARE_SAVE_display_in_posts" 
@@ -431,11 +571,158 @@ function A2A_SHARE_SAVE_options_page() {
         </p>
     
     </form>
+    
+    <h2><?php _e('Like this plugin?','add-to-any'); ?></h2>
+    <p><?php _e('<a href="http://wordpress.org/extend/plugins/add-to-any/">Give it a good rating</a> on WordPress.org.','add-to-any'); ?></p>
+    <p><?php _e('<a href="http://www.addtoany.com/share_save?linkname=WordPress%20Share%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F">Share it</a> with your friends.','add-to-any'); ?></p>
+    
+    <h2><?php _e('Need support?','add-to-any'); ?></h2>
+    <p><?php _e('See the <a href="http://wordpress.org/extend/plugins/add-to-any/faq/">FAQs</a>.','add-to-any'); ?></p>
+    <p><?php _e('Search the <a href="http://wordpress.org/tags/add-to-any">support forums</a>.','add-to-any'); ?></p>
     </div>
 
 <?php
  
 }
+
+// Admin page header
+function A2A_SHARE_SAVE_admin_head() {
+	if (isset($_GET['page']) && $_GET['page'] == 'add-to-any.php') {
+		global $wp_version;
+		
+		// Must be on WP 2.6+
+		if ($wp_version < "2.6")
+			return;
+	?>
+	<script language="JavaScript" type="text/javascript"><!--
+	jQuery(document).ready(function(){
+	
+		var to_input = function(this_sortable){
+			var services_string='',
+				services_array = jQuery(this_sortable).sortable('toArray'),
+				services_size = services_array.length;
+			if(services_size<1) return;
+			
+			// Clear any previous services stored as hidden inputs
+			jQuery('input[name="A2A_SHARE_SAVE_active_services[]"]').remove();
+			
+			for(var i=0;i<services_size;i++){
+				services_string += '"'+services_array[i]+'"';
+				if(i<services_size-1)
+					services_string += ',';
+				
+				if(services_array[i]!='') // Exclude dummy icon
+					jQuery('form:first').append('<input name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
+				
+			}
+			services_string = 'a2a_prioritize=[' + services_string + ']';
+		};
+	
+		jQuery('#addtoany_services_sortable').sortable({
+			items: 'li:not(#addtoany_show_services)',
+			placeholder: 'ui-sortable-placeholder',
+			opacity: .6,
+			tolerance: 'pointer',
+			update: function(){to_input(this)}
+		});
+		
+		// Service click = move to sortable list
+		var moveToSortableList = function(){
+			if( jQuery('#addtoany_services_sortable li').not('.dummy').length==0 )
+				jQuery('#addtoany_services_sortable').find('.dummy').hide();
+			
+			jQuery(this).fadeTo('fast', '.2')
+			.unbind('click', moveToSortableList)
+			.bind('click', moveToSelectableList)
+			.clone()
+			.html( jQuery(this).find('img').clone().attr('alt', jQuery(this).attr('title')) )
+			.hide()
+			.insertBefore('#addtoany_services_sortable .dummy')
+			.fadeIn('fast');
+			
+			jQuery(this).attr( 'id', 'old_'+jQuery(this).attr('id') );
+			
+			jQuery('#addtoany_services_sortable li:last').fadeTo('fast', 1);
+		};
+		
+		// Service click again = move back to selectable list
+		var moveToSelectableList = function(){
+			jQuery(this).fadeTo('fast', '1')
+			.unbind('click', moveToSelectableList)
+			.bind('click', moveToSortableList);
+	
+			jQuery( '#'+jQuery(this).attr('id').substr(4).replace(/\./, '\\.') )
+			.hide('fast', function(){
+				jQuery(this).remove();
+			});
+			
+			
+			if( jQuery('#addtoany_services_sortable li').not('.dummy').length==1 )
+				jQuery('#addtoany_services_sortable').find('.dummy').show();
+			
+			jQuery(this).attr('id', jQuery(this).attr('id').substr(4));
+		};
+		
+		// Service click = move to sortable list
+		jQuery('#addtoany_services_selectable li').bind('click', moveToSortableList);
+        
+        // Form submit = get sortable list
+        jQuery('form').submit(function(){to_input('#addtoany_services_sortable')});
+        
+        // Auto-select active services
+        <?php
+		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']);
+		$active_services = ( $admin_services_saved )
+			? $_POST['A2A_SHARE_SAVE_active_services'] : get_option('A2A_SHARE_SAVE_active_services');
+		$active_services_last = end($active_services);
+		$active_services_quoted = '';
+		foreach ($active_services as $service) {
+			if($admin_services_saved)
+				$service = substr($service, 7); // Remove a2a_wp_
+			$active_services_quoted .= '"'.$service.'"';
+			if ( $service != $active_services_last )
+				$active_services_quoted .= ',';
+		}
+		?>
+        var services = [<?php echo $active_services_quoted; ?>];
+        jQuery.each(services, function(i, val){
+        	jQuery('#a2a_wp_'+val).click();
+		});
+		
+		// Add/Remove Services
+		jQuery('#addtoany_services_sortable .dummy:first').after('<li id="addtoany_show_services"><?php _e('Add/Remove Services', 'add-to-any'); ?> &#187;</li>');
+		jQuery('#addtoany_show_services').click(function(e){
+			jQuery('#addtoany_services_selectable, #addtoany_services_info').slideDown('fast');
+			jQuery(this).fadeOut('fast');
+		});
+	});
+	--></script>
+
+	<style type="text/css">
+	.ui-sortable-placeholder{border:1px dashed #AAA;}
+	.addtoany_admin_list{list-style:none;padding:0;margin:0;}
+	.addtoany_admin_list li{-webkit-border-radius:9px;-moz-border-radius:9px;border-radius:9px;}
+	
+	#addtoany_services_selectable{clear:left;display:none;}
+	#addtoany_services_selectable li{cursor:crosshair;float:left;width:150px;font-size:11px;margin:0;padding:3px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;overflow:hidden;}
+	<?php // white-space:nowrap could go above, but then webkit does not wrap floats if parent has no width set; wrapping in <span> instead (below) ?>
+	#addtoany_services_selectable li span{white-space:nowrap;}
+	#addtoany_services_selectable li:hover{border:1px solid #AAA;background-color:#FFF;}
+    #addtoany_services_selectable li span img{margin:0 4px 0 4px;width:16px;height:16px;border:0;vertical-align:middle;}
+	
+	#addtoany_services_sortable li{cursor:move;float:left;padding:9px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;}
+	#addtoany_services_sortable li:hover{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_sortable img{width:16px;height:16px;border:0;vertical-align:middle;}
+	
+	li#addtoany_show_services{border:1px solid #DFDFDF;background-color:#FFF;cursor:pointer;}
+	li#addtoany_show_services:hover{border:1px solid #AAA;}
+	#addtoany_services_info{clear:left;display:none;}
+    </style>
+<?php
+	}
+}
+
+add_action('admin_head', 'A2A_SHARE_SAVE_admin_head');
 
 function A2A_SHARE_SAVE_add_menu_link() {
 	if( current_user_can('manage_options') ) {
@@ -446,6 +733,9 @@ function A2A_SHARE_SAVE_add_menu_link() {
 			, basename(__FILE__)
 			, 'A2A_SHARE_SAVE_options_page'
 		);
+		
+		// Load jQuery UI Sortable
+		wp_enqueue_script('jquery-ui-sortable');
 	}
 }
 

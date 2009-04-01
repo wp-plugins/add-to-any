@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-05 14:26-0800\n"
+"POT-Creation-Date: 2009-04-01 12:20-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: \n"
@@ -16,193 +16,231 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: add-to-any.php:131
+#: add-to-any.php:192
 msgid "Share"
 msgstr "分享"
 
-#: add-to-any.php:132
+#: add-to-any.php:193
 msgid "Save"
 msgstr "收藏"
 
-#: add-to-any.php:133
+#: add-to-any.php:194
 msgid "Subscribe"
 msgstr "订阅"
 
-#: add-to-any.php:134
+#: add-to-any.php:195
 msgid "E-mail"
 msgstr "电子邮件"
 
-#: add-to-any.php:135
+#: add-to-any.php:196
 msgid "Bookmark"
 msgstr "书签"
 
-#: add-to-any.php:136
+#: add-to-any.php:197
 msgid "Show all"
 msgstr "显示全部服务"
 
-#: add-to-any.php:137
+#: add-to-any.php:198
 msgid "Show less"
 msgstr "显示部分服务"
 
-#: add-to-any.php:138
+#: add-to-any.php:199
 msgid "Find service(s)"
 msgstr "查找服务"
 
-#: add-to-any.php:139
+#: add-to-any.php:200
 msgid "Instantly find any service to add to"
 msgstr "动态查找任何用以添加的服务"
 
-#: add-to-any.php:140
+#: add-to-any.php:201
 msgid "Powered by"
 msgstr "Powered by"
 
-#: add-to-any.php:141
+#: add-to-any.php:202
 msgid "Share via e-mail"
 msgstr "通过电子邮件分享"
 
-#: add-to-any.php:142
+#: add-to-any.php:203
 msgid "Subscribe via e-mail"
 msgstr "通过电子邮件订阅"
 
-#: add-to-any.php:143
+#: add-to-any.php:204
 msgid "Bookmark in your browser"
 msgstr "添加为浏览器书签"
 
-#: add-to-any.php:144
+#: add-to-any.php:205
 msgid "Press Ctrl+D or Cmd+D to bookmark this page"
 msgstr "按下 [Ctrl+D] 或 [Cmd+D] 将本页加为书签"
 
-#: add-to-any.php:145
+#: add-to-any.php:206
 msgid "Add to your favorites"
 msgstr "添加至收藏夹"
 
-#: add-to-any.php:146
+#: add-to-any.php:207
 msgid "Send from any e-mail address or e-mail program"
 msgstr "从任何电子邮件地址或电子邮件程序发送"
 
-#: add-to-any.php:147
+#: add-to-any.php:208
 msgid "E-mail program"
 msgstr "电子邮件程序"
 
-#: add-to-any.php:172
+#: add-to-any.php:233
 msgid "Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file."
 msgstr ""
 
-#: add-to-any.php:257
+#: add-to-any.php:375
 msgid "Settings saved."
 msgstr "设置已保存"
 
-#: add-to-any.php:268
+#: add-to-any.php:386
 msgid "Add to Any: Share/Save "
 msgstr "Add to Any: 分享/收藏"
 
-#: add-to-any.php:268
-#: add-to-any.php:443
+#: add-to-any.php:386
+#: add-to-any.php:730
 msgid "Settings"
 msgstr "设置"
 
-#: add-to-any.php:278
+#: add-to-any.php:396
+#, fuzzy
+msgid "Services"
+msgstr "查找服务"
+
+#: add-to-any.php:401
+msgid "Choose the services you want below. &nbsp;Click a chosen service again to remove. &nbsp;Reorder services by dragging and dropping as they appear above."
+msgstr ""
+
+#: add-to-any.php:418
 msgid "Button"
 msgstr "按钮"
 
-#: add-to-any.php:317
+#: add-to-any.php:457
 msgid "Image URL"
 msgstr "图片 URL"
 
-#: add-to-any.php:324
+#: add-to-any.php:464
 msgid "Text only"
 msgstr "仅用文字"
 
-#: add-to-any.php:332
-msgid "Button Placement"
+#: add-to-any.php:472
+#, fuzzy
+msgid "Placement"
 msgstr "按钮位置"
 
-#: add-to-any.php:341
+#: add-to-any.php:481
 msgid "Display Share/Save button at the bottom of posts"
 msgstr "在文章底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:348
+#: add-to-any.php:488
 msgid "Display Share/Save button at the bottom of posts on the front page"
 msgstr "在首页的文章底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:355
+#: add-to-any.php:495
 msgid "Display Share/Save button at the bottom of posts in the feed"
 msgstr "在 Feed 的文章底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:359
+#: add-to-any.php:499
 msgid "Display Share/Save button at the bottom of pages"
 msgstr "在页面底部显示 分享/收藏 按钮"
 
-#: add-to-any.php:363
+#: add-to-any.php:503
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
 msgstr "如果不选，请确定将以下代码置入于 <a href=\"theme-editor.php\">您的模板页面</a> 中 (包括 <code>index.php</code>，<code>single.php</code>，与/或 <code>page.php</code>)"
 
-#: add-to-any.php:369
+#: add-to-any.php:509
 msgid "Menu Style"
 msgstr "菜单风格"
 
-#: add-to-any.php:371
+#: add-to-any.php:511
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
 msgstr "使用 Add to Any 的菜单风格设置器，您可以自定义您的 分享/收藏 菜单的颜色！完成后，请将生成的代码粘贴于下方 <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">附加选项</a> 框内。"
 
-#: add-to-any.php:373
+#: add-to-any.php:513
 msgid "Open the Add to Any Menu Styler in a new window"
 msgstr "在新窗口中打开 Add to Any 菜单风格设置器"
 
-#: add-to-any.php:375
+#: add-to-any.php:515
 msgid "Open Menu Styler"
 msgstr "打开菜单风格设置器"
 
-#: add-to-any.php:380
+#: add-to-any.php:520
 msgid "Menu Options"
 msgstr "菜单选项"
 
-#: add-to-any.php:385
+#: add-to-any.php:525
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
 msgstr "菜单显示时隐藏与菜单相交的嵌入式对象(Flash，视频，等) "
 
-#: add-to-any.php:390
+#: add-to-any.php:530
 msgid "Show the title of the post (or page) within the menu"
 msgstr "菜单中显示文章(或页面)的标题"
 
-#: add-to-any.php:397
+#: add-to-any.php:537
 msgid "Only show the menu when the user clicks the Share/Save button"
 msgstr "仅当用户点击 分享/收藏 按钮时显示菜单"
 
-#: add-to-any.php:403
+#: add-to-any.php:543
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
 msgstr "如用户点击 分享/收藏 按钮，在新标签页或新窗口中打开 addtoany.com 菜单页面"
 
-#: add-to-any.php:408
+#: add-to-any.php:548
 msgid "Additional Options"
 msgstr "附加选项"
 
-#: add-to-any.php:412
+#: add-to-any.php:552
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
 msgstr "粘贴 Add to Any 菜单风格设置器生成的代码于下方框内！"
 
-#: add-to-any.php:416
+#: add-to-any.php:556
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
 msgstr "您可以设置特殊 JavaScript 变量以应用于全部 分享/收藏 菜单。"
 
-#: add-to-any.php:417
+#: add-to-any.php:557
 #, fuzzy
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
 msgstr "高级用户可能希望尝试 Add to Any 的 <a href=\"http://www.addtoany.com/buttons/api/\">JavaScript API</a> 所生成的代码。"
 
-#: add-to-any.php:423
+#: add-to-any.php:563
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
 msgstr "<strong>注意</strong>: 如果您打算添加新代码，请小心不要意外覆盖任何先前代码。</label>"
 
-#: add-to-any.php:430
+#: add-to-any.php:570
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: add-to-any.php:443
+#: add-to-any.php:575
+msgid "Like this plugin?"
+msgstr ""
+
+#: add-to-any.php:576
+msgid "<a href=\"http://wordpress.org/extend/plugins/add-to-any/\">Give it a good rating</a> on WordPress.org."
+msgstr ""
+
+#: add-to-any.php:577
+msgid "<a href=\"http://www.addtoany.com/share_save?linkname=WordPress%20Share%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F\">Share it</a> with your friends."
+msgstr ""
+
+#: add-to-any.php:579
+msgid "Need support?"
+msgstr ""
+
+#: add-to-any.php:580
+msgid "See the <a href=\"http://wordpress.org/extend/plugins/add-to-any/faq/\">FAQs</a>."
+msgstr ""
+
+#: add-to-any.php:581
+msgid "Search the <a href=\"http://wordpress.org/tags/add-to-any\">support forums</a>."
+msgstr ""
+
+#: add-to-any.php:693
+msgid "Add/Remove Services"
+msgstr ""
+
+#: add-to-any.php:730
 msgid "Share/Save"
 msgstr "分享/收藏"
 
-#: add-to-any.php:444
+#: add-to-any.php:731
 msgid "Share/Save Buttons"
 msgstr "分享/收藏 按钮"
 
