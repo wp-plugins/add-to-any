@@ -101,11 +101,16 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
+.9.9.1:
+
+* Add services.php (critical fix)
+
 .9.9:
 
-* Individual service icons & links!
+* NEW: Individual service links!
+ * Drag & Drop interface with preview
 * .addtoany_share_save_container is now <div>, not <p>
-* Add to Any button now wrapped within <ul><li> (unless standalone)
+* Add to Any button now contained within <ul><li>
 
 .9.8.9.2:
 
