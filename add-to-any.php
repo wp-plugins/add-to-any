@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Save/Bookmark Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2
+Version: .9.9.2.1
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -240,6 +240,7 @@ if (!function_exists('A2A_wp_footer_check')) {
 
 
 function A2A_SHARE_SAVE_to_bottom_of_content($content) {
+	$is_feed = is_feed();
 	if ( 
 		( 
 			// Tags
@@ -255,7 +256,7 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 			( is_date() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Date-based archives posts (same as Front page option)
 			( is_author() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Author posts (same as Front page option)
 			( is_search() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Search results posts (same as Front page option)
-			( is_feed() && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1' ) || 					// Posts in feed
+			( $is_feed && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1' ) || 					// Posts in feed
 			
 			// Pages
 			( is_page() && get_option('A2A_SHARE_SAVE_display_in_pages')=='-1' ) ||						// Individual pages
@@ -267,17 +268,22 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	
 	$icons_args = array(
 		"output_buffering" => true,
-		"html_wrap_open" => "<li>",
-		"html_wrap_close" => "</li>",
+		"html_wrap_open" => ($is_feed) ? "" : "<li>",
+		"html_wrap_close" => ($is_feed) ? " " : "</li>",
 	);
 	
 	$A2A_SHARE_SAVE_options = array(
 		"output_buffering" => true,
-		"html_wrap_open" => "<li>",
-		"html_wrap_close" => "</li>",
+		"html_wrap_open" => ($is_feed) ? "" : "<li>",
+		"html_wrap_close" => ($is_feed) ? "" : "</li>",
 	);
 	
-	$content .= '<div class="addtoany_share_save_container"><ul class="addtoany_list">'.ADDTOANY_SHARE_SAVE_ICONS( $icons_args ).ADDTOANY_SHARE_SAVE_BUTTON( $A2A_SHARE_SAVE_options ).'</ul></div>';
+	if ( ! $is_feed ) {
+		$container_wrap_open = '<div class="addtoany_share_save_container"><ul class="addtoany_list">';
+		$container_wrap_close = '</ul></div>';
+	}
+	
+	$content .= $container_wrap_open.ADDTOANY_SHARE_SAVE_ICONS( $icons_args ).ADDTOANY_SHARE_SAVE_BUTTON( $A2A_SHARE_SAVE_options ).$container_wrap_close;
 	return $content;
 }
 
@@ -396,7 +402,7 @@ function A2A_SHARE_SAVE_options_page() {
     
         <table class="form-table">
         	<tr valign="top">
-            <th scope="row"><?php _e("Services", "add-to-any"); ?></th>
+            <th scope="row"><?php _e("Standalone Services", "add-to-any"); ?></th>
 			<td><fieldset>
             	<ul id="addtoany_services_sortable" class="addtoany_admin_list">
                 	<li class="dummy"><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path; ?>/icons/transparent.gif" width="16" height="16" alt="" /></li>
