@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-09 21:38-0800\n"
+"POT-Creation-Date: 2009-04-17 02:33-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: \n"
@@ -97,7 +97,7 @@ msgid "Add to Any: Share/Save "
 msgstr "Add to Any: 分享/收藏"
 
 #: add-to-any.php:395
-#: add-to-any.php:743
+#: add-to-any.php:736
 msgid "Settings"
 msgstr "设置"
 
@@ -231,15 +231,15 @@ msgstr ""
 msgid "Search the <a href=\"http://wordpress.org/tags/add-to-any\">support forums</a>."
 msgstr ""
 
-#: add-to-any.php:706
+#: add-to-any.php:699
 msgid "Add/Remove Services"
 msgstr ""
 
-#: add-to-any.php:743
+#: add-to-any.php:736
 msgid "Share/Save"
 msgstr "分享/收藏"
 
-#: add-to-any.php:744
+#: add-to-any.php:737
 msgid "Share/Save Buttons"
 msgstr "分享/收藏 按钮"
 

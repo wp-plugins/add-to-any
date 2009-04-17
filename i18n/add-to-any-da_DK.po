@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Add to Any Share/Save/Bookmark .9.8.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-09 21:38-0800\n"
+"POT-Creation-Date: 2009-04-17 02:32-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: Team Blogos <wordpress@blogos.dk>\n"
@@ -98,7 +98,7 @@ msgid "Add to Any: Share/Save "
 msgstr "Tilføj til enhver: Del/gem"
 
 #: add-to-any.php:395
-#: add-to-any.php:743
+#: add-to-any.php:736
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -231,15 +231,15 @@ msgstr "Se vores <a href=\"http://wordpress.org/extend/plugins/add-to-any/faq/\"
 msgid "Search the <a href=\"http://wordpress.org/tags/add-to-any\">support forums</a>."
 msgstr "Søg på <a href=\"http://wordpress.org/tags/add-to-any\">supportforummerne</a>."
 
-#: add-to-any.php:706
+#: add-to-any.php:699
 msgid "Add/Remove Services"
 msgstr "Tilføj/fjern tjenesteudbydere"
 
-#: add-to-any.php:743
+#: add-to-any.php:736
 msgid "Share/Save"
 msgstr "Del/Gem"
 
-#: add-to-any.php:744
+#: add-to-any.php:737
 msgid "Share/Save Buttons"
 msgstr "Del-/Gem-knapper"
 

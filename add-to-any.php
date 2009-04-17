@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Add to Any: Share/Save/Bookmark Button
+Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.1
+Version: .9.9.2.2
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -609,24 +609,17 @@ function A2A_SHARE_SAVE_admin_head() {
 	jQuery(document).ready(function(){
 	
 		var to_input = function(this_sortable){
-			var services_string='',
-				services_array = jQuery(this_sortable).sortable('toArray'),
-				services_size = services_array.length;
-			if(services_size<1) return;
-			
 			// Clear any previous services stored as hidden inputs
 			jQuery('input[name="A2A_SHARE_SAVE_active_services[]"]').remove();
 			
+			var services_array = jQuery(this_sortable).sortable('toArray'),
+				services_size = services_array.length;
+			if(services_size<1) return;
+			
 			for(var i=0;i<services_size;i++){
-				services_string += '"'+services_array[i]+'"';
-				if(i<services_size-1)
-					services_string += ',';
-				
 				if(services_array[i]!='') // Exclude dummy icon
 					jQuery('form:first').append('<input name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
-				
 			}
-			services_string = 'a2a_prioritize=[' + services_string + ']';
 		};
 	
 		jQuery('#addtoany_services_sortable').sortable({
@@ -682,7 +675,7 @@ function A2A_SHARE_SAVE_admin_head() {
         
         // Auto-select active services
         <?php
-		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']);
+		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']) || isset($_POST['A2A_SHARE_SAVE_submit_hidden']);
 		$active_services = ( $admin_services_saved )
 			? $_POST['A2A_SHARE_SAVE_active_services'] : get_option('A2A_SHARE_SAVE_active_services');
 		if( !$active_services )

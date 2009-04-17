@@ -4,114 +4,114 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-17 02:32-0800\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Robert Antoni Buj Gelonch <rbuj@wanadoo.es>\n"
-"Language-Team:  <robert.buj@gmail.com>\n"
+"Last-Translator: MicroPat\n"
+"Language-Team: Marcis Gasuns <mrilyuha@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Language: Catalan\n"
-"X-Poedit-Country: SPAIN\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: add-to-any.php:195
 msgid "Share"
-msgstr "Compartir"
+msgstr "Падзяліць"
 
 #: add-to-any.php:196
 msgid "Save"
-msgstr "Desar"
+msgstr "Захаваць"
 
 #: add-to-any.php:197
 msgid "Subscribe"
-msgstr "Subscriures"
+msgstr "Падпісацца"
 
 #: add-to-any.php:198
 msgid "E-mail"
-msgstr "Correu electrònic"
+msgstr "Электоронная пошта"
 
 #: add-to-any.php:199
 msgid "Bookmark"
-msgstr "Preferit"
+msgstr "Закладка"
 
 #: add-to-any.php:200
 msgid "Show all"
-msgstr "Mostrar tots"
+msgstr "Паказаць усё"
 
 #: add-to-any.php:201
 msgid "Show less"
-msgstr "Mostrar menys"
+msgstr "Паказаць менш"
 
 #: add-to-any.php:202
 msgid "Find service(s)"
-msgstr "Buscar servei(s)"
+msgstr "Знайсці паслугу(і)"
 
 #: add-to-any.php:203
 msgid "Instantly find any service to add to"
-msgstr "Trobar instantàniament qualsevol servei per a afegir a"
+msgstr "Імгненна знайсці яку-небудзь паслугу, каб дадаць да"
 
 #: add-to-any.php:204
 msgid "Powered by"
-msgstr "Potenciat per"
+msgstr "Кіруецца"
 
 #: add-to-any.php:205
 msgid "Share via e-mail"
-msgstr "Compartir per correu electrònic"
+msgstr "Адправіць па электроннай пошце"
 
 #: add-to-any.php:206
 msgid "Subscribe via e-mail"
-msgstr "Subscriure per correu electrònic"
+msgstr "Падпісацца па электроннай пошце"
 
 #: add-to-any.php:207
 msgid "Bookmark in your browser"
-msgstr "Afegir l'adreça d'interès al vostre navegador"
+msgstr "Закладка ў вашым браузеры"
 
 #: add-to-any.php:208
 msgid "Press Ctrl+D or Cmd+D to bookmark this page"
-msgstr "Pressioneu Ctrl+D o Cmd+D per afegir a preferits aquesta pàgina"
+msgstr "Націсніце Ctrl+D ці Cmd+D, каб стварыць закладку гэтай старонкі"
 
 #: add-to-any.php:209
 msgid "Add to your favorites"
-msgstr "Afegir als vostres favorits"
+msgstr "Дадаць у выбранае"
 
 #: add-to-any.php:210
 msgid "Send from any e-mail address or e-mail program"
-msgstr "Enviar des de qualsevol adreça de correu electrònic o programa de correu electrònic"
+msgstr "Адправіць з любога пошатовага адрасу ці з паштовай праграмы"
 
 #: add-to-any.php:211
 msgid "E-mail program"
-msgstr "Programa de correu electrònic"
+msgstr "Паштовая праграма"
 
 #: add-to-any.php:236
 msgid "Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file."
-msgstr "El vostre tema ha de ser corretgit. per corretgir-lo, utilitzeu l'<a href=\"theme-editor.php\">Editor de tema</a> per afegir <code>&lt;?php wp_footer(); ?&gt;</code> justament abans de la línia <code>&lt;/body&gt;</code> del vostre tema al fitxer <code>footer.php</code>."
+msgstr "Ваша тэма павінна быць выпраўленая. Каб выправіць вашу тэму, выкарыстайце <a href=\"theme-editor.php\"> Тэма рэдактар </ A>, каб уставіць <code> <? PHP wp_footer ();?> </ Code> незадоўга да <code> </ BODY> </ Code> лінію вашай тэмы <code> footer.php </ cod> файл."
 
 #: add-to-any.php:384
 msgid "Settings saved."
-msgstr "Preferències desades."
+msgstr "Наладкі захаваны"
 
 #: add-to-any.php:395
 msgid "Add to Any: Share/Save "
-msgstr "Add to Any: Compartir/Desar "
+msgstr "Дадаць у любое: падзяліць/захаваць"
 
 #: add-to-any.php:395
 #: add-to-any.php:736
 msgid "Settings"
-msgstr "Preferències"
+msgstr "Наладкі"
 
 #: add-to-any.php:405
 #, fuzzy
 msgid "Standalone Services"
-msgstr "Serveis Compartir/Desar"
+msgstr "Дадаць/Выдаліць паслугі"
 
 #: add-to-any.php:410
 msgid "Choose the services you want below. &nbsp;Click a chosen service again to remove. &nbsp;Reorder services by dragging and dropping as they appear above."
-msgstr "Seleccioneu els serveis que voleu a continuació. &nbsp;Cliqueu a un servei de nou per eliminar-lo. &nbsp;Reordeneu els serveis arrossegant-los i deixant-los en l'ordre que dessitgeu."
+msgstr ""
 
 #: add-to-any.php:429
 msgid "Button"
-msgstr "Botó"
+msgstr "Клавіша"
 
 #: add-to-any.php:468
 msgid "Image URL"
@@ -119,128 +119,128 @@ msgstr "URL de l'imatge"
 
 #: add-to-any.php:475
 msgid "Text only"
-msgstr "Només text"
+msgstr "Толькт  тэкст"
 
 #: add-to-any.php:483
 msgid "Placement"
-msgstr "Emplaçament"
+msgstr "Размяшчэнне"
 
 #: add-to-any.php:492
 msgid "Display Share/Save button at the bottom of posts"
-msgstr "Mostar el botó de Compartir/Desar sota tots els escrits"
+msgstr "Паказаць  клавішу Адкрыць / Захаваць унізе запісаў"
 
 #: add-to-any.php:499
 msgid "Display Share/Save button at the bottom of posts on the front page"
-msgstr "Mostar el botó de Compartir/Desar a la pàgina principal"
+msgstr "Паказаць клавішу Адкрыць/Захаваць унізе запісаў на тытульнай старонцы"
 
 #: add-to-any.php:506
 msgid "Display Share/Save button at the bottom of posts in the feed"
-msgstr "Mostar el botó de Compartir/Desar sota tots els escrits al feed"
+msgstr ""
 
 #: add-to-any.php:510
 msgid "Display Share/Save button at the bottom of pages"
-msgstr "Mostar el botó de Compartir/Desar sota les pàgines"
+msgstr "Паказаць клавішу Адкрыць/Захаваць унізе старонак"
 
 #: add-to-any.php:514
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
-msgstr "Si no està habilitat s'ha d'afegir el següent codi a  <a href=\"theme-editor.php\">les vostres pàgines de plantilla</a> (dins de <code>index.php</code>, <code>single.php</code>, i/o <code>page.php</code>)"
+msgstr "Калі яе не спыніць, то не забудзьцеся змясціць наступны код у <a href=\"theme-editor.php\"> шаблон старонкі </ A> (у <code> index.php </code>, <code> сінгл. PHP </cod> і / або <code> page.php </ code>)  \t\t \t"
 
 #: add-to-any.php:520
 msgid "Menu Style"
-msgstr "Estil del menú"
+msgstr "Стыль меню"
 
 #: add-to-any.php:522
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
-msgstr "Utilitzant el personalitzador d'estil de Add to Any, vosté pot personalitzar els colors del vostre menú Compartir/Desar! Quan hageu acabat, heu de copiar el codi generat al recuadre d'<a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">opcions adicionals</a> de sota."
+msgstr "Выкарыстанне Дадаць у любое меню Styler, вы можаце наладзіць колеры вашага Адкрыць / Захаваць мяню! Калі вы скончыце, не забудзьцеся ўставіць генераваны код у <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\"> Дадатковыя параметры </ A> ніжэй."
 
 #: add-to-any.php:524
 msgid "Open the Add to Any Menu Styler in a new window"
-msgstr "Obrir el personalitzador d'estil de Add to Any a una nova finestra"
+msgstr "Адкрыць Дадаць у меню Styler у новым акне"
 
 #: add-to-any.php:526
 msgid "Open Menu Styler"
-msgstr "Obrir el personalitzador d'estils"
+msgstr "Адкрыць меню  Styler"
 
 #: add-to-any.php:531
 msgid "Menu Options"
-msgstr "Opcions del menú"
+msgstr "Меню опцый"
 
 #: add-to-any.php:536
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
-msgstr "Amagar objectes incrustats (Flash, vídeo, etc) que interseccionin amb el menú quan aquest aparegui"
+msgstr "Схаваць убудаваыях аб'екты (Flash, відэа і г.д.), якія перасякаюцца з меню пры адлюстраванні"
 
 #: add-to-any.php:541
 msgid "Show the title of the post (or page) within the menu"
-msgstr "Mostrar el títul de l'entrada (o de la pàgina) dins del menú"
+msgstr "Паказаць назву запісу(альбо старонкі) без меню"
 
 #: add-to-any.php:548
 msgid "Only show the menu when the user clicks the Share/Save button"
-msgstr "Mostrar el menú solament quan un usuari cliqui sobre el botó Compartir/Desar"
+msgstr " Паказваць толькі меню, калі карыстальнік клікае клавішу Адкрыць/Захаваць"
 
 #: add-to-any.php:554
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
-msgstr "Obrir el menú de addtoany.com en una nova pestanya o finestra si l'usuari clica al botó Compartir/Desar"
+msgstr "Адкрыць меню addtoany.com старонкі ў новую ўкладку або акно, калі карыстальнік націскае  кнопку Адкрыць/ Захаваць  \t\t \t"
 
 #: add-to-any.php:559
 msgid "Additional Options"
-msgstr "Opcions adicionals"
+msgstr "Дадатковыя Опцыі"
 
 #: add-to-any.php:563
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
-msgstr "Pegueu el codi del  personalitzador d'estil al següent recuadre!"
+msgstr "Уставіць код з Дадаць у любое меню Styler у поле ніжэй!"
 
 #: add-to-any.php:567
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
-msgstr "A continuació, podeu establir variables especials de JavaScript per aplicar a cada menú Compartir/Desar."
+msgstr "Ніжэй вы можаце ўсталяваць адмысловы JavaScript, які будзе ўжывацца да кожнага Адкрыць / Захаваць меню."
 
 #: add-to-any.php:568
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
-msgstr "Els usuaris avançats poden preferir explorar l'<a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">API JavaScript</a> de Add to Any."
+msgstr "Дасведчаныя карыстальнікі, магчыма, пажадаюць вывучыць Дадаць у <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\"> JavaScript API </ A>."
 
 #: add-to-any.php:574
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
-msgstr "<strong>Nota</strong>: Si heu d'afegir un nou codi, tingueu cura de no sobreescriure accidentalment qualsevol codi anterior.</label>"
+msgstr "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label><strong>Заўвага</strong> : Калі Вы дадаеце новы код, будзьце ўважлівыя і не перапішыце выпадкова любы папярэдні код."
 
 #: add-to-any.php:581
 msgid "Save Changes"
-msgstr "Desar els canvis"
+msgstr "Захаваць змены"
 
 #: add-to-any.php:586
 msgid "Like this plugin?"
-msgstr "Com aquesta extensió?"
+msgstr "Як і гэты плагін?"
 
 #: add-to-any.php:587
 msgid "<a href=\"http://wordpress.org/extend/plugins/add-to-any/\">Give it a good rating</a> on WordPress.org."
-msgstr "<a href=\"http://wordpress.org/extend/plugins/add-to-any/\">Doneu-li una bona qualificació</a> a WordPress.org."
+msgstr ""
 
 #: add-to-any.php:588
 msgid "<a href=\"http://www.addtoany.com/share_save?linkname=WordPress%20Share%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F\">Share it</a> with your friends."
-msgstr "<a href=\"http://www.addtoany.com/share_save?linkname=WordPress%20Share%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F\">Compartiu-lo</a> amb els vostres amics."
+msgstr ""
 
 #: add-to-any.php:590
 msgid "Need support?"
-msgstr "Necessiteu suport?"
+msgstr "Патрэбна падтрымка?"
 
 #: add-to-any.php:591
 msgid "See the <a href=\"http://wordpress.org/extend/plugins/add-to-any/faq/\">FAQs</a>."
-msgstr "Vegeu les <a href=\"http://wordpress.org/extend/plugins/add-to-any/faq/\">Preguntes més freqüents</a>."
+msgstr "Паглядзіце <a href=\"http://wordpress.org/extend/plugins/add-to-any/faq/\">FAQs</a>."
 
 #: add-to-any.php:592
 msgid "Search the <a href=\"http://wordpress.org/tags/add-to-any\">support forums</a>."
-msgstr "Cercar als <a href=\"http://wordpress.org/tags/add-to-any\">fòrums de suport</a>."
+msgstr "Пошук <a href=\"http://wordpress.org/tags/add-to-any\">support forums</a>."
 
 #: add-to-any.php:699
 msgid "Add/Remove Services"
-msgstr "Serveis Compartir/Desar"
+msgstr "Дадаць/Выдаліць паслугі"
 
 #: add-to-any.php:736
 msgid "Share/Save"
-msgstr "Compartir/Desar"
+msgstr "Адкрыць/Захаваць"
 
 #: add-to-any.php:737
 msgid "Share/Save Buttons"
-msgstr "Botons de Compartir/Desar"
+msgstr "Кнопка Адкрыць/Захаваць"
 
 #~ msgid "Services"
-#~ msgstr "Serveis"
+#~ msgstr "Паслугі"
 

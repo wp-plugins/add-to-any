@@ -1,10 +1,10 @@
-=== Add to Any Share/Save/Bookmark Button ===
+=== Add to Any: Share/Bookmark/Email Button ===
 Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 0.9.9.2.1
+Stable tag: 0.9.9.2.2
 
 Helps readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -12,21 +12,23 @@ Helps readers share, save, bookmark, and email your posts and pages using any se
 
 Helps readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Delicious, Digg, Facebook, Twitter, and over 100 more social bookmarking and sharing sites. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
-The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The Bookmark or Add to Favorites tab helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera etc.).
+<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo) | <a href="other_notes/">Changelog</a>
 
-**Individual service icons** let you optimize your blog posts for specific social destinations.
+The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
+
+Individual **service icons** let you optimize your blog posts for specific social sites.
 
 * Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Includes all services
 * Individual service links (**new!**)
 * Services updated automatically
-* WordPress optimized, localized (i18n for English, Spanish, Chinese, Danish)
+* WordPress optimized, localized (i18n for English, Spanish, Chinese, Danish, Belarusian)
 * Google Analytics integration
 * Many more publisher and user features
 
-<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo) | <a href="other_notes/">Changelog</a>
-
-See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin.
+See also:
+* The <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe widget plugin">Subscribe button</a> plugin
+* The <a href="http://www.addtoany.com/buttons/for/wordpress_com" title="WordPress.com sharing button widget" target="_blank">Share button for WordPress.com</a> blogs
 
 == Installation ==
 
@@ -101,7 +103,14 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
-.9.9.3:
+.9.9.2.2:
+
+* Fixed display when all standalone services are removed in admin
+* Services label renamed Standalone Services for clarity
+* Updates to Danish translation
+* Added Belarusian translation
+
+.9.9.2.1:
 
 * Feed icons shown inline, no longer displayed in unordered list
 
