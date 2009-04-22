@@ -4,13 +4,13 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 0.9.9.2.2
+Stable tag: 0.9.9.2.3
 
-Helps readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
+Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
-Helps readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Delicious, Digg, Facebook, Twitter, and over 100 more social bookmarking and sharing sites. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
+Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
 <a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo) | <a href="other_notes/">Changelog</a>
 
@@ -103,6 +103,13 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+.9.9.2.3:
+
+* Support for themes that do not support modern Loop methods
+ * Permalinks now targeted for these older themes
+* AddToAny URI scheme gives precedence to link URL parameter, then Title
+* Sitename & Siteurl parameters depreciated for WP (they are usually redundant)
 
 .9.9.2.2:
 

@@ -2,8 +2,8 @@
 /*
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
-Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.2
+Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: .9.9.2.3
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -31,20 +31,12 @@ function A2A_SHARE_SAVE_textdomain() {
 add_action('init', 'A2A_SHARE_SAVE_textdomain');
 
 function A2A_SHARE_SAVE_link_vars() {
-	$sitename_enc	= rawurlencode( get_bloginfo('name') );
-	$siteurl_enc	= rawurlencode( trailingslashit( get_bloginfo('url') ) );
-	$linkname		= ( in_the_loop() ) ? get_the_title() : wp_title('-', false,'right').get_bloginfo('name');
+	$linkname		= get_the_title($post->ID);
 	$linkname_enc	= rawurlencode( $linkname );
-	$linkurl		= ( in_the_loop() ) ?
-						/* Current post (if within loop) or current page */
-						get_permalink() : 
-						"http" . ( ($_SERVER["HTTPS"]=="on") ? 's' : '' ) . "://" .
-							$_SERVER["HTTP_HOST"] .
-							( ($_SERVER["SERVER_PORT"] != "80") ? ":".	$_SERVER["SERVER_PORT"] : '') .
-							$_SERVER["REQUEST_URI"] ;
+	$linkurl		= get_permalink($post->ID);
 	$linkurl_enc	= rawurlencode( $linkurl );	
 	
-	return compact( 'sitename_enc', 'siteurl_enc', 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
+	return compact( 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
 }
 
 include_once('services.php');
@@ -141,10 +133,9 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	} else
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Save/Bookmark"/>';
 	
-	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?sitename='.$sitename_enc
-		.'&amp;siteurl='.$siteurl_enc
-		.'&amp;linkname='.$linkname_enc
+	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
 		.'&amp;linkurl='.$linkurl_enc
+		.'&amp;linkname='.$linkname_enc
 		.'"' . $style . $button_target
 		.'>'.$button.'</a>'.$html_wrap_close;
 	
