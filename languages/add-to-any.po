@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 02:33-0800\n"
+"POT-Creation-Date: 2009-05-01 02:10-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MicroPat\n"
 "Language-Team: \n"
@@ -13,228 +13,228 @@ msgstr ""
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: add-to-any.php:195
+#: add-to-any.php:182
 msgid "Share"
 msgstr ""
 
-#: add-to-any.php:196
+#: add-to-any.php:183
 msgid "Save"
 msgstr ""
 
-#: add-to-any.php:197
+#: add-to-any.php:184
 msgid "Subscribe"
 msgstr ""
 
-#: add-to-any.php:198
+#: add-to-any.php:185
 msgid "E-mail"
 msgstr ""
 
-#: add-to-any.php:199
+#: add-to-any.php:186
 msgid "Bookmark"
 msgstr ""
 
-#: add-to-any.php:200
+#: add-to-any.php:187
 msgid "Show all"
 msgstr ""
 
-#: add-to-any.php:201
+#: add-to-any.php:188
 msgid "Show less"
 msgstr ""
 
-#: add-to-any.php:202
+#: add-to-any.php:189
 msgid "Find service(s)"
 msgstr ""
 
-#: add-to-any.php:203
+#: add-to-any.php:190
 msgid "Instantly find any service to add to"
 msgstr ""
 
-#: add-to-any.php:204
+#: add-to-any.php:191
 msgid "Powered by"
 msgstr ""
 
-#: add-to-any.php:205
+#: add-to-any.php:192
 msgid "Share via e-mail"
 msgstr ""
 
-#: add-to-any.php:206
+#: add-to-any.php:193
 msgid "Subscribe via e-mail"
 msgstr ""
 
-#: add-to-any.php:207
+#: add-to-any.php:194
 msgid "Bookmark in your browser"
 msgstr ""
 
-#: add-to-any.php:208
-msgid "Press Ctrl+D or Cmd+D to bookmark this page"
+#: add-to-any.php:195
+msgid "Press Ctrl+D or &#8984;+D to bookmark this page"
 msgstr ""
 
-#: add-to-any.php:209
+#: add-to-any.php:196
 msgid "Add to your favorites"
 msgstr ""
 
-#: add-to-any.php:210
+#: add-to-any.php:197
 msgid "Send from any e-mail address or e-mail program"
 msgstr ""
 
-#: add-to-any.php:211
+#: add-to-any.php:198
 msgid "E-mail program"
 msgstr ""
 
-#: add-to-any.php:236
+#: add-to-any.php:223
 msgid "Your theme needs to be fixed. To fix your theme, use the <a href=\"theme-editor.php\">Theme Editor</a> to insert <code>&lt;?php wp_footer(); ?&gt;</code> just before the <code>&lt;/body&gt;</code> line of your theme's <code>footer.php</code> file."
 msgstr ""
 
-#: add-to-any.php:384
+#: add-to-any.php:371
 msgid "Settings saved."
 msgstr ""
 
-#: add-to-any.php:395
+#: add-to-any.php:382
 msgid "Add to Any: Share/Save "
 msgstr ""
 
-#: add-to-any.php:395
-#: add-to-any.php:736
+#: add-to-any.php:382
+#: add-to-any.php:725
 msgid "Settings"
 msgstr ""
 
-#: add-to-any.php:405
+#: add-to-any.php:392
 msgid "Standalone Services"
 msgstr ""
 
-#: add-to-any.php:410
+#: add-to-any.php:397
 msgid "Choose the services you want below. &nbsp;Click a chosen service again to remove. &nbsp;Reorder services by dragging and dropping as they appear above."
 msgstr ""
 
-#: add-to-any.php:429
+#: add-to-any.php:416
 msgid "Button"
 msgstr ""
 
-#: add-to-any.php:468
+#: add-to-any.php:455
 msgid "Image URL"
 msgstr ""
 
-#: add-to-any.php:475
+#: add-to-any.php:462
 msgid "Text only"
 msgstr ""
 
-#: add-to-any.php:483
+#: add-to-any.php:470
 msgid "Placement"
 msgstr ""
 
-#: add-to-any.php:492
+#: add-to-any.php:479
 msgid "Display Share/Save button at the bottom of posts"
 msgstr ""
 
-#: add-to-any.php:499
+#: add-to-any.php:486
 msgid "Display Share/Save button at the bottom of posts on the front page"
 msgstr ""
 
-#: add-to-any.php:506
+#: add-to-any.php:493
 msgid "Display Share/Save button at the bottom of posts in the feed"
 msgstr ""
 
-#: add-to-any.php:510
+#: add-to-any.php:497
 msgid "Display Share/Save button at the bottom of pages"
 msgstr ""
 
-#: add-to-any.php:514
+#: add-to-any.php:501
 msgid "If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)"
 msgstr ""
 
-#: add-to-any.php:520
+#: add-to-any.php:507
 msgid "Menu Style"
 msgstr ""
 
-#: add-to-any.php:522
+#: add-to-any.php:509
 msgid "Using Add to Any's Menu Styler, you can customize the colors of your Share/Save menu! When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional Options</a> box below."
 msgstr ""
 
-#: add-to-any.php:524
+#: add-to-any.php:511
 msgid "Open the Add to Any Menu Styler in a new window"
 msgstr ""
 
-#: add-to-any.php:526
+#: add-to-any.php:513
 msgid "Open Menu Styler"
 msgstr ""
 
-#: add-to-any.php:531
+#: add-to-any.php:518
 msgid "Menu Options"
 msgstr ""
 
-#: add-to-any.php:536
+#: add-to-any.php:523
 msgid "Hide embedded objects (Flash, video, etc.) that intersect with the menu when displayed"
 msgstr ""
 
-#: add-to-any.php:541
+#: add-to-any.php:528
 msgid "Show the title of the post (or page) within the menu"
 msgstr ""
 
-#: add-to-any.php:548
+#: add-to-any.php:535
 msgid "Only show the menu when the user clicks the Share/Save button"
 msgstr ""
 
-#: add-to-any.php:554
+#: add-to-any.php:541
 msgid "Open the addtoany.com menu page in a new tab or window if the user clicks the Share/Save button"
 msgstr ""
 
-#: add-to-any.php:559
+#: add-to-any.php:546
 msgid "Additional Options"
 msgstr ""
 
-#: add-to-any.php:563
+#: add-to-any.php:550
 msgid "Paste the code from Add to Any's Menu Styler in the box below!"
 msgstr ""
 
-#: add-to-any.php:567
+#: add-to-any.php:554
 msgid "Below you can set special JavaScript variables to apply to each Share/Save menu."
 msgstr ""
 
-#: add-to-any.php:568
+#: add-to-any.php:555
 msgid "Advanced users might want to explore Add to Any's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>."
 msgstr ""
 
-#: add-to-any.php:574
+#: add-to-any.php:561
 msgid "<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>"
 msgstr ""
 
-#: add-to-any.php:581
+#: add-to-any.php:568
 msgid "Save Changes"
 msgstr ""
 
-#: add-to-any.php:586
+#: add-to-any.php:573
 msgid "Like this plugin?"
 msgstr ""
 
-#: add-to-any.php:587
+#: add-to-any.php:574
 msgid "<a href=\"http://wordpress.org/extend/plugins/add-to-any/\">Give it a good rating</a> on WordPress.org."
 msgstr ""
 
-#: add-to-any.php:588
+#: add-to-any.php:575
 msgid "<a href=\"http://www.addtoany.com/share_save?linkname=WordPress%20Share%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F\">Share it</a> with your friends."
 msgstr ""
 
-#: add-to-any.php:590
+#: add-to-any.php:577
 msgid "Need support?"
 msgstr ""
 
-#: add-to-any.php:591
+#: add-to-any.php:578
 msgid "See the <a href=\"http://wordpress.org/extend/plugins/add-to-any/faq/\">FAQs</a>."
 msgstr ""
 
-#: add-to-any.php:592
+#: add-to-any.php:579
 msgid "Search the <a href=\"http://wordpress.org/tags/add-to-any\">support forums</a>."
 msgstr ""
 
-#: add-to-any.php:699
+#: add-to-any.php:686
 msgid "Add/Remove Services"
 msgstr ""
 
-#: add-to-any.php:736
+#: add-to-any.php:725
 msgid "Share/Save"
 msgstr ""
 
-#: add-to-any.php:737
+#: add-to-any.php:726
 msgid "Share/Save Buttons"
 msgstr ""
 

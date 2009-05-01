@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.3
+Version: .9.9.2.4
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -25,8 +25,8 @@ $A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL.'/'.$A2A_SHARE_SAVE_plugin_basen
 function A2A_SHARE_SAVE_textdomain() {
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_plugin_basename;
 	load_plugin_textdomain('add-to-any',
-		$A2A_SHARE_SAVE_plugin_url_path.'/i18n',
-		$A2A_SHARE_SAVE_plugin_basename.'/i18n');
+		$A2A_SHARE_SAVE_plugin_url_path.'/languages',
+		$A2A_SHARE_SAVE_plugin_basename.'/languages');
 }
 add_action('init', 'A2A_SHARE_SAVE_textdomain');
 
@@ -63,15 +63,11 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 
 		$service = $A2A_SHARE_SAVE_services[$active_service];
 		$safe_name = $active_service;
+		$name = $service['name'];
 		$icon = $service['icon'];
 		$url = "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
-		if(isset($service['description']) && $service['description'] != "") {
-			$description = $service['description'];
-		} else {
-			$description = $service['safe'];
-		}
-		$link = $html_wrap_open."<a href=\"$url\" title=\"$description\" rel=\"nofollow\" target=\"_blank\">";
-		$link .= "<img src=\"".$A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png\" title=\"$description\" alt=\"$description\"/>";
+		$link = $html_wrap_open."<a href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
+		$link .= "<img src=\"".$A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png\" alt=\"$name\"/>";
 		$link .= "</a>".$html_wrap_close;
 		
 		$ind_html .= apply_filters('addtoany_link', $link);
@@ -196,7 +192,7 @@ if (!function_exists('A2A_menu_locale')) {
 	ShareViaEmail: "' . __("Share via e-mail", "add-to-any") . '",
 	SubscribeViaEmail: "' . __("Subscribe via e-mail", "add-to-any") . '",
 	BookmarkInYourBrowser: "' . __("Bookmark in your browser", "add-to-any") . '",
-	BookmarkInstructions: "' . __("Press Ctrl+D or Cmd+D to bookmark this page", "add-to-any") . '",
+	BookmarkInstructions: "' . __("Press Ctrl+D or &#8984;+D to bookmark this page", "add-to-any") . '",
 	AddToYourFavorites: "' . __("Add to your favorites", "add-to-any") . '",
 	SendFromWebOrProgram: "' . __("Send from any e-mail address or e-mail program", "add-to-any") . '",
     EmailProgram: "' . __("E-mail program", "add-to-any") . '"
@@ -626,7 +622,7 @@ function A2A_SHARE_SAVE_admin_head() {
 			if( jQuery('#addtoany_services_sortable li').not('.dummy').length==0 )
 				jQuery('#addtoany_services_sortable').find('.dummy').hide();
 			
-			jQuery(this).fadeTo('fast', '.2')
+			jQuery(this).toggleClass('addtoany_selected')
 			.unbind('click', moveToSortableList)
 			.bind('click', moveToSelectableList)
 			.clone()
@@ -642,7 +638,7 @@ function A2A_SHARE_SAVE_admin_head() {
 		
 		// Service click again = move back to selectable list
 		var moveToSelectableList = function(){
-			jQuery(this).fadeTo('fast', '1')
+			jQuery(this).toggleClass('addtoany_selected')
 			.unbind('click', moveToSelectableList)
 			.bind('click', moveToSortableList);
 	
@@ -704,7 +700,9 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_services_selectable li{cursor:crosshair;float:left;width:150px;font-size:11px;margin:0;padding:3px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;overflow:hidden;}
 	<?php // white-space:nowrap could go above, but then webkit does not wrap floats if parent has no width set; wrapping in <span> instead (below) ?>
 	#addtoany_services_selectable li span{white-space:nowrap;}
-	#addtoany_services_selectable li:hover{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_selectable li:hover, #addtoany_services_selectable li.addtoany_selected{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_selectable li.addtoany_selected:hover{border-color:#F00;}
+	#addtoany_services_selectable li:active{border:1px solid #000;}
     #addtoany_services_selectable li span img{margin:0 4px 0 4px;width:16px;height:16px;border:0;vertical-align:middle;}
 	
 	#addtoany_services_sortable li{cursor:move;float:left;padding:9px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;}
