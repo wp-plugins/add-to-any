@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.4
+Version: .9.9.2.5
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -610,7 +610,7 @@ function A2A_SHARE_SAVE_admin_head() {
 		};
 	
 		jQuery('#addtoany_services_sortable').sortable({
-			items: 'li:not(#addtoany_show_services)',
+			items: 'li:not(#addtoany_show_services, .dummy)',
 			placeholder: 'ui-sortable-placeholder',
 			opacity: .6,
 			tolerance: 'pointer',
@@ -705,8 +705,9 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_services_selectable li:active{border:1px solid #000;}
     #addtoany_services_selectable li span img{margin:0 4px 0 4px;width:16px;height:16px;border:0;vertical-align:middle;}
 	
-	#addtoany_services_sortable li{cursor:move;float:left;padding:9px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;}
+	#addtoany_services_sortable li, #addtoany_services_sortable li.dummy:hover{cursor:move;float:left;padding:9px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;}
 	#addtoany_services_sortable li:hover{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_sortable li.dummy, #addtoany_services_sortable li.dummy:hover{cursor:auto;background-color:transparent;}
 	#addtoany_services_sortable img{width:16px;height:16px;border:0;vertical-align:middle;}
 	
 	li#addtoany_show_services{border:1px solid #DFDFDF;background-color:#FFF;cursor:pointer;}

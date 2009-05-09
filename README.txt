@@ -4,23 +4,23 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 0.9.9.2.4
+Stable tag: 0.9.9.2.5
 
 Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
-Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
+Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
 <a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo) | <a href="other_notes/">Changelog</a>
 
-The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
+The E-mail tab makes it easy to share via Google Mail, Yahoo! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
 
 Individual **service icons** let you optimize your blog posts for specific social sites.
 
-* Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
+* AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Includes all services
-* Individual service links (**new!**)
+* Individual service links (like Sociable)
 * Services updated automatically
 * WordPress optimized, localized (i18n for English, Spanish, Chinese, Italian, Danish, Belarusian)
 * Google Analytics integration
@@ -103,6 +103,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+.9.9.2.5:
+
+* Removed dragability of dummy image in standalone services list
 
 .9.9.2.4:
 
