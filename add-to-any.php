@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.5
+Version: .9.9.2.6
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -282,20 +282,21 @@ function A2A_SHARE_SAVE_button_css() {
 	.addtoany_share_save_container{margin:16px 0;}
 	ul.addtoany_list{
 		display:inline;
+		list-style-type:none;
 		margin:0 !important;
 		padding:0 !important;
 	}
 	ul.addtoany_list li{
-		background:none;
+		background:none !important;
 		border:0;
 		display:inline !important;
+		line-height:32px;<?php // For vertical space in the event of wrapping ?>
 		list-style-type:none;
 		margin:0 !important;
 		padding:0 !important;
-		line-height:32px;<?php // For vertical space in the event of wrapping ?>
 	}
 	ul.addtoany_list li:before{content:"";}
-	ul.addtoany_list li a{padding:0 9px}
+	ul.addtoany_list li a{padding:0 9px;}
 	ul.addtoany_list img{
 		float:none;
 		width:16px;
@@ -308,7 +309,7 @@ function A2A_SHARE_SAVE_button_css() {
 	ul.addtoany_list a img{
 		opacity:.6;
 		-moz-opacity:.6;
-		filter: alpha(opacity=60);
+		filter:alpha(opacity=60);
 	}
 	ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
 		opacity:1;
@@ -498,8 +499,11 @@ function A2A_SHARE_SAVE_options_page() {
 				</label>
                 <br/><br/>
                 <div class="setting-description">
-                	<strong>*</strong> <?php _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>:<br/>
-                	<code>&lt;?php if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?&gt;</code>
+                	<strong>*</strong> <?php _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>: <span id="addtoany_show_template_button_code" class="button-secondary">&#187;</span>
+                    <div id="addtoany_template_button_code">
+                      <code>&lt;?php echo '&lt;ul class=&quot;addtoany_list&quot;&gt;';  if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )      ADDTOANY_SHARE_SAVE_ICONS( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )      ADDTOANY_SHARE_SAVE_BUTTON( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  echo '&lt;/ul&gt;'; ?&gt;</code>
+                    </div>
+                    <noscript<code>&lt;?php echo '&lt;ul class=&quot;addtoany_list&quot;&gt;';  if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )      ADDTOANY_SHARE_SAVE_ICONS( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )      ADDTOANY_SHARE_SAVE_BUTTON( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  echo '&lt;/ul&gt;'; ?&gt;</code></noscript>
                 </div>
             </fieldset></td>
             </tr>
@@ -688,6 +692,10 @@ function A2A_SHARE_SAVE_admin_head() {
 			jQuery('#addtoany_services_selectable, #addtoany_services_info').slideDown('fast');
 			jQuery(this).fadeOut('fast');
 		});
+		jQuery('#addtoany_show_template_button_code').click(function(e){
+			jQuery('#addtoany_template_button_code').slideDown('fast');
+			jQuery(this).fadeOut('fast');
+		});
 	});
 	--></script>
 
@@ -713,6 +721,8 @@ function A2A_SHARE_SAVE_admin_head() {
 	li#addtoany_show_services{border:1px solid #DFDFDF;background-color:#FFF;cursor:pointer;}
 	li#addtoany_show_services:hover{border:1px solid #AAA;}
 	#addtoany_services_info{clear:left;display:none;}
+	
+	#addtoany_template_button_code{display:none;}
     </style>
 <?php
 	}
