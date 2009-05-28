@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.6
+Version: .9.9.2.7
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */

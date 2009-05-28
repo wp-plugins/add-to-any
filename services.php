@@ -238,6 +238,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Netlog",
 		"icon" => "netlog",
 	),
+	"netvibes_share" => Array(
+		"name" => "Netvibes Share",
+		"icon" => "netvibes",
+	),
 	"newsvine" => Array(
 		"name" => "NewsVine",
 		"icon" => "newsvine",
@@ -297,6 +301,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"slashdot" => Array(
 		"name" => "Slashdot",
 		"icon" => "slashdot",
+	),
+	"smaknews" => Array(
+		"name" => "SmakNews",
+		"icon" => "smaknews",
 	),
 	"sphere" => Array(
 		"name" => "Sphere",
@@ -404,7 +412,7 @@ $A2A_SHARE_SAVE_services = Array(
 	),
 	"yahoo_bookmarks" => Array(
 		"name" => "Yahoo Bookmarks",
-		"icon" => "yahoomyweb",
+		"icon" => "yahoo",
 	),
 	"yahoo_buzz" => Array(
 		"name" => "Yahoo Buzz",
