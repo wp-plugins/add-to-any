@@ -4,7 +4,7 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.8
-Stable tag: 0.9.9.2.7
+Stable tag: 0.9.9.2.8
 
 Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -22,7 +22,7 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * Individual service links (like Sociable)
 * Includes all services
 * Services updated automatically
-* WordPress optimized, localized (i18n for English, Spanish, Chinese, Italian, Danish, Belarusian)
+* WordPress optimized, localized (i18n for English, Chinese, Spanish, Portuguese, Russian, Italian, Danish, Belarusian)
 * Google Analytics integration
 * Many more publisher and user features!
 
@@ -103,6 +103,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+.9.9.2.8:
+
+* Translations
 
 .9.9.2.7:
 
