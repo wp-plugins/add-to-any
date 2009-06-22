@@ -14,6 +14,14 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Allvoices",
 		"icon" => "allvoices",
 	),
+	"amazon_wish_list" => Array(
+		"name" => "Amazon Wish List",
+		"icon" => "amazon",
+	),
+	"arto" => Array(
+		"name" => "Arto",
+		"icon" => "arto",
+	),
 	"ask.com_mystuff" => Array(
 		"name" => "Ask.com MyStuff",
 		"icon" => "ask",
@@ -41,6 +49,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"blogmarks" => Array(
 		"name" => "BlogMarks",
 		"icon" => "blogmarks",
+	),
+	"blogger_post" => Array(
+		"name" => "Blogger Post",
+		"icon" => "blogger",
 	),
 	"bookmarks.fr" => Array(
 		"name" => "Bookmarks.fr",
@@ -94,6 +106,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Diigo",
 		"icon" => "diigo",
 	),
+	"evernote" => Array(
+		"name" => "Evernote",
+		"icon" => "evernote",
+	),
 	"expression" => Array(
 		"name" => "Expression",
 		"icon" => "expression",
@@ -109,6 +125,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"faves" => Array(
 		"name" => "Faves",
 		"icon" => "faves",
+	),
+	"folkd" => Array(
+		"name" => "Folkd",
+		"icon" => "folkd",
 	),
 	"foxiewire" => Array(
 		"name" => "Foxiewire",
@@ -166,9 +186,17 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Hyves",
 		"icon" => "hyves",
 	),
+	"identi.ca" => Array(
+		"name" => "Identi.ca",
+		"icon" => "identica",
+	),
 	"imera_brazil" => Array(
 		"name" => "Imera Brazil",
 		"icon" => "imera",
+	),
+	"instapaper" => Array(
+		"name" => "Instapaper",
+		"icon" => "instapaper",
 	),
 	"jamespot" => Array(
 		"name" => "Jamespot",
@@ -210,6 +238,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Maple",
 		"icon" => "maple",
 	),
+	"meneame" => Array(
+		"name" => "Meneame",
+		"icon" => "meneame",
+	),
 	"mindbodygreen" => Array(
 		"name" => "MindBodyGreen",
 		"icon" => "mindbodygreen",
@@ -241,6 +273,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"netvibes_share" => Array(
 		"name" => "Netvibes Share",
 		"icon" => "netvibes",
+	),
+	"netvouz" => Array(
+		"name" => "Netvouz",
+		"icon" => "netvouz",
 	),
 	"newsvine" => Array(
 		"name" => "NewsVine",
@@ -381,6 +417,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"twitter" => Array(
 		"name" => "Twitter",
 		"icon" => "twitter",
+	),
+	"typepad_post" => Array(
+		"name" => "TypePad Post",
+		"icon" => "typepad",
 	),
 	"viadeo" => Array(
 		"name" => "Viadeo",

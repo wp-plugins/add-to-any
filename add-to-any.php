@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.8
+Version: .9.9.2.9
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -130,7 +130,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Save/Bookmark"/>';
 	
 	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
-		.'&amp;linkurl='.$linkurl_enc
+		.'linkurl='.$linkurl_enc
 		.'&amp;linkname='.$linkname_enc
 		.'"' . $style . $button_target
 		.'>'.$button.'</a>'.$html_wrap_close;

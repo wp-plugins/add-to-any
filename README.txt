@@ -3,8 +3,8 @@ Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.8
-Stable tag: 0.9.9.2.8
+Tested up to: 2.8.1
+Stable tag: 0.9.9.2.9
 
 Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -22,7 +22,7 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * Individual service links (like Sociable)
 * Includes all services
 * Services updated automatically
-* WordPress optimized, localized (i18n for English, Chinese, Spanish, Portuguese, Russian, Italian, Danish, Belarusian)
+* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Russian, Italian, Danish, Belarusian)
 * Google Analytics integration
 * Many more publisher and user features!
 
@@ -30,6 +30,8 @@ See also:
 
 * The <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe widget plugin">Subscribe button</a> plugin
 * The <a href="http://www.addtoany.com/buttons/for/wordpress_com" title="WordPress.com sharing button widget" target="_blank">Share button for WordPress.com</a> blogs
+
+<a href="http://www.addtoany.com/share_save" title="Share" target="_blank">Share this plugin</a>
 
 == Installation ==
 
@@ -103,6 +105,20 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+.9.9.2.9:
+
+* Removed extra character from button querystring
+* New standalone services
+ * Amazon Wish List
+ * Blogger
+ * Evernote
+ * Folkd
+ * Identi.ca
+ * Instapaper
+ * Meneame
+ * Netvouz
+ * TypePad
 
 .9.9.2.8:
 
