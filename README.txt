@@ -106,6 +106,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
+.9.9.3:
+
+* Add service icons
+
 .9.9.2.9:
 
 * Removed extra character from button querystring
