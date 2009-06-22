@@ -1,32 +1,37 @@
-=== Add to Any Share/Save/Bookmark Button ===
+=== Add to Any: Share/Bookmark/Email Button ===
 Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.7.1
-Stable tag: 0.9.9.2.1
+Tested up to: 2.8.1
+Stable tag: 0.9.9.2.9
 
-Helps readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
+Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
-Helps readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Delicious, Digg, Facebook, Twitter, and over 100 more social bookmarking and sharing sites. The button comes with Add to Any's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
-
-The E-mail tab makes it easy to share via Gmail, Y! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The Bookmark or Add to Favorites tab helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera etc.).
-
-**Individual service icons** let you optimize your blog posts for specific social destinations.
-
-* Add to Any <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
-* Includes all services
-* Individual service links (**new!**)
-* Services updated automatically
-* WordPress optimized, localized (i18n for English, Spanish, Chinese, Danish)
-* Google Analytics integration
-* Many more publisher and user features
+Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
 <a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo) | <a href="other_notes/">Changelog</a>
 
-See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin.
+The E-mail tab makes it easy to share via Google Mail, Yahoo! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
+
+Individual **service icons** let you optimize your blog posts for specific social sites.
+
+* AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
+* Individual service links (like Sociable)
+* Includes all services
+* Services updated automatically
+* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Russian, Italian, Danish, Belarusian)
+* Google Analytics integration
+* Many more publisher and user features!
+
+See also:
+
+* The <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe widget plugin">Subscribe button</a> plugin
+* The <a href="http://www.addtoany.com/buttons/for/wordpress_com" title="WordPress.com sharing button widget" target="_blank">Share button for WordPress.com</a> blogs
+
+<a href="http://www.addtoany.com/share_save" title="Share" target="_blank">Share this plugin</a>
 
 == Installation ==
 
@@ -35,9 +40,9 @@ See also, the <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress R
 
 == Frequently Asked Questions ==
 
-= How often is the list of services updated? =
+= How often is the list of services within the menu updated? =
 
-Constantly... and it's done automatically, without having to upgrade the plugin!
+Constantly... and it's done automatically without having to upgrade.
 
 = Where can I choose which button and individual icons to display and other options? =
 
@@ -49,13 +54,24 @@ It's likely because your your theme wasn't <a href="http://codex.wordpress.org/T
 
 `<?php wp_footer(); ?>`
 
-= How can I move the button to another area of my theme? =
+= How can I move both the button and the individual icons to another area of my theme? =
+
+In the Theme Editor, place this code block where you want the button and individual icons to appear in your theme:
+
+`<?php echo '<ul class="addtoany_list">';
+if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )
+	ADDTOANY_SHARE_SAVE_ICONS( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
+if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )
+	ADDTOANY_SHARE_SAVE_BUTTON( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
+echo '</ul>'; ?>`
+
+= How can I move just the button to another area of my theme? =
 
 Directions are located within the plugin's settings panel located in `Settings` > `Share/Save Buttons` under `Button Placement`. In the Theme Editor, you will place this line of code where you want the button to appear in your theme:
 
 `<?php if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?>`
 
-= How can I move the individual icons to another area of my theme? =
+= How can I move just the individual icons to another area of my theme? =
 
 In the Theme Editor, place this line of code where you want the individual icons to appear in your theme (within an HTML list):
 
@@ -67,17 +83,6 @@ echo '</ul>'; ?>`
 Or you can place the icons as individual links (without being wrapped in an HTML list):
 
 `<?php if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) { ADDTOANY_SHARE_SAVE_ICONS(); } ?>`
-
-= How can I move both the individual icon and the button to another area of my theme? =
-
-In the Theme Editor, place this code block where you want the individual icons to appear in your theme:
-
-`<?php echo '<ul class="addtoany_list">';
-if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )
-	ADDTOANY_SHARE_SAVE_ICONS( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
-if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )
-	ADDTOANY_SHARE_SAVE_BUTTON( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
-echo '</ul>'; ?>`
 
 = How can I force the button to appear in individual posts and pages? =
 
@@ -102,6 +107,66 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 == Changelog ==
 
 .9.9.3:
+
+* Add service icons
+
+.9.9.2.9:
+
+* Removed extra character from button querystring
+* New standalone services
+ * Amazon Wish List
+ * Blogger
+ * Evernote
+ * Folkd
+ * Identi.ca
+ * Instapaper
+ * Meneame
+ * Netvouz
+ * TypePad
+
+.9.9.2.8:
+
+* Translations
+
+.9.9.2.7:
+
+* Updated standalone services and icons
+
+.9.9.2.6:
+
+* CSS changed to support more themes
+* Admin UI updated for 2.8
+ * Slightly cleaner UI
+ * Includes template code for both button and standalone links (previously only found in FAQ)
+
+.9.9.2.5:
+
+* Removed dragability of dummy image in standalone services list
+
+.9.9.2.4:
+
+* Alt attribute added to standalone service image
+* Title attribute added to standalone service link
+* Selected standalone services in admin are more distinguishable
+* Italian translation (by <a href="http://gidibao.net/">Gianni</a>)
+* i18n folder renamed to languages due to a problem with the CodeStyling Localization plugin
+* Contrast improvements to Open Share Icon
+
+.9.9.2.3:
+
+* Support for themes that do not support modern Loop methods
+ * Permalinks now targeted for these older themes
+* AddToAny URI scheme gives precedence to link URL parameter, then Title
+* Sitename & Siteurl parameters depreciated for WP (they are usually redundant)
+
+.9.9.2.2:
+
+* Fixed display when all standalone services are removed in admin
+* Services label renamed Standalone Services for clarity
+* Updates to Danish translation
+* Added Belarusian translation
+
+.9.9.2.1:
 
 * Feed icons shown inline, no longer displayed in unordered list
 

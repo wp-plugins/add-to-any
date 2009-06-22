@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Add to Any: Share/Save/Bookmark Button
+Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
-Description: Helps readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.2.1
+Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: .9.9.3
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -25,26 +25,18 @@ $A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL.'/'.$A2A_SHARE_SAVE_plugin_basen
 function A2A_SHARE_SAVE_textdomain() {
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_plugin_basename;
 	load_plugin_textdomain('add-to-any',
-		$A2A_SHARE_SAVE_plugin_url_path.'/i18n',
-		$A2A_SHARE_SAVE_plugin_basename.'/i18n');
+		$A2A_SHARE_SAVE_plugin_url_path.'/languages',
+		$A2A_SHARE_SAVE_plugin_basename.'/languages');
 }
 add_action('init', 'A2A_SHARE_SAVE_textdomain');
 
 function A2A_SHARE_SAVE_link_vars() {
-	$sitename_enc	= rawurlencode( get_bloginfo('name') );
-	$siteurl_enc	= rawurlencode( trailingslashit( get_bloginfo('url') ) );
-	$linkname		= ( in_the_loop() ) ? get_the_title() : wp_title('-', false,'right').get_bloginfo('name');
+	$linkname		= get_the_title($post->ID);
 	$linkname_enc	= rawurlencode( $linkname );
-	$linkurl		= ( in_the_loop() ) ?
-						/* Current post (if within loop) or current page */
-						get_permalink() : 
-						"http" . ( ($_SERVER["HTTPS"]=="on") ? 's' : '' ) . "://" .
-							$_SERVER["HTTP_HOST"] .
-							( ($_SERVER["SERVER_PORT"] != "80") ? ":".	$_SERVER["SERVER_PORT"] : '') .
-							$_SERVER["REQUEST_URI"] ;
+	$linkurl		= get_permalink($post->ID);
 	$linkurl_enc	= rawurlencode( $linkurl );	
 	
-	return compact( 'sitename_enc', 'siteurl_enc', 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
+	return compact( 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
 }
 
 include_once('services.php');
@@ -71,15 +63,11 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 
 		$service = $A2A_SHARE_SAVE_services[$active_service];
 		$safe_name = $active_service;
+		$name = $service['name'];
 		$icon = $service['icon'];
 		$url = "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
-		if(isset($service['description']) && $service['description'] != "") {
-			$description = $service['description'];
-		} else {
-			$description = $service['safe'];
-		}
-		$link = $html_wrap_open."<a href=\"$url\" title=\"$description\" rel=\"nofollow\" target=\"_blank\">";
-		$link .= "<img src=\"".$A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png\" title=\"$description\" alt=\"$description\"/>";
+		$link = $html_wrap_open."<a href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
+		$link .= "<img src=\"".$A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png\" alt=\"$name\"/>";
 		$link .= "</a>".$html_wrap_close;
 		
 		$ind_html .= apply_filters('addtoany_link', $link);
@@ -141,10 +129,9 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	} else
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Save/Bookmark"/>';
 	
-	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?sitename='.$sitename_enc
-		.'&amp;siteurl='.$siteurl_enc
+	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
+		.'linkurl='.$linkurl_enc
 		.'&amp;linkname='.$linkname_enc
-		.'&amp;linkurl='.$linkurl_enc
 		.'"' . $style . $button_target
 		.'>'.$button.'</a>'.$html_wrap_close;
 	
@@ -205,7 +192,7 @@ if (!function_exists('A2A_menu_locale')) {
 	ShareViaEmail: "' . __("Share via e-mail", "add-to-any") . '",
 	SubscribeViaEmail: "' . __("Subscribe via e-mail", "add-to-any") . '",
 	BookmarkInYourBrowser: "' . __("Bookmark in your browser", "add-to-any") . '",
-	BookmarkInstructions: "' . __("Press Ctrl+D or Cmd+D to bookmark this page", "add-to-any") . '",
+	BookmarkInstructions: "' . __("Press Ctrl+D or &#8984;+D to bookmark this page", "add-to-any") . '",
 	AddToYourFavorites: "' . __("Add to your favorites", "add-to-any") . '",
 	SendFromWebOrProgram: "' . __("Send from any e-mail address or e-mail program", "add-to-any") . '",
     EmailProgram: "' . __("E-mail program", "add-to-any") . '"
@@ -295,20 +282,21 @@ function A2A_SHARE_SAVE_button_css() {
 	.addtoany_share_save_container{margin:16px 0;}
 	ul.addtoany_list{
 		display:inline;
+		list-style-type:none;
 		margin:0 !important;
 		padding:0 !important;
 	}
 	ul.addtoany_list li{
-		background:none;
+		background:none !important;
 		border:0;
 		display:inline !important;
+		line-height:32px;<?php // For vertical space in the event of wrapping ?>
 		list-style-type:none;
 		margin:0 !important;
 		padding:0 !important;
-		line-height:32px;<?php // For vertical space in the event of wrapping ?>
 	}
 	ul.addtoany_list li:before{content:"";}
-	ul.addtoany_list li a{padding:0 9px}
+	ul.addtoany_list li a{padding:0 9px;}
 	ul.addtoany_list img{
 		float:none;
 		width:16px;
@@ -321,7 +309,7 @@ function A2A_SHARE_SAVE_button_css() {
 	ul.addtoany_list a img{
 		opacity:.6;
 		-moz-opacity:.6;
-		filter: alpha(opacity=60);
+		filter:alpha(opacity=60);
 	}
 	ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
 		opacity:1;
@@ -511,8 +499,11 @@ function A2A_SHARE_SAVE_options_page() {
 				</label>
                 <br/><br/>
                 <div class="setting-description">
-                	<strong>*</strong> <?php _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>:<br/>
-                	<code>&lt;?php if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?&gt;</code>
+                	<strong>*</strong> <?php _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>: <span id="addtoany_show_template_button_code" class="button-secondary">&#187;</span>
+                    <div id="addtoany_template_button_code">
+                      <code>&lt;?php echo '&lt;ul class=&quot;addtoany_list&quot;&gt;';  if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )      ADDTOANY_SHARE_SAVE_ICONS( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )      ADDTOANY_SHARE_SAVE_BUTTON( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  echo '&lt;/ul&gt;'; ?&gt;</code>
+                    </div>
+                    <noscript<code>&lt;?php echo '&lt;ul class=&quot;addtoany_list&quot;&gt;';  if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )      ADDTOANY_SHARE_SAVE_ICONS( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )      ADDTOANY_SHARE_SAVE_BUTTON( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  echo '&lt;/ul&gt;'; ?&gt;</code></noscript>
                 </div>
             </fieldset></td>
             </tr>
@@ -609,28 +600,21 @@ function A2A_SHARE_SAVE_admin_head() {
 	jQuery(document).ready(function(){
 	
 		var to_input = function(this_sortable){
-			var services_string='',
-				services_array = jQuery(this_sortable).sortable('toArray'),
-				services_size = services_array.length;
-			if(services_size<1) return;
-			
 			// Clear any previous services stored as hidden inputs
 			jQuery('input[name="A2A_SHARE_SAVE_active_services[]"]').remove();
 			
+			var services_array = jQuery(this_sortable).sortable('toArray'),
+				services_size = services_array.length;
+			if(services_size<1) return;
+			
 			for(var i=0;i<services_size;i++){
-				services_string += '"'+services_array[i]+'"';
-				if(i<services_size-1)
-					services_string += ',';
-				
 				if(services_array[i]!='') // Exclude dummy icon
 					jQuery('form:first').append('<input name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
-				
 			}
-			services_string = 'a2a_prioritize=[' + services_string + ']';
 		};
 	
 		jQuery('#addtoany_services_sortable').sortable({
-			items: 'li:not(#addtoany_show_services)',
+			items: 'li:not(#addtoany_show_services, .dummy)',
 			placeholder: 'ui-sortable-placeholder',
 			opacity: .6,
 			tolerance: 'pointer',
@@ -642,7 +626,7 @@ function A2A_SHARE_SAVE_admin_head() {
 			if( jQuery('#addtoany_services_sortable li').not('.dummy').length==0 )
 				jQuery('#addtoany_services_sortable').find('.dummy').hide();
 			
-			jQuery(this).fadeTo('fast', '.2')
+			jQuery(this).toggleClass('addtoany_selected')
 			.unbind('click', moveToSortableList)
 			.bind('click', moveToSelectableList)
 			.clone()
@@ -658,7 +642,7 @@ function A2A_SHARE_SAVE_admin_head() {
 		
 		// Service click again = move back to selectable list
 		var moveToSelectableList = function(){
-			jQuery(this).fadeTo('fast', '1')
+			jQuery(this).toggleClass('addtoany_selected')
 			.unbind('click', moveToSelectableList)
 			.bind('click', moveToSortableList);
 	
@@ -682,7 +666,7 @@ function A2A_SHARE_SAVE_admin_head() {
         
         // Auto-select active services
         <?php
-		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']);
+		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']) || isset($_POST['A2A_SHARE_SAVE_submit_hidden']);
 		$active_services = ( $admin_services_saved )
 			? $_POST['A2A_SHARE_SAVE_active_services'] : get_option('A2A_SHARE_SAVE_active_services');
 		if( !$active_services )
@@ -708,6 +692,10 @@ function A2A_SHARE_SAVE_admin_head() {
 			jQuery('#addtoany_services_selectable, #addtoany_services_info').slideDown('fast');
 			jQuery(this).fadeOut('fast');
 		});
+		jQuery('#addtoany_show_template_button_code').click(function(e){
+			jQuery('#addtoany_template_button_code').slideDown('fast');
+			jQuery(this).fadeOut('fast');
+		});
 	});
 	--></script>
 
@@ -720,16 +708,21 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_services_selectable li{cursor:crosshair;float:left;width:150px;font-size:11px;margin:0;padding:3px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;overflow:hidden;}
 	<?php // white-space:nowrap could go above, but then webkit does not wrap floats if parent has no width set; wrapping in <span> instead (below) ?>
 	#addtoany_services_selectable li span{white-space:nowrap;}
-	#addtoany_services_selectable li:hover{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_selectable li:hover, #addtoany_services_selectable li.addtoany_selected{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_selectable li.addtoany_selected:hover{border-color:#F00;}
+	#addtoany_services_selectable li:active{border:1px solid #000;}
     #addtoany_services_selectable li span img{margin:0 4px 0 4px;width:16px;height:16px;border:0;vertical-align:middle;}
 	
-	#addtoany_services_sortable li{cursor:move;float:left;padding:9px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;}
+	#addtoany_services_sortable li, #addtoany_services_sortable li.dummy:hover{cursor:move;float:left;padding:9px;border:1px solid transparent;_border-color:#FAFAFA/*IE6*/;}
 	#addtoany_services_sortable li:hover{border:1px solid #AAA;background-color:#FFF;}
+	#addtoany_services_sortable li.dummy, #addtoany_services_sortable li.dummy:hover{cursor:auto;background-color:transparent;}
 	#addtoany_services_sortable img{width:16px;height:16px;border:0;vertical-align:middle;}
 	
 	li#addtoany_show_services{border:1px solid #DFDFDF;background-color:#FFF;cursor:pointer;}
 	li#addtoany_show_services:hover{border:1px solid #AAA;}
 	#addtoany_services_info{clear:left;display:none;}
+	
+	#addtoany_template_button_code{display:none;}
     </style>
 <?php
 	}
