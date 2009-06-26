@@ -1,10 +1,10 @@
 === Add to Any: Share/Bookmark/Email Button ===
 Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
-Tags: bookmarking, social, social bookmarking, bookmark, bookmarks, sharing, share, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
+Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.8.1
-Stable tag: 0.9.9.2.9
+Stable tag: 0.9.9.3
 
 Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -12,11 +12,11 @@ Help readers share, save, bookmark, and email your posts and pages using any ser
 
 Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
 
-<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo) | <a href="other_notes/">Changelog</a>
+<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo)
 
 The E-mail tab makes it easy to share via Google Mail, Yahoo! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
 
-Individual **service icons** let you optimize your blog posts for specific social sites.
+Individual **service icons** let you optimize your blog posts for specific social sites.  Choose from over 100 individual services.
 
 * AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Individual service links (like Sociable)
@@ -106,12 +106,11 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
-.9.9.3:
-
+= .9.9.3 =
 * Add service icons
+* Changelog markup update
 
-.9.9.2.9:
-
+= .9.9.2.9 =
 * Removed extra character from button querystring
 * New standalone services
  * Amazon Wish List
@@ -124,27 +123,22 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
  * Netvouz
  * TypePad
 
-.9.9.2.8:
-
+= .9.9.2.8 =
 * Translations
 
-.9.9.2.7:
-
+= .9.9.2.7 =
 * Updated standalone services and icons
 
-.9.9.2.6:
-
+= .9.9.2.6 =
 * CSS changed to support more themes
 * Admin UI updated for 2.8
  * Slightly cleaner UI
  * Includes template code for both button and standalone links (previously only found in FAQ)
 
-.9.9.2.5:
-
+= .9.9.2.5 =
 * Removed dragability of dummy image in standalone services list
 
-.9.9.2.4:
-
+= .9.9.2.4 =
 * Alt attribute added to standalone service image
 * Title attribute added to standalone service link
 * Selected standalone services in admin are more distinguishable
@@ -152,169 +146,135 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 * i18n folder renamed to languages due to a problem with the CodeStyling Localization plugin
 * Contrast improvements to Open Share Icon
 
-.9.9.2.3:
-
+= .9.9.2.3 =
 * Support for themes that do not support modern Loop methods
  * Permalinks now targeted for these older themes
 * AddToAny URI scheme gives precedence to link URL parameter, then Title
 * Sitename & Siteurl parameters depreciated for WP (they are usually redundant)
 
-.9.9.2.2:
-
+= .9.9.2.2 =
 * Fixed display when all standalone services are removed in admin
 * Services label renamed Standalone Services for clarity
 * Updates to Danish translation
 * Added Belarusian translation
 
-.9.9.2.1:
-
+= .9.9.2.1 =
 * Feed icons shown inline, no longer displayed in unordered list
 
-.9.9.2:
-
+= .9.9.2 =
 * Services array output fixes
 
-.9.9.1:
-
+= .9.9.1 =
 * Add services.php (critical fix)
 
-.9.9:
-
+= .9.9 =
 * NEW: Individual service links!
  * Drag & Drop interface with preview
 * .addtoany_share_save_container is now `<div>`, not `<p>`
 * Add to Any button now contained within `<ul><li>`
 
-.9.8.9.2:
-
+= .9.8.9.2 =
 * Buttons include Facebook icon
 * Catalan i18n
 
-.9.8.9.1:
-
+= .9.8.9.1 =
 * Automatic localization/i18n
 * Rename Spanish POT to proper
 * Fixed "Display Share/Save button at the bottom of pages" option when "Display Share/Save button at the bottom of posts is disabled"
 
-.9.8.9:
-
+= .9.8.9 =
 * wp_footer() detection
 * Replaced short form of PHP's open tags with long form to work around configurations with shortopentag disabled
 * Spanish translation (by <a href="http://pablo.poo.cl/" target="_blank">Pablo</a>)
 
-.9.8.8.4:
-
+= .9.8.8.4 =
 * Settings panel submits to current page instead of unreliable REQUEST_URI which can omit querystring on IIS
  * See http://www.microsoft.com/downloads/results.aspx?freetext=954946
 
-.9.8.8.3:
-
+= .9.8.8.3 =
 * Option "Display Share/Save button at the bottom of posts on the front page" applies to all pages that can contain multiple posts
 
-.9.8.8.2:
-
+= .9.8.8.2 =
 * Fix button appearing in category list view despite setting
 
-.9.8.8.1:
-
+= .9.8.8.1 =
 * Refine conditionals
 * Highlight admin notices
 * Danish translation (by <a href="http://wordpress.blogos.dk/" target="_blank">Georg</a>)
 
-.9.8.8:
-
+= .9.8.8 =
 * Now customize the optional text next to the 16 x 16px icons
 
-.9.8.7.3:
-
+= .9.8.7.3 =
 * Important syntax fix
 
-.9.8.7.2:
-
+= .9.8.7.2 =
 * Additional options / JavaScript API clarification
 * i18n update 
 
-.9.8.7.1:
-
+= .9.8.7.1 =
 * Text-only button stripslashes
 
-.9.8.7:
-
+= .9.8.7 =
 * Removes unnecessary inline styling in feeds per W3C recommendation
 
-.9.8.6.9:
-
+= .9.8.6.9 =
 * Compressed Open Share Icon
 
-.9.8.6.8:
-
+= .9.8.6.8 =
 * Chinese translation updated
 
-.9.8.6.7:
-
+= .9.8.6.7 =
 * i18n
 * Chinese translation
 * Installation clarified
 
-.9.8.6.6:
-
+= .9.8.6.6 =
 * Open Share Icon
 * WordPress 2.7 admin styling
 * Settings link on Plugins page
 * Basename var
 
-.9.8.6.5:
-
+= .9.8.6.5 =
 * Less JavaScript redundancy from Additional Options (saves bandwidth)
 * Compressed PNGs added, select a button from settings to begin using PNG (saves bandwidth)
 
-.9.8.6.4:
-
+= .9.8.6.4 =
 * Additional Options in Admin panel provides link to JavaScript API
 * Option to have full addtoany.com legacy page open in a new window
 
-.9.8.6.3:
-
+= .9.8.6.3 =
 * Replaced short form of PHP's open tags with long form to work around configurations with short_open_tag disabled
 
-.9.8.6.2:
-
+= .9.8.6.2 =
 * Current page title + blog title are used if called outside The Loop
 
-.9.8.6.1:
-
+= .9.8.6.1 =
 * Fixed buttons if WordPress files are in a subdirectory while the blog appears in the site root
  * For example: http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory
 
-.9.8.6:
-
+= .9.8.6 =
 * Fixed output buffering - button should appear below posts again if option is set
 
-.9.8.5:
-
+= .9.8.5 =
 * Button targets the current page if called outside The Loop
 * Accomodates renamed plugin directory
 
-.9.8.4:
-
+= .9.8.4 =
 * Fixed a small syntax error (critcal if you're on .9.8.3)
 
-.9.8.3:
-
+= .9.8.3 =
 * Language & localization update
  * "After clicking OK," removed from the Bookmark tab
 
-.9.8.2:
-
+= .9.8.2 =
 * Event attributes removed (JS now takes care of button events)
  * This eliminates the chance of errors prior to JS fully loading
 
-.9.8.1:
-
+= .9.8.1 =
 * Fixed repo problem
 
-.9.8:
-
+= .9.8 =
 * JavaScript removed from blog feed
 * Option to display button (without menu) or to not display it at all below posts in blog feed
 * Replaced some UTF-8 encoding functions with core WordPress functions
@@ -322,32 +282,26 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 * Reprioritized plugin to load later
 * Text-only button option
 
-.9.7:
-
+= .9.7 =
 * Internationalization
 * Buttons updated
 
-.9.6:
-
+= .9.6 =
 * Moved external JavaScript to bottom so that content is prioritized over HTTP requests to static.addtoany.com
  * Please note that some improperly-coded themes may prevent this from working. See the FAQ entry for "Why isn't the drop-down menu appearing?" if this is the case.
 
-.9.5.2:
-
+= .9.5.2 =
 * Fixed bug in Internet Explorer 6 that caused custom buttons to have a height and width of 0
 * Removed the XHTML depreciated `name` attribute from the button's anchor
 
-.9.5.1:
-
+= .9.5.1 =
 * Fixed 1 line to support those without short_open_tag
 
-.9.5:
-
+= .9.5 =
 * New: Custom buttons (specify a URL)
 * Fix to permit XHTML Strict validation
 
-.9.4:
-
+= .9.4 =
 * New Menu Styler lets you customize the color of the menus
 * New Menu Option: "Only show the menu when the user clicks the Share/Save button"
 * New: Set custom JavaScript variables for further customization
