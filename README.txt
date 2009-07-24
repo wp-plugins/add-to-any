@@ -3,8 +3,8 @@ Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.8.1
-Stable tag: 0.9.9.3.2
+Tested up to: 2.8.2
+Stable tag: 0.9.9.3.3
 
 Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -105,6 +105,13 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.3.3 =
+* Left-padding for icon+text link changed from 39px to 30px
+* Text-index for parent UL reset
+* Output buffering replaced
+* Fixed admin action link
+* Russian translation (by Elvis)
 
 = .9.9.3.2 =
 * Clarified button placement and theme editing

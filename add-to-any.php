@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.3.2
+Version: .9.9.3.3
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -46,7 +46,7 @@ include_once('services.php');
 
 function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 	if( $args )
-		extract( $args ); // output_buffering, html_wrap_open, html_wrap_close
+		extract( $args ); // output_later, html_wrap_open, html_wrap_close
 	extract(A2A_SHARE_SAVE_link_vars()); // linkname_enc, etc.
 		
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
@@ -76,15 +76,10 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		$ind_html .= apply_filters('addtoany_link', $link);
 	}
 	
-	if($output_buffering) ob_start();
-	
-	echo $ind_html;
-	
-	if($output_buffering) {
-		$button = ob_get_contents();
-		ob_end_clean();
+	if($output_later)
 		return $ind_html;
-	}
+	else
+		echo $ind_html;
 }
 
 function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
@@ -92,9 +87,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
 	
 	if( $args )
-		extract( $args ); // output_buffering, html_wrap_open, html_wrap_close
-	
-	if($output_buffering) ob_start();
+		extract( $args ); // output_later, html_wrap_open, html_wrap_close
 	
 	extract(A2A_SHARE_SAVE_link_vars()); // linkname_enc, etc.
 	
@@ -124,7 +117,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 		if( !is_feed() ) {
 			$style_bg	= 'background:url('.$A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname.') no-repeat scroll 9px 0px'; // padding-left:9 (9=other icons padding)
 			$style_bg	= ';' . $style_bg . ' !important;';
-			$style		= ' style="'.$style_bg.'padding:0 0 0 39px;display:inline-block;height:16px;line-height:16px;vertical-align:middle;"'; // padding-left:30+9 (9=other icons padding)
+			$style		= ' style="'.$style_bg.'padding:0 0 0 30px;display:inline-block;height:16px;line-height:16px;vertical-align:middle;"'; // padding-left:30+9 (9=other icons padding)
 		}
 		$button			= stripslashes(get_option('A2A_SHARE_SAVE_button_text'));
 	} else if( $button_text ) {
@@ -132,7 +125,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	} else
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Save/Bookmark"/>';
 	
-	echo $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
+	$button_html = $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
 		.'linkurl='.$linkurl_enc
 		.'&amp;linkname='.$linkname_enc
 		.'"' . $style . $button_target
@@ -163,11 +156,10 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	
 	}
 	
-	if($output_buffering) {
-		$button = ob_get_contents();
-		ob_end_clean();
-		return $button;
-	}
+	if($output_later)
+		return $button_html;
+	else
+		echo $button_html;
 }
 
 if (!function_exists('A2A_menu_javascript')) {
@@ -257,13 +249,13 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 		return $content;
 	
 	$icons_args = array(
-		"output_buffering" => true,
+		"output_later" => true,
 		"html_wrap_open" => ($is_feed) ? "" : "<li>",
 		"html_wrap_close" => ($is_feed) ? " " : "</li>",
 	);
 	
 	$A2A_SHARE_SAVE_options = array(
-		"output_buffering" => true,
+		"output_later" => true,
 		"html_wrap_open" => ($is_feed) ? "" : "<li>",
 		"html_wrap_close" => ($is_feed) ? "" : "</li>",
 	);
@@ -288,12 +280,13 @@ function A2A_SHARE_SAVE_button_css() {
 		list-style-type:none;
 		margin:0 !important;
 		padding:0 !important;
+		text-indent:0 !important;
 	}
 	ul.addtoany_list li{
 		background:none !important;
 		border:0;
 		display:inline !important;
-		line-height:32px;<?php // For vertical space in the event of wrapping ?>
+		line-height:32px;<?php /* For vertical space in the event of wrapping*/ ?>
 		list-style-type:none;
 		margin:0 !important;
 		padding:0 !important;
@@ -319,7 +312,7 @@ function A2A_SHARE_SAVE_button_css() {
 		-moz-opacity:1;
 		filter:alpha(opacity=100);
 	}
-	a.addtoany_share_save img{border:0;width:auto;height:auto;}<?php // Must declare after "ul.addtoany_list img"  ?>
+	a.addtoany_share_save img{border:0;width:auto;height:auto;}<?php /* Must declare after "ul.addtoany_list img" */ ?>
     </style>
 <?php
 }
@@ -750,15 +743,20 @@ function A2A_SHARE_SAVE_add_menu_link() {
 
 add_action('admin_menu', 'A2A_SHARE_SAVE_add_menu_link');
 
-
-function A2A_SHARE_SAVE_actlinks( $links ) { 
-	// Add a link to this plugin's settings page
-	$settings_link = '<a href="options-general.php?page=add-to-any.php">Settings</a>'; 
-	array_unshift( $links, $settings_link ); 
-	return $links; 
+// Place in Settings Option List
+function A2A_SHARE_SAVE_actlinks( $links, $file ){
+	//Static so we don't call plugin_basename on every plugin row.
+	static $this_plugin;
+	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
+	
+	if ( $file == $this_plugin ){
+		$settings_link = '<a href="options-general.php?page=add-to-any.php">' . __('Settings') . '</a>';
+		array_unshift( $links, $settings_link ); // before other links
+	}
+	return $links;
 }
 
-add_filter("plugin_action_links_$A2A_SHARE_SAVE_plugin_basename", 'A2A_SHARE_SAVE_actlinks' );
+add_filter("plugin_action_links", 'A2A_SHARE_SAVE_actlinks', 10, 2);
 
 
 ?>
