@@ -2,8 +2,8 @@
 /*
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
-Description: Help readers share, save, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.3.4
+Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: .9.9.3.5
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -228,6 +228,7 @@ if (!function_exists('A2A_wp_footer_check')) {
 
 function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	$is_feed = is_feed();
+	
 	if ( 
 		( 
 			// Tags
@@ -496,7 +497,7 @@ function A2A_SHARE_SAVE_options_page() {
 				</label><br/>
                 <label>
                 	<input name="A2A_SHARE_SAVE_display_in_pages" type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_display_in_pages')!='-1') echo ' checked="checked"'; ?> value="1"/>
-                    <?php _e('Display Share/Save button at the bottom of pages', 'add-to-any'); ?> <strong>*</strong>
+                    <?php _e('Display Share/Save button at the bottom of pages', 'add-to-any'); ?>
 				</label>
                 <br/><br/>
                 <div class="setting-description">

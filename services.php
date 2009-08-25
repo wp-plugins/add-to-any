@@ -22,7 +22,7 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Arto",
 		"icon" => "arto",
 	),
-	"ask.com_mystuff" => Array(
+	"ask_com_mystuff" => Array(
 		"name" => "Ask.com MyStuff",
 		"icon" => "ask",
 	),
@@ -54,7 +54,7 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Blogger Post",
 		"icon" => "blogger",
 	),
-	"bookmarks.fr" => Array(
+	"bookmarks_fr" => Array(
 		"name" => "Bookmarks.fr",
 		"icon" => "bookmarks_fr",
 	),
@@ -85,6 +85,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"dzone" => Array(
 		"name" => "DZone",
 		"icon" => "dzone",
+	),
+	"dailyme" => Array(
+		"name" => "DailyMe",
+		"icon" => "dailyme",
 	),
 	"delicious" => Array(
 		"name" => "Delicious",
@@ -162,6 +166,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Google Bookmarks",
 		"icon" => "google",
 	),
+	"google_reader" => Array(
+		"name" => "Google Reader",
+		"icon" => "reader",
+	),
 	"health_ranker" => Array(
 		"name" => "Health Ranker",
 		"icon" => "healthranker",
@@ -186,7 +194,7 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Hyves",
 		"icon" => "hyves",
 	),
-	"identi.ca" => Array(
+	"identi_ca" => Array(
 		"name" => "Identi.ca",
 		"icon" => "identica",
 	),
@@ -254,6 +262,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Mixx",
 		"icon" => "mixx",
 	),
+	"mozillaca" => Array(
+		"name" => "Mozillaca",
+		"icon" => "mozillaca",
+	),
 	"multiply" => Array(
 		"name" => "Multiply",
 		"icon" => "multiply",
@@ -278,6 +290,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Netvouz",
 		"icon" => "netvouz",
 	),
+	"newstrust" => Array(
+		"name" => "NewsTrust",
+		"icon" => "newstrust",
+	),
 	"newsvine" => Array(
 		"name" => "NewsVine",
 		"icon" => "newsvine",
@@ -301,6 +317,14 @@ $A2A_SHARE_SAVE_services = Array(
 	"plaxo_pulse" => Array(
 		"name" => "Plaxo Pulse",
 		"icon" => "plaxo",
+	),
+	"plurk" => Array(
+		"name" => "Plurk",
+		"icon" => "plurk",
+	),
+	"printfriendly" => Array(
+		"name" => "PrintFriendly",
+		"icon" => "printfriendly",
 	),
 	"propeller" => Array(
 		"name" => "Propeller",
@@ -445,6 +469,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"wists" => Array(
 		"name" => "Wists",
 		"icon" => "wists",
+	),
+	"wordpress" => Array(
+		"name" => "WordPress",
+		"icon" => "wordpress",
 	),
 	"xerpi" => Array(
 		"name" => "Xerpi",

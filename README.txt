@@ -3,8 +3,8 @@ Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.8.2
-Stable tag: 0.9.9.3.4
+Tested up to: 2.8
+Stable tag: 0.9.9.3.5
 
 Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -21,8 +21,8 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Individual service links (like Sociable)
 * Includes all services
-* Services updated automatically
-* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Russian, Italian, Danish, Belarusian)
+* Menu updated automatically
+* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Italian, Danish, Catalan, Russian, Belarusian)
 * Google Analytics integration
 * Many more publisher and user features!
 
@@ -105,6 +105,22 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.3.5 =
+* New standalone services
+ * DailyMe
+ * Google Reader
+ * Mozilla.ca
+ * NewsTrust
+ * Plurk
+ * PrintFriendly
+ * WordPress
+* Fixed bug affecting certain standalone services
+ * Identi.ca
+ * Bookmarks.fr
+ * Ask.com MyStuff
+* Catalan translation update (Robert Buj)
+* Clarified when template code is appropriate
 
 = .9.9.3.4 =
 * Use button IMG instead of background-image for button without text
