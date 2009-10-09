@@ -4,9 +4,9 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.8
-Stable tag: 0.9.9.3.5
+Stable tag: 0.9.9.4
 
-Help readers share, save, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
+Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
@@ -20,7 +20,7 @@ Individual **service icons** let you optimize your blog posts for specific socia
 
 * AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
 * Individual service links (like Sociable)
-* Includes all services
+* Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
 * Menu updated automatically
 * WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Italian, Danish, Catalan, Russian, Belarusian)
 * Google Analytics integration
@@ -50,7 +50,7 @@ Go to `Settings` > `Share/Save Buttons`.
 
 = Why isn't the drop-down menu appearing? =
 
-It's likely because your your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  Using the Theme Editor, make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
+It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  Using the Theme Editor, make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
 
 `<?php wp_footer(); ?>`
 
@@ -84,6 +84,21 @@ Or you can place the icons as individual links (without being wrapped in an HTML
 
 `<?php if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) { ADDTOANY_SHARE_SAVE_ICONS(); } ?>`
 
+= How can I add a new custom standalone service? =
+You can create a plugin or customize the following PHP sample code to add to your theme's function.php file:
+
+`function addtoany_add_services( $services ) {
+  $services['google_example'] = array(
+    'name' => 'Google Example',
+    'icon_url' => 'http://www.google.com/favicon.ico',
+	'icon_width' => 16,
+	'icon_height' => 16,
+    'href' => 'http://www.example.com/add?linkurl=A2A_LINKURL&amp;linkname=A2A_LINKNAME'
+  );
+  return $services;
+}
+add_filter('A2A_SHARE_SAVE_services', 'addtoany_add_services', 10, 1);`
+
 = How can I force the button to appear in individual posts and pages? =
 
 If your button isn't already set up to appear (it is by default), type the following tag into the page or post that you want the button to appear in: `<!--sharesave-->`
@@ -105,6 +120,11 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.4 =
+* Custom standalone service support
+* Custom icon support
+* Updated Twitter icon
 
 = .9.9.3.5 =
 * New standalone services

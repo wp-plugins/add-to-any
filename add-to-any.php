@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.3.5
+Version: .9.9.4
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -51,6 +51,9 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
 	
+	// Make available services extensible via plugins, themes (functions.php), etc.
+	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
+	
 	$active_services = get_option('A2A_SHARE_SAVE_active_services');
 	
 	$ind_html = "";
@@ -67,10 +70,30 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		$service = $A2A_SHARE_SAVE_services[$active_service];
 		$safe_name = $active_service;
 		$name = $service['name'];
-		$icon = $service['icon'];
-		$url = "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
+		
+		if (isset($service['href'])) {
+			$custom_service = TRUE;
+			$href = $service['href'];
+			$href = str_replace('A2A_LINKURL', $linkurl_enc, $href);
+			$href = str_replace('A2A_LINKNAME', $linkname_enc, $href);
+		} else {
+			$custom_service = FALSE;
+		}
+
+		if ( $custom_service && isset($service['icon_url']) )
+			$icon = $service['icon_url'];
+		elseif ( ! isset($service['icon']))
+			$icon = 'default';
+		else
+			$icon = $service['icon'];
+		$width = (isset($service['icon_width'])) ? $service['icon_width'] : '16';
+		$height = (isset($service['icon_height'])) ? $service['icon_height'] : '16'; 
+		
+		$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
+		$src = ($custom_service) ? $icon : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
+		
 		$link = $html_wrap_open."<a href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
-		$link .= "<img src=\"".$A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png\" alt=\"$name\"/>";
+		$link .= "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 		$link .= "</a>".$html_wrap_close;
 		
 		$ind_html .= apply_filters('addtoany_link', $link);
@@ -85,6 +108,9 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
+	
+	// Make available services extensible via plugins, themes (functions.php), etc.
+	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
 	
 	if( $args )
 		extract( $args ); // output_later, html_wrap_open, html_wrap_close
@@ -301,8 +327,6 @@ function A2A_SHARE_SAVE_button_css() {
 	ul.addtoany_list li a{padding:0 9px;}
 	ul.addtoany_list img{
 		float:none;
-		width:16px;
-		height:16px;
 		border:0;
 		margin:0;
 		padding:0;
@@ -336,6 +360,9 @@ add_action('wp_head', 'A2A_SHARE_SAVE_button_css');
 function A2A_SHARE_SAVE_options_page() {
 
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
+	
+	// Make available services extensible via plugins, themes (functions.php), etc.
+	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
 
     if( $_POST[ 'A2A_SHARE_SAVE_submit_hidden' ] == 'Y' ) {
 
@@ -405,10 +432,17 @@ function A2A_SHARE_SAVE_options_page() {
 					if( !$active_services )
 						$active_services = Array();
 					
-                    foreach ($A2A_SHARE_SAVE_services as $service_safe_name=>$site) { ?>
+                    foreach ($A2A_SHARE_SAVE_services as $service_safe_name=>$site) { 
+						if (isset($site['href']))
+							$custom_service = TRUE;
+						else
+							$custom_service = FALSE;
+						if ( ! isset($site['icon']))
+							$site['icon'] = 'default';
+					?>
                         <li id="a2a_wp_<?php echo $service_safe_name; ?>"
                             title="<?php echo $site['name']; ?>">
-                            <span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon']; ?>.png" width="16" height="16" alt="" /><?php echo $site['name']; ?></span>
+                            <span><img src="<?php echo ($custom_service) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon'].'.png'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '16'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '16'; ?>" alt="" /><?php echo $site['name']; ?></span>
                         </li>
 				<?php
                     } ?>
