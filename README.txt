@@ -4,7 +4,7 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.8
-Stable tag: 0.9.9.4
+Stable tag: 0.9.9.5
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -22,7 +22,7 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * Individual service links (like Sociable)
 * Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
 * Menu updated automatically
-* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Italian, Danish, Catalan, Russian, Belarusian)
+* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Italian, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
 * Google Analytics integration
 * Many more publisher and user features!
 
@@ -30,6 +30,7 @@ See also:
 
 * The <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe widget plugin">Subscribe button</a> plugin
 * The <a href="http://www.addtoany.com/buttons/for/wordpress_com" title="WordPress.com sharing button widget" target="_blank">Share button for WordPress.com</a> blogs
+* The standard <a href="http://www.addtoany.com/buttons/">Share button</a> widget
 
 <a href="http://www.addtoany.com/share_save" title="Share" target="_blank">Share this plugin</a>
 
@@ -120,6 +121,11 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.4.1 =
+* Twitter icon included in standard sharing button
+* Albanian translation (by <a href="http://www.romeolab.com/" target="_blank">Romeo Shuka</a>)
+* Romanian translation (by <a href="http://www.stefandes.com/" target="_blank">Stefan</a>)
 
 = .9.9.4 =
 * Custom standalone service support
