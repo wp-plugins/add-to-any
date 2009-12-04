@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.4.1
+Version: .9.9.4.2
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -384,7 +384,7 @@ function A2A_SHARE_SAVE_options_page() {
 		elseif( get_option('A2A_SHARE_SAVE_button') == 'share_16_16.png|16|16' )
 			update_option( 'A2A_SHARE_SAVE_button_text', $_POST['A2A_SHARE_SAVE_button_share_16_16_text'] );
 		else
-			update_option( 'A2A_SHARE_SAVE_button_text', ( trim($_POST['A2A_SHARE_SAVE_button_text']) != '' ) ? $_POST['A2A_SHARE_SAVE_button_text'] : "Share/Save" );
+			update_option( 'A2A_SHARE_SAVE_button_text', ( trim($_POST['A2A_SHARE_SAVE_button_text']) != '' ) ? $_POST['A2A_SHARE_SAVE_button_text'] : __('Share/Bookmark','add-to-any') );
 			
 		// Store chosen individual services to make active
 		$active_services = Array();
@@ -455,19 +455,19 @@ function A2A_SHARE_SAVE_options_page() {
             	<label>
                 	<input name="A2A_SHARE_SAVE_button" value="favicon.png|16|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='favicon.png|16|16') echo ' checked="checked"'; ?>
                     	 style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ <?php _e('Share/Bookmark','add-to-any'); ?>" title="+ <?php _e('Share/Bookmark','add-to-any'); ?>"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label>
                 <input name="A2A_SHARE_SAVE_button_favicon_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-7].checked=true" style="vertical-align:middle;width:150px"
-                	value="<?php echo (get_option('A2A_SHARE_SAVE_button_text') !== FALSE) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : "Share/Save"; ?>" />
+                	value="<?php echo (get_option('A2A_SHARE_SAVE_button_text') !== FALSE) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : __('Share/Bookmark','add-to-any'); ?>" />
                 <label style="padding-left:9px">
                 	<input name="A2A_SHARE_SAVE_button" value="share_16_16.png|16|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button')=='share_16_16.png|16|16') echo ' checked="checked"'; ?>
                     	 style="margin:9px 0;vertical-align:middle">
-                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_16_16.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ Share/Save" title="+ Share/Save"
+                    <img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_16_16.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ <?php _e('Share/Bookmark','add-to-any'); ?>" title="+ <?php _e('Share/Bookmark','add-to-any'); ?>"
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label>
                 <input name="A2A_SHARE_SAVE_button_share_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-6].checked=true" style="vertical-align:middle;width:150px"
-                	value="<?php echo (get_option('A2A_SHARE_SAVE_button_text') !== FALSE) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : "Share/Save"; ?>" /><br>
+                	value="<?php echo (get_option('A2A_SHARE_SAVE_button_text') !== FALSE) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : __('Share/Bookmark','add-to-any'); ?>" /><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_120_16.png|120|16" type="radio"<?php if(get_option('A2A_SHARE_SAVE_button' )=='share_save_120_16.png|120|16') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
@@ -499,7 +499,7 @@ function A2A_SHARE_SAVE_options_page() {
 					<span style="margin:0 9px;vertical-align:middle"><?php _e("Text only"); ?>:</span>
 				</label>
                 <input name="A2A_SHARE_SAVE_button_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-1].checked=true" style="vertical-align:middle;width:150px"
-                	value="<?php echo ( trim(get_option('A2A_SHARE_SAVE_button_text')) != '' ) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : "Share/Save"; ?>" />
+                	value="<?php echo ( trim(get_option('A2A_SHARE_SAVE_button_text')) != '' ) ? stripslashes(get_option('A2A_SHARE_SAVE_button_text')) : __('Share/Bookmark','add-to-any'); ?>" />
                 
             </fieldset></td>
             </tr>
