@@ -3,7 +3,7 @@ Contributors: micropat
 Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.8
+Tested up to: 2.9
 Stable tag: 0.9.9.4.2
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
@@ -121,6 +121,13 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.4.3 =
+* Automatic support for over 50 languages
+ * The drop-down menu automatically detects the visitor's set language and localizes accordingly
+* Less JavaScript output; removed redundant code
+ * No longer outputs language strings if WordPress locale is set to the default "en_US"
+* Forward support for WordPress 2.9
 
 = .9.9.4.2 =
 * Updated button text
