@@ -4,13 +4,13 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.9
-Stable tag: 0.9.9.4.3
+Stable tag: 0.9.9.4.4
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
-Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing history.
+Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing and usage history.
 
 <a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo)
 
@@ -121,6 +121,11 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.4.4 =
+* Backwards compatibile to version 2.0
+ * Fixes PHP is_tag error
+ * Fixes PHP wp_enqueue_script error in settings panel
 
 = .9.9.4.3 =
 * Automatic support for over 50 languages

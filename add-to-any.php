@@ -3,7 +3,7 @@
 Plugin Name: Add to Any: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.4.3
+Version: .9.9.4.4
 Author: Add to Any
 Author URI: http://www.addtoany.com/contact/
 */
@@ -261,23 +261,35 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	if ( 
 		( 
 			// Tags
-			strpos($content, '<!--sharesave-->')===false || 											// <!--sharesave--> tag
-			strpos($content, '<!--nosharesave-->')!==false												// <!--nosharesave--> tag
-		) &&											
+			// <!--sharesave--> tag
+			strpos($content, '<!--sharesave-->')===false || 
+			// <!--nosharesave--> tag
+			strpos($content, '<!--nosharesave-->')!==false
+		) &&
 		(
 			// Posts
-			( ! is_page() && get_option('A2A_SHARE_SAVE_display_in_posts')=='-1' ) || 					// All posts
-			( is_home() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Front page posts
-			( is_category() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Category posts (same as Front page option)
-			( is_tag() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Tag Cloud posts (same as Front page option)
-			( is_date() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  		// Date-based archives posts (same as Front page option)
-			( is_author() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Author posts (same as Front page option)
-			( is_search() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||  	// Search results posts (same as Front page option)
-			( $is_feed && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1' ) || 					// Posts in feed
+			// All posts
+			( ! is_page() && get_option('A2A_SHARE_SAVE_display_in_posts')=='-1' ) ||
+			// Front page posts		
+			( is_home() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||
+			// Category posts (same as Front page option)
+			( is_category() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||
+			// Tag Cloud posts (same as Front page option) - WP version 2.3+ only
+			( function_exists('is_tag') && is_tag() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||
+			// Date-based archives posts (same as Front page option)
+			( is_date() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||
+			// Author posts (same as Front page option)	
+			( is_author() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) ||
+			// Search results posts (same as Front page option)
+			( is_search() && get_option('A2A_SHARE_SAVE_display_in_posts_on_front_page')=='-1' ) || 
+			// Posts in feed
+			( $is_feed && (get_option('A2A_SHARE_SAVE_display_in_feed')=='-1' ) ||
 			
 			// Pages
-			( is_page() && get_option('A2A_SHARE_SAVE_display_in_pages')=='-1' ) ||						// Individual pages
-			( (strpos($content, '<!--nosharesave-->')!==false) )										// <!--nosharesave-->
+			// Individual pages
+			( is_page() && get_option('A2A_SHARE_SAVE_display_in_pages')=='-1' ) ||
+			// <!--nosharesave-->						
+			( (strpos($content, '<!--nosharesave-->')!==false) )
 		)
 		)
 	)	
@@ -421,6 +433,7 @@ function A2A_SHARE_SAVE_options_page() {
     	<input type="hidden" name="A2A_SHARE_SAVE_submit_hidden" value="Y">
     
         <table class="form-table">
+        	<?php if ($wp_version >= "2.6") { /* Must be on WP 2.6+ */ ?>
         	<tr valign="top">
             <th scope="row"><?php _e("Standalone Services", "add-to-any"); ?></th>
 			<td><fieldset>
@@ -452,6 +465,7 @@ function A2A_SHARE_SAVE_options_page() {
                 </ul>
             </fieldset></td>
             </tr>
+			<?php } ?>
         	<tr valign="top">
             <th scope="row"><?php _e("Button", "add-to-any"); ?></th>
             <td><fieldset>
@@ -770,6 +784,8 @@ function A2A_SHARE_SAVE_admin_head() {
 add_action('admin_head', 'A2A_SHARE_SAVE_admin_head');
 
 function A2A_SHARE_SAVE_add_menu_link() {
+	global $wp_version;
+		
 	if( current_user_can('manage_options') ) {
 		add_options_page(
 			'Add to Any: '. __("Share/Save", "add-to-any"). " " . __("Settings")
@@ -780,7 +796,10 @@ function A2A_SHARE_SAVE_add_menu_link() {
 		);
 		
 		// Load jQuery UI Sortable
-		wp_enqueue_script('jquery-ui-sortable');
+		// Must be on WP 2.6+
+		if ($wp_version >= "2.6") {
+			wp_enqueue_script('jquery-ui-sortable');
+		}
 	}
 }
 
