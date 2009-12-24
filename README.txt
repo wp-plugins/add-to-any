@@ -4,7 +4,7 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.9
-Stable tag: 0.9.9.4.4
+Stable tag: 0.9.9.4.5
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -12,7 +12,7 @@ Help readers share, bookmark, and email your posts and pages using any service, 
 
 Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing and usage history.
 
-<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo)
+<a href="http://www.addtoany.com/" title="Sharing and bookmarking button widget" target="_blank">Share Button</a> (demo)
 
 The E-mail tab makes it easy to share via Google Mail, Yahoo! Mail, Hotmail, AOL, and any other web-based e-mailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
 
@@ -121,6 +121,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your Add to Any menus
 
 == Changelog ==
+
+= .9.9.4.5 =
+* Fixing standalone services admin panel because version .9.9.4.4 broke this feature
+ * Standalone services are available for WordPress version 2.6+
 
 = .9.9.4.4 =
 * Backwards compatibile to version 2.0
