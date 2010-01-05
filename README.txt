@@ -4,7 +4,7 @@ Donate link: http://www.addtoany.com/contact/
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 2.9
-Stable tag: 0.9.9.4.5
+Stable tag: 0.9.9.4.6
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -122,6 +122,21 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
+= .9.9.4.6 =
+* Updated standalone service URIs and code names
+* Renamed service codes; must re-add if you have selected
+ * Ask.com
+ * Gmail
+ * Identi.ca
+ * Mozillaca
+* New standalone services
+ * Box.net
+ * Orkut
+ * Posterous
+* Removed standalone service
+ * Furl
+ * Yahoo! MyWeb
+
 = .9.9.4.5 =
 * Fixing standalone services admin panel because version .9.9.4.4 broke this feature
  * Standalone services are available for WordPress version 2.6+
@@ -156,7 +171,7 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 * New standalone services
  * DailyMe
  * Google Reader
- * Mozilla.ca
+ * Mozillaca
  * NewsTrust
  * Plurk
  * PrintFriendly
