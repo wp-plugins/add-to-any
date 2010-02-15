@@ -21,9 +21,11 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * Individual service links (like Sociable)
 * Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
 * Menu updated automatically
-* WordPress optimized, localized (English, Chinese, Spanish, Portuguese, Italian, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
+* WordPress optimized, localized (English, Chinese, Spanish, Japanese, Portuguese, Italian, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
 * Google Analytics integration
 * Many more publisher and user features!
+
+<a href="http://www.addtoany.com/privacy">Privacy Policy</a>
 
 See also:
 
