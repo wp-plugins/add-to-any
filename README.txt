@@ -2,8 +2,8 @@
 Contributors: micropat
 Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
-Tested up to: 2.9
-Stable tag: 0.9.9.4.9
+Tested up to: 3.0
+Stable tag: 0.9.9.5
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
@@ -175,12 +175,20 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
+= .9.9.5 =
+* Important note: If you are using the AddToAny Subscribe plugin, be sure to update that plugin to version 9.8+
+* Faster menu initialization
+* Switched to AddToAny's <a href="http://www.addtoany.com/blog/new-menu-api-examples-documentation/">new API spec</a>
+* Fixed localization
+* Also no longer outputs language strings if WordPress locale is set to "en" (or the default "en_US")
+* Updated AddToAny icon
+
 = .9.9.4.9 =
 * New params to customize the shared link and title for buttons/icons placed in theme file(s)
  * See plugin FAQ for template code
 * Ensure line break within feeds by enclosing AddToAny in a paragraph tag
-* Increase opacity on standalone icons by 10%
 * Offer CSS code in the settings panel to copy & paste into a stylesheet
+* Increase opacity on standalone icons by 10%
 * New standalone services
  * Google Buzz (using Google Reader endpoint - automatic update to come)
  * Blip

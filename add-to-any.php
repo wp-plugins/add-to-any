@@ -3,13 +3,11 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.4.9
+Version: .9.9.5
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
 
-if( !isset($A2A_javascript) )
-	$A2A_javascript = '';
 if( !isset($A2A_locale) )
 	$A2A_locale = '';
 
@@ -166,25 +164,31 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	// If not a feed
 	if( !is_feed() ) {
 	
-		global $A2A_javascript, $A2A_SHARE_SAVE_external_script_called;
-		if( $A2A_javascript == '' || !$A2A_SHARE_SAVE_external_script_called ) {
-			$external_script_call = '</script><script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>';
+		global $A2A_SHARE_SAVE_external_script_called;
+		if ( ! $A2A_SHARE_SAVE_external_script_called ) {
+			// Enternal script call + initial JS + set-once variables
+			$initial_js = 'var a2a_config = a2a_config || {};' . "\n";
+			$additional_js = get_option('A2A_SHARE_SAVE_additional_js_variables');
+			$external_script_call = ((get_option('A2A_SHARE_SAVE_onclick')=='1') ? 'a2a_config.onclick=1;' . "\n" : '')
+				. ((get_option('A2A_SHARE_SAVE_hide_embeds')=='-1') ? 'a2a_config.hide_embeds=0;' . "\n" : '')
+				. ((get_option('A2A_SHARE_SAVE_show_title')=='1') ? 'a2a_config.show_title=1;' . "\n" : '')
+				. (($additional_js) ? stripslashes($additional_js) . "\n" : '')
+				. '</script><script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>';
 			$A2A_SHARE_SAVE_external_script_called = true;
 		}
-		else
-			$external_script_call = 'a2a_init("page");</script>';
-		$A2A_javascript .= '<script type="text/javascript">' . "\n"
+		else {
+			$external_script_call = 'a2a.init("page");</script>';
+			$initial_js = '';
+		}
+			
+		$button_javascript = "\n" . '<script type="text/javascript">' . "\n"
+			. $initial_js
 			. A2A_menu_locale()
-			. 'a2a_linkname="' . js_escape($linkname) . '";' . "\n"
-			. 'a2a_linkurl="' . $linkurl . '";' . "\n"
-			. ((get_option('A2A_SHARE_SAVE_onclick')=='1') ? 'a2a_onclick=1;' . "\n" : '')
-			. ((get_option('A2A_SHARE_SAVE_hide_embeds')=='-1') ? 'a2a_hide_embeds=0;' . "\n" : '')
-			. ((get_option('A2A_SHARE_SAVE_show_title')=='1') ? 'a2a_show_title=1;' . "\n" : '')
-			. (($A2A_javascript == '' || !$A2A_SHARE_SAVE_external_script_called) ? stripslashes(get_option('A2A_SHARE_SAVE_additional_js_variables')) . "\n" : '')
+			. 'a2a_config.linkname="' . js_escape($linkname) . '";' . "\n"
+			. 'a2a_config.linkurl="' . $linkurl . '";' . "\n"
 			. $external_script_call . "\n\n";
 		
-		remove_action('wp_footer', 'A2A_menu_javascript');
-		add_action('wp_footer', 'A2A_menu_javascript');
+		$button_html .= $button_javascript;
 	
 	}
 	
@@ -194,18 +198,11 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 		echo $button_html;
 }
 
-if (!function_exists('A2A_menu_javascript')) {
-	function A2A_menu_javascript() {
-		global $A2A_javascript;
-		echo $A2A_javascript;
-	}
-}
-
 if (!function_exists('A2A_menu_locale')) {
-	function A2A_menu_locale() {return false;
+	function A2A_menu_locale() {
 		global $A2A_locale;
-		echo get_locale();
-		if( get_locale() == 'en_US' || $A2A_locale != '' )
+		$locale = get_locale();
+		if($locale  == 'en_US' || $locale == 'en' || $A2A_locale != '' )
 			return false;
 			
 		$A2A_locale = 'a2a_localize = {
