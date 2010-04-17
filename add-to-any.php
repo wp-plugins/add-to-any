@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5
+Version: .9.9.5.1
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -27,7 +27,7 @@ function A2A_SHARE_SAVE_textdomain() {
 		$A2A_SHARE_SAVE_plugin_url_path.'/languages',
 		$A2A_SHARE_SAVE_plugin_basename.'/languages');
 }
-add_action('init', 'A2A_SHARE_SAVE_textdomain');
+add_filter('init', 'A2A_SHARE_SAVE_textdomain');
 
 function A2A_SHARE_SAVE_link_vars($linkname = FALSE, $linkurl = FALSE) {
 	global $post;
@@ -253,6 +253,12 @@ if (!function_exists('A2A_wp_footer_check')) {
 }
 
 
+function A2A_SHARE_SAVE_remove_from_content($content) {
+	remove_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+	return $content;
+}
+
+
 function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	$is_feed = is_feed();
 	
@@ -317,7 +323,11 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	return $content;
 }
 
-add_action('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+
+// Excerpts use strip_tags() for the_content, so cancel if Excerpt and append to the_excerpt instead
+add_filter('get_the_excerpt', 'A2A_SHARE_SAVE_remove_from_content', 9);
+add_filter('the_excerpt', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
 
 
 function A2A_SHARE_SAVE_button_css($no_style_tag) {
@@ -370,7 +380,7 @@ function A2A_SHARE_SAVE_button_css($no_style_tag) {
 }
 
 if (get_option('A2A_SHARE_SAVE_inline_css') != '-1') {
-	add_action('wp_head', 'A2A_SHARE_SAVE_button_css');
+	add_filter('wp_head', 'A2A_SHARE_SAVE_button_css');
 }
 
 
@@ -808,7 +818,7 @@ function A2A_SHARE_SAVE_admin_head() {
 	}
 }
 
-add_action('admin_head', 'A2A_SHARE_SAVE_admin_head');
+add_filter('admin_head', 'A2A_SHARE_SAVE_admin_head');
 
 function A2A_SHARE_SAVE_add_menu_link() {
 	global $wp_version;
@@ -830,7 +840,7 @@ function A2A_SHARE_SAVE_add_menu_link() {
 	}
 }
 
-add_action('admin_menu', 'A2A_SHARE_SAVE_add_menu_link');
+add_filter('admin_menu', 'A2A_SHARE_SAVE_add_menu_link');
 
 // Place in Settings Option List
 function A2A_SHARE_SAVE_actlinks( $links, $file ){

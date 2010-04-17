@@ -1,15 +1,15 @@
 === AddToAny: Share/Bookmark/Email Button ===
 Contributors: micropat
-Tags: bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, sharing, share, sharethis, saving, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 3.0
-Stable tag: 0.9.9.5
+Stable tag: 0.9.9.5.1
 
 Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
 
 == Description ==
 
-Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing and usage history.
+Help readers **share**, **save**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Google Buzz, Digg, Delicious, and over 100 more social bookmarking and sharing sites. The button comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing and usage history.
 
 <a href="http://www.addtoany.com/" title="Sharing and bookmarking button widget" target="_blank">Share Button</a> (demo)
 
@@ -167,13 +167,18 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Screenshots ==
 
-1. AddToAny Share/Save button, featuring the Open <a href="http://www.shareicon.com/">Share Icon</a>
+1. AddToAny Share/Save button, featuring the Open Share Icon
 2. Drop-down menu that appears instantly when visitors use the share button
 3. E-mail tab, with direct links to the most popular web-based e-mailers' auto-filled Compose page, a web-based sender for use with any e-mail address, and a link for desktop email clients
 4. Settings panel
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.5.1 =
+* Fixed issue with excerpts (JavaScript text output within excerpts since .9.9.5)
+* Button(s) will now display below excerpts (per the fix above)
+* Replaced depreciating add/remove action functions with synonymous filter functions
 
 = .9.9.5 =
 * Important note: If you are using the AddToAny Subscribe plugin, be sure to update that plugin to version 9.8+
