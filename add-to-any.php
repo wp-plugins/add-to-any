@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5.1
+Version: .9.9.5.2
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -42,9 +42,38 @@ function A2A_SHARE_SAVE_link_vars($linkname = FALSE, $linkurl = FALSE) {
 
 include_once('services.php');
 
+// Combine ADDTOANY_SHARE_SAVE_ICONS and ADDTOANY_SHARE_SAVE_BUTTON
+function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
+	
+	if ( ! isset($args['html_container_open']))
+		$args['html_container_open'] = "<ul class=\"addtoany_list\">";
+	if ( ! isset($args['html_container_close']))
+		$args['html_container_close'] = "</ul>";
+	// Close container element in ADDTOANY_SHARE_SAVE_BUTTON, not prematurely in ADDTOANY_SHARE_SAVE_ICONS
+	$html_container_close = $args['html_container_close']; // Cache for _BUTTON
+	unset($args['html_container_close']); // Avoid passing to ADDTOANY_SHARE_SAVE_ICONS since set in _BUTTON
+				
+	if ( ! isset($args['html_wrap_open']))
+		$args['html_wrap_open'] = "<li>";
+	if ( ! isset($args['html_wrap_close']))
+		$args['html_wrap_close'] = "</li>";
+	
+    $kit_html = ADDTOANY_SHARE_SAVE_ICONS($args);
+	
+	$args['html_container_close'] = $html_container_close; // Re-set because unset above for _ICONS
+	unset($args['html_container_open']);  // Avoid passing to ADDTOANY_SHARE_SAVE_BUTTON since set in _ICONS
+    
+	$kit_html .= ADDTOANY_SHARE_SAVE_BUTTON($args);
+	
+	if($args['output_later'])
+		return $kit_html;
+	else
+		echo $kit_html;
+}
+
 function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 	if( $args )
-		extract( $args ); // output_later, html_wrap_open, html_wrap_close, linkname, linkurl
+		extract( $args ); // output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
 	extract(A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
 		
@@ -55,7 +84,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 	
 	$active_services = get_option('A2A_SHARE_SAVE_active_services');
 	
-	$ind_html = "";
+	$ind_html = "" . $html_container_open;
 	
 	if( !$active_services )
 		$active_services = Array();
@@ -98,6 +127,8 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		$ind_html .= apply_filters('addtoany_link', $link);
 	}
 	
+	$ind_html .= $html_container_close;
+	
 	if($output_later)
 		return $ind_html;
 	else
@@ -112,7 +143,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
 	
 	if( $args )
-		extract( $args ); // output_later, html_wrap_open, html_wrap_close, linkname, linkurl
+		extract( $args ); // output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
 	extract(A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
 	
@@ -155,11 +186,11 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Bookmark"/>';
 	}
 	
-	$button_html = $html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
+	$button_html = $html_container_open.$html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
 		.'linkurl='.$linkurl_enc
 		.'&amp;linkname='.$linkname_enc
 		.'"' . $style . $button_target
-		.'>'.$button.'</a>'.$html_wrap_close;
+		.'>'.$button.'</a>'.$html_wrap_close.$html_container_close;
 	
 	// If not a feed
 	if( !is_feed() ) {
@@ -299,27 +330,23 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	)	
 		return $content;
 	
-	$icons_args = array(
+	$kit_args = array(
 		"output_later" => true,
+		"html_container_open" => ($is_feed) ? "" : "<ul class=\"addtoany_list\">",
+		"html_container_close" => ($is_feed) ? "" : "</ul>",
 		"html_wrap_open" => ($is_feed) ? "" : "<li>",
 		"html_wrap_close" => ($is_feed) ? " " : "</li>",
 	);
 	
-	$A2A_SHARE_SAVE_options = array(
-		"output_later" => true,
-		"html_wrap_open" => ($is_feed) ? "" : "<li>",
-		"html_wrap_close" => ($is_feed) ? "" : "</li>",
-	);
-	
 	if ( ! $is_feed ) {
-		$container_wrap_open = '<div class="addtoany_share_save_container"><ul class="addtoany_list">';
-		$container_wrap_close = '</ul></div>';
+		$container_wrap_open = '<div class="addtoany_share_save_container">';
+		$container_wrap_close = '</div>';
 	} else {
 		$container_wrap_open = '<p>';
 		$container_wrap_close = '</p>';
 	}
 	
-	$content .= $container_wrap_open.ADDTOANY_SHARE_SAVE_ICONS( $icons_args ).ADDTOANY_SHARE_SAVE_BUTTON( $A2A_SHARE_SAVE_options ).$container_wrap_close;
+	$content .= $container_wrap_open.ADDTOANY_SHARE_SAVE_KIT($kit_args).$container_wrap_close;
 	return $content;
 }
 
@@ -363,18 +390,31 @@ function A2A_SHARE_SAVE_button_css($no_style_tag) {
 	}
 	ul.addtoany_list a img{
 		opacity:.7;
-		-moz-opacity:.7;
+<?php if ($no_style_tag) { /* IE support for opacity */ ?>
 		filter:alpha(opacity=70);
+<?php } ?>
 	}
 	ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
 		opacity:1;
-		-moz-opacity:1;
+<?php if ($no_style_tag) { /* IE support for opacity */ ?>
 		filter:alpha(opacity=100);
+<?php } ?>
 	}
 <?php /* Must declare after "ul.addtoany_list img": */ ?>
 	a.addtoany_share_save img{border:0;width:auto;height:auto;}
 <?php if ( ! $no_style_tag) { ?>
 </style>
+<?php /* IE support for opacity: */ ?>
+<!--[if IE] >
+<style type="text/css">
+ul.addtoany_list a img{
+	filter:alpha(opacity=70);
+}
+ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
+	filter:alpha(opacity=100);
+}
+</style>
+<![endif]-->
 <?php
 	}
 }
@@ -574,9 +614,9 @@ function A2A_SHARE_SAVE_options_page() {
                 <div class="setting-description">
                 	<strong>*</strong> <?php _e("If unchecked, be sure to place the following code in <a href=\"theme-editor.php\">your template pages</a> (within <code>index.php</code>, <code>single.php</code>, and/or <code>page.php</code>)", "add-to-any"); ?>: <span id="addtoany_show_template_button_code" class="button-secondary">&#187;</span>
                     <div id="addtoany_template_button_code">
-                      <code>&lt;?php echo '&lt;ul class=&quot;addtoany_list&quot;&gt;';  if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )      ADDTOANY_SHARE_SAVE_ICONS( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )      ADDTOANY_SHARE_SAVE_BUTTON( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  echo '&lt;/ul&gt;'; ?&gt;</code>
+                      <code>&lt;?php if( function_exists('ADDTOANY_SHARE_SAVE_KIT') ) { ADDTOANY_SHARE_SAVE_KIT(); } ?&gt;</code>
                     </div>
-                    <noscript<code>&lt;?php echo '&lt;ul class=&quot;addtoany_list&quot;&gt;';  if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )      ADDTOANY_SHARE_SAVE_ICONS( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  if( function_exists('ADDTOANY_SHARE_SAVE_BUTTON') )      ADDTOANY_SHARE_SAVE_BUTTON( array(&quot;html_wrap_open&quot; =&gt; &quot;&lt;li&gt;&quot;, &quot;html_wrap_close&quot; =&gt; &quot;&lt;/li&gt;&quot;) );  echo '&lt;/ul&gt;'; ?&gt;</code></noscript>
+                    <noscript><code>&lt;?php if( function_exists('ADDTOANY_SHARE_SAVE_KIT') ) { ADDTOANY_SHARE_SAVE_KIT(); } ?&gt;</code></noscript>
                 </div>
             </fieldset></td>
             </tr>
@@ -629,7 +669,7 @@ function A2A_SHARE_SAVE_options_page() {
                     </p>
                     <label for="A2A_SHARE_SAVE_additional_js_variables">
                     	<p><?php _e('Below you can set special JavaScript variables to apply to each Share/Save menu.', 'add-to-any'); ?>
-                    	<?php _e("Advanced users might want to explore AddToAny's <a href=\"http://www.addtoany.com/buttons/api/\" target=\"_blank\">JavaScript API</a>.", "add-to-any"); ?></p>
+                    	<?php _e("Advanced users might want to explore AddToAny's <a href=\"http://www.addtoany.com/buttons/customize/\" target=\"_blank\">additional options</a>.", "add-to-any"); ?></p>
 					</label>
                     <p>
                 		<textarea name="A2A_SHARE_SAVE_additional_js_variables" id="A2A_SHARE_SAVE_additional_js_variables" class="code" style="width: 98%; font-size: 12px;" rows="6" cols="50"><?php echo stripslashes(get_option('A2A_SHARE_SAVE_additional_js_variables')); ?></textarea>
