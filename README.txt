@@ -133,11 +133,11 @@ To align center:
 
 = How can I remove a button from individual posts and pages? =
 
-Type the following tag into the page or post that you do not want the button to appear in: `<!--nosharesave-->`
+Insert the following tag into the page or post (HTML tab) that you do not want the button to appear in: `<!--nosharesave-->`
 
 = How can I force the button to appear in individual posts and pages? =
 
-If your button isn't already set up to appear (it is by default), type the following tag into the page or post that you want the button to appear in: `<!--sharesave-->`
+If your button isn't already set up to appear (it is by default), insert the following tag into the page or post (HTML tab) that you want the button to appear in: `<!--sharesave-->`
 
 = Why doesn't Facebook use the page title and how can I set the image Facebook uses? =
 
