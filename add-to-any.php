@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5.2
+Version: .9.9.5.3
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -194,6 +194,10 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	
 	// If not a feed
 	if( !is_feed() ) {
+		if (function_exists('is_ssl') ) // @since 2.6.0
+			$http_or_https = (is_ssl()) ? 'https' : 'http';
+		else
+			$http_or_https = 'http';
 	
 		global $A2A_SHARE_SAVE_external_script_called;
 		if ( ! $A2A_SHARE_SAVE_external_script_called ) {
@@ -204,7 +208,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 				. ((get_option('A2A_SHARE_SAVE_hide_embeds')=='-1') ? 'a2a_config.hide_embeds=0;' . "\n" : '')
 				. ((get_option('A2A_SHARE_SAVE_show_title')=='1') ? 'a2a_config.show_title=1;' . "\n" : '')
 				. (($additional_js) ? stripslashes($additional_js) . "\n" : '')
-				. '</script><script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>';
+				. '</script><script type="text/javascript" src="' . $http_or_https . '://static.addtoany.com/menu/page.js"></script>';
 			$A2A_SHARE_SAVE_external_script_called = true;
 		}
 		else {
@@ -283,6 +287,13 @@ if (!function_exists('A2A_wp_footer_check')) {
 	}  
 }
 
+function A2A_SHARE_SAVE_auto_placement($title) {
+	global $A2A_SHARE_SAVE_auto_placement_ready;
+	$A2A_SHARE_SAVE_auto_placement_ready = true;
+	
+	return $title;
+}
+
 
 function A2A_SHARE_SAVE_remove_from_content($content) {
 	remove_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
@@ -291,7 +302,11 @@ function A2A_SHARE_SAVE_remove_from_content($content) {
 
 
 function A2A_SHARE_SAVE_to_bottom_of_content($content) {
+	global $A2A_SHARE_SAVE_auto_placement_ready;
 	$is_feed = is_feed();
+	
+	if( ! $A2A_SHARE_SAVE_auto_placement_ready)
+		return $content;
 	
 	if ( 
 		( 
@@ -350,6 +365,8 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	return $content;
 }
 
+// Only automatically output button code after the_title has been called - to avoid premature calling from misc. the_content filters
+add_filter('the_title', 'A2A_SHARE_SAVE_auto_placement', 9);
 add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
 
 // Excerpts use strip_tags() for the_content, so cancel if Excerpt and append to the_excerpt instead

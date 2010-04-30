@@ -1,11 +1,11 @@
 === AddToAny: Share/Bookmark/Email Button ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, wpmu, addtoany, add, any
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, icon, icons, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 3.0
-Stable tag: 0.9.9.5.2
+Stable tag: 0.9.9.5.3
 
-Help readers share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Digg, Delicious and over 100 more.
+Help readers share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg, Delicious and many more.
 
 == Description ==
 
@@ -21,8 +21,8 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * Individual service links (like Sociable)
 * Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
 * Menu updated automatically
-* WordPress optimized, localized (English, Chinese, Spanish, Japanese, Portuguese, Italian, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
+* WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
 * Many more publisher and user features!
 
 <a href="http://www.addtoany.com/share_save" title="Share" target="_blank">Share this plugin</a>
@@ -168,6 +168,14 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.5.3 =
+* SSL - HTTPS support
+* Button will display automatically below posts (by default) only after the_title has been called
+ * Avoids premature calling from miscellaneous the_content filters from themes and other plugins
+ * Thesis theme workaround
+* French translation (by Julien)
+* Belarusian translation update (by <a href="http://pc.de/" target="_blank">Marcis G</a>)
 
 = .9.9.5.2 =
 * W3C XHTML validation fix (invalid from .9.9.5)
@@ -365,7 +373,7 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 * Fixed display when all standalone services are removed in admin
 * Services label renamed Standalone Services for clarity
 * Updates to Danish translation
-* Added Belarusian translation
+* Added Belarusian translation (by <a href="http://pc.de/" target="_blank">Marcis G</a>)
 
 = .9.9.2.1 =
 * Feed icons shown inline, no longer displayed in unordered list

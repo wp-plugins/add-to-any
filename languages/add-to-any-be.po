@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-22 17:36-0800\n"
+"POT-Creation-Date: 2010-04-23 18:37-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pat <no@no.com>\n"
-"Language-Team: Marcis Gasuns <mrilyuha@gmail.com>\n"
+"Language-Team: Marcis Gasuns <by.marcis@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -116,7 +116,7 @@ msgstr "Дадаць/Выдаліць паслугі"
 
 #: add-to-any.php:503
 msgid "Choose the services you want below. &nbsp;Click a chosen service again to remove. &nbsp;Reorder services by dragging and dropping as they appear above."
-msgstr ""
+msgstr "Выберите услуги, которые вы хотите ниже. &nbsp;Нажмите выбранной услуги снова, чтобы удалить.&nbsp; Упорядочить услуг с помощью перетаскивания, как они появляются выше."
 
 #: add-to-any.php:530
 msgid "Button"
@@ -144,7 +144,7 @@ msgstr "Паказаць клавішу Адкрыць/Захаваць уніз
 
 #: add-to-any.php:607
 msgid "Display Share/Save button at the bottom of posts in the feed"
-msgstr ""
+msgstr "Отображать Поделиться/Сохранить в нижней части сообщения в ленте"
 
 #: add-to-any.php:611
 msgid "Display Share/Save button at the bottom of pages"
@@ -228,11 +228,11 @@ msgstr "Як і гэты плагін?"
 
 #: add-to-any.php:704
 msgid "<a href=\"http://wordpress.org/extend/plugins/add-to-any/\">Give it a good rating</a> on WordPress.org."
-msgstr ""
+msgstr "<a href=\"http://wordpress.org/extend/plugins/add-to-any/\">Дайте хороший рейтинг</a> на WordPress.org."
 
 #: add-to-any.php:705
 msgid "<a href=\"http://www.addtoany.com/share_save?linkname=WordPress%20Share%20%2F%20Bookmark%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F\">Share it</a> with your friends."
-msgstr ""
+msgstr "<a href=\"http://www.addtoany.com/share_save?linkname=WordPress%20Share%20%2F%20Bookmark%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F\">Share it</a>с друзьями."
 
 #: add-to-any.php:707
 msgid "Need support?"
