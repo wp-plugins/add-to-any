@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, icon, icons, wpmu, addtoany, add, any
 Requires at least: 2.0
 Tested up to: 3.0
-Stable tag: 0.9.9.5.3
+Stable tag: 0.9.9.5.4
 
 Help readers share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg, Delicious and many more.
 
@@ -168,6 +168,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.5.4 =
+* Inline CSS moved to external stylesheet
+* CSS minification
 
 = .9.9.5.3 =
 * SSL - HTTPS support

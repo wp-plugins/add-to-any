@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5.3
+Version: .9.9.5.4
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -407,37 +407,43 @@ function A2A_SHARE_SAVE_button_css($no_style_tag) {
 	}
 	ul.addtoany_list a img{
 		opacity:.7;
-<?php if ($no_style_tag) { /* IE support for opacity */ ?>
-		filter:alpha(opacity=70);
-<?php } ?>
 	}
 	ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
 		opacity:1;
-<?php if ($no_style_tag) { /* IE support for opacity */ ?>
-		filter:alpha(opacity=100);
-<?php } ?>
 	}
 <?php /* Must declare after "ul.addtoany_list img": */ ?>
 	a.addtoany_share_save img{border:0;width:auto;height:auto;}
 <?php if ( ! $no_style_tag) { ?>
 </style>
-<?php /* IE support for opacity: */ ?>
-<!--[if IE] >
-<style type="text/css">
-ul.addtoany_list a img{
-	filter:alpha(opacity=70);
-}
-ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
-	filter:alpha(opacity=100);
-}
-</style>
-<![endif]-->
 <?php
+		A2A_SHARE_SAVE_button_css_IE();
 	}
 }
 
+function A2A_SHARE_SAVE_button_css_IE() {
+/* IE support for opacity: */ ?>
+<!--[if IE]>
+<style type="text/css">
+ul.addtoany_list a img{filter:alpha(opacity=70)}
+ul.addtoany_list a:hover img,ul.addtoany_list a.addtoany_share_save img{filter:alpha(opacity=100)}
+</style>
+<![endif]-->
+<?php
+
+}
+
+// Use stylesheet?
 if (get_option('A2A_SHARE_SAVE_inline_css') != '-1') {
-	add_filter('wp_head', 'A2A_SHARE_SAVE_button_css');
+	if (function_exists('wp_enqueue_style')) {
+		// WP version 2.1+ only
+		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.0');
+	} else {
+		// Fallback to inline CSS for WP 2.0
+		add_filter('wp_head', 'A2A_SHARE_SAVE_button_css');
+	}
+	
+	// Always output conditional inline CSS stylesheet for IE
+	add_filter('wp_head', 'A2A_SHARE_SAVE_button_css_IE');
 }
 
 
@@ -698,7 +704,7 @@ function A2A_SHARE_SAVE_options_page() {
 					<label for="A2A_SHARE_SAVE_inline_css">
 						<input name="A2A_SHARE_SAVE_inline_css" 
                         	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_inline_css')!='-1') echo ' checked="checked"'; ?> value="1"/>
-                	<?php _e('Use inline CSS', 'add-to-any'); ?> <strong>**</strong>
+                	<?php _e('Use CSS stylesheet', 'add-to-any'); ?> <strong>**</strong>
 					</label>
 					<br/><br/>
 	                <div class="setting-description">
