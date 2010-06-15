@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5.4
+Version: .9.9.5.5
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -72,10 +72,9 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 }
 
 function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
-	if( $args )
-		extract( $args ); // output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
+	// $args array: output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
-	extract(A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
+	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($args['linkname'], $args['linkurl']));; // linkname_enc, etc.
 		
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
 	
@@ -84,7 +83,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 	
 	$active_services = get_option('A2A_SHARE_SAVE_active_services');
 	
-	$ind_html = "" . $html_container_open;
+	$ind_html = "" . $args['html_container_open'];
 	
 	if( !$active_services )
 		$active_services = Array();
@@ -102,8 +101,8 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		if (isset($service['href'])) {
 			$custom_service = TRUE;
 			$href = $service['href'];
-			$href = str_replace('A2A_LINKURL', $linkurl_enc, $href);
-			$href = str_replace('A2A_LINKNAME', $linkname_enc, $href);
+			$href = str_replace('A2A_LINKURL', $args['linkurl_enc'], $href);
+			$href = str_replace('A2A_LINKNAME', $args['linkname_enc'], $href);
 		} else {
 			$custom_service = FALSE;
 		}
@@ -117,35 +116,34 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		$width = (isset($service['icon_width'])) ? $service['icon_width'] : '16';
 		$height = (isset($service['icon_height'])) ? $service['icon_height'] : '16'; 
 		
-		$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
+		$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $args['linkurl_enc'] . "&amp;linkname=" . $args['linkname_enc'];
 		$src = ($custom_service) ? $icon : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
 		
-		$link = $html_wrap_open."<a href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
+		$link = $args['html_wrap_open']."<a href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
 		$link .= "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
-		$link .= "</a>".$html_wrap_close;
+		$link .= "</a>".$args['html_wrap_close'];
 		
 		$ind_html .= apply_filters('addtoany_link', $link);
 	}
 	
-	$ind_html .= $html_container_close;
+	$ind_html .= $args['html_container_close'];
 	
-	if($output_later)
+	if (isset($args['output_later']))
 		return $ind_html;
 	else
 		echo $ind_html;
 }
 
 function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
+	
+	// $args array = output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
 	
 	// Make available services extensible via plugins, themes (functions.php), etc.
 	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
-	
-	if( $args )
-		extract( $args ); // output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
-	extract(A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
+	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($args['linkname'], $args['linkurl']));; // linkname_enc, etc.
 	
 	/* AddToAny button */
 	
@@ -186,11 +184,11 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Bookmark"/>';
 	}
 	
-	$button_html = $html_container_open.$html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
-		.'linkurl='.$linkurl_enc
-		.'&amp;linkname='.$linkname_enc
+	$button_html = $args['html_container_open'].$args['html_wrap_open'].'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save?'
+		.'linkurl='.$args['linkurl_enc']
+		.'&amp;linkname='.$args['linkname_enc']
 		.'"' . $style . $button_target
-		.'>'.$button.'</a>'.$html_wrap_close.$html_container_close;
+		.'>'.$button.'</a>'.$args['html_wrap_close'].$args['html_container_close'];
 	
 	// If not a feed
 	if( !is_feed() ) {
@@ -201,14 +199,20 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 	
 		global $A2A_SHARE_SAVE_external_script_called;
 		if ( ! $A2A_SHARE_SAVE_external_script_called ) {
+			// Use local cache?
+			$cache = (get_option('A2A_SHARE_SAVE_cache')=='1') ? TRUE : FALSE;
+			$upload_dir = wp_upload_dir();
+			$static_server = ($cache) ? $upload_dir['baseurl'] . '/addtoany' : $http_or_https . '://static.addtoany.com/menu';
+			
 			// Enternal script call + initial JS + set-once variables
 			$initial_js = 'var a2a_config = a2a_config || {};' . "\n";
 			$additional_js = get_option('A2A_SHARE_SAVE_additional_js_variables');
-			$external_script_call = ((get_option('A2A_SHARE_SAVE_onclick')=='1') ? 'a2a_config.onclick=1;' . "\n" : '')
+			$external_script_call = (($cache) ? 'a2a_config.static_server="' . $static_server . '";' . "\n" : '' )
+				. ((get_option('A2A_SHARE_SAVE_onclick')=='1') ? 'a2a_config.onclick=1;' . "\n" : '')
 				. ((get_option('A2A_SHARE_SAVE_hide_embeds')=='-1') ? 'a2a_config.hide_embeds=0;' . "\n" : '')
 				. ((get_option('A2A_SHARE_SAVE_show_title')=='1') ? 'a2a_config.show_title=1;' . "\n" : '')
 				. (($additional_js) ? stripslashes($additional_js) . "\n" : '')
-				. '</script><script type="text/javascript" src="' . $http_or_https . '://static.addtoany.com/menu/page.js"></script>';
+				. '</script><script type="text/javascript" src="' . $static_server . '/page.js"></script>';
 			$A2A_SHARE_SAVE_external_script_called = true;
 		}
 		else {
@@ -219,15 +223,15 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
 		$button_javascript = "\n" . '<script type="text/javascript">' . "\n"
 			. $initial_js
 			. A2A_menu_locale()
-			. 'a2a_config.linkname="' . js_escape($linkname) . '";' . "\n"
-			. 'a2a_config.linkurl="' . $linkurl . '";' . "\n"
+			. 'a2a_config.linkname="' . js_escape($args['linkname']) . '";' . "\n"
+			. 'a2a_config.linkurl="' . $args['linkurl'] . '";' . "\n"
 			. $external_script_call . "\n\n";
 		
 		$button_html .= $button_javascript;
 	
 	}
 	
-	if($output_later)
+	if (isset($args['output_later']))
 		return $button_html;
 	else
 		echo $button_html;
@@ -448,6 +452,48 @@ if (get_option('A2A_SHARE_SAVE_inline_css') != '-1') {
 
 
 
+/*****************************
+		CACHE ADDTOANY
+******************************/
+
+function A2A_SHARE_SAVE_refresh_cache() {
+	$contents = wp_remote_fopen("http://www.addtoany.com/ext/updater/files_list/");
+	$file_urls = explode("\n", $contents, 20);
+	$upload_dir = wp_upload_dir();
+	
+	// Make directory if needed
+	if ( ! wp_mkdir_p( dirname( $upload_dir['basedir'] . '/addtoany/foo' ) ) ) {
+		$message = sprintf( __( 'Unable to create directory %s. Is its parent directory writable by the server?' ), dirname( $new_file ) );
+		return array( 'error' => $message );
+	}
+	
+	if (count($file_urls) > 0) {
+		for ($i = 0; $i < count($file_urls); $i++) {
+			// Download files
+			$file_url = $file_urls[$i];
+			$file_name = substr(strrchr($file_url, '/'), 1, 99);
+			
+			// Place files in uploads/addtoany directory
+			wp_get_http($file_url, $upload_dir['basedir'] . '/addtoany/' . $file_name);
+		}
+	}
+}
+
+function A2A_SHARE_SAVE_schedule_cache() {
+	// WP "Cron" requires WP version 2.1
+	$timestamp = wp_next_scheduled('A2A_SHARE_SAVE_refresh_cache');
+	if ( ! $timestamp) {
+		// Only schedule if currently unscheduled
+		wp_schedule_event(time(), 'daily', 'A2A_SHARE_SAVE_refresh_cache');
+	}
+}
+
+function A2A_SHARE_SAVE_unschedule_cache() {
+	$timestamp = wp_next_scheduled('A2A_SHARE_SAVE_refresh_cache');
+	wp_unschedule_event($timestamp, 'A2A_SHARE_SAVE_refresh_cache');
+}
+
+
 
 /*****************************
 		OPTIONS
@@ -475,6 +521,15 @@ function A2A_SHARE_SAVE_options_page() {
 		update_option( 'A2A_SHARE_SAVE_button_custom', $_POST['A2A_SHARE_SAVE_button_custom'] );
 		update_option( 'A2A_SHARE_SAVE_additional_js_variables', trim($_POST['A2A_SHARE_SAVE_additional_js_variables']) );
 		update_option( 'A2A_SHARE_SAVE_inline_css', ($_POST['A2A_SHARE_SAVE_inline_css']=='1') ? '1':'-1' );
+		update_option( 'A2A_SHARE_SAVE_cache', ($_POST['A2A_SHARE_SAVE_cache']=='1') ? '1':'-1' );
+		
+		// Schedule cache refresh?
+		if ($_POST['A2A_SHARE_SAVE_cache']=='1') {
+			A2A_SHARE_SAVE_schedule_cache();
+			A2A_SHARE_SAVE_refresh_cache();
+		} else {
+			A2A_SHARE_SAVE_unschedule_cache();
+		}
 		
 		// Store desired text if 16 x 16px buttons or text-only is chosen:
 		if( get_option('A2A_SHARE_SAVE_button') == 'favicon.png|16|16' )
@@ -699,19 +754,33 @@ function A2A_SHARE_SAVE_options_page() {
 					</p>
                     <?php if( get_option('A2A_SHARE_SAVE_additional_js_variables')!='' ) { ?>
                     <label for="A2A_SHARE_SAVE_additional_js_variables" class="setting-description"><?php _e("<strong>Note</strong>: If you're adding new code, be careful not to accidentally overwrite any previous code.</label>", 'add-to-any'); ?>
-                    <br/><br/>
-					<?php } ?>
-					<label for="A2A_SHARE_SAVE_inline_css">
-						<input name="A2A_SHARE_SAVE_inline_css" 
+					<?php } ?>	
+			</fieldset></td>
+            </tr>
+			<tr valign="top">
+            <th scope="row"><?php _e('Advanced Options', 'add-to-any'); ?></th>
+            <td><fieldset>
+            	<p>
+	            	<label for="A2A_SHARE_SAVE_inline_css">
+						<input name="A2A_SHARE_SAVE_inline_css" id="A2A_SHARE_SAVE_inline_css"
                         	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_inline_css')!='-1') echo ' checked="checked"'; ?> value="1"/>
                 	<?php _e('Use CSS stylesheet', 'add-to-any'); ?> <strong>**</strong>
 					</label>
-					<br/><br/>
+				</p>
+				<!--<p>
+					<label for="A2A_SHARE_SAVE_cache">
+						<input name="A2A_SHARE_SAVE_cache" id="A2A_SHARE_SAVE_cache" 
+                        	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_cache')=='1') echo ' checked="checked"'; ?> value="1"/>
+                	<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>***</strong>
+					</label>
+				</p>-->
 	                <div class="setting-description">
 	                	<strong>**</strong> <?php _e("If unchecked, be sure to place the CSS in your theme's stylesheet:", "add-to-any"); ?> <span id="addtoany_show_css_code" class="button-secondary">&#187;</span>
 						<p id="addtoany_css_code">
 							<textarea class="code" style="width:98%;font-size:12px" rows="12" cols="50"><?php A2A_SHARE_SAVE_button_css(TRUE) ?></textarea>
 						</p>
+						<br/>
+						<!--<strong>***</strong> <?php _e("Only consider for high-traffic sites. Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>-->
 					</div>
             </fieldset></td>
             </tr>
