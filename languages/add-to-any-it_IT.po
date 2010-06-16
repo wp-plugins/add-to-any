@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: add-to-any in italiano\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 13:49-0800\n"
+"POT-Creation-Date: 2010-06-16 12:08-0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pat <no@no.com>\n"
-"Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
+"Language-Team: Gianni Diurno | gidibao.net <gidibao[at]gmail[dot]com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,7 +90,7 @@ msgstr "Il tuo tema deve essere aggiornato. Per apportare le modifiche necessari
 #: add-to-any.php:466
 #, php-format
 msgid "Unable to create directory %s. Is its parent directory writable by the server?"
-msgstr ""
+msgstr "Impossibile creare la cartella %s. La sua cartella madre é scrivibile dal server?"
 
 #: add-to-any.php:540
 #: add-to-any.php:613
@@ -216,25 +216,24 @@ msgid "<strong>Note</strong>: If you're adding new code, be careful not to accid
 msgstr "<strong>Nota</strong>: qualora stessi aggiungendo un nnuovo codice, fai attenzione a non sovrascrivere accidentalmente ogni codice precedente.</label>"
 
 #: add-to-any.php:761
-#, fuzzy
 msgid "Advanced Options"
-msgstr "Opzioni aggiuntive"
+msgstr "Opzioni avanzate"
 
 #: add-to-any.php:767
 msgid "Use CSS stylesheet"
-msgstr ""
+msgstr "Usa foglio di stile CSS"
 
 #: add-to-any.php:774
 msgid "Cache AddToAny locally with daily cache updates"
-msgstr ""
+msgstr "Effettua localmente con aggiornamenti quotidiani la cache di AddToAny"
 
 #: add-to-any.php:778
 msgid "If unchecked, be sure to place the CSS in your theme's stylesheet:"
-msgstr ""
+msgstr "Se non selezionato, aggiungi al foglio di stile del tuo tema il seguente CSS:"
 
 #: add-to-any.php:783
 msgid "Only consider for high-traffic sites. Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory."
-msgstr ""
+msgstr "Funzione risevata ai siti con traffico elevato. Accertati di impostare a far future cache/expires headers i file immagine nella tua cartella <code>uploads/addtoany</code>."
 
 #: add-to-any.php:790
 msgid "Save Changes"

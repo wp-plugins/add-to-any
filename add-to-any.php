@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5.5
+Version: .9.9.5.6
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -71,7 +71,7 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 		echo $kit_html;
 }
 
-function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
+function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	// $args array: output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
 	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($args['linkname'], $args['linkurl']));; // linkname_enc, etc.
@@ -134,7 +134,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = false ) {
 		echo $ind_html;
 }
 
-function ADDTOANY_SHARE_SAVE_BUTTON( $args = false ) {
+function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	
 	// $args array = output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 
@@ -767,20 +767,20 @@ function A2A_SHARE_SAVE_options_page() {
                 	<?php _e('Use CSS stylesheet', 'add-to-any'); ?> <strong>**</strong>
 					</label>
 				</p>
-				<!--<p>
+				<p>
 					<label for="A2A_SHARE_SAVE_cache">
 						<input name="A2A_SHARE_SAVE_cache" id="A2A_SHARE_SAVE_cache" 
                         	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_cache')=='1') echo ' checked="checked"'; ?> value="1"/>
                 	<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>***</strong>
 					</label>
-				</p>-->
+				</p>
 	                <div class="setting-description">
 	                	<strong>**</strong> <?php _e("If unchecked, be sure to place the CSS in your theme's stylesheet:", "add-to-any"); ?> <span id="addtoany_show_css_code" class="button-secondary">&#187;</span>
 						<p id="addtoany_css_code">
 							<textarea class="code" style="width:98%;font-size:12px" rows="12" cols="50"><?php A2A_SHARE_SAVE_button_css(TRUE) ?></textarea>
 						</p>
 						<br/>
-						<!--<strong>***</strong> <?php _e("Only consider for high-traffic sites. Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>-->
+						<strong>***</strong> <?php _e("Only consider for high-traffic sites. Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
 					</div>
             </fieldset></td>
             </tr>

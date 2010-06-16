@@ -169,6 +169,10 @@ This is done to overcome browser limitations that prevent the drop-down menu fro
 
 == Changelog ==
 
+= .9.9.5.6 =
+* Fix PHP warnings when there are no arguments from functions ADDTOANY_SHARE_SAVE_BUTTON or ADDTOANY_SHARE_SAVE_ICONS
+* Italian translation update (by <a href="http://gidibao.net/">Gianni</a>)
+
 = .9.9.5.5 =
 * Fix notices when in debug mode
 * Replaced extend functions with associative arrays 
