@@ -2,8 +2,8 @@
 /*
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
-Description: Help readers share, bookmark, and email your posts and pages using any service.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.5.6
+Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: .9.9.5.7
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -13,12 +13,16 @@ if( !isset($A2A_locale) )
 
 // Pre-2.6 compatibility
 if ( !defined('WP_CONTENT_URL') )
-    define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
+	define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
 if ( ! defined( 'WP_PLUGIN_URL' ) )
-      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-
+	define( 'WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
+	
 $A2A_SHARE_SAVE_plugin_basename = plugin_basename(dirname(__FILE__));
 $A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL.'/'.$A2A_SHARE_SAVE_plugin_basename; // /wp-content/plugins/add-to-any
+
+// Fix SSL
+if (function_exists('is_ssl') && is_ssl()) // @since 2.6.0
+	$A2A_SHARE_SAVE_plugin_url_path = str_replace('http:', 'https:', $A2A_SHARE_SAVE_plugin_url_path);
 
 function A2A_SHARE_SAVE_textdomain() {
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_plugin_basename;
@@ -299,8 +303,22 @@ function A2A_SHARE_SAVE_auto_placement($title) {
 }
 
 
+/**
+ * Remove the_content filter and add it for next time 
+ */
 function A2A_SHARE_SAVE_remove_from_content($content) {
 	remove_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+	add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content_next_time', 98);
+	
+	return $content;
+}
+
+/**
+ * Apply the_content filter "next time"
+ */
+function A2A_SHARE_SAVE_to_bottom_of_content_next_time($content) {
+	add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+	
 	return $content;
 }
 
@@ -369,7 +387,7 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	return $content;
 }
 
-// Only automatically output button code after the_title has been called - to avoid premature calling from misc. the_content filters
+// Only automatically output button code after the_title has been called - to avoid premature calling from misc. the_content filters (especially meta description)
 add_filter('the_title', 'A2A_SHARE_SAVE_auto_placement', 9);
 add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
 
@@ -760,28 +778,25 @@ function A2A_SHARE_SAVE_options_page() {
 			<tr valign="top">
             <th scope="row"><?php _e('Advanced Options', 'add-to-any'); ?></th>
             <td><fieldset>
-            	<p>
-	            	<label for="A2A_SHARE_SAVE_inline_css">
-						<input name="A2A_SHARE_SAVE_inline_css" id="A2A_SHARE_SAVE_inline_css"
-                        	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_inline_css')!='-1') echo ' checked="checked"'; ?> value="1"/>
-                	<?php _e('Use CSS stylesheet', 'add-to-any'); ?> <strong>**</strong>
-					</label>
-				</p>
-				<p>
-					<label for="A2A_SHARE_SAVE_cache">
-						<input name="A2A_SHARE_SAVE_cache" id="A2A_SHARE_SAVE_cache" 
-                        	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_cache')=='1') echo ' checked="checked"'; ?> value="1"/>
-                	<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>***</strong>
-					</label>
-				</p>
-	                <div class="setting-description">
-	                	<strong>**</strong> <?php _e("If unchecked, be sure to place the CSS in your theme's stylesheet:", "add-to-any"); ?> <span id="addtoany_show_css_code" class="button-secondary">&#187;</span>
-						<p id="addtoany_css_code">
-							<textarea class="code" style="width:98%;font-size:12px" rows="12" cols="50"><?php A2A_SHARE_SAVE_button_css(TRUE) ?></textarea>
-						</p>
-						<br/>
-						<strong>***</strong> <?php _e("Only consider for high-traffic sites. Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
-					</div>
+            	<label for="A2A_SHARE_SAVE_inline_css">
+					<input name="A2A_SHARE_SAVE_inline_css" id="A2A_SHARE_SAVE_inline_css"
+                    	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_inline_css')!='-1') echo ' checked="checked"'; ?> value="1"/>
+            	<?php _e('Use CSS stylesheet', 'add-to-any'); ?> <strong>**</strong>
+				</label><br/>
+				<label for="A2A_SHARE_SAVE_cache">
+					<input name="A2A_SHARE_SAVE_cache" id="A2A_SHARE_SAVE_cache" 
+                    	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_cache')=='1') echo ' checked="checked"'; ?> value="1"/>
+            	<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>***</strong>
+				</label>
+				<br/><br/>
+                <div class="setting-description">
+                	<strong>**</strong> <?php _e("If unchecked, be sure to place the CSS in your theme's stylesheet:", "add-to-any"); ?> <span id="addtoany_show_css_code" class="button-secondary">&#187;</span>
+					<p id="addtoany_css_code">
+						<textarea class="code" style="width:98%;font-size:12px" rows="12" cols="50"><?php A2A_SHARE_SAVE_button_css(TRUE) ?></textarea>
+					</p>
+					<br/>
+					<strong>***</strong> <?php _e("Only consider for sites with frequently returning visitors. Since many visitors will have AddToAny cached in their browser already, serving AddToAny locally from your site will be slower for those visitors.  Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
+				</div>
             </fieldset></td>
             </tr>
         </table>
