@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.6
+Version: .9.9.6.1
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -98,7 +98,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_SKIP );
+	extract( $args );
 	
 	// Make available services extensible via plugins, themes (functions.php), etc.
 	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
@@ -165,7 +165,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	$linkname = (isset($args['linkname'])) ? $args['linkname'] : FALSE;
 	$linkurl = (isset($args['linkurl'])) ? $args['linkurl'] : FALSE;
 
-	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($linkname, $linkurl));; // linkname_enc, etc.
+	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
 	
 	$defaults = array(
 		'linkname' => '',
@@ -180,7 +180,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_SKIP );	
+	extract( $args );
 	
 	/* AddToAny button */
 	
