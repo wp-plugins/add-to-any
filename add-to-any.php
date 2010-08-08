@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.6.1
+Version: .9.9.6.2
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -484,7 +484,7 @@ ul.addtoany_list a:hover img,ul.addtoany_list a.addtoany_share_save img{filter:a
 }
 
 // Use stylesheet?
-if (get_option('A2A_SHARE_SAVE_inline_css') != '-1') {
+if (get_option('A2A_SHARE_SAVE_inline_css') != '-1' && ! is_admin()) {
 	if (function_exists('wp_enqueue_style')) {
 		// WP version 2.1+ only
 		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.0');
@@ -899,8 +899,6 @@ function A2A_SHARE_SAVE_admin_head() {
 			.fadeIn('fast');
 			
 			jQuery(this).attr( 'id', 'old_'+jQuery(this).attr('id') );
-			
-			jQuery('#addtoany_services_sortable li:last').fadeTo('fast', 1);
 		};
 		
 		// Service click again = move back to selectable list
@@ -992,16 +990,16 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_template_button_code, #addtoany_css_code{display:none;}
     </style>
 <?php
+
 	}
 }
 
 add_filter('admin_head', 'A2A_SHARE_SAVE_admin_head');
 
 function A2A_SHARE_SAVE_add_menu_link() {
-	global $wp_version;
 		
 	if( current_user_can('manage_options') ) {
-		add_options_page(
+		$page = add_options_page(
 			'AddToAny: '. __("Share/Save", "add-to-any"). " " . __("Settings")
 			, __("Share/Save Buttons", "add-to-any")
 			, 'activate_plugins' 
@@ -1009,17 +1007,24 @@ function A2A_SHARE_SAVE_add_menu_link() {
 			, 'A2A_SHARE_SAVE_options_page'
 		);
 		
-		// Load jQuery UI Sortable
-		// Must be on WP 2.6+
-		if ($wp_version >= "2.6") {
-			wp_enqueue_script('jquery-ui-sortable');
-		}
+		/* Using registered $page handle to hook script load, to only load in AddToAny admin */
+        add_filter('admin_print_scripts-' . $page, 'A2A_SHARE_SAVE_scripts');
+	}
+}
+
+function A2A_SHARE_SAVE_scripts() {
+	global $wp_version;
+	
+	// Load jQuery UI Sortable
+	// Must be on WP 2.6+
+	if ($wp_version >= "2.6") {
+		wp_enqueue_script('jquery-ui-sortable');
 	}
 }
 
 add_filter('admin_menu', 'A2A_SHARE_SAVE_add_menu_link');
 
-// Place in Settings Option List
+// Place in Option List on Settings > Plugins page 
 function A2A_SHARE_SAVE_actlinks( $links, $file ){
 	//Static so we don't call plugin_basename on every plugin row.
 	static $this_plugin;

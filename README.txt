@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, e-mail, email, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, icon, icons, wpmu, addtoany, add, any
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 0.9.9.6.1
+Stable tag: 0.9.9.6.2
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.
 
@@ -170,6 +170,13 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.6.2 =
+* Remove stylesheet on other admin pages
+* Fix RTL support in admin
+* Fix minor bug where Add/Remove Services button reappears after choosing a standalone service in admin 
+* Remove jQuery UI Sortable on other admin pages
+* Portuguese translation updated (by <a href="http://jorgesilva.me/">Jorge</a>
 
 = .9.9.6.1 =
 * Fix critical bug introduced in last release that caused an empty shared item to be used on non-single post pages 
