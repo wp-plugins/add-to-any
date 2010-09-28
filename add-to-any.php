@@ -50,7 +50,7 @@ include_once('services.php');
 function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 	
 	if ( ! isset($args['html_container_open']))
-		$args['html_container_open'] = "<ul class=\"addtoany_list\">";
+		$args['html_container_open'] = "<ul class=\"a2a_kit addtoany_list\">";
 	if ( ! isset($args['html_container_close']))
 		$args['html_container_close'] = "</ul>";
 	// Close container element in ADDTOANY_SHARE_SAVE_BUTTON, not prematurely in ADDTOANY_SHARE_SAVE_ICONS
@@ -141,7 +141,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 		$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
 		$src = ($custom_service) ? $icon : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
 		
-		$link = $html_wrap_open."<a href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
+		$link = $html_wrap_open."<a class=\"a2a_button_$safe_name\" href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
 		$link .= "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 		$link .= "</a>".$html_wrap_close;
 		
@@ -217,7 +217,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		$button			= $button_text;
 	} else {
 		$style = '';
-		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share/Bookmark"/>';
+		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share"/>';
 	}
 	
 	$button_html = $html_container_open.$html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save"'
@@ -398,7 +398,7 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	
 	$kit_args = array(
 		"output_later" => true,
-		"html_container_open" => ($is_feed) ? "" : "<ul class=\"addtoany_list\">",
+		"html_container_open" => ($is_feed) ? "" : "<ul class=\"a2a_kit addtoany_list\">",
 		"html_container_close" => ($is_feed) ? "" : "</ul>",
 		"html_wrap_open" => ($is_feed) ? "" : "<li>",
 		"html_wrap_close" => ($is_feed) ? " " : "</li>",

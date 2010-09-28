@@ -22,7 +22,7 @@ Individual **service icons** let you optimize your blog posts for specific socia
 * Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
 * Menu updated automatically
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
-* WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
+* WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Dutch, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
 * Many more publisher and user features!
 
 After **years of ongoing development**, over **1 million downloads**, and **ongoing support** from the community, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
@@ -170,6 +170,11 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.6.5 =
+* Add class-names to use official <a href="http://www.addtoany.com/buttons/customize/standalone_services">Standalone Services Kit</a>
+ * Google Analytics stats for individual services
+* Dutch translation (by Rene from <a href="http://wpwebshop.com/premium-wordpress-plugins/">WordPress Webshop</a>)
 
 = .9.9.6.4 =
 * Option to toggle displaying at the bottom of excerpts
