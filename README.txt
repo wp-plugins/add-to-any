@@ -1,31 +1,31 @@
 === AddToAny: Share/Bookmark/Email Button ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, icon, icons, wpmu, addtoany, add, any
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, myspace, twitter, stumbleupon, technorati, sociable, icon, icons, wpmu, addtoany, add, any
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 0.9.9.6.5
+Stable tag: 0.9.9.6.6
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.
 
 == Description ==
 
-The WordPress plugin to help people **share**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Google Buzz, Digg, Delicious, and well over 100 more social bookmarking and sharing sites. The plugin comes with AddToAny's customizable **Smart Menu**, which **places the services visitors use at the top of the menu**, based on each visitor's browsing and usage history.
+The WordPress plugin to help people **share**, **bookmark**, and **email** your posts and pages using **any service**, such as Facebook, Twitter, Google Buzz, Digg, Delicious, and well over 100 more social bookmarking and sharing sites. The plugin comes with AddToAny's customizable Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's browsing and usage history.
 
 <a href="http://www.addtoany.com/" title="Sharing and bookmarking button widget" target="_blank">Share Button</a> (demo)
 
-The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Hotmail, AOL, and any other web-based emailer or desktop program. The **Add to Favorites** button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
+The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Hotmail, AOL, and any other web-based emailer or desktop program. The Add to Favorites button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
 
-Individual **service icons** let you optimize your blog posts for specific social sites.  Choose from over 100 individual services.
+Standalone **service icons** let you optimize your blog posts for specific social sites.  Choose from over 100 individual services.
 
-* AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a>
+* AddToAny <a href="http://www.addtoany.com/blog/smart-menus-the-services-your-visitors-use-displayed-first/" target="_blank">Smart Menu</a> & <a href="http://www.addtoany.com/buttons/customize/standalone_services" target="_blank">AddToAny Kit</a>
 * Individual service links (like Sociable)
 * Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
-* Menu updated automatically
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
 * WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Dutch, Danish, Catalan, Russian, Albanian, Romanian, Belarusian)
+* Easily customizable for beginners and advanced users, and highly extensible for developers
 * Many more publisher and user features!
 
-After **years of ongoing development**, over **1 million downloads**, and **ongoing support** from the community, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
+After **years of ongoing development**, over **1 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
 
 <a href="http://www.addtoany.com/share_save" title="Share" target="_blank">Share this plugin</a>
 
@@ -50,7 +50,7 @@ In your Admin panel, go to `Settings` > `Share/Save Buttons`.  Among other optio
 
 = Why isn't the drop-down menu appearing? =
 
-It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  Using the Theme Editor, make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
+It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  With many themes you can use the Theme Editor to make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
 
 `<?php wp_footer(); ?>`
 
@@ -82,24 +82,22 @@ If you want to customize the shared URL and title for this button, use the follo
 
 In the Theme Editor, place this line of code where you want the individual icons to appear in your theme (within an HTML list):
 
-`<?php echo '<ul class="addtoany_list">';
-if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') )
-	ADDTOANY_SHARE_SAVE_ICONS( array("html_wrap_open" => "<li>", "html_wrap_close" => "</li>") );
-echo '</ul>'; ?>`
+`<?php echo '<div class="a2a_kit addtoany_list">';
+if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) { ADDTOANY_SHARE_SAVE_ICONS(); }
+echo '</div>'; ?>`
 
 If you want to customize the shared URL and title for these icons, use the following code as a template:
 
 `<?php
 if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) {
-	echo '<ul class="addtoany_list">';
+	echo '<div class="a2a_kit addtoany_list">';
 	ADDTOANY_SHARE_SAVE_ICONS( array(
-		"html_wrap_open" => "<li>", "html_wrap_close" => "</li>",
 		"linkname" => "Example Page", "linkurl" => "http://example.com/page.html"
 	));
-	echo '</ul>';
+	echo '</div>';
 } ?>`
 
-Or you can place the icons as individual links (without being wrapped in an HTML list):
+Or you can place the icons as individual links without styling:
 
 `<?php if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) { ADDTOANY_SHARE_SAVE_ICONS(); } ?>`
 
@@ -170,6 +168,12 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.6.6 =
+* Major changes to plugin CSS stylesheet to support A2A Kit (official standalone services)
+* Standalone services are no longer list items within an unordered list container
+* Button is no longer a list item
+* Button/standalones now follow the HTML markup layout suggested by the <a href="http://www.addtoany.com/buttons/customize/standalone_services">AddToAny Kit</a>
 
 = .9.9.6.5 =
 * Add class-names to use official <a href="http://www.addtoany.com/buttons/customize/standalone_services">Standalone Services Kit</a>

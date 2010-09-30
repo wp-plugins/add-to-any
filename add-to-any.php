@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.6.5
+Version: .9.9.6.6
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -50,17 +50,17 @@ include_once('services.php');
 function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 	
 	if ( ! isset($args['html_container_open']))
-		$args['html_container_open'] = "<ul class=\"a2a_kit addtoany_list\">";
+		$args['html_container_open'] = "<div class=\"a2a_kit addtoany_list\">";
 	if ( ! isset($args['html_container_close']))
-		$args['html_container_close'] = "</ul>";
+		$args['html_container_close'] = "</div>";
 	// Close container element in ADDTOANY_SHARE_SAVE_BUTTON, not prematurely in ADDTOANY_SHARE_SAVE_ICONS
 	$html_container_close = $args['html_container_close']; // Cache for _BUTTON
 	unset($args['html_container_close']); // Avoid passing to ADDTOANY_SHARE_SAVE_ICONS since set in _BUTTON
 				
 	if ( ! isset($args['html_wrap_open']))
-		$args['html_wrap_open'] = "<li>";
+		$args['html_wrap_open'] = "";
 	if ( ! isset($args['html_wrap_close']))
-		$args['html_wrap_close'] = "</li>";
+		$args['html_wrap_close'] = "";
 	
     $kit_html = ADDTOANY_SHARE_SAVE_ICONS($args);
 	
@@ -398,10 +398,10 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 	
 	$kit_args = array(
 		"output_later" => true,
-		"html_container_open" => ($is_feed) ? "" : "<ul class=\"a2a_kit addtoany_list\">",
-		"html_container_close" => ($is_feed) ? "" : "</ul>",
-		"html_wrap_open" => ($is_feed) ? "" : "<li>",
-		"html_wrap_close" => ($is_feed) ? " " : "</li>",
+		"html_container_open" => ($is_feed) ? "" : "<div class=\"a2a_kit addtoany_list\">",
+		"html_container_close" => ($is_feed) ? "" : "</div>",
+		"html_wrap_open" => ($is_feed) ? "" : "",
+		"html_wrap_close" => ($is_feed) ? " " : "",
 	);
 	
 	if ( ! $is_feed ) {
@@ -431,41 +431,38 @@ function A2A_SHARE_SAVE_button_css($no_style_tag) {
 	if ( ! $no_style_tag) {
 	?><style type="text/css">
 <?php } ?>
-	.addtoany_share_save_container{margin:16px 0;}
-	ul.addtoany_list{
-		display:inline;
-		list-style-type:none;
-		margin:0 !important;
-		padding:0 !important;
-		text-indent:0 !important;
-	}
-	ul.addtoany_list li{
-		background:none !important;
-		border:0;
-		display:inline !important;
+    .addtoany_share_save_container{margin:16px 0;}
+    .addtoany_list a {
+        float: left;
 <?php /* For vertical space in the event of wrapping: */ ?>
-		line-height:32px;
-		list-style-type:none;
-		margin:0 !important;
-		padding:0 !important;
-	}
-	ul.addtoany_list li:before{content:"";}
-	ul.addtoany_list li a{padding:0 9px;}
-	ul.addtoany_list img{
-		float:none;
-		border:0;
-		margin:0;
-		padding:0;
-		vertical-align:middle;
-	}
-	ul.addtoany_list a img{
-		opacity:.7;
-	}
-	ul.addtoany_list a:hover img, ul.addtoany_list a.addtoany_share_save img{
-		opacity:1;
-	}
-<?php /* Must declare after "ul.addtoany_list img": */ ?>
-	a.addtoany_share_save img{border:0;width:auto;height:auto;}
+    	line-height: 32px;
+        padding: 0 9px;
+    }
+    .addtoany_list a img {
+        display: block;
+        height: 16px;
+        line-height: 16px;
+        opacity:.7;
+        overflow: hidden;
+        width: 16px;
+    }
+    .addtoany_list a:hover img, .addtoany_list a.addtoany_share_save img{
+        opacity:1;
+    }
+    .addtoany_list a img, .addtoany_list a.addtoany_share_save {
+        float: left;
+    }
+<?php /* Must declare after ".addtoany_list img": */ ?>
+    a.addtoany_share_save img{border:0;width:auto;height:auto;}
+<?php  /* Clearfix: */ ?>
+    .addtoany_list:after {
+        clear: both;
+        content: " ";
+        display: block;
+        font-size: 0;
+        height: 0;
+        visibility: hidden;
+    }
 <?php if ( ! $no_style_tag) { ?>
 </style>
 <?php
@@ -477,8 +474,10 @@ function A2A_SHARE_SAVE_button_css_IE() {
 /* IE support for opacity: */ ?>
 <!--[if IE]>
 <style type="text/css">
-ul.addtoany_list a img{filter:alpha(opacity=70)}
-ul.addtoany_list a:hover img,ul.addtoany_list a.addtoany_share_save img{filter:alpha(opacity=100)}
+.addtoany_list a img{filter:alpha(opacity=70)}
+.addtoany_list a:hover img,.addtoany_list a.addtoany_share_save img{filter:alpha(opacity=100)}
+* html .addtoany_list{zoom:1}
+*:first-child + html .addtoany_list{zoom:1}
 </style>
 <![endif]-->
 <?php
