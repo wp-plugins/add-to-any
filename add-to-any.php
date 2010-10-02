@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.6.6
+Version: .9.9.6.7
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -427,74 +427,22 @@ if (get_option('A2A_SHARE_SAVE_display_in_excerpts') != '-1') {
 }
 
 
-function A2A_SHARE_SAVE_button_css($no_style_tag) {
-	if ( ! $no_style_tag) {
-	?><style type="text/css">
-<?php } ?>
-    .addtoany_share_save_container{margin:16px 0;}
-    .addtoany_list a {
-        float: left;
-<?php /* For vertical space in the event of wrapping: */ ?>
-    	line-height: 32px;
-        padding: 0 9px;
-    }
-    .addtoany_list a img {
-        display: block;
-        height: 16px;
-        line-height: 16px;
-        opacity:.7;
-        overflow: hidden;
-        width: 16px;
-    }
-    .addtoany_list a:hover img, .addtoany_list a.addtoany_share_save img{
-        opacity:1;
-    }
-    .addtoany_list a img, .addtoany_list a.addtoany_share_save {
-        float: left;
-    }
-<?php /* Must declare after ".addtoany_list img": */ ?>
-    a.addtoany_share_save img{border:0;width:auto;height:auto;}
-<?php  /* Clearfix: */ ?>
-    .addtoany_list:after {
-        clear: both;
-        content: " ";
-        display: block;
-        font-size: 0;
-        height: 0;
-        visibility: hidden;
-    }
-<?php if ( ! $no_style_tag) { ?>
-</style>
-<?php
-		A2A_SHARE_SAVE_button_css_IE();
-	}
-}
-
 function A2A_SHARE_SAVE_button_css_IE() {
 /* IE support for opacity: */ ?>
 <!--[if IE]>
 <style type="text/css">
 .addtoany_list a img{filter:alpha(opacity=70)}
 .addtoany_list a:hover img,.addtoany_list a.addtoany_share_save img{filter:alpha(opacity=100)}
-* html .addtoany_list{zoom:1}
-*:first-child + html .addtoany_list{zoom:1}
 </style>
 <![endif]-->
 <?php
-
 }
 
 // Use stylesheet?
 if (get_option('A2A_SHARE_SAVE_inline_css') != '-1' && ! is_admin()) {
-	if (function_exists('wp_enqueue_style')) {
-		// WP version 2.1+ only
-		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.0');
-	} else {
-		// Fallback to inline CSS for WP 2.0
-		add_filter('wp_head', 'A2A_SHARE_SAVE_button_css');
-	}
+	wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.1');
 	
-	// Always output conditional inline CSS stylesheet for IE
+	// Conditional inline CSS stylesheet for IE
 	add_filter('wp_head', 'A2A_SHARE_SAVE_button_css_IE');
 }
 
@@ -808,21 +756,16 @@ function A2A_SHARE_SAVE_options_page() {
             	<label for="A2A_SHARE_SAVE_inline_css">
 					<input name="A2A_SHARE_SAVE_inline_css" id="A2A_SHARE_SAVE_inline_css"
                     	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_inline_css')!='-1') echo ' checked="checked"'; ?> value="1"/>
-            	<?php _e('Use CSS stylesheet', 'add-to-any'); ?> <strong>**</strong>
+            	<?php _e('Use CSS stylesheet', 'add-to-any'); ?>
 				</label><br/>
 				<label for="A2A_SHARE_SAVE_cache">
 					<input name="A2A_SHARE_SAVE_cache" id="A2A_SHARE_SAVE_cache" 
                     	type="checkbox"<?php if(get_option('A2A_SHARE_SAVE_cache')=='1') echo ' checked="checked"'; ?> value="1"/>
-            	<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>***</strong>
+            	<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>**</strong>
 				</label>
 				<br/><br/>
                 <div class="setting-description">
-                	<strong>**</strong> <?php _e("If unchecked, be sure to place the CSS in your theme's stylesheet:", "add-to-any"); ?> <span id="addtoany_show_css_code" class="button-secondary">&#187;</span>
-					<p id="addtoany_css_code">
-						<textarea class="code" style="width:98%;font-size:12px" rows="12" cols="50"><?php A2A_SHARE_SAVE_button_css(TRUE) ?></textarea>
-					</p>
-					<br/>
-					<strong>***</strong> <?php _e("Only consider for sites with frequently returning visitors. Since many visitors will have AddToAny cached in their browser already, serving AddToAny locally from your site will be slower for those visitors.  Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
+					<strong>**</strong> <?php _e("Only consider for sites with frequently returning visitors. Since many visitors will have AddToAny cached in their browser already, serving AddToAny locally from your site will be slower for those visitors.  Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
 				</div>
             </fieldset></td>
             </tr>
