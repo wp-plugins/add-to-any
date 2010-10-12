@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.6.7
+Version: .9.9.6.8
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -440,7 +440,7 @@ function A2A_SHARE_SAVE_button_css_IE() {
 
 // Use stylesheet?
 if (get_option('A2A_SHARE_SAVE_inline_css') != '-1' && ! is_admin()) {
-	wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.1');
+	wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.2');
 	
 	// Conditional inline CSS stylesheet for IE
 	add_filter('wp_head', 'A2A_SHARE_SAVE_button_css_IE');
