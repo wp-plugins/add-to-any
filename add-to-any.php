@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7
+Version: .9.9.7.1
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -137,19 +137,16 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 				$custom_service = FALSE;
 			}
 	
-			if ( $custom_service && isset($service['icon_url']) )
-				$icon = $service['icon_url'];
-			elseif ( ! isset($service['icon']))
-				$icon = 'default';
-			else
-				$icon = $service['icon'];
+			$icon_url = (isset($service['icon_url'])) ? $service['icon_url'] : FALSE;
+			$icon = (isset($service['icon'])) ? $service['icon'] : 'default'; // Just the icon filename
 			$width = (isset($service['icon_width'])) ? $service['icon_width'] : '16';
 			$height = (isset($service['icon_height'])) ? $service['icon_height'] : '16'; 
 			
 			$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
-			$src = ($custom_service) ? $icon : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
+			$src = ($icon_url) ? $icon_url : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
+			$class_attr = ($custom_service) ? "" : " class=\"a2a_button_$safe_name\"";
 			
-			$link = $html_wrap_open."<a class=\"a2a_button_$safe_name\" href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
+			$link = $html_wrap_open."<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
 			$link .= "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 			$link .= "</a>".$html_wrap_close;
 		}
@@ -632,7 +629,7 @@ function A2A_SHARE_SAVE_options_page() {
 							$site['icon'] = 'default';
 					?>
                         <li id="a2a_wp_<?php echo $service_safe_name; ?>" title="<?php echo $site['name']; ?>">
-                            <span><img src="<?php echo ($custom_service) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon'].'.png'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '16'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '16'; ?>" alt="" /><?php echo $site['name']; ?></span>
+                            <span><img src="<?php echo ($site['icon_url']) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon'].'.png'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '16'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '16'; ?>" alt="" /><?php echo $site['name']; ?></span>
                         </li>
 				<?php
                     } ?>
