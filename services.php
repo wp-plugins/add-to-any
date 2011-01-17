@@ -1,3 +1,4 @@
+	
 <?php
 
 $A2A_SHARE_SAVE_services = Array(
@@ -73,6 +74,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"buddymarks" => Array(
 		"name" => "BuddyMarks",
 		"icon" => "buddymarks",
+	),
+	"business_exchange" => Array(
+		"name" => "Business Exchange",
+		"icon" => "business_exchange",
 	),
 	"care2_news" => Array(
 		"name" => "Care2 News",
@@ -272,7 +277,7 @@ $A2A_SHARE_SAVE_services = Array(
 	),
 	"live" => Array(
 		"name" => "Messenger",
-		"icon" => "messenger",
+		"icon" => "live",
 	),
 	"mindbodygreen" => Array(
 		"name" => "MindBodyGreen",
@@ -386,6 +391,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"reddit" => Array(
 		"name" => "Reddit",
 		"icon" => "reddit",
+	),
+	"rediff" => Array(
+		"name" => "Rediff MyPage",
+		"icon" => "rediff",
 	),
 	"segnalo" => Array(
 		"name" => "Segnalo",

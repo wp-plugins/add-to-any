@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7.2
+Version: .9.9.7.3
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -21,7 +21,7 @@ $A2A_SHARE_SAVE_plugin_basename = plugin_basename(dirname(__FILE__));
 $A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL.'/'.$A2A_SHARE_SAVE_plugin_basename; // /wp-content/plugins/add-to-any
 
 // Fix SSL
-if (function_exists('is_ssl') && is_ssl()) // @since 2.6.0
+if (is_ssl())
 	$A2A_SHARE_SAVE_plugin_url_path = str_replace('http:', 'https:', $A2A_SHARE_SAVE_plugin_url_path);
 
 function A2A_SHARE_SAVE_textdomain() {
@@ -190,7 +190,9 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	
 	/* AddToAny button */
 	
-	$button_target	= '';
+	$is_feed = is_feed();
+	$button_target = '';
+	$button_href_querystring = ($is_feed) ? '#url=' . $linkurl_enc . '&amp;title=' . $linkname_enc  : '';
 	
 	if( !get_option('A2A_SHARE_SAVE_button') ) {
 		$button_fname	= 'share_save_171_16.png';
@@ -213,7 +215,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	}
 	
 	if( $button_fname == 'favicon.png' || $button_fname == 'share_16_16.png' ) {
-		if( !is_feed() ) {
+		if( ! $is_feed) {
 			$style_bg	= 'background:url('.$A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname.') no-repeat scroll 9px 0px !important;';
 			$style		= ' style="'.$style_bg.'padding:0 0 0 30px;display:inline-block;height:16px;line-height:16px;vertical-align:middle"'; // padding-left:30+9 (9=other icons padding)
 		}
@@ -226,16 +228,13 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share"/>';
 	}
 	
-	$button_html = $html_container_open.$html_wrap_open.'<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save"'
+	$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save' .$button_href_querystring . '"'
 		. $style . $button_target
 		. '>' . $button . '</a>' . $html_wrap_close . $html_container_close;
 	
 	// If not a feed
-	if( !is_feed() ) {
-		if (function_exists('is_ssl') ) // @since 2.6.0
-			$http_or_https = (is_ssl()) ? 'https' : 'http';
-		else
-			$http_or_https = 'http';
+	if( ! $is_feed ) {
+		$http_or_https = (is_ssl()) ? 'https' : 'http';
 	
 		global $A2A_SHARE_SAVE_external_script_called;
 		if ( ! $A2A_SHARE_SAVE_external_script_called ) {
