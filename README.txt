@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany, add
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.3
+Stable tag: 0.9.9.7.4
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.
 
@@ -176,6 +176,9 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.7.4 =
+* Major fix for some setups to fix PHP header error due to newline in services.php
 
 = .9.9.7.3 =
 * Fix sharing button link in RSS feeds (thanks to Giuliano)

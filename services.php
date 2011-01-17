@@ -1,4 +1,3 @@
-	
 <?php
 
 $A2A_SHARE_SAVE_services = Array(
