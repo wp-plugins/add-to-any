@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7.5
+Version: .9.9.7.6
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -27,9 +27,9 @@ if (is_ssl())
 function A2A_SHARE_SAVE_init() {
 	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_plugin_basename;
 	
-  if (get_option('A2A_SHARE_SAVE_button')) {
-    A2A_SHARE_SAVE_migrate_options();
-  }
+	if (get_option('A2A_SHARE_SAVE_button')) {
+	    A2A_SHARE_SAVE_migrate_options();
+	}
   
 	load_plugin_textdomain('add-to-any',
 		$A2A_SHARE_SAVE_plugin_url_path.'/languages',
@@ -368,8 +368,8 @@ function A2A_SHARE_SAVE_auto_placement($title) {
  * Remove the_content filter and add it for next time 
  */
 function A2A_SHARE_SAVE_remove_from_content($content) {
-	remove_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
-	add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content_next_time', 98);
+	remove_filter('the_content', 'A2A_SHARE_SAVE_add_to_content', 98);
+	add_filter('the_content', 'A2A_SHARE_SAVE_add_to_content_next_time', 98);
 	
 	return $content;
 }
@@ -377,14 +377,14 @@ function A2A_SHARE_SAVE_remove_from_content($content) {
 /**
  * Apply the_content filter "next time"
  */
-function A2A_SHARE_SAVE_to_bottom_of_content_next_time($content) {
-	add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+function A2A_SHARE_SAVE_add_to_content_next_time($content) {
+	add_filter('the_content', 'A2A_SHARE_SAVE_add_to_content', 98);
 	
 	return $content;
 }
 
 
-function A2A_SHARE_SAVE_to_bottom_of_content($content) {
+function A2A_SHARE_SAVE_add_to_content($content) {
 	global $A2A_SHARE_SAVE_auto_placement_ready;
 	
 	$is_feed = is_feed();
@@ -449,18 +449,28 @@ function A2A_SHARE_SAVE_to_bottom_of_content($content) {
 		$container_wrap_close = '</p>';
 	}
 	
-	$content .= $container_wrap_open.ADDTOANY_SHARE_SAVE_KIT($kit_args).$container_wrap_close;
+	$options['position'] = isset($options['position']) ? $options['position'] : 'bottom';
+	
+	if ($options['position'] == 'both' || $options['position'] == 'top') {
+		// Prepend to content
+		$content = $container_wrap_open.ADDTOANY_SHARE_SAVE_KIT($kit_args) . $container_wrap_close . $content;
+	}
+	if ( $options['position'] == 'bottom' || $options['position'] == 'both') {
+		// Append to content
+		$content .= $container_wrap_open.ADDTOANY_SHARE_SAVE_KIT($kit_args) . $container_wrap_close;
+	}
+	
 	return $content;
 }
 
 // Only automatically output button code after the_title has been called - to avoid premature calling from misc. the_content filters (especially meta description)
 add_filter('the_title', 'A2A_SHARE_SAVE_auto_placement', 9);
-add_filter('the_content', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+add_filter('the_content', 'A2A_SHARE_SAVE_add_to_content', 98);
 
 if ($options['display_in_excerpts'] != '-1') {
 	// Excerpts use strip_tags() for the_content, so cancel if Excerpt and append to the_excerpt instead
 	add_filter('get_the_excerpt', 'A2A_SHARE_SAVE_remove_from_content', 9);
-	add_filter('the_excerpt', 'A2A_SHARE_SAVE_to_bottom_of_content', 98);
+	add_filter('the_excerpt', 'A2A_SHARE_SAVE_add_to_content', 98);
 }
 
 
@@ -537,40 +547,46 @@ function A2A_SHARE_SAVE_unschedule_cache() {
 
 function A2A_SHARE_SAVE_migrate_options() {
 	
-  $options = array(
-    'inline_css' => '1', // Modernly used for "Use CSS Stylesheet?"
-    'cache' => '-1',
-    'display_in_posts_on_front_page' => '1',
-    'display_in_posts' => '1',
-    'display_in_pages' => '1',
-    'display_in_feed' => '1',
-    'show_title' => '-1',
-    'onclick' => '-1',
-    'button' => 'share_save_171_16.png|171|16',
-    'button_custom' => '',
-    'additional_js_variables' => '',
-    'button_text' => 'Share/Bookmark',
-    'display_in_excerpts' => '1',
-    'active_services' => Array(),
-  );
+	$options = array(
+		'inline_css' => '1', // Modernly used for "Use CSS Stylesheet?"
+		'cache' => '-1',
+		'display_in_posts_on_front_page' => '1',
+		'display_in_posts' => '1',
+		'display_in_pages' => '1',
+		'display_in_feed' => '1',
+		'show_title' => '-1',
+		'onclick' => '-1',
+		'button' => 'share_save_171_16.png|171|16',
+		'button_custom' => '',
+		'additional_js_variables' => '',
+		'button_text' => 'Share/Bookmark',
+		'display_in_excerpts' => '1',
+		'active_services' => Array(),
+	);
 	
 	$namespace = 'A2A_SHARE_SAVE_';
   
-  foreach ($options as $option_name => $option_value) {
-    $old_option_name = $namespace . $option_name;  
-    $old_option_value = get_option($old_option_name);
-    if ($old_option_value !== FALSE) {
-      $options[$option_name] = $old_option_value;
-      delete_option($old_option_name);
-    }
-  }
+	foreach ($options as $option_name => $option_value) {
+		$old_option_name = $namespace . $option_name;  
+		$old_option_value = get_option($old_option_name);
+		
+		if($old_option_value === FALSE) {
+			// Default value
+		    $options[$option_name] = $option_value;
+		} else {
+			// Old value
+		    $options[$option_name] = $old_option_value;
+		}
+		
+		delete_option($old_option_name);
+	}
 	
 	update_option('addtoany_options', $options);
 	
 	$deprecated_options = array(
-    'button_opens_new_window',
-    'hide_embeds',
-  );
+		'button_opens_new_window',
+		'hide_embeds',
+	);
 	
 	foreach ($deprecated_options as $option_name) {
 		delete_option($namespace . $option_name);
@@ -598,7 +614,8 @@ function A2A_SHARE_SAVE_options_page() {
 		// Nonce verification 
 		check_admin_referer('add-to-any-update-options');
     
-    $new_options['display_in_posts_on_front_page'] = ($_POST['A2A_SHARE_SAVE_display_in_posts_on_front_page']=='1') ? '1':'-1';
+		$new_options['position'] = ($_POST['A2A_SHARE_SAVE_position']) ? $_POST['A2A_SHARE_SAVE_position'] : 'bottom';
+		$new_options['display_in_posts_on_front_page'] = ($_POST['A2A_SHARE_SAVE_display_in_posts_on_front_page']=='1') ? '1':'-1';
 		$new_options['display_in_excerpts'] = ($_POST['A2A_SHARE_SAVE_display_in_excerpts']=='1') ? '1':'-1';
 		$new_options['display_in_posts'] = ($_POST['A2A_SHARE_SAVE_display_in_posts']=='1') ? '1':'-1';
 		$new_options['display_in_pages'] = ($_POST['A2A_SHARE_SAVE_display_in_pages']=='1') ? '1':'-1';
@@ -635,7 +652,7 @@ function A2A_SHARE_SAVE_options_page() {
 			$active_services[] = substr($sitename, 7);
 		$new_options['active_services'] = $active_services;
 		
-    update_option('addtoany_options', $new_options);
+		update_option('addtoany_options', $new_options);
     
 		?>
     	<div class="updated fade"><p><strong><?php _e('Settings saved.'); ?></strong></p></div>
@@ -649,7 +666,47 @@ function A2A_SHARE_SAVE_options_page() {
     }
 
     $options = get_option('addtoany_options');
-
+	
+	function position_in_content($options, $option_box = FALSE) {
+		
+		if ( ! isset($options['position'])) {
+			$options['position'] = 'bottom';
+		}
+		
+		$positions = array(
+			'bottom' => array(
+				'selected' => ('bottom' == $options['position']) ? ' selected="selected"' : '',
+				'string' => __('bottom', 'add-to-any')
+			),
+			'top' => array(
+				'selected' => ('top' == $options['position']) ? ' selected="selected"' : '',
+				'string' => __('top', 'add-to-any')
+			),
+			'both' => array(
+				'selected' => ('both' == $options['position']) ? ' selected="selected"' : '',
+				'string' => __('top &amp; bottom', 'add-to-any')
+			)
+		);
+		
+		if ($option_box) {
+			$html = '</label>';
+			$html .= '<label>'; // Label needed to prevent checkmark toggle on SELECT click 
+		    $html .= '<select name="A2A_SHARE_SAVE_position">';
+		    $html .= '<option value="bottom"' . $positions['bottom']['selected'] . '>' . $positions['bottom']['string'] . '</option>';
+		    $html .= '<option value="top"' . $positions['top']['selected'] . '>' . $positions['top']['string'] . '</option>';
+		    $html .= '<option value="both"' . $positions['both']['selected'] . '>' . $positions['both']['string'] . '</option>';
+			$html .= '</select>';
+		    
+		    return $html;
+		} else {
+			$html = '<span class="A2A_SHARE_SAVE_position">';
+			$html .= $positions[$options['position']]['string'];
+			$html .= '</span>';
+			
+			return $html;
+		}
+	}
+	
     ?>
     
     <?php A2A_wp_footer_check(); ?>
@@ -763,21 +820,21 @@ function A2A_SHARE_SAVE_options_page() {
                 <label>
                 	<input id="A2A_SHARE_SAVE_display_in_posts" name="A2A_SHARE_SAVE_display_in_posts" type="checkbox"<?php 
 						if($options['display_in_posts']!='-1') echo ' checked="checked"'; ?> value="1"/>
-                	<?php _e('Display at the bottom of posts', 'add-to-any'); ?> <strong>*</strong>
+                	<?php printf(__('Display at the %s of posts', 'add-to-any'), position_in_content($options, TRUE)); ?> <strong>*</strong>
                 </label><br/>
                 <label>
                 	&nbsp; &nbsp; &nbsp; <input class="A2A_SHARE_SAVE_child_of_display_in_posts" name="A2A_SHARE_SAVE_display_in_excerpts" type="checkbox"<?php 
 						if($options['display_in_excerpts']!='-1') echo ' checked="checked"';
 						if($options['display_in_posts']=='-1') echo ' disabled="disabled"';
 						?> value="1"/>
-                    <?php _e('Display at the bottom of post excerpts', 'add-to-any'); ?>
+					<?php printf(__('Display at the %s of post excerpts', 'add-to-any'), position_in_content($options)); ?>
 				</label><br/>
 				<label>
                 	&nbsp; &nbsp; &nbsp; <input class="A2A_SHARE_SAVE_child_of_display_in_posts" name="A2A_SHARE_SAVE_display_in_posts_on_front_page" type="checkbox"<?php 
 						if($options['display_in_posts_on_front_page']!='-1') echo ' checked="checked"';
 						if($options['display_in_posts']=='-1') echo ' disabled="disabled"';
 						?> value="1"/>
-                    <?php _e('Display at the bottom of posts on the front page', 'add-to-any'); ?>
+                    <?php printf(__('Display at the %s of posts on the front page', 'add-to-any'), position_in_content($options)); ?>
 				</label><br/>
                 
 				<label>
@@ -785,11 +842,11 @@ function A2A_SHARE_SAVE_options_page() {
 						if($options['display_in_feed']!='-1') echo ' checked="checked"'; 
 						if($options['display_in_posts']=='-1') echo ' disabled="disabled"';
 						?> value="1"/>
-                    <?php _e('Display at the bottom of posts in the feed', 'add-to-any'); ?>
+					<?php printf(__('Display at the %s of posts in the feed', 'add-to-any'), position_in_content($options)); ?>
 				</label><br/>
                 <label>
                 	<input name="A2A_SHARE_SAVE_display_in_pages" type="checkbox"<?php if($options['display_in_pages']!='-1') echo ' checked="checked"'; ?> value="1"/>
-                    <?php _e('Display at the bottom of pages', 'add-to-any'); ?>
+                    <?php printf(__('Display at the %s of pages', 'add-to-any'), position_in_content($options, TRUE)); ?>
 				</label>
                 <br/><br/>
                 <div class="setting-description">
@@ -900,7 +957,7 @@ function A2A_SHARE_SAVE_admin_head() {
   $options = get_option('addtoany_options');
   
 	?>
-	<script language="JavaScript" type="text/javascript"><!--
+	<script type="text/javascript"><!--
 	jQuery(document).ready(function(){
 		
 		// Toggle child options of 'Display in posts'
@@ -909,6 +966,14 @@ function A2A_SHARE_SAVE_admin_head() {
 				jQuery('.A2A_SHARE_SAVE_child_of_display_in_posts').attr('checked', true).attr('disabled', false);
 			else 
 				jQuery('.A2A_SHARE_SAVE_child_of_display_in_posts').attr('checked', false).attr('disabled', true);
+		});
+		
+		// Update button position labels/values universally in Placement section 
+		jQuery('select[name="A2A_SHARE_SAVE_position"]').bind('change click', function(e){
+			var $this = jQuery(this);
+			jQuery('select[name="A2A_SHARE_SAVE_position"]').not($this).val($this.val());
+			
+			jQuery('.A2A_SHARE_SAVE_position').html($this.find('option:selected').html());
 		});
 	
 		var to_input = function(this_sortable){

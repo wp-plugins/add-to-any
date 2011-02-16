@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany, add
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.5
+Stable tag: 0.9.9.7.6
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.
 
@@ -27,7 +27,7 @@ Standalone **share icons** let you optimize your blog posts for specific social 
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
-After **years of active development**, over **1.3 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
+After **years of active development**, over **1.46 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this plugin</a>
 
@@ -176,6 +176,13 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.7.6 =
+* Add option: Display at the top of posts
+* Add option: Display at the top and bottom of posts
+* Update option migration logic
+* Update localization strings
+* Update Romanian translation (thanks to Horia) 
 
 = .9.9.7.5 =
 * Improved inclusion method for services.php (thanks to bigorangemachine)
