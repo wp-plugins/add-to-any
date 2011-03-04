@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Button
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7.7
+Version: .9.9.7.8
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -137,8 +137,16 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			if (isset($service['href'])) {
 				$custom_service = TRUE;
 				$href = $service['href'];
-				$href = str_replace('A2A_LINKURL', $linkurl_enc, $href);
-				$href = str_replace('A2A_LINKNAME', $linkname_enc, $href);
+				if (isset($service['href_js_esc'])) {
+					$href_linkurl = str_replace("'", "\'", $linkurl);
+					$href_linkname = str_replace("'", "\'", $linkname);
+				} else {
+					$href_linkurl = $linkurl_enc;
+					$href_linkname = $linkname_enc;
+				}
+				$href = str_replace("A2A_LINKURL", $href_linkurl, $href);
+				$href = str_replace("A2A_LINKNAME", $href_linkname, $href);
+				$href = str_replace(" ", "%20", $href);
 			} else {
 				$custom_service = FALSE;
 			}
@@ -146,13 +154,14 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$icon_url = (isset($service['icon_url'])) ? $service['icon_url'] : FALSE;
 			$icon = (isset($service['icon'])) ? $service['icon'] : 'default'; // Just the icon filename
 			$width = (isset($service['icon_width'])) ? $service['icon_width'] : '16';
-			$height = (isset($service['icon_height'])) ? $service['icon_height'] : '16'; 
+			$height = (isset($service['icon_height'])) ? $service['icon_height'] : '16';
 			
 			$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
 			$src = ($icon_url) ? $icon_url : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
 			$class_attr = ($custom_service) ? "" : " class=\"a2a_button_$safe_name\"";
+			$target_attr = (isset($service['href'])) ? "" : " target=\"_blank\"";
 			
-			$link = $html_wrap_open."<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
+			$link = $html_wrap_open."<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\"$target_attr>";
 			$link .= "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 			$link .= "</a>".$html_wrap_close;
 		}
