@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany, add
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.8
+Stable tag: 0.9.9.7.9
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.
 
@@ -176,6 +176,11 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.7.9 =
+* Fix global options
+* Fix options variable debug mode notice
+* Suppress debug mode notices upon saving options
 
 = .9.9.7.8 =
 * New "Add to Favorites" & "Bookmark" standalone service for browser bookmarking
