@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: AddToAny: Share/Bookmark/Email Button
+Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
-Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google Buzz, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7.9
+Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: .9.9.7.10
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -12,7 +12,7 @@ if( !isset($A2A_locale) )
 	$A2A_locale = '';
 
 // Pre-2.6 compatibility
-if ( !defined('WP_CONTENT_URL') )
+if ( ! defined('WP_CONTENT_URL') )
 	define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
 if ( ! defined( 'WP_PLUGIN_URL' ) )
 	define( 'WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
@@ -27,15 +27,24 @@ if (is_ssl())
 $A2A_SHARE_SAVE_options = get_option('addtoany_options');
 
 function A2A_SHARE_SAVE_init() {
-	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_plugin_basename;
+	global $A2A_SHARE_SAVE_plugin_url_path,
+		$A2A_SHARE_SAVE_plugin_basename, 
+		$A2A_SHARE_SAVE_options;
 	
 	if (get_option('A2A_SHARE_SAVE_button')) {
 	    A2A_SHARE_SAVE_migrate_options();
+	    $A2A_SHARE_SAVE_options = get_option('addtoany_options');
 	}
   
 	load_plugin_textdomain('add-to-any',
 		$A2A_SHARE_SAVE_plugin_url_path.'/languages',
 		$A2A_SHARE_SAVE_plugin_basename.'/languages');
+		
+	if ($A2A_SHARE_SAVE_options['display_in_excerpts'] != '-1') {
+		// Excerpts use strip_tags() for the_content, so cancel if Excerpt and append to the_excerpt instead
+		add_filter('get_the_excerpt', 'A2A_SHARE_SAVE_remove_from_content', 9);
+		add_filter('the_excerpt', 'A2A_SHARE_SAVE_add_to_content', 98);
+	}
 }
 add_filter('init', 'A2A_SHARE_SAVE_init');
 
@@ -84,7 +93,8 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	// $args array: output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
 	
-	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services;
+	global $A2A_SHARE_SAVE_plugin_url_path, 
+		$A2A_SHARE_SAVE_services;
 	
 	$linkname = (isset($args['linkname'])) ? $args['linkname'] : FALSE;
 	$linkurl = (isset($args['linkurl'])) ? $args['linkurl'] : FALSE;
@@ -487,12 +497,6 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 add_filter('the_title', 'A2A_SHARE_SAVE_auto_placement', 9);
 add_filter('the_content', 'A2A_SHARE_SAVE_add_to_content', 98);
 
-if ($A2A_SHARE_SAVE_options['display_in_excerpts'] != '-1') {
-	// Excerpts use strip_tags() for the_content, so cancel if Excerpt and append to the_excerpt instead
-	add_filter('get_the_excerpt', 'A2A_SHARE_SAVE_remove_from_content', 9);
-	add_filter('the_excerpt', 'A2A_SHARE_SAVE_add_to_content', 98);
-}
-
 
 function A2A_SHARE_SAVE_button_css_IE() {
 /* IE support for opacity: */ ?>
@@ -505,13 +509,19 @@ function A2A_SHARE_SAVE_button_css_IE() {
 <?php
 }
 
-// Use stylesheet?
-if ($A2A_SHARE_SAVE_options['inline_css'] != '-1' && ! is_admin()) {
-	wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.3');
+function A2A_SHARE_SAVE_stylesheet() {
+	global $A2A_SHARE_SAVE_options, $A2A_SHARE_SAVE_plugin_url_path;
 	
-	// Conditional inline CSS stylesheet for IE
-	add_filter('wp_head', 'A2A_SHARE_SAVE_button_css_IE');
+	// Use stylesheet?
+	if ($A2A_SHARE_SAVE_options['inline_css'] != '-1' && ! is_admin()) {
+		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.3');
+		
+		// Conditional inline CSS stylesheet for IE
+		add_filter('wp_head', 'A2A_SHARE_SAVE_button_css_IE');
+	}
 }
+
+add_action('wp_print_styles', 'A2A_SHARE_SAVE_stylesheet');
 
 
 
@@ -614,7 +624,8 @@ function A2A_SHARE_SAVE_migrate_options() {
 
 function A2A_SHARE_SAVE_options_page() {
 
-	global $A2A_SHARE_SAVE_plugin_url_path, $A2A_SHARE_SAVE_services, $wp_version;
+	global $A2A_SHARE_SAVE_plugin_url_path,
+		$A2A_SHARE_SAVE_services;
 	
 	// Require admin privs
 	if ( ! current_user_can('manage_options') )
@@ -740,7 +751,6 @@ function A2A_SHARE_SAVE_options_page() {
 	<?php wp_nonce_field('add-to-any-update-options'); ?>
     
         <table class="form-table">
-        	<?php if ($wp_version >= "2.6") { /* Must be on WP 2.6+ */ ?>
         	<tr valign="top">
             <th scope="row"><?php _e("Standalone Services", "add-to-any"); ?></th>
 			<td><fieldset>
@@ -777,7 +787,6 @@ function A2A_SHARE_SAVE_options_page() {
                 </ul>
             </fieldset></td>
             </tr>
-			<?php } ?>
         	<tr valign="top">
             <th scope="row"><?php _e("Button", "add-to-any"); ?></th>
             <td><fieldset>
@@ -788,7 +797,7 @@ function A2A_SHARE_SAVE_options_page() {
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label>
                 <input name="A2A_SHARE_SAVE_button_favicon_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-7].checked=true" style="vertical-align:middle;width:150px"
-                	value="<?php echo ($options['button_text'] !== FALSE) ? stripslashes($options['button_text']) : __('Share/Bookmark','add-to-any'); ?>" />
+                	value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share/Bookmark','add-to-any'); ?>" />
                 <label style="padding-left:9px">
                 	<input name="A2A_SHARE_SAVE_button" value="share_16_16.png|16|16" type="radio"<?php if($options['button']=='share_16_16.png|16|16') echo ' checked="checked"'; ?>
                     	 style="margin:9px 0;vertical-align:middle">
@@ -796,7 +805,7 @@ function A2A_SHARE_SAVE_options_page() {
                     	onclick="this.parentNode.firstChild.checked=true"/>
                 </label>
                 <input name="A2A_SHARE_SAVE_button_share_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-6].checked=true" style="vertical-align:middle;width:150px"
-                	value="<?php echo ($options['button_text'] !== FALSE) ? stripslashes($options['button_text']) : __('Share/Bookmark','add-to-any'); ?>" /><br>
+                	value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share/Bookmark','add-to-any'); ?>" /><br>
                 <label>
                 	<input name="A2A_SHARE_SAVE_button" value="share_save_120_16.png|120|16" type="radio"<?php if($options['button']=='share_save_120_16.png|120|16') echo ' checked="checked"'; ?>
                     	style="margin:9px 0;vertical-align:middle">
@@ -966,13 +975,8 @@ function A2A_SHARE_SAVE_options_page() {
 // Admin page header
 function A2A_SHARE_SAVE_admin_head() {
 	if (isset($_GET['page']) && $_GET['page'] == 'add-to-any.php') {
-		global $wp_version;
-		
-		// Must be on WP 2.6+
-		if ($wp_version < "2.6")
-			return;
       
-  $options = get_option('addtoany_options');
+		$options = get_option('addtoany_options');
   
 	?>
 	<script type="text/javascript"><!--
@@ -1063,9 +1067,11 @@ function A2A_SHARE_SAVE_admin_head() {
 		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']) || isset($_POST['Submit']);
 		$active_services = ( $admin_services_saved )
 			? $_POST['A2A_SHARE_SAVE_active_services'] : $options['active_services'];
-		if( !$active_services )
+		if( ! $active_services )
 			$active_services = Array();
 		$active_services_last = end($active_services);
+		if($admin_services_saved)
+			$active_services_last = substr($active_services_last, 7); // Remove a2a_wp_
 		$active_services_quoted = '';
 		foreach ($active_services as $service) {
 			if($admin_services_saved)
@@ -1151,13 +1157,7 @@ function A2A_SHARE_SAVE_add_menu_link() {
 }
 
 function A2A_SHARE_SAVE_scripts() {
-	global $wp_version;
-	
-	// Load jQuery UI Sortable
-	// Must be on WP 2.6+
-	if ($wp_version >= "2.6") {
-		wp_enqueue_script('jquery-ui-sortable');
-	}
+	wp_enqueue_script('jquery-ui-sortable');
 }
 
 add_filter('admin_menu', 'A2A_SHARE_SAVE_add_menu_link');
