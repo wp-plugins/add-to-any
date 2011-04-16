@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.11
+Stable tag: 0.9.9.7.12
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.
 
@@ -176,6 +176,30 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.7.12 =
+* Update Tumblr icon (thanks <a href="http://blog.mattalgren.com/">Matt</a>)
+* Reduce icon filesizes
+ * blip.png
+ * box.png
+ * business_exchange.png
+ * diary_ru.png
+ * folkd.png
+ * google_buzz.png
+ * grono.png
+ * identica.png
+ * meneame.png
+ * messenger.png
+ * mozillaca.png
+ * newstrust.png
+ * orkut.png
+ * posterous.png
+ * print.png
+ * printfriendly.png
+ * tuenti.png
+ * tumblr.png
+ * wykop.png
+ * xing.png
 
 = .9.9.7.11 =
 * Turkish translation (by Fatih Aker)
