@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.12
+Stable tag: 0.9.9.7.13
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.
 
@@ -13,21 +13,21 @@ The WordPress plugin to help people **share**, **bookmark**, and **email** your 
 
 This sharing plugin comes with AddToAny's customizable Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's browsing and usage history.
 
-<a href="http://www.addtoany.com/" title="Sharing button widget" target="_blank">Share Button</a> (demo)
+<a href="http://www.addtoany.com/" title="Sharing button widget">Share Button</a> (demo)
 
 The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Hotmail, AOL, and any other web-based emailer or desktop program. The Add to Favorites button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
 
 Standalone **share icons** let you optimize your blog posts for specific social sites.  Choose from over 100 individual services.
 
-* AddToAny Smart Menu & <a href="http://www.addtoany.com/buttons/customize/standalone_services" target="_blank">AddToAny Kit</a>
+* AddToAny Smart Menu & <a href="http://www.addtoany.com/buttons/customize/standalone_services">AddToAny Kit</a>
 * Individual share links (like Sociable)
-* Includes all <a href="http://www.addtoany.com/services/" target="_blank">services</a>
+* Includes all <a href="http://www.addtoany.com/services/">services</a>
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
 * WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian)
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
-After **years of active development**, over **1.5 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
+After **years of active development**, over **1.6 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
@@ -52,7 +52,7 @@ In your Admin panel, go to `Settings` > `Share/Save Buttons`.  Among other optio
 
 = Why isn't the drop-down menu appearing? =
 
-It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks" target="_blank">coded properly</a>.  With many themes you can use the Theme Editor to make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
+It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks">coded properly</a>.  With many themes you can use the Theme Editor to make sure that the following piece of code is included in your theme's `footer.php` file just before the `</body>` line:
 
 `<?php wp_footer(); ?>`
 
@@ -176,6 +176,9 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.7.13 =
+* Fix IE conditional comment bug that affects Facebook Like button & Twitter Tweet button iframes in some browsers
 
 = .9.9.7.12 =
 * Update Tumblr icon (thanks <a href="http://blog.mattalgren.com/">Matt</a>)
@@ -372,7 +375,7 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
  * Avoids premature calling from miscellaneous the_content filters from themes and other plugins
  * Thesis theme workaround
 * French translation (by Julien)
-* Belarusian translation update (by <a href="http://pc.de/" target="_blank">Marcis G</a>)
+* Belarusian translation update (by <a href="http://pc.de/">Marcis G</a>)
 
 = .9.9.5.2 =
 * W3C XHTML validation fix (invalid from .9.9.5)
@@ -385,7 +388,7 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 * Updated template code in admin
 * Switched API URL to customize URL in admin
 * Fixed unbracketed noscript tag in admin
-* Brazilian Portuguese translation (by <a href="http://www.raocubo.com.br/" target="_blank">Rodolfo Rodrigues</a>)
+* Brazilian Portuguese translation (by <a href="http://www.raocubo.com.br/">Rodolfo Rodrigues</a>)
 
 = .9.9.5.1 =
 * Fixed issue with excerpts (JavaScript text output within excerpts since .9.9.5)
@@ -432,7 +435,7 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
  * diHITT
 * Removed standalone service
  * Global Grind
-* Japanese translation (by <a href="http://wpxtreme.jp/" target="_blank">kz</a>)
+* Japanese translation (by <a href="http://wpxtreme.jp/">kz</a>)
 
 = .9.9.4.7 =
 * Just a slight rename
@@ -478,8 +481,8 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 
 = .9.9.4.1 =
 * Twitter icon included in standard sharing button
-* Albanian translation (by <a href="http://www.romeolab.com/" target="_blank">Romeo Shuka</a>)
-* Romanian translation (by <a href="http://www.stefandes.com/" target="_blank">Stefan</a>)
+* Albanian translation (by <a href="http://www.romeolab.com/">Romeo Shuka</a>)
+* Romanian translation (by <a href="http://www.stefandes.com/">Stefan</a>)
 
 = .9.9.4 =
 * Custom standalone service support
@@ -570,7 +573,7 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 * Fixed display when all standalone services are removed in admin
 * Services label renamed Standalone Services for clarity
 * Updates to Danish translation
-* Added Belarusian translation (by <a href="http://pc.de/" target="_blank">Marcis G</a>)
+* Added Belarusian translation (by <a href="http://pc.de/">Marcis G</a>)
 
 = .9.9.2.1 =
 * Feed icons shown inline, no longer displayed in unordered list
@@ -599,7 +602,7 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 = .9.8.9 =
 * wp_footer() detection
 * Replaced short form of PHP's open tags with long form to work around configurations with shortopentag disabled
-* Spanish translation (by <a href="http://pablo.poo.cl/" target="_blank">Pablo</a>)
+* Spanish translation (by <a href="http://pablo.poo.cl/">Pablo</a>)
 
 = .9.8.8.4 =
 * Settings panel submits to current page instead of unreliable REQUEST_URI which can omit querystring on IIS
@@ -614,7 +617,7 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 = .9.8.8.1 =
 * Refine conditionals
 * Highlight admin notices
-* Danish translation (by <a href="http://wordpress.blogos.dk/" target="_blank">Georg</a>)
+* Danish translation (by <a href="http://wordpress.blogos.dk/">Georg</a>)
 
 = .9.8.8 =
 * Now customize the optional text next to the 16 x 16px icons

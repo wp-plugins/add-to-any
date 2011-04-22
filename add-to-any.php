@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7.12
+Version: .9.9.7.13
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -319,7 +319,7 @@ function ADDTOANY_SHARE_SAVE_SPECIAL($special_service_code, $args = array() ) {
 	// IE ridiculousness to support transparent iframes while maintaining W3C validity
 	$iframe_template = '<!--[if IE]>'
 		. $iframe_template_begin . ' allowTransparency="true"' . $iframe_template_end
-		. '<![endif]--><!--[if !IE]>-->' . $iframe_template . '<!--<![endif]-->';
+		. '<![endif]--><!--[if !IE]><!-->' . $iframe_template . '<!--<![endif]-->';
 	
 	if ($special_service_code == 'facebook_like')
 		$special_html = sprintf($iframe_template, $special_service_code, 'http://www.facebook.com/plugins/like.php?href=' . $linkurl_enc . '&amp;layout=button_count&amp;show_faces=false&amp;width=75&amp;action=like&amp;colorscheme=light&amp;height=20', 90);
