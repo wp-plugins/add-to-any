@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.7.13
+Version: .9.9.7.14
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -322,7 +322,7 @@ function ADDTOANY_SHARE_SAVE_SPECIAL($special_service_code, $args = array() ) {
 		. '<![endif]--><!--[if !IE]><!-->' . $iframe_template . '<!--<![endif]-->';
 	
 	if ($special_service_code == 'facebook_like')
-		$special_html = sprintf($iframe_template, $special_service_code, 'http://www.facebook.com/plugins/like.php?href=' . $linkurl_enc . '&amp;layout=button_count&amp;show_faces=false&amp;width=75&amp;action=like&amp;colorscheme=light&amp;height=20', 90);
+		$special_html = sprintf($iframe_template, $special_service_code, 'http://www.facebook.com/plugins/like.php?href=' . $linkurl_enc . '&amp;layout=button_count&amp;show_faces=false&amp;width=75&amp;action=like&amp;colorscheme=light&amp;height=20&amp;ref=addtoany', 90);
 	elseif ($special_service_code == 'twitter_tweet') 
 		$special_html = sprintf($iframe_template, $special_service_code, 'http://platform.twitter.com/widgets/tweet_button.html?url=' . $linkurl_enc . '&amp;counturl=' . $linkurl_enc . '&amp;count=horizontal&amp;text=' . $linkname_enc, 55);
 	
@@ -1115,7 +1115,7 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_services_selectable li:hover, #addtoany_services_selectable li.addtoany_selected{border:1px solid #AAA;background-color:#FFF;}
 	#addtoany_services_selectable li.addtoany_selected:hover{border-color:#F00;}
 	#addtoany_services_selectable li:active{border:1px solid #000;}
-  #addtoany_services_selectable img{margin:0 4px;width:16px;height:16px;border:0;vertical-align:middle;}
+	#addtoany_services_selectable img{margin:0 4px;width:16px;height:16px;border:0;vertical-align:middle;}
 	#addtoany_services_selectable .addtoany_special_service{padding:3px 6px;}
 	#addtoany_services_selectable .addtoany_special_service img{width:auto;height:20px;}
 	
@@ -1145,7 +1145,7 @@ function A2A_SHARE_SAVE_add_menu_link() {
 	if( current_user_can('manage_options') ) {
 		$page = add_options_page(
 			'AddToAny: '. __("Share/Save", "add-to-any"). " " . __("Settings")
-			, __("Share/Save Buttons", "add-to-any")
+			, __("AddToAny", "add-to-any")
 			, 'activate_plugins' 
 			, basename(__FILE__)
 			, 'A2A_SHARE_SAVE_options_page'
@@ -1164,7 +1164,7 @@ add_filter('admin_menu', 'A2A_SHARE_SAVE_add_menu_link');
 
 // Place in Option List on Settings > Plugins page 
 function A2A_SHARE_SAVE_actlinks( $links, $file ){
-	//Static so we don't call plugin_basename on every plugin row.
+	// Static so we don't call plugin_basename on every plugin row.
 	static $this_plugin;
 	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
 	

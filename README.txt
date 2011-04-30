@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.13
+Stable tag: 0.9.9.7.14
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.
 
@@ -23,7 +23,7 @@ Standalone **share icons** let you optimize your blog posts for specific social 
 * Individual share links (like Sociable)
 * Includes all <a href="http://www.addtoany.com/services/">services</a>
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
-* WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian)
+* WordPress optimized, localized (English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek)
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
@@ -48,7 +48,7 @@ See also:
 
 = Where are the options? =
 
-In your Admin panel, go to `Settings` > `Share/Save Buttons`.  Among other options, you can choose which button, individual icons and advanced sharing buttons (Facebook Like Button and Twitter Tweet Button) to display, and where and how to display them. 
+In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose which button, individual icons and advanced sharing buttons (Facebook Like Button and Twitter Tweet Button) to display, and where and how to display them. 
 
 = Why isn't the drop-down menu appearing? =
 
@@ -143,9 +143,13 @@ If your button isn't already set up to appear (it is by default), insert the fol
 
 = Why doesn't Facebook use the page title and how can I set the image Facebook uses? =
 
-Facebook does link sharing a little differently than most other services. Facebook will sometimes use the Meta Description of a shared page instead of the page's title or the title you have set for AddToAny.
+Facebook does link sharing a little differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services, Facebook does not accept the values you have set for your AddToAny sharing widget. To change the title, description or image on Facebook, you will need to modify your theme.
 
-To change the title, description and/or image on Facebook, you will need to modify your theme header file according to <a href="http://wiki.developers.facebook.com/index.php/Facebook_Share/Specifying_Meta_Tags">Facebook's specification</a>. With WordPress, this can be accomplished with plugins like the <a href="http://wordpress.org/extend/plugins/all-in-one-seo-pack/">All in One SEO Pack plugin</a>.  Please see that plugin for details, and post in the WordPress or plugin author's forums for more support.
+Try running Facebook's <a href="http://developers.facebook.com/tools/lint">URL Linter</a> on your pages to see how Facebook is reading your site.
+
+To change the title, description and/or image on Facebook, you will need to modify your theme's header file according to <a href="http://developers.facebook.com/docs/opengraph/">Facebook's specification</a>. With WordPress, this can be accomplished with plugins like the <a href="http://wordpress.org/extend/plugins/all-in-one-seo-pack/">All in One SEO Pack plugin</a>.  Please see that plugin for details, and post in the WordPress or plugin author's forums for more support.
+
+For more technical information on setting your pages up for Facebook sharing, see "Step 2 - Get Open Graph Tags" in <a href="http://developers.facebook.com/docs/reference/plugins/like/">Facebook's documentation</a>.
 
 = Why does the Facebook Like Button have so much whitespace to the right of it? =
 
@@ -161,21 +165,28 @@ If you move the plugin's CSS code to your theme's stylesheet, note that one prop
 
 = How can I move the plugin's inline CSS into my theme's main external stylesheet? =
 
-Go to `Settings` > `Share/Save Buttons` > uncheck `Use inline CSS` and place the CSS code in your theme's main stylesheet.
+Go to `Settings` > `AddToAny` > uncheck `Use inline CSS` and place the CSS code in your theme's main stylesheet.
 
 = Why does the menu appear behind embedded objects (like Flash)? =
 
-Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have AddToAny <a href="http://www.addtoany.com/buttons/customize/hide_embeds">hide intersecting embedded objects</a>. Just copy & paste the recommended code into the Additional Options box in `Settings` > `Share/Save Buttons`, then save changes.
+Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have AddToAny <a href="http://www.addtoany.com/buttons/customize/hide_embeds">hide intersecting embedded objects</a>. Just copy & paste the recommended code into the Additional Options box in `Settings` > `AddToAny`, then save changes.
 
 == Screenshots ==
 
-1. AddToAny Share/Save button, featuring the Open Share Icon
+1. AddToAny Share/Save sharing button, featuring the Open Share Icon
 2. Drop-down menu that appears instantly when visitors use the share button
 3. Email tab, with direct links to the most popular web-based emailers' auto-filled Compose page, a web-based sender for use with any email address, and a link for desktop email clients
 4. Settings panel
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.7.14 =
+* Simplify plugin's option as "AddToAny"
+* Greek translation update (by Xaris from <a href="http://www.aggeliopolis.gr/">Aggeliopolis</a>)
+* Update Facebook FAQ
+* Update Facebook HTTP referrer
+* Update Microsoft Messenger (Windows Live) icon 
 
 = .9.9.7.13 =
 * Fix IE conditional comment bug that affects Facebook Like button & Twitter Tweet button iframes in some browsers
