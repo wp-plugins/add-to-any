@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.7.14
+Stable tag: 0.9.9.8
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.
 
@@ -48,7 +48,9 @@ See also:
 
 = Where are the options? =
 
-In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose which button, individual icons and advanced sharing buttons (Facebook Like Button and Twitter Tweet Button) to display, and where and how to display them. 
+In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose which button, individual icons and advanced sharing buttons (Facebook Like Button and Twitter Tweet Button) to display, and where and how to display them.
+
+To place AddToAny as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
 
 = Why isn't the drop-down menu appearing? =
 
@@ -163,6 +165,14 @@ Yes, AddToAny outputs 100% W3C valid XHTML and W3C valid CSS 3.0.
 
 If you move the plugin's CSS code to your theme's stylesheet, note that one proprietary vendor prefix (`filter`) is used.  It's utilized for cross-browser compatibility with Internet Explorer.  For more information about the W3C CSS Validator and the `filter` property, see <a href="http://www.websitedev.de/css/validator-faq#extensions">Why don't my scrollbar properties, filters, etc. validate?</a>  If you feel compelled, you can move the line into an Internet Explorer-only stylesheet, or remove the line at the cost of the opacity hover effect in Internet Explorer.
 
+= Is there a shortcode for sharing? =
+
+Yes, you can place AddToAny exactly where you want it by inserting the following shortcode in a post or page:
+`[addtoany]`
+
+You can also customize the shared URL like so:
+`[addtoany url="http://www.example.com/page.html" title="Some Example Page"]`
+
 = How can I move the plugin's inline CSS into my theme's main external stylesheet? =
 
 Go to `Settings` > `AddToAny` > uncheck `Use inline CSS` and place the CSS code in your theme's main stylesheet.
@@ -180,6 +190,15 @@ Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds"
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.8 =
+* WordPress widget for sharing
+ * In your Admin panel, go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area (if your theme supports widgets) and click `Save`
+ * The widget will share the current page 
+* Shortcode for sharing
+ * Usage for sharing current post or page: `[addtoany]`
+ * Usage for sharing a specific URL: `[addtoany url="http://www.example.com/page.html" title="Some Example Page"]`
+* Add use_current_page boolean argument to PHP template code (default is false)
 
 = .9.9.7.14 =
 * Simplify plugin's option as "AddToAny"
