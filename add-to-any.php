@@ -3,14 +3,14 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.8
+Version: .9.9.8.1
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
 
 if( !isset($A2A_locale) )
 	$A2A_locale = '';
-
+	
 // Pre-2.6 compatibility
 if ( ! defined('WP_CONTENT_URL') )
 	define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
@@ -18,7 +18,20 @@ if ( ! defined( 'WP_PLUGIN_URL' ) )
 	define( 'WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
 	
 $A2A_SHARE_SAVE_plugin_basename = plugin_basename(dirname(__FILE__));
-$A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL.'/'.$A2A_SHARE_SAVE_plugin_basename; // /wp-content/plugins/add-to-any
+
+// WordPress Must-Use?
+if ( basename(dirname(__FILE__)) == "mu-plugins" ) {
+	// __FILE__ expected in /wp-content/mu-plugins (parent directory for auto-execution)
+	// /wp-content/mu-plugins/add-to-any
+	$A2A_SHARE_SAVE_plugin_url_path = WPMU_PLUGIN_URL . '/add-to-any';
+	$A2A_SHARE_SAVE_plugin_dir = WPMU_PLUGIN_DIR . '/add-to-any';
+} 
+else {
+	// /wp-content/plugins/add-to-any
+	$A2A_SHARE_SAVE_plugin_url_path = WP_PLUGIN_URL . '/' . $A2A_SHARE_SAVE_plugin_basename;
+	$A2A_SHARE_SAVE_plugin_dir = WP_PLUGIN_DIR . '/' . $A2A_SHARE_SAVE_plugin_basename;
+}
+	
 
 // Fix SSL
 if (is_ssl())
@@ -59,7 +72,7 @@ function A2A_SHARE_SAVE_link_vars($linkname = FALSE, $linkurl = FALSE) {
 	return compact( 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
 }
 
-include_once(dirname(__FILE__).'/' . 'services.php');
+include_once($A2A_SHARE_SAVE_plugin_dir . '/services.php');
 
 // Combine ADDTOANY_SHARE_SAVE_ICONS and ADDTOANY_SHARE_SAVE_BUTTON
 function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
@@ -243,14 +256,16 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		$button_text	= stripslashes($options['button_text']);
 	}
 	
-	if( $button_fname == 'favicon.png' || $button_fname == 'share_16_16.png' ) {
+	$style = '';
+	
+	if( isset($button_fname) && ($button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
 		if( ! $is_feed) {
 			$style_bg	= 'background:url('.$A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname.') no-repeat scroll 9px 0px !important;';
 			$style		= ' style="'.$style_bg.'padding:0 0 0 30px;display:inline-block;height:16px;line-height:16px;vertical-align:middle"'; // padding-left:30+9 (9=other icons padding)
 		}
 	}
 	
-	if( $button_text && (!$button_fname || $button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
+	if( isset($button_text) && $button_text && ( ! isset($button_fname) || ! $button_fname || $button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
 		$button			= $button_text;
 	} else {
 		$style = '';
@@ -1185,7 +1200,9 @@ function A2A_SHARE_SAVE_scripts() {
 
 
 function A2A_SHARE_SAVE_widget_init() {
-    require_once('add-to-any-wp-widget.php');
+	global $A2A_SHARE_SAVE_plugin_dir;
+	
+    include_once($A2A_SHARE_SAVE_plugin_dir . '/add-to-any-wp-widget.php');
     register_widget('A2A_SHARE_SAVE_Widget');
 }
 
