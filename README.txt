@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, messenger, stumbleupon, technorati, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 0.9.9.8.1
+Stable tag: 0.9.9.8.2
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, StumbleUpon, Digg and many more.
 
@@ -27,7 +27,7 @@ Standalone **share icons** let you optimize your blog posts for specific social 
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
-After **years of active development**, over **1.6 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
+After **years of active development**, over **1.7 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
@@ -161,9 +161,13 @@ It's not recommended, but you can change the width of the Facebook Like Button u
 
 = Does the plugin output W3C valid code? =
 
-Yes, AddToAny outputs 100% W3C valid XHTML and W3C valid CSS 3.0.
+Yes, AddToAny outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3.0 by default.
 
-If you move the plugin's CSS code to your theme's stylesheet, note that one proprietary vendor prefix (`filter`) is used.  It's utilized for cross-browser compatibility with Internet Explorer.  For more information about the W3C CSS Validator and the `filter` property, see <a href="http://www.websitedev.de/css/validator-faq#extensions">Why don't my scrollbar properties, filters, etc. validate?</a>  If you feel compelled, you can move the line into an Internet Explorer-only stylesheet, or remove the line at the cost of the opacity hover effect in Internet Explorer.
+If you use the Facebook Like or Twitter Tweet buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like & Tweet buttons inside of the iframes.
+
+If you move the plugin's CSS code to your theme's stylesheet, note that one proprietary vendor prefix (`filter`) is used.  It's utilized for cross-browser compatibility with Internet Explorer.  For more information about the W3C CSS Validator and the `filter` property, see <a href="http://www.websitedev.de/css/validator-faq#extensions">Why don't [sic] my scrollbar properties, filters, etc. validate?</a>  If you feel compelled, you can move the line into an Internet Explorer-only stylesheet, or remove the line at the cost of the opacity hover effect in Internet Explorer.
+
+Regardless of circumstances for passing W3C tests, the AddToAny plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> are taken very seriously.
 
 = Is there a shortcode for sharing? =
 
@@ -194,6 +198,20 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.8.2 =
+* Remove `frameborder` attribute (except for IE) on Tweet & Like iframes to support W3C validation against HTML5 themes
+* Note: 
+ * The `scrolling` attribute is considered obsolete in HTML5 but is needed to prevent scrollbars from appearing over Like & Tweet buttons
+ * AddToAny still outputs semantic and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code
+* Update icons and fix transparency issues on dark backgrounds
+ * AIM
+ * Amazon
+ * Netlog
+ * Orkut
+ * StumbleUpon
+ * WordPress
+ * Yahoo Messenger
 
 = .9.9.8.1 =
 * Add WordPress Must-Use plugin support for WordPress Multisite Networks
