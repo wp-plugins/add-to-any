@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9
+Version: .9.9.9.1
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -402,10 +402,10 @@ function A2A_SHARE_SAVE_head_script() {
 		
 		// Enternal script call + initial JS + set-once variables
 		$additional_js = $options['additional_js_variables'];
-		$script_configs = (($cache) ? 'a2a_config.static_server="' . $static_server . '";' . "\n" : '' )
-			. (($options['onclick']=='1') ? 'a2a_config.onclick=1;' . "\n" : '')
-			. (($options['show_title']=='1') ? 'a2a_config.show_title=1;' . "\n" : '')
-			. (($additional_js) ? stripslashes($additional_js) . "\n" : '');
+		$script_configs = (($cache) ? "\n" . 'a2a_config.static_server="' . $static_server . '";' : '' )
+			. (($options['onclick']=='1') ? "\n" . 'a2a_config.onclick=1;' : '')
+			. (($options['show_title']=='1') ? "\n" . 'a2a_config.show_title=1;' : '')
+			. (($additional_js) ? "\n" . stripslashes($additional_js)  : '');
 		$A2A_SHARE_SAVE_external_script_called = true;
 	}
 	else {
@@ -443,6 +443,7 @@ function A2A_SHARE_SAVE_head_script() {
 		. "};"
 		. "a2a_config.tracking_callback=['ready',wpa2a.script_onready];"
 		. A2A_menu_locale()
+		. $script_configs
 		. "\n//--></script>\n";
 	
 	 echo $javascript_header;
@@ -455,6 +456,8 @@ function A2A_SHARE_SAVE_footer_script() {
 	
 	if (is_admin())
 		return;
+		
+	$_addtoany_targets = (isset($_addtoany_targets)) ? $_addtoany_targets : array();
 	
 	$javascript_footer = "\n" . '<script type="text/javascript">' . "<!--\n"
 		. "wpa2a.targets=["
