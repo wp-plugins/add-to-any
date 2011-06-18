@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 0.9.9.9.1
+Stable tag: 0.9.9.9.2
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.
 
@@ -159,11 +159,15 @@ To change the title, description and/or image on Facebook, you will need to modi
 
 For more technical information on setting your pages up for Facebook sharing, see "Step 2 - Get Open Graph Tags" in <a href="http://developers.facebook.com/docs/reference/plugins/like/">Facebook's documentation</a>.
 
-= Why does the Facebook Like Button have so much whitespace to the right of it? =
+= Why does the Facebook Like Button, Twitter Tweet Button, or Google +1 Button have so much whitespace to the right of it? =
 
 The minimum width for the Facebook Like Button is 90 pixels. This is required to display the total number of Likes to the right of the button.  See Facebook's <a href="http://developers.facebook.com/docs/reference/plugins/like">Like Button documentation</a> for details.
 
 It's not recommended, but you can change the width of the Facebook Like Button using CSS code, for instance: `.facebook_like { width:50px !important; }`
+
+The Twitter Tweet Button with 'total count' enabled is 130 pixels. You can change the width using CSS code, for instance: `.twitter_tweet { width:100px !important; }`
+
+The Google +1 Button with 'total count' enabled is 90 pixels. You can change the width using CSS code, for instance: `.google_plusone { width:65px !important; }`
 
 = Does the plugin output W3C valid code? =
 
@@ -204,6 +208,11 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.9.2 =
+* Facebook Like Button can be changed to Facebook Recommend Button (verb/action)
+* Twitter Tweet Button count (optional - see FAQ for width adjustment)
+* Google +1 Button count (optional - see FAQ for width adjustment)
 
 = .9.9.9.1 =
 * Major fixes
