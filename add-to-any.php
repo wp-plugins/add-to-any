@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9.2
+Version: .9.9.9.3
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -189,9 +189,8 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$url = ($custom_service) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
 			$src = ($icon_url) ? $icon_url : $A2A_SHARE_SAVE_plugin_url_path."/icons/".$icon.".png";
 			$class_attr = ($custom_service) ? "" : " class=\"a2a_button_$safe_name\"";
-			$target_attr = (isset($service['href'])) ? "" : " target=\"_blank\"";
 			
-			$link = $html_wrap_open."<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\"$target_attr>";
+			$link = $html_wrap_open."<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
 			$link .= "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 			$link .= "</a>".$html_wrap_close;
 		}
@@ -368,7 +367,7 @@ function ADDTOANY_SHARE_SAVE_SPECIAL($special_service_code, $args = array() ) {
 			$count_param_value = 'false';
 			$width = 32;
 		}
-		$special_html = sprintf($iframe_template, $special_service_code, 'https://plusone.google.com/u/0/_/%2B1/button#url=' . $linkurl_enc . '&size=medium&count=' . $count_param_value, $width, 20);
+		$special_html = sprintf($iframe_template, $special_service_code, 'https://plusone.google.com/u/0/_/%2B1/button#url=' . $linkurl_enc . '&amp;size=medium&amp;count=' . $count_param_value, $width, 20);
 	}		
 	
 	if ( $output_later )
