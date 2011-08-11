@@ -3,7 +3,7 @@
 Plugin Name: AddToAny: Share/Bookmark/Email Buttons
 Plugin URI: http://www.addtoany.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9.3
+Version: .9.9.9.4
 Author: AddToAny
 Author URI: http://www.addtoany.com/
 */
@@ -367,7 +367,7 @@ function ADDTOANY_SHARE_SAVE_SPECIAL($special_service_code, $args = array() ) {
 			$count_param_value = 'false';
 			$width = 32;
 		}
-		$special_html = sprintf($iframe_template, $special_service_code, 'https://plusone.google.com/u/0/_/%2B1/button#url=' . $linkurl_enc . '&amp;size=medium&amp;count=' . $count_param_value, $width, 20);
+		$special_html = sprintf($iframe_template, $special_service_code, 'https://plusone.google.com/u/0/_/%2B1/fastbutton?url=' . $linkurl_enc . '&amp;size=medium&amp;count=' . $count_param_value, $width, 20);
 	}		
 	
 	if ( $output_later )

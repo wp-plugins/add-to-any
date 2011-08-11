@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 0.9.9.9.3
+Stable tag: 0.9.9.9.4
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.
 
@@ -208,6 +208,11 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.9.4 =
+* Fix Google +1 Button (Google changed the URL)
+* Fix Irish translation filename
+* Russian translation update (by <a href="http://fweb.org.ru/">Elvis</a>)
 
 = .9.9.9.3 =
 * W3C XHTML validation fix for the Google +1 Button iframe (thanks bobpeers)
