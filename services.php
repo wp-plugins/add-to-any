@@ -104,10 +104,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "DZone",
 		"icon" => "dzone",
 	),
-	"dailyme" => Array(
-		"name" => "DailyMe",
-		"icon" => "dailyme",
-	),
 	"delicious" => Array(
 		"name" => "Delicious",
 		"icon" => "delicious",
@@ -139,10 +135,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"evernote" => Array(
 		"name" => "Evernote",
 		"icon" => "evernote",
-	),
-	"expression" => Array(
-		"name" => "Expression",
-		"icon" => "expression",
 	),
 	"facebook" => Array(
 		"name" => "Facebook",
@@ -180,10 +172,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Google Bookmarks",
 		"icon" => "google",
 	),
-	"google_buzz" => Array(
-		"name" => "Google Buzz",
-		"icon" => "google_buzz",
-	),
 	"google_gmail" => Array(
 		"name" => "Google Gmail",
 		"icon" => "gmail",
@@ -191,6 +179,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"google_reader" => Array(
 		"name" => "Google Reader",
 		"icon" => "reader",
+	),
+	"google_plus" => Array(
+		"name" => "Google+",
+		"icon" => "google",
 	),
 	"grono" => Array(
 		"name" => "Grono",
@@ -268,10 +260,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "LiveJournal",
 		"icon" => "livejournal",
 	),
-	"msdn" => Array(
-		"name" => "MSDN",
-		"icon" => "msdn",
-	),
 	"maple" => Array(
 		"name" => "Maple",
 		"icon" => "maple",
@@ -284,17 +272,9 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Messenger",
 		"icon" => "live",
 	),
-	"mindbodygreen" => Array(
-		"name" => "MindBodyGreen",
-		"icon" => "mindbodygreen",
-	),
 	"mister_wong" => Array(
 		"name" => "Mister-Wong",
 		"icon" => "mister-wong",
-	),
-	"mixx" => Array(
-		"name" => "Mixx",
-		"icon" => "mixx",
 	),
 	"mozillaca" => Array(
 		"name" => "Mozillaca",
@@ -405,10 +385,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Segnalo",
 		"icon" => "segnalo",
 	),
-	"shoutwire" => Array(
-		"name" => "Shoutwire",
-		"icon" => "shoutwire",
-	),
 	"simpy" => Array(
 		"name" => "Simpy",
 		"icon" => "simpy",
@@ -477,10 +453,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Tailrank",
 		"icon" => "tailrank",
 	),
-	"technet" => Array(
-		"name" => "TechNet",
-		"icon" => "technet",
-	),
 	"technorati_favorites" => Array(
 		"name" => "Technorati Favorites",
 		"icon" => "technorati",
@@ -522,7 +494,7 @@ $A2A_SHARE_SAVE_services = Array(
 		"icon" => "vk",
 	),
 	"vodpod" => Array(
-		"name" => "VodPod",
+		"name" => "Vodpod",
 		"icon" => "vodpod",
 	),
 	"webnews" => Array(

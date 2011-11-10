@@ -1,9 +1,9 @@
 === AddToAny: Share/Bookmark/Email Buttons ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
 Requires at least: 2.8
-Tested up to: 3.2
-Stable tag: 0.9.9.9.4
+Tested up to: 3.3
+Stable tag: 0.9.9.9.5
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.
 
@@ -25,7 +25,7 @@ Standalone **share icons** let you optimize your blog posts for specific social 
 * Includes all <a href="http://www.addtoany.com/services/">services</a>
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
 * WordPress optimized with asynchronous script loading
-* Localized in English, Chinese, Spanish, Japanese, French, Portuguese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
+* Localized in English, Chinese, Spanish, Arabic, French, Portuguese, Japanese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
@@ -208,6 +208,19 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your AddToAny menus
 
 == Changelog ==
+
+= .9.9.9.5 =
+* Add Google+ as standalone service (endpoint is an external +1 button until Google+ offers a traditional sharing endpoint)
+* Fix Vodpod casing
+* Remove DailyMe
+* Remove Expression
+* Remove Google Buzz
+* Remove MSDN
+* Remove MindBodyGreen
+* Remove Mixx
+* Remove Shoutwire
+* Remove TechNet
+* Update Arabic translation
 
 = .9.9.9.4 =
 * Fix Google +1 Button (Google changed the URL)
