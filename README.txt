@@ -1,9 +1,9 @@
-=== AddToAny: Share/Bookmark/Email Buttons ===
+=== Share Buttons by Lockerz (AddToAny) ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany, lockerz
 Requires at least: 2.8
 Tested up to: 3.3
-Stable tag: 0.9.9.9.5
+Stable tag: 0.9.9.9.6
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.
 
@@ -12,34 +12,34 @@ Help people share, bookmark, and email your posts & pages using any service, suc
 The WordPress plugin to help people **share**, **bookmark**, and **email** your posts and pages using any service, such as Facebook, Twitter, StumbleUpon, Google, Digg, Delicious, and well over 100 more sharing and social bookmarking sites. 
 New: **Google +1 Button** in addition to the **Facebook Like Button** and **Twitter Tweet Button**.
 
-This sharing plugin comes with AddToAny's customizable Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's browsing and usage history.
+This sharing plugin comes with a customizable Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's browsing and usage history.
 
-<a href="http://www.addtoany.com/" title="Sharing button widget">Share Button</a> (demo)
+<a href="http://share.lockerz.com/" title="Sharing button widget">Share Button</a> (demo)
 
-The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Hotmail, AOL, and any other web-based emailer or desktop program. The Add to Favorites button (or Bookmark tab) helps users bookmark using any browser (Internet Explorer, Firefox, Chrome, Safari, Opera, etc.).
+The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Hotmail, AOL, and any other web-based emailer or desktop program.
 
-Standalone **share icons** let you optimize your blog posts for specific social sites.  Choose from over 100 individual services.
+Standalone **share icons** let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services.
 
-* AddToAny Smart Menu & <a href="http://www.addtoany.com/buttons/customize/standalone_services">AddToAny Kit</a>
+* Smart Menu & <a href="http://share.lockerz.com/buttons/customize/standalone_services">Kit</a>
 * Individual share links (like Sociable)
-* Includes all <a href="http://www.addtoany.com/services/">services</a>
-* Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
+* Includes all <a href="http://share.lockerz.com/services/">services</a>
+* Google Analytics integration (<a href="http://share.lockerz.com/ext/google_analytics/">access guide</a>)
 * WordPress optimized with asynchronous script loading
 * Localized in English, Chinese, Spanish, Arabic, French, Portuguese, Japanese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
-After **years of active development**, over **1.8 million downloads**, and **ongoing support from the community**, AddToAny still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
+After **years of active development**, over **2 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
 See also:
 
-* The standard <a href="http://www.addtoany.com/buttons/">Share button</a> widget
-* The <a href="http://www.addtoany.com/buttons/for/wordpress_com" title="WordPress.com sharing button widget">Share button for WordPress.com</a> blogs
+* The standard <a href="http://share.lockerz.com/buttons/">Share button</a> widget
+* The <a href="http://share.lockerz.com/buttons/for/wordpress_com" title="WordPress.com sharing button widget">Share button for WordPress.com</a> blogs
 * The <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe widget plugin">Subscribe button</a> plugin
 
-<a href="http://www.addtoany.com/blog/">AddToAny Blog</a> | <a href="http://www.addtoany.com/privacy">Privacy Policy</a>
+<a href="http://share.lockerz.com/blog/">Lockerz Share Blog</a> | <a href="http://share.lockerz.com/privacy">Privacy Policy</a>
 
 == Installation ==
 
@@ -52,7 +52,7 @@ See also:
 
 In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose which button, individual icons and advanced sharing buttons (Facebook Like Button, Twitter Tweet Button, Google +1 Button) to display, and where and how to display them.
 
-To place AddToAny as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
+To place the buttons as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
 
 = Why isn't the drop-down menu appearing? =
 
@@ -151,9 +151,9 @@ If your button isn't already set up to appear (it is by default), insert the fol
 
 = Why doesn't Facebook use the page title and how can I set the image Facebook uses? =
 
-Facebook does link sharing a little differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services, Facebook does not accept the values you have set for your AddToAny sharing widget. To change the title, description or image on Facebook, you will need to modify your theme.
+Facebook does link sharing a little differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services, Facebook does not accept the values you have set for your sharing widget. To change the title, description or image on Facebook, you will need to modify your theme.
 
-Try running Facebook's <a href="http://developers.facebook.com/tools/lint">URL Linter</a> on your pages to see how Facebook is reading your site.
+Try running Facebook's <a href="http://developers.facebook.com/tools/debug">URL Debugger</a> on your pages to see how Facebook is reading your site.
 
 To change the title, description and/or image on Facebook, you will need to modify your theme's header file according to <a href="http://developers.facebook.com/docs/opengraph/">Facebook's specification</a>. With WordPress, this can be accomplished with plugins like the <a href="http://wordpress.org/extend/plugins/all-in-one-seo-pack/">All in One SEO Pack plugin</a>.  Please see that plugin for details, and post in the WordPress or plugin author's forums for more support.
 
@@ -171,17 +171,17 @@ The Google +1 Button with 'total count' enabled is 90 pixels. You can change the
 
 = Does the plugin output W3C valid code? =
 
-Yes, AddToAny outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3.0 by default.
+Yes, this plugin outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3.0 by default.
 
 If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like, Tweet, and +1 buttons inside of the iframes.
 
 If you move the plugin's CSS code to your theme's stylesheet, note that one proprietary vendor prefix (`filter`) is used.  It's utilized for cross-browser compatibility with Internet Explorer.  For more information about the W3C CSS Validator and the `filter` property, see <a href="http://www.websitedev.de/css/validator-faq#extensions">Why don't [sic] my scrollbar properties, filters, etc. validate?</a>  If you feel compelled, you can move the line into an Internet Explorer-only stylesheet, or remove the line at the cost of the opacity hover effect in Internet Explorer.
 
-Regardless of circumstances for passing W3C tests, the AddToAny plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> are taken very seriously.
+Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> are taken very seriously.
 
 = Is there a shortcode for sharing? =
 
-Yes, you can place AddToAny exactly where you want it by inserting the following shortcode in a post or page:
+Yes, you can place your sharing buttons exactly where you want them by inserting the following shortcode in a post or page:
 `[addtoany]`
 
 You can also customize the shared URL like so:
@@ -193,7 +193,7 @@ Go to `Settings` > `AddToAny` > uncheck `Use inline CSS` and place the CSS code 
 
 = Why does the menu appear behind embedded objects (like Flash)? =
 
-Please read <a href="http://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have AddToAny <a href="http://www.addtoany.com/buttons/customize/hide_embeds">hide intersecting embedded objects</a>. Just copy & paste the recommended code into the Additional Options box in `Settings` > `AddToAny`, then save changes.
+Please read <a href="http://share.lockerz.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have the plugin <a href="http://share.lockerz.com/buttons/customize/hide_embeds">hide intersecting embedded objects</a>. Just copy & paste the recommended code into the Additional Options box in `Settings` > `AddToAny`, then save changes.
 
 = For a WordPress Multisite Network (MS), how can I set the plugin as a "Must-Use" plugin to automatically execute for all blogs? =
 
@@ -201,13 +201,23 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Screenshots ==
 
-1. AddToAny Share/Save sharing button, featuring the Open Share Icon
-2. Drop-down menu that appears instantly when visitors use the share button
-3. Email tab, with direct links to the most popular web-based emailers' auto-filled Compose page, a web-based sender for use with any email address, and a link for desktop email clients
+1. Share/Save sharing button, with the Open Share Icon
+2. Drop-down universal sharing menu that appears instantly when visitors use the share button
+3. Email tab, with direct links to the most popular web-based emailers' auto-filled Compose page, a web-based sender for use with any email address, and a link for desktop email applications
 4. Settings panel
-5. Color chooser for your AddToAny menus
+5. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= .9.9.9.6 =
+* Fix Command key character in alert box
+* Add QQ Share service
+* Update branding
+* Update Google+ icon
+* Update Microsoft Messenger icon
+* Update VK / icon
+* Update screenshots
+* Compress images
 
 = .9.9.9.5 =
 * Add Google+ as standalone service (endpoint is an external +1 button until Google+ offers a traditional sharing endpoint)

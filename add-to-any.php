@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: AddToAny: Share/Bookmark/Email Buttons
-Plugin URI: http://www.addtoany.com/
+Plugin Name: Share Buttons by Lockerz (AddToAny)
+Plugin URI: http://share.lockerz.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9.5
+Version: .9.9.9.6
 Author: AddToAny
-Author URI: http://www.addtoany.com/
+Author URI: http://share.lockerz.com/
 */
 
 if( !isset($A2A_locale) )
@@ -137,7 +137,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	// Make available services extensible via plugins, themes (functions.php), etc.
 	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
 	
-	$service_codes = array_keys($A2A_SHARE_SAVE_services);
+	$service_codes = (is_array($A2A_SHARE_SAVE_services)) ? array_keys($A2A_SHARE_SAVE_services) : Array();
 	
 	// Include Facebook Like and Twitter Tweet
 	array_unshift($service_codes, 'facebook_like', 'twitter_tweet', 'google_plusone');
@@ -397,7 +397,7 @@ if (!function_exists('A2A_menu_locale')) {
 	ShareViaEmail: "' . __("Share via e-mail", "add-to-any") . '",
 	SubscribeViaEmail: "' . __("Subscribe via e-mail", "add-to-any") . '",
 	BookmarkInYourBrowser: "' . __("Bookmark in your browser", "add-to-any") . '",
-	BookmarkInstructions: "' . __("Press Ctrl+D or &#8984;+D to bookmark this page", "add-to-any") . '",
+	BookmarkInstructions: "' . __("Press Ctrl+D or \u2318+D to bookmark this page", "add-to-any") . '",
 	AddToYourFavorites: "' . __("Add to your favorites", "add-to-any") . '",
 	SendFromWebOrProgram: "' . __("Send from any e-mail address or e-mail program", "add-to-any") . '",
     EmailProgram: "' . __("E-mail program", "add-to-any") . '"
@@ -682,7 +682,7 @@ function A2A_SHARE_SAVE_stylesheet() {
 	
 	// Use stylesheet?
 	if ($A2A_SHARE_SAVE_options['inline_css'] != '-1' && ! is_admin()) {
-		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.3');
+		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.4');
 		
 		// Conditional inline CSS stylesheet for IE
 		add_filter('wp_head', 'A2A_SHARE_SAVE_button_css_IE');

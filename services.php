@@ -182,7 +182,7 @@ $A2A_SHARE_SAVE_services = Array(
 	),
 	"google_plus" => Array(
 		"name" => "Google+",
-		"icon" => "google",
+		"icon" => "google_plus",
 	),
 	"grono" => Array(
 		"name" => "Grono",
@@ -270,7 +270,7 @@ $A2A_SHARE_SAVE_services = Array(
 	),
 	"live" => Array(
 		"name" => "Messenger",
-		"icon" => "live",
+		"icon" => "messenger",
 	),
 	"mister_wong" => Array(
 		"name" => "Mister-Wong",
@@ -368,6 +368,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"pusha" => Array(
 		"name" => "Pusha",
 		"icon" => "pusha",
+	),
+	"qq" => Array(
+		"name" => "QQ",
+		"icon" => "qq",
 	),
 	"read_it_later" => Array(
 		"name" => "Read It Later",
@@ -528,10 +532,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"yahoo_bookmarks" => Array(
 		"name" => "Yahoo Bookmarks",
 		"icon" => "yahoo",
-	),
-	"yahoo_buzz" => Array(
-		"name" => "Yahoo Buzz",
-		"icon" => "buzz",
 	),
 	"yahoo_mail" => Array(
 		"name" => "Yahoo Mail",
