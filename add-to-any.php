@@ -3,8 +3,8 @@
 Plugin Name: Share Buttons by Lockerz / AddToAny
 Plugin URI: http://share.lockerz.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9.6
-Author: AddToAny
+Version: .9.9.9.7
+Author: Lockerz
 Author URI: http://share.lockerz.com/
 */
 
@@ -589,16 +589,10 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 			( ! is_page() && $options['display_in_posts']=='-1' ) ||
 			// Front page posts		
 			( is_home() && $options['display_in_posts_on_front_page']=='-1' ) ||
-			// Category posts (same as Front page option)
-			( is_category() && $options['display_in_posts_on_front_page']=='-1' ) ||
-			// Tag Cloud posts (same as Front page option) - WP version 2.3+ only
-			( function_exists('is_tag') && is_tag() && $options['display_in_posts_on_front_page']=='-1' ) ||
-			// Date-based archives posts (same as Front page option)
-			( is_date() && $options['display_in_posts_on_front_page']=='-1' ) ||
-			// Author posts (same as Front page option)	
-			( is_author() && $options['display_in_posts_on_front_page']=='-1' ) ||
-			// Search results posts (same as Front page option)
-			( is_search() && $options['display_in_posts_on_front_page']=='-1' ) || 
+			// Archive page posts (Category, Tag, Author and Date pages)
+			( is_archive() && $options['display_in_posts_on_archive_pages']=='-1' ) ||
+			// Search results posts (same as Archive page posts option)
+			( is_search() && $options['display_in_posts_on_archive_pages']=='-1' ) || 
 			// Posts in feed
 			( $is_feed && ($options['display_in_feed']=='-1' ) ||
 			
@@ -747,6 +741,7 @@ function A2A_SHARE_SAVE_migrate_options() {
 		'inline_css' => '1', // Modernly used for "Use CSS Stylesheet?"
 		'cache' => '-1',
 		'display_in_posts_on_front_page' => '1',
+		'display_in_posts_on_archive_pages' => '1',
 		'display_in_posts' => '1',
 		'display_in_pages' => '1',
 		'display_in_feed' => '1',
@@ -813,6 +808,7 @@ function A2A_SHARE_SAVE_options_page() {
 
 		$new_options['position'] = ($_POST['A2A_SHARE_SAVE_position']) ? @$_POST['A2A_SHARE_SAVE_position'] : 'bottom';
 		$new_options['display_in_posts_on_front_page'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts_on_front_page']=='1') ? '1':'-1';
+		$new_options['display_in_posts_on_archive_pages'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts_on_archive_pages']=='1') ? '1':'-1';
 		$new_options['display_in_excerpts'] = (@$_POST['A2A_SHARE_SAVE_display_in_excerpts']=='1') ? '1':'-1';
 		$new_options['display_in_posts'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts']=='1') ? '1':'-1';
 		$new_options['display_in_pages'] = (@$_POST['A2A_SHARE_SAVE_display_in_pages']=='1') ? '1':'-1';
@@ -1045,7 +1041,13 @@ function A2A_SHARE_SAVE_options_page() {
 						?> value="1"/>
                     <?php printf(__('Display at the %s of posts on the front page', 'add-to-any'), position_in_content($options)); ?>
 				</label><br/>
-                
+				<label>
+                	&nbsp; &nbsp; &nbsp; <input class="A2A_SHARE_SAVE_child_of_display_in_posts" name="A2A_SHARE_SAVE_display_in_posts_on_archive_pages" type="checkbox"<?php 
+						if($options['display_in_posts_on_archive_pages']!='-1') echo ' checked="checked"';
+						if($options['display_in_posts']=='-1') echo ' disabled="disabled"';
+						?> value="1"/>
+                    <?php printf(__('Display at the %s of posts on archive pages', 'add-to-any'), position_in_content($options)); ?>
+				</label><br/>
 				<label>
                 	&nbsp; &nbsp; &nbsp; <input class="A2A_SHARE_SAVE_child_of_display_in_posts" name="A2A_SHARE_SAVE_display_in_feed" type="checkbox"<?php 
 						if($options['display_in_feed']!='-1') echo ' checked="checked"'; 

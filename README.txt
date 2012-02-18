@@ -76,6 +76,16 @@ If you want to customize the shared URL and title for the button and standalone 
 	ADDTOANY_SHARE_SAVE_KIT( array("linkname" => "Example Page", "linkurl" => "http://example.com/page.html") );
 } ?>`
 
+If you want to share the current URL and title (detected on the client-side), use the following code:
+`<?php if( function_exists('ADDTOANY_SHARE_SAVE_KIT') ) { 
+	ADDTOANY_SHARE_SAVE_KIT( array("use_current_page" => TRUE) );
+} ?>`
+
+If you want to hardcode the shared current URL and modify the title (server-side), use the following code as a template:
+`<?php if( function_exists('ADDTOANY_SHARE_SAVE_KIT') ) { 
+	ADDTOANY_SHARE_SAVE_KIT( array("linkname" => (is_home() ? get_bloginfo('description') : wp_title('', FALSE)), "linkurl" => (is_ssl() ? 'https://' : 'http://') . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI']) );
+} ?>`
+
 = How can I add just the button to another area of my theme? =
 
 In the Theme Editor, you will place this line of code where you want the button to appear in your theme:
@@ -208,6 +218,13 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= .9.9.9.7 =
+* Add option: Display at the top or bottom of posts on archive pages
+ * Archive pages include Category, Tag, Author, Date, and also Search pages
+ * Fix & workaround for bbPress
+* Minor fix for WordPress widget
+* Add code to FAQ for sharing current page with hardcoded placement in theme file(s)
 
 = .9.9.9.6 =
 * Fix Command key character in alert box
