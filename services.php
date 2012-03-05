@@ -260,6 +260,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "LiveJournal",
 		"icon" => "livejournal",
 	),
+	"lockerz_grab" => Array(
+		"name" => "Lockerz Grab",
+		"icon" => "lockerz",
+	),
 	"maple" => Array(
 		"name" => "Maple",
 		"icon" => "maple",
@@ -339,6 +343,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"ping" => Array(
 		"name" => "Ping",
 		"icon" => "ping",
+	),
+	"pinterest" => Array(
+		"name" => "Pinterest",
+		"icon" => "pinterest",
 	),
 	"plaxo_pulse" => Array(
 		"name" => "Plaxo Pulse",

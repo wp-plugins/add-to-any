@@ -1,16 +1,16 @@
 === Share Buttons by Lockerz / AddToAny ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, icon, icons, wpmu, addtoany, lockerz
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, wpmu, addtoany, lockerz
 Requires at least: 2.8
 Tested up to: 3.3
-Stable tag: 0.9.9.9.6
+Stable tag: 0.9.9.9.8
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.
 
 == Description ==
 
 The WordPress plugin to help people **share**, **bookmark**, and **email** your posts and pages using any service, such as Facebook, Twitter, StumbleUpon, Google, Digg, Delicious, and well over 100 more sharing and social bookmarking sites. 
-New: **Google +1 Button** in addition to the **Facebook Like Button** and **Twitter Tweet Button**.
+New: **Pinterest Pin It Button** in addition to the **Facebook Like Button**, **Twitter Tweet Button**, and **Google +1 Button**.
 
 This sharing plugin comes with a customizable Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's browsing and usage history.
 
@@ -218,6 +218,13 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= .9.9.9.8 =
+* Add Pinterest
+* Add Polish translation
+* Add QQ icon
+* Add Google+ icon
+* Add Lockerz icon
 
 = .9.9.9.7 =
 * Add option: Display at the top or bottom of posts on archive pages
