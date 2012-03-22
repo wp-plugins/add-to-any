@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, wpmu, addtoany, lockerz
 Requires at least: 2.8
 Tested up to: 3.3
-Stable tag: 0.9.9.9.8
+Stable tag: 0.9.9.9.9
 
 Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.
 
@@ -29,7 +29,7 @@ Standalone **share icons** let you optimize your blog posts & pages for specific
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
-After **years of active development**, over **2 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
+After **years of active development**, over **2.1 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. We hope it's perfect for everyone by version 1.0.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
@@ -218,6 +218,10 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= .9.9.9.9 =
+* Fix hardcoded fallbacks for sharing endpoints
+ * Strip HTML entities from Titles before URL encoding
 
 = .9.9.9.8 =
 * Add Pinterest

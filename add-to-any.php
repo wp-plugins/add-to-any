@@ -3,8 +3,8 @@
 Plugin Name: Share Buttons by Lockerz / AddToAny
 Plugin URI: http://share.lockerz.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9.8
-Author: Lockerz
+Version: .9.9.9.9
+Author: micropat
 Author URI: http://share.lockerz.com/
 */
 
@@ -65,9 +65,9 @@ function A2A_SHARE_SAVE_link_vars($linkname = FALSE, $linkurl = FALSE) {
 	global $post;
 	
 	$linkname		= ($linkname) ? $linkname : get_the_title($post->ID);
-	$linkname_enc	= rawurlencode( $linkname );
+	$linkname_enc	= rawurlencode( html_entity_decode($linkname, ENT_QUOTES, 'UTF-8') );
 	$linkurl		= ($linkurl) ? $linkurl : get_permalink($post->ID);
-	$linkurl_enc	= rawurlencode( $linkurl );	
+	$linkurl_enc	= rawurlencode( $linkurl );
 	
 	return compact( 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
 }
