@@ -2,8 +2,8 @@
 /*
 Plugin Name: Share Buttons by Lockerz / AddToAny
 Plugin URI: http://share.lockerz.com/
-Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, Digg and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: .9.9.9.9
+Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, LinkedIn and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: 1.0
 Author: micropat
 Author URI: http://share.lockerz.com/
 */
@@ -331,44 +331,27 @@ function ADDTOANY_SHARE_SAVE_SPECIAL($special_service_code, $args = array() ) {
 	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
 	extract( $args );
 	
-	$http_or_https = (is_ssl()) ? 'https' : 'http';
-	$iframe_template_begin = '<iframe';
-	$iframe_template_end = ' class="addtoany_special_service %1$s" src="%2$s" scrolling="no" style="border:none;overflow:hidden;width:%3$dpx;height:%4$dpx"></iframe>';
-	$iframe_template = $iframe_template_begin . $iframe_template_end;
-	
-	// IE ridiculousness to support transparent iframes while maintaining W3C validity
-	$iframe_template = '<!--[if IE]>'
-		. $iframe_template_begin . ' frameborder="0" allowTransparency="true"' . $iframe_template_end
-		. '<![endif]--><!--[if !IE]><!-->' . $iframe_template . '<!--<![endif]-->';
+	$special_anchor_template = '<a class="a2a_button_%1$s addtoany_special_service"%2$s></a>';
+	$custom_attributes = '';
 	
 	if ($special_service_code == 'facebook_like') {
-		if ($options['special_facebook_like_options']['verb'] == 'recommend') {
-			$action_param_value = 'recommend';
-		} else {
-			$action_param_value = 'like';
-		}
-		$special_html = sprintf($iframe_template, $special_service_code, $http_or_https . '://www.facebook.com/plugins/like.php?href=' . $linkurl_enc . '&amp;layout=button_count&amp;show_faces=false&amp;width=75&amp;action=' . $action_param_value . '&amp;colorscheme=light&amp;height=20&amp;ref=addtoany', 90, 21);
+		$custom_attributes .= ($options['special_facebook_like_options']['verb'] == 'recommend') ? ' data-action="recommend"'  : '';
+		$custom_attributes .= ' data-href="' . $linkurl . '"';
+		$special_html = sprintf($special_anchor_template, $special_service_code, $custom_attributes);
 	}
+	
 	elseif ($special_service_code == 'twitter_tweet') {
-		if ($options['special_twitter_tweet_options']['show_count'] == '1') {
-			$count_param_value = 'horizontal';
-			$width = 130;
-		} else {
-			$count_param_value = 'none';
-			$width = 55;
-		}
-		$special_html = sprintf($iframe_template, $special_service_code, $http_or_https . '://platform.twitter.com/widgets/tweet_button.html?url=' . $linkurl_enc . '&amp;counturl=' . $linkurl_enc . '&amp;count=' . $count_param_value . '&amp;text=' . $linkname_enc, $width, 20);
+		$custom_attributes .= ($options['special_twitter_tweet_options']['show_count'] == '1') ? ' data-count="horizontal"'  : ' data-count="none"';
+		$custom_attributes .= ' data-url="' . $linkurl . '"';
+		$custom_attributes .= ' data-text="' . $linkname . '"';
+		$special_html = sprintf($special_anchor_template, $special_service_code, $custom_attributes);
 	}
+	
 	elseif ($special_service_code == 'google_plusone') {
-		if ($options['special_google_plusone_options']['show_count'] == '1') {
-			$count_param_value = 'true';
-			$width = 90;
-		} else {
-			$count_param_value = 'false';
-			$width = 32;
-		}
-		$special_html = sprintf($iframe_template, $special_service_code, 'https://plusone.google.com/u/0/_/%2B1/fastbutton?url=' . $linkurl_enc . '&amp;size=medium&amp;count=' . $count_param_value, $width, 20);
-	}		
+		$custom_attributes .= ($options['special_google_plusone_options']['show_count'] == '1') ? ''  : ' data-annotation="none"';
+		$custom_attributes .= ' data-href="' . $linkurl . '"';
+		$special_html = sprintf($special_anchor_template, $special_service_code, $custom_attributes);
+	}
 	
 	if ( $output_later )
 		return $special_html;
