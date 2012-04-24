@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by Lockerz / AddToAny
 Plugin URI: http://share.lockerz.com/
 Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, LinkedIn and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.0.1
+Version: 1.0.2
 Author: micropat
 Author URI: http://share.lockerz.com/
 */
@@ -139,8 +139,8 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	
 	$service_codes = (is_array($A2A_SHARE_SAVE_services)) ? array_keys($A2A_SHARE_SAVE_services) : Array();
 	
-	// Include Facebook Like and Twitter Tweet
-	array_unshift($service_codes, 'facebook_like', 'twitter_tweet', 'google_plusone');
+	// Include Facebook Like and Twitter Tweet etc.
+	array_unshift($service_codes, 'facebook_like', 'twitter_tweet', 'google_plusone', 'google_plus_share');
 	
 	$options = get_option('addtoany_options');
   
@@ -156,7 +156,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 		if ( !in_array($active_service, $service_codes) )
 			continue;
 
-		if ($active_service == 'facebook_like' || $active_service == 'twitter_tweet' || $active_service == 'google_plusone') {
+		if ($active_service == 'facebook_like' || $active_service == 'twitter_tweet' || $active_service == 'google_plusone' || $active_service == 'google_plus_share') {
 			$special_args = $args;
 			$special_args['output_later'] = TRUE;
 			$link = ADDTOANY_SHARE_SAVE_SPECIAL($active_service, $special_args);
@@ -351,6 +351,12 @@ function ADDTOANY_SHARE_SAVE_SPECIAL($special_service_code, $args = array() ) {
 	
 	elseif ($special_service_code == 'google_plusone') {
 		$custom_attributes .= ($options['special_google_plusone_options']['show_count'] == '1') ? ''  : ' data-annotation="none"';
+		$custom_attributes .= ' data-href="' . $linkurl . '"';
+		$special_html = sprintf($special_anchor_template, $special_service_code, $custom_attributes);
+	}
+	
+	elseif ($special_service_code == 'google_plus_share') {
+		$custom_attributes .= ($options['special_google_plus_share_options']['show_count'] == '1') ? ''  : ' data-annotation="none"';
 		$custom_attributes .= ' data-href="' . $linkurl . '"';
 		$special_html = sprintf($special_anchor_template, $special_service_code, $custom_attributes);
 	}
@@ -840,6 +846,9 @@ function A2A_SHARE_SAVE_options_page() {
 		$new_options['special_google_plusone_options'] = array(
 			'show_count' => ((@$_POST['addtoany_google_plusone_show_count'] == '1') ? '1' : '-1')
 		);
+		$new_options['special_google_plus_share_options'] = array(
+			'show_count' => ((@$_POST['addtoany_google_plus_share_show_count'] == '1') ? '1' : '-1')
+		);
 		
     	update_option('addtoany_options', $new_options);
     
@@ -927,6 +936,9 @@ function A2A_SHARE_SAVE_options_page() {
                     </li>
                     <li id="a2a_wp_google_plusone" class="addtoany_special_service" title="Google +1 button">
                         <span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plusone.png'; ?>" width="32" height="20" alt="Google +1" /></span>
+                    </li>
+                    <li id="a2a_wp_google_plus_share" class="addtoany_special_service" title="Google+ Share button">
+                        <span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plus_share.png'; ?>" width="57" height="20" alt="Google+ Share Button" /></span>
                     </li>
 				<?php
 					// Show all services
@@ -1181,8 +1193,8 @@ function A2A_SHARE_SAVE_admin_head() {
 					
 					// Special service options?
 					service_name = services_array[i].substr(7);
-					if (service_name == 'facebook_like' || service_name == 'twitter_tweet' || service_name == 'google_plusone') {
-						if ((service_name == 'twitter_tweet' || service_name == 'google_plusone') && jQuery('#' + services_array[i] + '_show_count').is(':checked'))
+					if (service_name == 'facebook_like' || service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') {
+						if ((service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') && jQuery('#' + services_array[i] + '_show_count').is(':checked'))
 							jQuery('form:first').append('<input name="addtoany_' + service_name + '_show_count" type="hidden" value="1"/>');
 						if ((service_name == 'facebook_like') && jQuery('#' + services_array[i] + '_verb').val() == 'recommend')
 							jQuery('form:first').append('<input name="addtoany_' + service_name + '_verb" type="hidden" value="recommend"/>');
@@ -1220,7 +1232,7 @@ function A2A_SHARE_SAVE_admin_head() {
 						+ '<option' + checked + ' value="recommend">Recommend</option>'
 						+ '</select>';
 				} else {
-					// twitter_tweet & google_plusone
+					// twitter_tweet & google_plusone & google_plus_share
 					if (service_options[this_service_name] && service_options[this_service_name].show_count)
 						checked = ' checked="checked"';
 					special_options_html = '<label><input' + checked + ' id="' + this_service.attr('id') + '_show_count" name="' + this_service.attr('id') + '_show_count" type="checkbox" value="1"> Show count</label>';
@@ -1300,6 +1312,9 @@ function A2A_SHARE_SAVE_admin_head() {
 		}
 		if ( $_POST['addtoany_google_plusone_show_count'] == '1' || $options['special_google_plusone_options']['show_count'] == '1') {
 			?>service_options.google_plusone = {show_count: 1};<?php
+		}
+		if ( $_POST['addtoany_google_plus_share_show_count'] == '1' || $options['special_google_plus_share_options']['show_count'] == '1') {
+			?>service_options.google_plus_share = {show_count: 1};<?php
 		}
 		?>
         
