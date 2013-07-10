@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Share Buttons by Lockerz / AddToAny
-Plugin URI: http://share.lockerz.com/
-Description: Help people share, bookmark, and email your posts & pages using any service, such as Facebook, Twitter, Google, StumbleUpon, LinkedIn and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.0.3
+Plugin Name: Share Buttons by AddToAny
+Plugin URI: http://www.addtoany.com/
+Description: Sharing buttons for your pages from the universal sharing platform, including Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: 1.1
 Author: micropat
-Author URI: http://share.lockerz.com/
+Author URI: http://www.addtoany.com/
 */
 
 if( !isset($A2A_locale) )
@@ -915,7 +915,7 @@ function A2A_SHARE_SAVE_options_page() {
 	
 	<h2><?php _e( 'AddToAny: Share/Save ', 'add-to-any' ) . _e( 'Settings' ); ?></h2>
 
-    <form method="post" action="">
+    <form id="addtoany_admin_form" method="post" action="">
     
 	<?php wp_nonce_field('add-to-any-update-options'); ?>
     
@@ -1189,7 +1189,7 @@ function A2A_SHARE_SAVE_admin_head() {
 			
 			for(var i=0, service_name; i < services_size; i++){
 				if(services_array[i]!='') { // Exclude dummy icon
-					jQuery('form:first').append('<input name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
+					jQuery('#addtoany_admin_form').append('<input name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
 					
 					// Special service options?
 					service_name = services_array[i].substr(7);
@@ -1360,7 +1360,7 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_services_sortable li.dummy, #addtoany_services_sortable li.dummy:hover{cursor:auto;background-color:transparent;}
 	#addtoany_services_sortable img{width:16px;height:16px;border:0;vertical-align:middle;}
 	#addtoany_services_sortable .addtoany_special_service img{width:auto;height:20px;float:left;}
-	#addtoany_services_sortable .addtoany_special_service span.down_arrow{background:url(<?php echo admin_url( '/images/menu-bits.gif' ); ?>) no-repeat -2px -110px;float:right;height:30px;;margin:-5px 0 -6px 5px;width:20px;}
+	#addtoany_services_sortable .addtoany_special_service span.down_arrow{background:url(<?php echo admin_url( '/images/arrows.png' ); ?>) no-repeat 5px 9px;float:right;height:29px;;margin:-6px 0 -6px 4px;width:26px;}
 	#addtoany_services_sortable .addtoany_special_service div.special_options{display:none;font-size:11px;margin-top:9px;}
 	#addtoany_services_sortable .addtoany_special_service_options_selected{border:1px solid #AAA;background-color:#FFF;}
 	#addtoany_services_sortable .addtoany_special_service_options_selected span.down_arrow{display:none;}
