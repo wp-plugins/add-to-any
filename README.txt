@@ -219,6 +219,22 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Changelog ==
 
+= 1.1.1 =
+* Add Pinboard
+* Add Buffer
+* Add Diaspora
+* Add Kindle It
+* Add Mail.Ru
+* Add Odnoklassniki
+* Update Pinterest icon
+* Update Google icon
+* Update Google+ icon
+* Remove Google Reader
+* Remove Posterous
+* Remove Sphere
+* Remove Tipd
+* Remove Vodpod
+
 = 1.1 =
 * Fix settings page conflict with certain features of the Jetpack plugin and other plugins & themes
 * Fix settings page's down arrow icon for advanced 3rd party buttons (Like, Tweet, etc.)

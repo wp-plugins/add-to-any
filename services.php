@@ -80,6 +80,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "BuddyMarks",
 		"icon" => "buddymarks",
 	),
+	"buffer" => Array(
+		"name" => "Buffer",
+		"icon" => "buffer",
+	),
 	"business_exchange" => Array(
 		"name" => "Business Exchange",
 		"icon" => "business_exchange",
@@ -115,6 +119,10 @@ $A2A_SHARE_SAVE_services = Array(
 	"diary_ru" => Array(
 		"name" => "Diary.Ru",
 		"icon" => "diary_ru",
+	),
+	"diaspora" => Array(
+		"name" => "Diaspora",
+		"icon" => "diaspora",
 	),
 	"digg" => Array(
 		"name" => "Digg",
@@ -176,10 +184,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Google Gmail",
 		"icon" => "gmail",
 	),
-	"google_reader" => Array(
-		"name" => "Google Reader",
-		"icon" => "reader",
-	),
 	"google_plus" => Array(
 		"name" => "Google+",
 		"icon" => "google_plus",
@@ -240,6 +244,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Khabbr",
 		"icon" => "khabbr",
 	),
+	"kindle_it" => Array(
+		"name" => "Kindle It",
+		"icon" => "kindle",
+	),
 	"kledy" => Array(
 		"name" => "Kledy",
 		"icon" => "kledy",
@@ -260,9 +268,9 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "LiveJournal",
 		"icon" => "livejournal",
 	),
-	"lockerz_grab" => Array(
-		"name" => "Lockerz Grab",
-		"icon" => "lockerz",
+	"mail_ru" => Array(
+		"name" => "Mail.Ru",
+		"icon" => "mail_ru",
 	),
 	"maple" => Array(
 		"name" => "Maple",
@@ -324,6 +332,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "NowPublic",
 		"icon" => "nowpublic",
 	),
+	"odnoklassniki" => Array(
+		"name" => "Odnoklassniki",
+		"icon" => "odnoklassniki",
+	),
 	"oknotizie" => Array(
 		"name" => "Oknotizie",
 		"icon" => "oknotizie",
@@ -340,6 +352,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "PhoneFavs",
 		"icon" => "phonefavs",
 	),
+	"pinboard" => Array(
+		"name" => "Pinboard",
+		"icon" => "pinboard",
+	),
 	"ping" => Array(
 		"name" => "Ping",
 		"icon" => "ping",
@@ -355,10 +371,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"plurk" => Array(
 		"name" => "Plurk",
 		"icon" => "plurk",
-	),
-	"posterous" => Array(
-		"name" => "Posterous",
-		"icon" => "posterous",
 	),
 	"print" => Array(
 		"name" => "Print",
@@ -417,10 +429,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "SmakNews",
 		"icon" => "smaknews",
 	),
-	"sphere" => Array(
-		"name" => "Sphere",
-		"icon" => "sphere",
-	),
 	"sphinn" => Array(
 		"name" => "Sphinn",
 		"icon" => "sphinn",
@@ -473,10 +481,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Technotizie",
 		"icon" => "technotizie",
 	),
-	"tipd" => Array(
-		"name" => "Tipd",
-		"icon" => "tipd",
-	),
 	"tuenti" => Array(
 		"name" => "Tuenti",
 		"icon" => "tuenti",
@@ -504,10 +508,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"vk" => Array(
 		"name" => "Vkontakte",
 		"icon" => "vk",
-	),
-	"vodpod" => Array(
-		"name" => "Vodpod",
-		"icon" => "vodpod",
 	),
 	"webnews" => Array(
 		"name" => "Webnews",
