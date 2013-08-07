@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Sharing buttons for your pages from the universal sharing platform, including Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.1.1
+Version: 1.1.2
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -1195,9 +1195,9 @@ function A2A_SHARE_SAVE_admin_head() {
 					service_name = services_array[i].substr(7);
 					if (service_name == 'facebook_like' || service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') {
 						if ((service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') && jQuery('#' + services_array[i] + '_show_count').is(':checked'))
-							jQuery('form:first').append('<input name="addtoany_' + service_name + '_show_count" type="hidden" value="1"/>');
+							jQuery('#addtoany_admin_form').append('<input name="addtoany_' + service_name + '_show_count" type="hidden" value="1"/>');
 						if ((service_name == 'facebook_like') && jQuery('#' + services_array[i] + '_verb').val() == 'recommend')
-							jQuery('form:first').append('<input name="addtoany_' + service_name + '_verb" type="hidden" value="recommend"/>');
+							jQuery('#addtoany_admin_form').append('<input name="addtoany_' + service_name + '_verb" type="hidden" value="recommend"/>');
 					}
 				}
 			}
@@ -1278,7 +1278,7 @@ function A2A_SHARE_SAVE_admin_head() {
 		jQuery('#addtoany_services_selectable li').bind('click', moveToSortableList);
         
         // Form submit = get sortable list
-        jQuery('form').submit(function(){to_input('#addtoany_services_sortable')});
+        jQuery('#addtoany_admin_form').submit(function(){to_input('#addtoany_services_sortable')});
         
         // Auto-select active services
         <?php

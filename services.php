@@ -196,10 +196,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Hatena",
 		"icon" => "hatena",
 	),
-	"hellotxt" => Array(
-		"name" => "HelloTxt",
-		"icon" => "hellotxt",
-	),
 	"hemidemi" => Array(
 		"name" => "Hemidemi",
 		"icon" => "hemidemi",
@@ -372,6 +368,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Plurk",
 		"icon" => "plurk",
 	),
+	"pocket" => Array(
+		"name" => "Pocket",
+		"icon" => "pocket",
+	),
 	"print" => Array(
 		"name" => "Print",
 		"icon" => "print",
@@ -392,10 +392,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"qq" => Array(
 		"name" => "QQ",
 		"icon" => "qq",
-	),
-	"read_it_later" => Array(
-		"name" => "Read It Later",
-		"icon" => "read_it_later",
 	),
 	"reddit" => Array(
 		"name" => "Reddit",
