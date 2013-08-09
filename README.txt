@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 
 Sharing buttons for your pages from the universal sharing platform, including Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -218,6 +218,9 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.1.3 =
+* Fix validation and semantics of script tag placement, particularly when button is contained in a list element
 
 = 1.1.2 =
 * Fix settings page conflict with certain features of the Jetpack plugin and other plugins & themes
