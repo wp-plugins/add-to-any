@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Sharing buttons for your pages from the universal sharing platform, including Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.1.3
+Version: 1.1.4
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -958,7 +958,7 @@ function A2A_SHARE_SAVE_options_page() {
 							$site['icon'] = 'default';
 					?>
                         <li id="a2a_wp_<?php echo $service_safe_name; ?>" title="<?php echo $site['name']; ?>">
-                            <span><img src="<?php echo ($site['icon_url']) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon'].'.png'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '16'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '16'; ?>" alt="" /><?php echo $site['name']; ?></span>
+                            <span><img src="<?php echo (isset($site['icon_url'])) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon'].'.png'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '16'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '16'; ?>" alt="" /><?php echo $site['name']; ?></span>
                         </li>
 				<?php
                     } ?>
@@ -1183,24 +1183,30 @@ function A2A_SHARE_SAVE_admin_head() {
 		});
 	
 		var to_input = function(this_sortable){
-			// Clear any previous services stored as hidden inputs
-			jQuery('input[name="A2A_SHARE_SAVE_active_services[]"]').remove();
+			// Clear any previous hidden inputs for storing chosen services
+			// and special service options
+			jQuery('input.addtoany_hidden_options').remove();
 			
 			var services_array = jQuery(this_sortable).sortable('toArray'),
 				services_size = services_array.length;
 			if(services_size<1) return;
 			
-			for(var i=0, service_name; i < services_size; i++){
+			for(var i=0, service_name, show_count_value, fb_verb_value; i < services_size; i++){
 				if(services_array[i]!='') { // Exclude dummy icon
-					jQuery('#addtoany_admin_form').append('<input name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
+					jQuery('#addtoany_admin_form').append('<input class="addtoany_hidden_options" name="A2A_SHARE_SAVE_active_services[]" type="hidden" value="'+services_array[i]+'"/>');
 					
 					// Special service options?
 					service_name = services_array[i].substr(7);
 					if (service_name == 'facebook_like' || service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') {
-						if ((service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') && jQuery('#' + services_array[i] + '_show_count').is(':checked'))
-							jQuery('#addtoany_admin_form').append('<input name="addtoany_' + service_name + '_show_count" type="hidden" value="1"/>');
-						if ((service_name == 'facebook_like') && jQuery('#' + services_array[i] + '_verb').val() == 'recommend')
-							jQuery('#addtoany_admin_form').append('<input name="addtoany_' + service_name + '_verb" type="hidden" value="recommend"/>');
+						if (service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share') {
+							show_count_value = (jQuery('#' + services_array[i] + '_show_count').is(':checked')) ? '1' : '-1' ;
+							jQuery('#addtoany_admin_form').append('<input class="addtoany_hidden_options" name="addtoany_' + service_name + '_show_count" type="hidden" value="' + show_count_value + '"/>');
+						}
+						
+						if (service_name == 'facebook_like') {
+							fb_verb_value = (jQuery('#' + services_array[i] + '_verb').val() == 'recommend') ? 'recommend' : 'like';
+							jQuery('#addtoany_admin_form').append('<input class="addtoany_hidden_options" name="addtoany_' + service_name + '_verb" type="hidden" value="' + fb_verb_value + '"/>');
+						}
 					}
 				}
 			}
@@ -1221,7 +1227,7 @@ function A2A_SHARE_SAVE_admin_head() {
 				this_service = jQuery(this),
 				this_service_name = this_service.attr('id').substr(7),
 				checked = '',
-				special_options = '';
+				special_options_html = '';
 			
 			if (jQuery('#addtoany_services_sortable li').not('.dummy').length == 0)
 				jQuery('#addtoany_services_sortable').find('.dummy').hide();
@@ -1236,8 +1242,9 @@ function A2A_SHARE_SAVE_admin_head() {
 						+ '</select>';
 				} else {
 					// twitter_tweet & google_plusone & google_plus_share
-					if (service_options[this_service_name] && service_options[this_service_name].show_count)
+					if (service_options[this_service_name] && service_options[this_service_name].show_count) {
 						checked = ' checked="checked"';
+					}
 					special_options_html = '<label><input' + checked + ' id="' + this_service.attr('id') + '_show_count" name="' + this_service.attr('id') + '_show_count" type="checkbox" value="1"> Show count</label>';
 				}
 				
@@ -1285,7 +1292,7 @@ function A2A_SHARE_SAVE_admin_head() {
         
         // Auto-select active services
         <?php
-		$admin_services_saved = is_array($_POST['A2A_SHARE_SAVE_active_services']) || isset($_POST['Submit']);
+		$admin_services_saved = isset($_POST['A2A_SHARE_SAVE_active_services']) || isset($_POST['Submit']);
 		$active_services = ( $admin_services_saved )
 			? $_POST['A2A_SHARE_SAVE_active_services'] : $options['active_services'];
 		if( ! $active_services )
@@ -1307,16 +1314,20 @@ function A2A_SHARE_SAVE_admin_head() {
         
         <?php		
 		// Special service options
-		if ( $_POST['addtoany_facebook_like_verb'] == 'recommend' || $options['special_facebook_like_options']['verb'] == 'recommend') {
+		if ( isset($_POST['addtoany_facebook_like_verb']) && $_POST['addtoany_facebook_like_verb'] == 'recommend'
+			|| ! isset($_POST['addtoany_facebook_like_verb']) && $options['special_facebook_like_options']['verb'] == 'recommend') {
 			?>service_options.facebook_like = {verb: 'recommend'};<?php
 		}
-		if ( $_POST['addtoany_twitter_tweet_show_count'] == '1' || $options['special_twitter_tweet_options']['show_count'] == '1') {
+		if ( isset($_POST['addtoany_twitter_tweet_show_count']) && $_POST['addtoany_twitter_tweet_show_count'] == '1'
+			|| ! isset($_POST['addtoany_twitter_tweet_show_count']) && $options['special_twitter_tweet_options']['show_count'] == '1') {
 			?>service_options.twitter_tweet = {show_count: 1};<?php
 		}
-		if ( $_POST['addtoany_google_plusone_show_count'] == '1' || $options['special_google_plusone_options']['show_count'] == '1') {
+		if ( isset($_POST['addtoany_google_plusone_show_count']) && $_POST['addtoany_google_plusone_show_count'] == '1'
+			|| ! isset($_POST['addtoany_google_plusone_show_count']) && $options['special_google_plusone_options']['show_count'] == '1') {
 			?>service_options.google_plusone = {show_count: 1};<?php
 		}
-		if ( $_POST['addtoany_google_plus_share_show_count'] == '1' || $options['special_google_plus_share_options']['show_count'] == '1') {
+		if ( isset($_POST['addtoany_google_plus_share_show_count']) && $_POST['addtoany_google_plus_share_show_count'] == '1'
+			|| ! isset($_POST['addtoany_google_plus_share_show_count']) && $options['special_google_plus_share_options']['show_count'] == '1') {
 			?>service_options.google_plus_share = {show_count: 1};<?php
 		}
 		?>

@@ -3,14 +3,15 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, widget, email, e-mail, seo, button, delicious, google buzz, buzz, google, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 
 Sharing buttons for your pages from the universal sharing platform, including Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
 == Description ==
 
 The WordPress plugin to help people **share**, **bookmark**, and **email** your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites. 
-Advanced buttons include the **Facebook Like Button**, **Twitter Tweet Button**, **Google+ Share Button**, **Google+ Share Button** and **Google +1 Button**.
+
+3rd party buttons include the **Facebook Like Button**, **Twitter Tweet Button**, **Google+ Share Button**, **Google+ Share Button** and **Google +1 Button**.
 
 This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's usage history.
 
@@ -28,7 +29,7 @@ Standalone **share icons** let you optimize your blog posts & pages for specific
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
 * Many more publisher and user features!
 
-After **years of active development**, over **2.4 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. We love feedback.
+After **years of active development**, over **2.5 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. Thanks for your feedback!
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
@@ -218,6 +219,10 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.1.4 =
+* Fix admin panel display of 3rd party button options after saving changes
+* Fix debug mode notices
 
 = 1.1.3 =
 * Fix validation and semantics of script tag placement, particularly when button is contained in a list element
