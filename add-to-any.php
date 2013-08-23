@@ -2,8 +2,8 @@
 /*
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
-Description: Sharing buttons for your pages from the universal sharing platform, including Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.1.4
+Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
+Version: 1.1.5
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -64,9 +64,24 @@ add_filter('init', 'A2A_SHARE_SAVE_init');
 function A2A_SHARE_SAVE_link_vars($linkname = FALSE, $linkurl = FALSE) {
 	global $post;
 	
-	$linkname		= ($linkname) ? $linkname : get_the_title($post->ID);
+	// Set linkname
+	if ( !$linkname ) {
+		if ( isset( $post ) )
+			$linkname = get_the_title($post->ID);
+		else
+			$linkname = '';
+	}
+	
 	$linkname_enc	= rawurlencode( html_entity_decode($linkname, ENT_QUOTES, 'UTF-8') );
-	$linkurl		= ($linkurl) ? $linkurl : get_permalink($post->ID);
+	
+	// Set linkurl
+	if ( !$linkurl ) {
+		if (isset( $post ))
+			$linkurl = get_permalink($post->ID);
+		else
+			$linkurl = '';
+	}
+	
 	$linkurl_enc	= rawurlencode( $linkurl );
 	
 	return compact( 'linkname', 'linkname_enc', 'linkurl', 'linkurl_enc' );
@@ -1304,7 +1319,7 @@ function A2A_SHARE_SAVE_admin_head() {
 		foreach ($active_services as $service) {
 			if($admin_services_saved)
 				$service = substr($service, 7); // Remove a2a_wp_
-			$active_services_quoted .= '"'.$service.'"';
+			$active_services_quoted .= '"' . esc_js( $service ) . '"';
 			if ( $service != $active_services_last )
 				$active_services_quoted .= ',';
 		}
