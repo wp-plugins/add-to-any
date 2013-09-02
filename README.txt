@@ -1,9 +1,9 @@
 === Share Buttons by AddToAny ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, buzz, google, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, wpmu, addtoany
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 
 Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -219,6 +219,17 @@ Upload the plugin directory (including all files and directories within) to the 
 5. Color chooser for your universal sharing menu
 
 == Changelog ==
+= 1.1.6 =
+* Add App.net
+* Add Outlook.com (formerly Hotmail)
+* Update Pinterest icon
+* Update Box icon
+* Update Digg icon
+* Update Evernote icon
+* Update Instapaper icon
+* Update Yahoo! icon
+* Update Vkontakte (VK) icon
+* Remove unused icons
 
 = 1.1.5 =
 * Fix debug mode notices when manually placed in a theme file that does not display a post/page

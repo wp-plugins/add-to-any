@@ -18,17 +18,13 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Amazon Wish List",
 		"icon" => "amazon",
 	),
+	"app_net" => Array(
+		"name" => "App.net",
+		"icon" => "app_net",
+	),
 	"arto" => Array(
 		"name" => "Arto",
 		"icon" => "arto",
-	),
-	"ask_com_mystuff" => Array(
-		"name" => "Ask.com MyStuff",
-		"icon" => "ask",
-	),
-	"backflip" => Array(
-		"name" => "Backflip",
-		"icon" => "backflip",
 	),
 	"balatarin" => Array(
 		"name" => "Balatarin",
@@ -84,10 +80,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Buffer",
 		"icon" => "buffer",
 	),
-	"business_exchange" => Array(
-		"name" => "Business Exchange",
-		"icon" => "business_exchange",
-	),
 	"care2_news" => Array(
 		"name" => "Care2 News",
 		"icon" => "care2",
@@ -95,14 +87,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"citeulike" => Array(
 		"name" => "CiteULike",
 		"icon" => "citeulike",
-	),
-	"connotea" => Array(
-		"name" => "Connotea",
-		"icon" => "connotea",
-	),
-	"current" => Array(
-		"name" => "Current",
-		"icon" => "current",
 	),
 	"dzone" => Array(
 		"name" => "DZone",
@@ -128,10 +112,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Digg",
 		"icon" => "digg",
 	),
-	"diglog" => Array(
-		"name" => "Diglog",
-		"icon" => "diglog",
-	),
 	"diigo" => Array(
 		"name" => "Diigo",
 		"icon" => "diigo",
@@ -152,10 +132,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Fark",
 		"icon" => "fark",
 	),
-	"faves" => Array(
-		"name" => "Faves",
-		"icon" => "faves",
-	),
 	"favoriten" => Array(
 		"name" => "Favoriten",
 		"icon" => "favoriten",
@@ -171,10 +147,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"funp" => Array(
 		"name" => "FunP",
 		"icon" => "funp",
-	),
-	"gabbr" => Array(
-		"name" => "Gabbr",
-		"icon" => "gabbr",
 	),
 	"google_bookmarks" => Array(
 		"name" => "Google Bookmarks",
@@ -196,18 +168,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Hatena",
 		"icon" => "hatena",
 	),
-	"hemidemi" => Array(
-		"name" => "Hemidemi",
-		"icon" => "hemidemi",
-	),
-	"hotmail" => Array(
-		"name" => "Hotmail",
-		"icon" => "live",
-	),
-	"hugg" => Array(
-		"name" => "Hugg",
-		"icon" => "hugg",
-	),
 	"hyves" => Array(
 		"name" => "Hyves",
 		"icon" => "hyves",
@@ -215,14 +175,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"iwiw" => Array(
 		"name" => "IWIW",
 		"icon" => "iwiw",
-	),
-	"identi_ca" => Array(
-		"name" => "Identi.ca",
-		"icon" => "identica",
-	),
-	"imera_brazil" => Array(
-		"name" => "Imera Brazil",
-		"icon" => "imera",
 	),
 	"instapaper" => Array(
 		"name" => "Instapaper",
@@ -244,10 +196,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Kindle It",
 		"icon" => "kindle",
 	),
-	"kledy" => Array(
-		"name" => "Kledy",
-		"icon" => "kledy",
-	),
 	"linkagogo" => Array(
 		"name" => "LinkaGoGo",
 		"icon" => "linkagogo",
@@ -268,33 +216,13 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Mail.Ru",
 		"icon" => "mail_ru",
 	),
-	"maple" => Array(
-		"name" => "Maple",
-		"icon" => "maple",
-	),
 	"meneame" => Array(
 		"name" => "Meneame",
 		"icon" => "meneame",
 	),
-	"live" => Array(
-		"name" => "Messenger",
-		"icon" => "messenger",
-	),
 	"mister_wong" => Array(
 		"name" => "Mister-Wong",
 		"icon" => "mister-wong",
-	),
-	"mozillaca" => Array(
-		"name" => "Mozillaca",
-		"icon" => "mozillaca",
-	),
-	"multiply" => Array(
-		"name" => "Multiply",
-		"icon" => "multiply",
-	),
-	"mylinkvault" => Array(
-		"name" => "MyLinkVault",
-		"icon" => "mylinkvault",
 	),
 	"myspace" => Array(
 		"name" => "MySpace",
@@ -307,10 +235,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"netlog" => Array(
 		"name" => "Netlog",
 		"icon" => "netlog",
-	),
-	"netvibes_share" => Array(
-		"name" => "Netvibes Share",
-		"icon" => "netvibes",
 	),
 	"netvouz" => Array(
 		"name" => "Netvouz",
@@ -336,13 +260,13 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Oknotizie",
 		"icon" => "oknotizie",
 	),
-	"oneview" => Array(
-		"name" => "Oneview",
-		"icon" => "oneview",
-	),
 	"orkut" => Array(
 		"name" => "Orkut",
 		"icon" => "orkut",
+	),
+	"outlook_com" => Array(
+		"name" => "Outlook.com",
+		"icon" => "outlook_com",
 	),
 	"phonefavs" => Array(
 		"name" => "PhoneFavs",
@@ -352,17 +276,9 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Pinboard",
 		"icon" => "pinboard",
 	),
-	"ping" => Array(
-		"name" => "Ping",
-		"icon" => "ping",
-	),
 	"pinterest" => Array(
 		"name" => "Pinterest",
 		"icon" => "pinterest",
-	),
-	"plaxo_pulse" => Array(
-		"name" => "Plaxo Pulse",
-		"icon" => "plaxo",
 	),
 	"plurk" => Array(
 		"name" => "Plurk",
@@ -405,10 +321,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Segnalo",
 		"icon" => "segnalo",
 	),
-	"simpy" => Array(
-		"name" => "Simpy",
-		"icon" => "simpy",
-	),
 	"sina_weibo" => Array(
 		"name" => "Sina Weibo",
 		"icon" => "sina_weibo",
@@ -421,29 +333,9 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Slashdot",
 		"icon" => "slashdot",
 	),
-	"smaknews" => Array(
-		"name" => "SmakNews",
-		"icon" => "smaknews",
-	),
-	"sphinn" => Array(
-		"name" => "Sphinn",
-		"icon" => "sphinn",
-	),
-	"spurl" => Array(
-		"name" => "Spurl",
-		"icon" => "spurl",
-	),
-	"squidoo" => Array(
-		"name" => "Squidoo",
-		"icon" => "squidoo",
-	),
 	"startaid" => Array(
 		"name" => "StartAid",
 		"icon" => "startaid",
-	),
-	"strands" => Array(
-		"name" => "Strands",
-		"icon" => "strands",
 	),
 	"stumbleupon" => Array(
 		"name" => "StumbleUpon",
@@ -460,18 +352,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"symbaloo_feeds" => Array(
 		"name" => "Symbaloo Feeds",
 		"icon" => "symbaloo",
-	),
-	"tagza" => Array(
-		"name" => "Tagza",
-		"icon" => "tagza",
-	),
-	"tailrank" => Array(
-		"name" => "Tailrank",
-		"icon" => "tailrank",
-	),
-	"technorati_favorites" => Array(
-		"name" => "Technorati Favorites",
-		"icon" => "technorati",
 	),
 	"technotizie" => Array(
 		"name" => "Technotizie",
@@ -509,10 +389,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Webnews",
 		"icon" => "webnews",
 	),
-	"wink" => Array(
-		"name" => "Wink",
-		"icon" => "wink",
-	),
 	"wists" => Array(
 		"name" => "Wists",
 		"icon" => "wists",
@@ -545,10 +421,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Yahoo Messenger",
 		"icon" => "yim",
 	),
-	"yample" => Array(
-		"name" => "Yample",
-		"icon" => "yample",
-	),
 	"yigg" => Array(
 		"name" => "YiGG",
 		"icon" => "yigg",
@@ -564,10 +436,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"dihitt" => Array(
 		"name" => "diHITT",
 		"icon" => "dihitt",
-	),
-	"unalog" => Array(
-		"name" => "unalog",
-		"icon" => "unalog",
 	),
 
 );
