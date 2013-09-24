@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -13,16 +13,16 @@ The WordPress sharing plugin to help people **share**, **bookmark**, and **email
 
 3rd party buttons include the **Facebook Like Button**, **Twitter Tweet Button**, **Google+ Share Button**, **Google+ Share Button** and **Google +1 Button**.
 
-This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu, based on each visitor's usage.
+This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu based on each visitor's usage.
 
 <a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> (demo)
 
 The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web-based emailer or desktop program.
 
-Standalone **share icons** let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services.
+Social **share icons** let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services.
 
 * **New**: Large vector sharing buttons!
- * SVG sharing icons for the most popular services (and more to come)
+* SVG sharing icons for the most popular services (and more to come)
 * Smart Menu & Kit with individual share links
 * Choose exactly where you want AddToAny to appear
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
@@ -154,11 +154,15 @@ To align center:
 
 = How can I remove the button(s) from individual posts and pages? =
 
-Insert the following tag into the page or post (HTML tab) that you do not want the button(s) to appear in: `<!--nosharesave-->`
+When editing a post or page, uncheck "Show sharing buttons", which is located at the bottom of the editor page. Be sure to update or publish to save your changes.
+
+An older method was to insert the following tag into the page or post (HTML tab) that you do not want the button(s) to appear in: `<!--nosharesave-->`
 
 = How can I force the button(s) to appear in individual posts and pages? =
 
-If your button isn't already set up to appear (it is by default), insert the following tag into the page or post (HTML tab) that you want the button to appear in: `<!--sharesave-->`
+When editing a post or page, check the "Show sharing buttons" checkbox, which is located at the bottom of the editor page. Be sure to update or publish to save your changes. Note that, by default, AddToAny is setup to display on all posts and pages.
+
+An older method was to insert the following tag into the page or post (HTML tab) that you want the button(s) to appear in: `<!--sharesave-->`
 
 = Why doesn't Facebook use the page title and how can I set the image Facebook uses? =
 
@@ -220,6 +224,9 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.1 =
+* Checkbox option to disable sharing buttons on each post and page
 
 = 1.2 =
 * Large sharing buttons (major new feature!)

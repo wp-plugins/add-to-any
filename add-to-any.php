@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2
+Version: 1.2.1
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -588,16 +588,21 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 	
 	$is_feed = is_feed();
 	$options = get_option('addtoany_options');
+	$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', false );
   
 	if( ! $A2A_SHARE_SAVE_auto_placement_ready)
 		return $content;
 		
 	if (get_post_status(get_the_ID()) == 'private')
 		return $content;
+		
+	// Disabled for this post?
+	if ( !empty( $sharing_disabled ) )
+		return $content;
 	
 	if ( 
 		( 
-			// Tags
+			// Legacy tags
 			// <!--sharesave--> tag
 			strpos($content, '<!--sharesave-->')===false || 
 			// <!--nosharesave--> tag
@@ -619,7 +624,7 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 			// Pages
 			// Individual pages
 			( is_page() && $options['display_in_pages']=='-1' ) ||
-			// <!--nosharesave-->						
+			// <!--nosharesave--> legacy tag
 			( (strpos($content, '<!--nosharesave-->')!==false) )
 		)
 		)
@@ -738,6 +743,56 @@ function A2A_SHARE_SAVE_unschedule_cache() {
 /*****************************
 		OPTIONS
 ******************************/
+
+// Post Options
+function A2A_SHARE_SAVE_add_meta_box() {
+	$post_types = get_post_types( array( 'public' => true ) );
+	$title = apply_filters( 'A2A_SHARE_SAVE_meta_box_title', __( 'AddToAny', 'add-to-any' ) );
+	foreach( $post_types as $post_type ) {
+		add_meta_box( 'A2A_SHARE_SAVE_meta', $title, 'A2A_SHARE_SAVE_meta_box_content', $post_type, 'advanced', 'high' );
+	}
+}
+
+function A2A_SHARE_SAVE_meta_box_content( $post ) {
+	do_action( 'start_A2A_SHARE_SAVE_meta_box_content', $post );
+
+	$disabled = get_post_meta( $post->ID, 'sharing_disabled', true ); ?>
+
+	<p>
+		<label for="enable_post_addtoany_sharing">
+			<input type="checkbox" name="enable_post_addtoany_sharing" id="enable_post_addtoany_sharing" value="1" <?php checked( !$disabled ); ?>>
+			<?php _e( 'Show sharing buttons.' , 'add-to-any'); ?>
+		</label>
+		<input type="hidden" name="addtoany_sharing_status_hidden" value="1" />
+	</p>
+
+	<?php
+	do_action( 'end_A2A_SHARE_SAVE_meta_box_content', $post );
+}
+
+function A2A_SHARE_SAVE_meta_box_save( $post_id ) {
+	// If this is an autosave, this form has not been submitted, so we don't want to do anything.
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+		return $post_id;
+
+	// Save sharing_disabled if "Show sharing buttons" checkbox is unchecked
+	if ( isset( $_POST['post_type'] ) && ( 'post' == $_POST['post_type'] || 'page' == $_POST['post_type'] ) ) {
+		if ( current_user_can( 'edit_post', $post_id ) ) {
+			if ( isset( $_POST['addtoany_sharing_status_hidden'] ) ) {
+				if ( !isset( $_POST['enable_post_addtoany_sharing'] ) ) {
+					update_post_meta( $post_id, 'sharing_disabled', 1 );
+				} else {
+					delete_post_meta( $post_id, 'sharing_disabled' );
+				}
+			}
+		}
+	}
+
+  	return $post_id;
+}
+
+add_action( 'admin_init', 'A2A_SHARE_SAVE_add_meta_box' );
+add_action( 'save_post', 'A2A_SHARE_SAVE_meta_box_save' );
 
 
 function A2A_SHARE_SAVE_migrate_options() {
