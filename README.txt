@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -164,6 +164,10 @@ When editing a post or page, check the "Show sharing buttons" checkbox, which is
 
 An older method was to insert the following tag into the page or post (HTML tab) that you want the button(s) to appear in: `<!--sharesave-->`
 
+= How can I remove the button(s) from category pages, or tag/author/date/search pages? =
+
+Go to `Settings` > `AddToAny` > uncheck `Display at the top or bottom of posts on archive pages`. Archive pages include Category, Tag, Author, Date, and also Search pages.
+
 = Why doesn't Facebook use the page title and how can I set the image Facebook uses? =
 
 Facebook does link sharing a little differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services, Facebook does not accept the values you have set for your sharing widget. To change the title, description or image on Facebook, you will need to modify your theme.
@@ -225,8 +229,12 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Changelog ==
 
+= 1.2.3 =
+* Adjust CSS to improve icon and text alignment
+* Add <a href="http://wordpress.org/extend/plugins/add-to-any/faq/">FAQ</a> for removing sharing button(s) from Archive pages (including Category, Tag, Author, Date, and Search pages)
+
 = 1.2.2 =
-* Fix code format issues
+* Fix code formatting (indents, newlines)
 
 = 1.2.1 =
 * Checkbox option to disable sharing buttons on each post and page

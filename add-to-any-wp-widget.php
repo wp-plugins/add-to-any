@@ -41,7 +41,7 @@ class A2A_SHARE_SAVE_Widget extends WP_Widget {
 	}
 	
 	/** @see WP_Widget::update */
-	function update($new_instance, $old_instance) {				
+	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		return $instance;
