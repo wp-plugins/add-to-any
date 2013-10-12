@@ -2,6 +2,38 @@
 
 $A2A_SHARE_SAVE_services = Array(
 
+	"facebook" => Array(
+		"name" => "Facebook",
+		"icon" => "facebook",
+	),
+	"twitter" => Array(
+		"name" => "Twitter",
+		"icon" => "twitter",
+	),
+	"google_plus" => Array(
+		"name" => "Google+",
+		"icon" => "google_plus",
+	),
+	"pinterest" => Array(
+		"name" => "Pinterest",
+		"icon" => "pinterest",
+	),
+	"tumblr" => Array(
+		"name" => "Tumblr",
+		"icon" => "tumblr",
+	),
+	"stumbleupon" => Array(
+		"name" => "StumbleUpon",
+		"icon" => "stumbleupon",
+	),
+	"reddit" => Array(
+		"name" => "Reddit",
+		"icon" => "reddit",
+	),
+	"linkedin" => Array(
+		"name" => "LinkedIn",
+		"icon" => "linkedin",
+	),
 	"aim" => Array(
 		"name" => "AIM",
 		"icon" => "aim",
@@ -124,10 +156,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Evernote",
 		"icon" => "evernote",
 	),
-	"facebook" => Array(
-		"name" => "Facebook",
-		"icon" => "facebook",
-	),
 	"fark" => Array(
 		"name" => "Fark",
 		"icon" => "fark",
@@ -155,10 +183,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"google_gmail" => Array(
 		"name" => "Google Gmail",
 		"icon" => "gmail",
-	),
-	"google_plus" => Array(
-		"name" => "Google+",
-		"icon" => "google_plus",
 	),
 	"grono" => Array(
 		"name" => "Grono",
@@ -203,10 +227,6 @@ $A2A_SHARE_SAVE_services = Array(
 	"linkatopia" => Array(
 		"name" => "Linkatopia",
 		"icon" => "linkatopia",
-	),
-	"linkedin" => Array(
-		"name" => "LinkedIn",
-		"icon" => "linkedin",
 	),
 	"livejournal" => Array(
 		"name" => "LiveJournal",
@@ -276,10 +296,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Pinboard",
 		"icon" => "pinboard",
 	),
-	"pinterest" => Array(
-		"name" => "Pinterest",
-		"icon" => "pinterest",
-	),
 	"plurk" => Array(
 		"name" => "Plurk",
 		"icon" => "plurk",
@@ -309,10 +325,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "QQ",
 		"icon" => "qq",
 	),
-	"reddit" => Array(
-		"name" => "Reddit",
-		"icon" => "reddit",
-	),
 	"rediff" => Array(
 		"name" => "Rediff MyPage",
 		"icon" => "rediff",
@@ -337,10 +349,6 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "StartAid",
 		"icon" => "startaid",
 	),
-	"stumbleupon" => Array(
-		"name" => "StumbleUpon",
-		"icon" => "stumbleupon",
-	),
 	"stumpedia" => Array(
 		"name" => "Stumpedia",
 		"icon" => "stumpedia",
@@ -361,17 +369,9 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Tuenti",
 		"icon" => "tuenti",
 	),
-	"tumblr" => Array(
-		"name" => "Tumblr",
-		"icon" => "tumblr",
-	),
 	"twiddla" => Array(
 		"name" => "Twiddla",
 		"icon" => "twiddla",
-	),
-	"twitter" => Array(
-		"name" => "Twitter",
-		"icon" => "twitter",
 	),
 	"typepad_post" => Array(
 		"name" => "TypePad Post",

@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -230,6 +230,12 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.5 =
+* Large SVG icons are the default sharing format
+* Default standalone services are Facebook, Twitter, Google Plus
+* Note: If your sharing button suddenly changes (because you haven't saved AddToAny settings yet), you can go back to the traditional sharing button in Settings > AddToAny. Choose "Small" for the Icon Size to see the traditional buttons, and in Standalone Buttons, click "Add/Remove Services" to deselect Facebook, Twitter, and Google Plus. Then click Save Changes to save your AddToAny Share Settings.
+* Popular services have been moved to the top of the Standalone Buttons list
 
 = 1.2.4 =
 * Add Pinterest Pin It Button and options
