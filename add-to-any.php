@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.5
+Version: 1.2.6
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -597,7 +597,7 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 	
 	$is_feed = is_feed();
 	$options = get_option('addtoany_options');
-	$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', false );
+	$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
 	
 	if( ! $A2A_SHARE_SAVE_auto_placement_ready)
 		return $content;
@@ -606,7 +606,7 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 		return $content;
 		
 	// Disabled for this post?
-	if ( !empty( $sharing_disabled ) )
+	if ( ! empty( $sharing_disabled ) )
 		return $content;
 	
 	if ( 
@@ -769,7 +769,7 @@ function A2A_SHARE_SAVE_meta_box_content( $post ) {
 
 	<p>
 		<label for="enable_post_addtoany_sharing">
-			<input type="checkbox" name="enable_post_addtoany_sharing" id="enable_post_addtoany_sharing" value="1" <?php checked( !$disabled ); ?>>
+			<input type="checkbox" name="enable_post_addtoany_sharing" id="enable_post_addtoany_sharing" value="1" <?php checked( empty( $disabled ) ); ?>>
 			<?php _e( 'Show sharing buttons.' , 'add-to-any'); ?>
 		</label>
 		<input type="hidden" name="addtoany_sharing_status_hidden" value="1" />
@@ -785,7 +785,7 @@ function A2A_SHARE_SAVE_meta_box_save( $post_id ) {
 		return $post_id;
 
 	// Save sharing_disabled if "Show sharing buttons" checkbox is unchecked
-	if ( isset( $_POST['post_type'] ) && ( 'post' == $_POST['post_type'] || 'page' == $_POST['post_type'] ) ) {
+	if ( isset( $_POST['post_type'] ) ) {
 		if ( current_user_can( 'edit_post', $post_id ) ) {
 			if ( isset( $_POST['addtoany_sharing_status_hidden'] ) ) {
 				if ( !isset( $_POST['enable_post_addtoany_sharing'] ) ) {
