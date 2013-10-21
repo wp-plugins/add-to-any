@@ -58,6 +58,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Arto",
 		"icon" => "arto",
 	),
+	"baidu" => Array(
+		"name" => "Baidu",
+		"icon" => "baidu",
+	),
 	"balatarin" => Array(
 		"name" => "Balatarin",
 		"icon" => "balatarin",
@@ -236,6 +240,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Mail.Ru",
 		"icon" => "mail_ru",
 	),
+	"mendeley" => Array(
+		"name" => "Mendeley",
+		"icon" => "mendeley",
+	),
 	"meneame" => Array(
 		"name" => "Meneame",
 		"icon" => "meneame",
@@ -345,6 +353,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Slashdot",
 		"icon" => "slashdot",
 	),
+	"springpad" => Array(
+		"name" => "Springpad",
+		"icon" => "springpad",
+	),
 	"startaid" => Array(
 		"name" => "StartAid",
 		"icon" => "startaid",
@@ -377,13 +389,13 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "TypePad Post",
 		"icon" => "typepad",
 	),
+	"vk" => Array(
+		"name" => "VK",
+		"icon" => "vk",
+	),
 	"viadeo" => Array(
 		"name" => "Viadeo",
 		"icon" => "viadeo",
-	),
-	"vk" => Array(
-		"name" => "Vkontakte",
-		"icon" => "vk",
 	),
 	"webnews" => Array(
 		"name" => "Webnews",

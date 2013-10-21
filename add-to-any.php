@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.6
+Version: 1.2.7
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -755,7 +755,9 @@ function A2A_SHARE_SAVE_unschedule_cache() {
 
 // Post Options
 function A2A_SHARE_SAVE_add_meta_box() {
-	$post_types = get_post_types( array( 'public' => true ) );
+	// get_post_types() only included in WP 2.9/3.0
+	$post_types = ( function_exists( 'get_post_types' ) ) ? get_post_types( array( 'public' => true ) ) : array( 'post', 'page' ) ;
+	
 	$title = apply_filters( 'A2A_SHARE_SAVE_meta_box_title', __( 'AddToAny', 'add-to-any' ) );
 	foreach( $post_types as $post_type ) {
 		add_meta_box( 'A2A_SHARE_SAVE_meta', $title, 'A2A_SHARE_SAVE_meta_box_content', $post_type, 'advanced', 'high' );
