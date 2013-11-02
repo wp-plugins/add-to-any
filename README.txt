@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.2.7
+Stable tag: 1.2.7.1
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -103,7 +103,7 @@ If you want to customize the shared URL and title for this button, use the follo
 
 In the Theme Editor, place this line of code where you want the individual icons to appear in your theme (within an HTML list):
 
-`<?php echo '<div class="a2a_kit addtoany_list">';
+`<?php echo '<div class="a2a_kit a2a_kit_size_32 addtoany_list">';
 if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) { ADDTOANY_SHARE_SAVE_ICONS(); }
 echo '</div>'; ?>`
 
@@ -111,12 +111,14 @@ If you want to customize the shared URL and title for these icons, use the follo
 
 `<?php
 if( function_exists('ADDTOANY_SHARE_SAVE_ICONS') ) {
-	echo '<div class="a2a_kit addtoany_list">';
+	echo '<div class="a2a_kit a2a_kit_size_32 addtoany_list">';
 	ADDTOANY_SHARE_SAVE_ICONS( array(
 		"linkname" => "Example Page", "linkurl" => "http://example.com/page.html"
 	));
 	echo '</div>';
 } ?>`
+
+(If you are using the small icons, remove `a2a_kit_size_32` from the line `<div class="a2a_kit a2a_kit_size_32 addtoany_list">` so that you have `<div class="a2a_kit addtoany_list">`.)
 
 Or you can place the icons as individual links without styling:
 
@@ -143,7 +145,7 @@ You can create a plugin or customize the following PHP sample code to add to you
 }
 add_filter('A2A_SHARE_SAVE_services', 'addtoany_add_services', 10, 1);`
 
-= How can I align the universal button and/or icons to the center or to the right side of posts? =
+= How can I align the sharing button(s) to the center or to the right side of posts? =
 It depends on your theme, but you can try adding the following CSS code to your main stylesheet.
 
 To align right:
@@ -194,7 +196,7 @@ The Google+ Share Button width can be changed using CSS code, for instance: `.a2
 
 = Does the plugin output W3C valid code? =
 
-Yes, this plugin outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3.0 by default.
+Yes, this plugin outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3 by default.
 
 If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like, Tweet, and +1 buttons inside of the iframes.
 
@@ -230,6 +232,11 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.7.1 =
+* Wrap addtoany shortcode with .addtoany_shortcode to enable specific styling
+* Add Flipboard
+* Update FAQ on hardcoding just the icons (both large and small icons)
 
 = 1.2.7 =
 * Fix backwards compatibility with WordPress 2.8

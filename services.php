@@ -168,6 +168,10 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Favoriten",
 		"icon" => "favoriten",
 	),
+	"flipboard" => Array(
+		"name" => "Flipboard",
+		"icon" => "flipboard",
+	),
 	"folkd" => Array(
 		"name" => "Folkd",
 		"icon" => "folkd",
