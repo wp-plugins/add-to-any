@@ -29,7 +29,7 @@ The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com 
 * WordPress optimized with asynchronous script loading
 * Localized in English, Chinese, Spanish, Arabic, French, Portuguese, Japanese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
-* Supports theme features such as HTML5 & XHTML, widgets, infinte scroll, post formats
+* Supports theme features such as HTML5 & XHTML, widgets, infinite scroll, post formats
 * Many more publisher and user features
 
 With **years of active development**, over **2.6 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. Thanks for your feedback!
