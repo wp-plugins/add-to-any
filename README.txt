@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, addtoany
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.2.7.1
+Stable tag: 1.2.7.2
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -11,15 +11,15 @@ Share buttons for WordPress including AddToAny's universal sharing button, Faceb
 
 The WordPress sharing plugin to help people **share**, **bookmark**, and **email** your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
+Social **share icons** let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services.
+
+<a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> (demo)
+
 3rd party buttons include the **Facebook Like Button**, **Twitter Tweet Button**, **Pinterest Pin It Button**, **Google+ Share Button** and **Google +1 Button**.
 
 This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu based on each visitor's usage.
 
-<a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> (demo)
-
 The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web-based emailer or desktop program.
-
-Social **share icons** let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services.
 
 * **New**: Large vector sharing buttons!
 * SVG sharing icons for the most popular services (and more to come)
@@ -29,7 +29,8 @@ Social **share icons** let you optimize your blog posts & pages for specific soc
 * WordPress optimized with asynchronous script loading
 * Localized in English, Chinese, Spanish, Arabic, French, Portuguese, Japanese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
 * Easily customizable for beginners or advanced users, and highly extensible for developers and designers
-* Many more publisher and user features!
+* Supports theme features such as HTML5 & XHTML, widgets, infinte scroll, post formats
+* Many more publisher and user features
 
 With **years of active development**, over **2.6 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. Thanks for your feedback!
 
@@ -232,6 +233,10 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.7.2 =
+* Support infinite scrolling of post content in themes
+* Support AJAX loading (on a `post-load` event)
 
 = 1.2.7.1 =
 * Wrap addtoany shortcode with .addtoany_shortcode to enable specific styling

@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.7.1
+Version: 1.2.7.2
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -106,7 +106,7 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 		$icon_size = ' a2a_kit_size_' . $options['icon_size'] . '';
 	
 	if ( ! isset($args['html_container_open'])) {
-		$args['html_container_open'] = '<div class="a2a_kit' . $icon_size . ' a2a_target addtoany_list" id="wpa2a_' . $_addtoany_counter . '">';
+		$args['html_container_open'] = '<div class="a2a_kit' . $icon_size . ' a2a_target addtoany_list" id="wpa2a_' . $_addtoany_counter . '">'; // ID is later removed by JS (for AJAX)
 		$args['is_kit'] = TRUE;
 	}
 	if ( ! isset($args['html_container_close']))
@@ -247,7 +247,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	
 	$linkname = (isset($args['linkname'])) ? $args['linkname'] : FALSE;
 	$linkurl = (isset($args['linkurl'])) ? $args['linkurl'] : FALSE;
-	$_addtoany_targets = (isset($_addtoany_targets)) ? $_addtoany_targets : array();
+	$_addtoany_targets = ( isset( $_addtoany_targets ) ) ? $_addtoany_targets : array();
 
 	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
 	
@@ -272,7 +272,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	if ( ! $args['is_kit']) {
 		$_addtoany_counter++;
 		$button_class = ' a2a_target';
-		$button_id = ' id="wpa2a_' . $_addtoany_counter . '"';
+		$button_id = ' id="wpa2a_' . $_addtoany_counter . '"';  // ID is later removed by JS (for AJAX)
 	} else {
 		$button_class = '';
 		$button_id = '';
@@ -326,22 +326,44 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	// If not a feed
 	if( ! $is_feed ) {
 		if ($use_current_page) {
-			$_addtoany_targets[] = "\n{title:document.title,"
+			$button_config = "\n{title:document.title,"
 				. "url:location.href}";
+			$_addtoany_targets[] = $button_config;
 		} else {
-			$_addtoany_targets[] = "\n{title:'". esc_js($linkname) . "',"
+			$button_config = "\n{title:'". esc_js($linkname) . "',"
 				. "url:'" . $linkurl . "'}";
+			$_addtoany_targets[] = $button_config;
 		}
+		
+		if ( defined( 'DOING_AJAX' ) ) {
+			$javascript_button_config = "<script type=\"text/javascript\"><!--\n"
+				. "wpa2a.targets.push("
+					. $button_config
+				. ");\n";
+			
+			if ( ! $_addtoany_init) {
+				// Catch post-load event to support infinite scroll (and more?)
+				$javascript_button_config .= "\nif('function'===typeof(jQuery))"
+					. "jQuery(document).ready(function($){"
+						. "$('body').on('post-load',function(){"
+							. "if(wpa2a.script_ready)wpa2a.init();"
+							. "wpa2a.script_load();" // Load external script if not already called
+						. "});"
+					. "});";
+			}
+			
+			$javascript_button_config .= "\n//--></script>\n";
+		}
+		else $javascript_button_config = '';
 		
 		if ( ! $_addtoany_init) {
 			$javascript_load_early = "\n<script type=\"text/javascript\"><!--\n"
-				. "wpa2a.script_load();"			
+				. "wpa2a.script_load();"
 				. "\n//--></script>\n";
 		}
-		else
-			$javascript_load_early = "";
+		else $javascript_load_early = "";
 		
-		$button_html .= $javascript_load_early;
+		$button_html .= $javascript_load_early . $javascript_button_config;
 		$_addtoany_init = TRUE;
 	}
 	
@@ -465,6 +487,7 @@ function A2A_SHARE_SAVE_head_script() {
 	}
 	
 	$javascript_header = "\n" . '<script type="text/javascript">' . "<!--\n"
+	
 			. "var a2a_config=a2a_config||{},"
 			. "wpa2a={done:false,"
 			. "html_done:false,"
@@ -489,13 +512,20 @@ function A2A_SHARE_SAVE_head_script() {
 					. "target=targets[i];"
 					. "a2a_config.linkname=target.title;"
 					. "a2a_config.linkurl=target.url;"
-					. "if(el)a2a.init('page',{target:el});wpa2a.done=true;"
+					. "if(el){"
+						. "a2a.init('page',{target:el});"
+						. "el.id='';" // Remove ID so AJAX can reuse the same ID
+					. "}"
+					. "wpa2a.done=true;"
 				. "}"
+				. "wpa2a.targets=[];" // Empty targets array so AJAX can reuse from index 0
 			. "}"
 		. "};"
+		
 		. "a2a_config.tracking_callback=['ready',wpa2a.script_onready];"
 		. A2A_menu_locale()
 		. $script_configs
+		
 		. "\n//--></script>\n";
 	
 	 echo $javascript_header;
@@ -519,6 +549,7 @@ function A2A_SHARE_SAVE_footer_script() {
 		. "if(wpa2a.script_ready&&!wpa2a.done)wpa2a.init();" // External script may load before html_done=true, but will only init if html_done=true.  So call wpa2a.init() if external script is ready, and if wpa2a.init() hasn't been called already.  Otherwise, wait for callback to call wpa2a.init()
 		. "wpa2a.script_load();" // Load external script if not already called with the first AddToAny button.  Fixes issues where first button code is processed internally but without actual code output
 		. "\n//--></script>\n";
+	
 	echo $javascript_footer;
 }
 
