@@ -1,9 +1,9 @@
 === Share Buttons by AddToAny ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, addtoany
+Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 3.7
-Stable tag: 1.2.7.3
+Stable tag: 1.2.7.4
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -11,15 +11,11 @@ Share buttons for WordPress including AddToAny's universal sharing button, Faceb
 
 The WordPress sharing plugin to help people **share**, **bookmark**, and **email** your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
-Social **share icons** let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services.
-
 <a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> (demo)
 
-3rd party buttons include the **Facebook Like Button**, **Twitter Tweet Button**, **Pinterest Pin It Button**, **Google+ Share Button** and **Google +1 Button**.
+Social share icons let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services. Additional 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button.
 
-This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu based on each visitor's usage.
-
-The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web-based emailer or desktop program.
+This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu based on each visitor's usage. The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web-based emailer or desktop program.
 
 * **New**: Large vector sharing buttons!
 * SVG sharing icons for the most popular services (and more to come)
@@ -32,14 +28,14 @@ The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com 
 * Supports theme features such as HTML5 & XHTML, widgets, infinite scroll, post formats
 * Many more publisher and user features
 
-With **years of active development**, over **2.6 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. Thanks for your feedback!
+With **years of active development**, over **2.7 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. Thanks for your feedback!
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
 See also:
 
-* The standard <a href="http://www.addtoany.com/buttons/">Share button</a> code
-* The <a href="/extend/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin
+* The standard <a href="http://www.addtoany.com/buttons/for/website">Share button</a> code
+* The <a href="/plugins/add-to-any-subscribe/" title="WordPress RSS Subscribe plugin">Subscribe button</a> plugin
 
 <a href="http://www.addtoany.com/blog/">AddToAny Blog</a> | <a href="http://www.addtoany.com/privacy">Privacy Policy</a>
 
@@ -50,13 +46,19 @@ See also:
 
 == Frequently Asked Questions ==
 
+= Something is wrong. What should I try first? =
+
+Try temporarily switching themes and disabling other plugins to identify a potential conflict. If you find a conflict, try contacting that theme or plugin author. If an issue persists on a default theme with all other plugins disabled, perform a google search across the WordPress forums using a query such as: <a href="https://www.google.com/#q=site:wordpress.org%2Fsupport+addtoany+">site:wordpress.org/support addtoany [your issue issue here]</a>
+
+Feel free to <a href="http://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, and provide a link to your site, and any other potentially relevant information.
+
 = Where are the options? =
 
-In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose a universal sharing button, individual sharing icons, and official sharing buttons (Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, Google +1 Button) to display, and where and how to display them.
+In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose individual sharing icons, a universal sharing button, and official 3rd party sharing buttons (Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, Google +1 Button) to display, and where and how to display them.
 
 To place the buttons as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
 
-= Why isn't the drop-down menu appearing? =
+= Why isn't the universal drop-down menu appearing? =
 
 It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks">coded properly</a>.  With many themes you can use the Theme Editor to edit your theme's `header.php` and `footer.php` files.
 
@@ -65,6 +67,24 @@ In `header.php` place the following line of code just before the `</head>` line:
 
 In `footer.php` place the following line of code just before the `</body>` line:
 `<?php wp_footer(); ?>`
+
+= Is there a shortcode for sharing? =
+
+Yes, you can place your sharing buttons exactly where you want them by inserting the following shortcode in a post or page:
+`[addtoany]`
+
+You can also customize the shared URL like so:
+`[addtoany url="http://www.example.com/page.html" title="Some Example Page"]`
+
+= For Facebook sharing, how can I set the thumbnail image and description Facebook uses? =
+
+Facebook does link sharing differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services that accept common parameters, Facebook only accepts a URL, then Facebook scans the actual page for details. To change the title, description or image on Facebook, you will need to modify your theme or use another plugin that filters your theme.
+
+Try running Facebook's <a href="https://developers.facebook.com/tools/debug">URL Debugger</a> on your pages to see how Facebook reads your site.
+
+To change the title, description and/or image on Facebook, your theme's header file should be modified according to <a href="https://developers.facebook.com/docs/opengraph/">Facebook's OpenGraph specification</a>. With WordPress, this can be accomplished with plugins such as the <a href="http://wordpress.org/plugins/wordpress-seo/">WordPress SEO by Yoast</a> or the <a href="http://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>.  Please see those plugins for details, and post in the WordPress or plugin author's forums for more support.
+
+For more technical information on setting your pages up for Facebook sharing, see "Facebook Sharing Checklist" in <a href="https://developers.facebook.com/docs/plugins/checklist/">Facebook's documentation</a>.
 
 = How can I add both the universal button and the individual icons to another area of my theme? =
 
@@ -171,23 +191,13 @@ An older method was to insert the following tag into the page or post (HTML tab)
 
 Go to `Settings` > `AddToAny` > uncheck `Display at the top or bottom of posts on archive pages`. Archive pages include Category, Tag, Author, Date, and also Search pages.
 
-= Why doesn't Facebook use the page title and how can I set the image Facebook uses? =
-
-Facebook does link sharing a little differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services, Facebook does not accept the values you have set for your sharing widget. To change the title, description or image on Facebook, you will need to modify your theme.
-
-Try running Facebook's <a href="http://developers.facebook.com/tools/debug">URL Debugger</a> on your pages to see how Facebook is reading your site.
-
-To change the title, description and/or image on Facebook, you will need to modify your theme's header file according to <a href="http://developers.facebook.com/docs/opengraph/">Facebook's specification</a>. With WordPress, this can be accomplished with plugins like the <a href="http://wordpress.org/extend/plugins/all-in-one-seo-pack/">All in One SEO Pack plugin</a>.  Please see that plugin for details, and post in the WordPress or plugin author's forums for more support.
-
-For more technical information on setting your pages up for Facebook sharing, see "Step 2 - Get Open Graph Tags" in <a href="http://developers.facebook.com/docs/reference/plugins/like/">Facebook's documentation</a>.
-
 = Why does the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, or Google +1 Button have so much whitespace to the right of it? =
 
 The minimum width for the Facebook Like Button is 90 pixels. This is required to display the total number of Likes to the right of the button.  See Facebook's <a href="http://developers.facebook.com/docs/reference/plugins/like">Like Button documentation</a> for details
 
 It's not recommended, but you can change the width of the Facebook Like Button using CSS code, for instance: `.a2a_button_facebook_like { width:50px !important; }`
 
-	The Twitter Tweet Button with 'show count' enabled is 130 pixels. You can change the width using CSS code, for instance: `.a2a_button_twitter_tweet { width:100px !important; }`
+The Twitter Tweet Button with 'show count' enabled is 130 pixels. You can change the width using CSS code, for instance: `.a2a_button_twitter_tweet { width:100px !important; }`
 
 The Pinterest Pin It Button with 'show count' enabled is 76 pixels. You can change the width using CSS code, for instance: `.a2a_button_pinterest_pin { width:90px !important; }`
 
@@ -202,14 +212,6 @@ Yes, this plugin outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3 by def
 If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like, Tweet, and +1 buttons inside of the iframes.
 
 Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> are taken very seriously.
-
-= Is there a shortcode for sharing? =
-
-Yes, you can place your sharing buttons exactly where you want them by inserting the following shortcode in a post or page:
-`[addtoany]`
-
-You can also customize the shared URL like so:
-`[addtoany url="http://www.example.com/page.html" title="Some Example Page"]`
 
 = How can I move the plugin's inline CSS into my theme's main external stylesheet? =
 
@@ -233,6 +235,9 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.7.4 =
+* Improve vertical alignment consistency of 3rd party buttons across themes
 
 = 1.2.7.3 =
 * Harden AJAX detection

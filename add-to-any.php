@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.7.3
+Version: 1.2.7.4
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -731,7 +731,7 @@ function A2A_SHARE_SAVE_stylesheet() {
 	
 	// Use stylesheet?
 	if ($A2A_SHARE_SAVE_options['inline_css'] != '-1' && ! is_admin()) {
-		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.5');
+		wp_enqueue_style('A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.6');
 	}
 }
 
