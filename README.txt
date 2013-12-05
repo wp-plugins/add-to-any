@@ -2,8 +2,8 @@
 Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
-Tested up to: 3.7
-Stable tag: 1.2.7.4
+Tested up to: 3.8
+Stable tag: 1.2.7.5
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -46,17 +46,17 @@ See also:
 
 == Frequently Asked Questions ==
 
-= Something is wrong. What should I try first? =
-
-Try temporarily switching themes and disabling other plugins to identify a potential conflict. If you find a conflict, try contacting that theme or plugin author. If an issue persists on a default theme with all other plugins disabled, perform a google search across the WordPress forums using a query such as: <a href="https://www.google.com/#q=site:wordpress.org%2Fsupport+addtoany+">site:wordpress.org/support addtoany [your issue issue here]</a>
-
-Feel free to <a href="http://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, and provide a link to your site, and any other potentially relevant information.
-
 = Where are the options? =
 
 In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose individual sharing icons, a universal sharing button, and official 3rd party sharing buttons (Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, Google +1 Button) to display, and where and how to display them.
 
 To place the buttons as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
+
+= Something is wrong. What should I try first? =
+
+Try temporarily switching themes and disabling other plugins to identify a potential conflict. If you find a conflict, try contacting that theme or plugin author. If an issue persists on a default theme with all other plugins disabled, perform a google search across the WordPress forums using a query such as: <a href="https://www.google.com/#q=site:wordpress.org%2Fsupport+addtoany+">site:wordpress.org/support addtoany [your issue issue here]</a>
+
+Feel free to <a href="http://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, and provide a link to your site, and any other potentially relevant information.
 
 = Why isn't the universal drop-down menu appearing? =
 
@@ -235,6 +235,9 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.7.5 =
+* Update Facebook Like button
 
 = 1.2.7.4 =
 * Improve vertical alignment consistency of 3rd party buttons across themes
