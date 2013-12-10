@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.7.5
+Version: 1.2.7.6
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -96,6 +96,13 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 	$_addtoany_counter++;
 	
 	$options = get_option('addtoany_options');
+	
+	// If universal button disabled, and not manually disabled through args
+	if ( $options['button'] == 'NONE' && ! isset( $args['no_universal_button'] ) ) {
+		// Pass this setting on to ADDTOANY_SHARE_SAVE_BUTTON
+		// (and only via this ADDTOANY_SHARE_SAVE_KIT function because it is used for automatic placement)
+		$args['no_universal_button'] = true;
+	}
 	
 	// Set a2a_kit_size_## class name unless "icon_size" is set to '16'
 	if ( !$options['icon_size'] )
@@ -241,7 +248,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 
 function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	
-	// $args array = output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl
+	// $args array = output_later, html_container_open, html_container_close, html_wrap_open, html_wrap_close, linkname, linkurl, no_universal_button
 
 	global $A2A_SHARE_SAVE_plugin_url_path, $_addtoany_targets, $_addtoany_counter, $_addtoany_init;
 	
@@ -263,6 +270,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		'html_container_close' => '',
 		'html_wrap_open' => '',
 		'html_wrap_close' => '',
+		'no_universal_button' => FALSE,
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -285,43 +293,51 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 	$button_href_querystring = ($is_feed) ? '#url=' . $linkurl_enc . '&amp;title=' . $linkname_enc : '';
 	$options = get_option('addtoany_options');
 	
-	if( ! $options['button'] || $options['button'] == 'A2A_SVG_32' ) {
-		// Skip button IMG for A2A icon insertion
-		$button_text = '';
-	} else if( $options['button'] == 'CUSTOM' ) {
-		$button_src		= $options['button_custom'];
-		$button_width	= '';
-		$button_height	= '';
-	} else if( $options['button'] == 'TEXT' ) {
-		$button_text	= stripslashes($options['button_text']);
-	} else {
-		$button_attrs	= explode( '|', $options['button'] );
-		$button_fname	= $button_attrs[0];
-		$button_width	= ' width="'.$button_attrs[1].'"';
-		$button_height	= ' height="'.$button_attrs[2].'"';
-		$button_src		= $A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname;
-		$button_text	= stripslashes($options['button_text']);
-	}
+	// If universal button is enabled
+	if ( ! $args['no_universal_button'] ) {
 	
-	$style = '';
-	
-	if( isset($button_fname) && ($button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
-		if( ! $is_feed) {
-			$style_bg	= 'background:url('.$A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname.') no-repeat scroll 4px 0px !important;';
-			$style		= ' style="'.$style_bg.'padding:0 0 0 25px;display:inline-block;height:16px;vertical-align:middle"'; // padding-left:21+4 (4=other icons padding)
+		if ( ! $options['button'] || $options['button'] == 'A2A_SVG_32' ) {
+			// Skip button IMG for A2A icon insertion
+			$button_text = '';
+		} else if( $options['button'] == 'CUSTOM' ) {
+			$button_src		= $options['button_custom'];
+			$button_width	= '';
+			$button_height	= '';
+		} else if( $options['button'] == 'TEXT' ) {
+			$button_text	= stripslashes($options['button_text']);
+		} else {
+			$button_attrs	= explode( '|', $options['button'] );
+			$button_fname	= $button_attrs[0];
+			$button_width	= ' width="'.$button_attrs[1].'"';
+			$button_height	= ' height="'.$button_attrs[2].'"';
+			$button_src		= $A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname;
+			$button_text	= stripslashes($options['button_text']);
 		}
-	}
-	
-	if( isset($button_text) && ( ! isset($button_fname) || ! $button_fname || $button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
-		$button			= $button_text;
-	} else {
+		
 		$style = '';
-		$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share"/>';
-	}
+		
+		if ( isset($button_fname) && ($button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
+			if ( ! $is_feed) {
+				$style_bg	= 'background:url('.$A2A_SHARE_SAVE_plugin_url_path.'/'.$button_fname.') no-repeat scroll 4px 0px !important;';
+				$style		= ' style="'.$style_bg.'padding:0 0 0 25px;display:inline-block;height:16px;vertical-align:middle"'; // padding-left:21+4 (4=other icons padding)
+			}
+		}
+		
+		if ( isset($button_text) && ( ! isset($button_fname) || ! $button_fname || $button_fname == 'favicon.png' || $button_fname == 'share_16_16.png') ) {
+			$button			= $button_text;
+		} else {
+			$style = '';
+			$button			= '<img src="'.$button_src.'"'.$button_width.$button_height.' alt="Share"/>';
+		}
+		
+		$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd' . $button_class . ' addtoany_share_save" href="http://www.addtoany.com/share_save' .$button_href_querystring . '"' . $button_id
+			. $style . $button_target
+			. '>' . $button . '</a>';
 	
-	$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd' . $button_class . ' addtoany_share_save" href="http://www.addtoany.com/share_save' .$button_href_querystring . '"' . $button_id
-		. $style . $button_target
-		. '>' . $button . '</a>';
+	} else {
+		// Universal button disabled
+		$button_html = '';
+	}
 	
 	// If not a feed
 	if( ! $is_feed ) {
@@ -1102,15 +1118,15 @@ function A2A_SHARE_SAVE_options_page() {
 				
 				<div class="addtoany_icon_size_small">
 					<label>
-						<input name="A2A_SHARE_SAVE_button" value="favicon.png|16|16" type="radio"<?php if($options['button']=='favicon.png|16|16') echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
+						<input name="A2A_SHARE_SAVE_button" value="favicon.png|16|16" id="A2A_SHARE_SAVE_button_is_favicon_16" type="radio"<?php if($options['button']=='favicon.png|16|16') echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
 						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/favicon.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ <?php _e('Share','add-to-any'); ?>" title="+ <?php _e('Share','add-to-any'); ?>" onclick="this.parentNode.firstChild.checked=true"/>
 					</label>
-					<input name="A2A_SHARE_SAVE_button_favicon_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-7].checked=true" style="vertical-align:middle;width:150px" value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share','add-to-any'); ?>" />
+					<input name="A2A_SHARE_SAVE_button_favicon_16_16_text" type="text" class="code" size="50" onclick="document.getElementById('A2A_SHARE_SAVE_button_is_favicon_16').checked=true" style="vertical-align:middle;width:150px" value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share','add-to-any'); ?>" />
 					<label style="padding-left:9px">
-						<input name="A2A_SHARE_SAVE_button" value="share_16_16.png|16|16" type="radio"<?php if($options['button']=='share_16_16.png|16|16') echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
+						<input name="A2A_SHARE_SAVE_button" value="share_16_16.png|16|16" id="A2A_SHARE_SAVE_button_is_share_icon_16" type="radio"<?php if($options['button']=='share_16_16.png|16|16') echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
 						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/share_16_16.png'; ?>" width="16" height="16" border="0" style="padding:9px;vertical-align:middle" alt="+ <?php _e('Share','add-to-any'); ?>" title="+ <?php _e('Share','add-to-any'); ?>" onclick="this.parentNode.firstChild.checked=true"/>
 					</label>
-					<input name="A2A_SHARE_SAVE_button_share_16_16_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-6].checked=true" style="vertical-align:middle;width:150px" value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share','add-to-any'); ?>" />
+					<input name="A2A_SHARE_SAVE_button_share_16_16_text" type="text" class="code" size="50" onclick="document.getElementById('A2A_SHARE_SAVE_button_is_share_icon_16').checked=true" style="vertical-align:middle;width:150px" value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share','add-to-any'); ?>" />
 					<br>
 					<label>
 						<input name="A2A_SHARE_SAVE_button" value="share_save_120_16.png|120|16" type="radio"<?php if($options['button']=='share_save_120_16.png|120|16') echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
@@ -1130,16 +1146,21 @@ function A2A_SHARE_SAVE_options_page() {
 				</div>
 				
 				<label>
-					<input name="A2A_SHARE_SAVE_button" value="CUSTOM" type="radio"<?php if( $options['button'] == 'CUSTOM' ) echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
+					<input name="A2A_SHARE_SAVE_button" value="CUSTOM" id="A2A_SHARE_SAVE_button_is_custom" type="radio"<?php if( $options['button'] == 'CUSTOM' ) echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
 					<span style="margin:0 9px;vertical-align:middle"><?php _e("Image URL"); ?>:</span>
 				</label>
-				<input name="A2A_SHARE_SAVE_button_custom" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-2].checked=true" style="vertical-align:middle" value="<?php echo $options['button_custom']; ?>" />
+				<input name="A2A_SHARE_SAVE_button_custom" type="text" class="code" size="50" onclick="document.getElementById('A2A_SHARE_SAVE_button_is_custom').checked=true" style="vertical-align:middle" value="<?php echo $options['button_custom']; ?>" />
 				<br>
 				<label>
-					<input name="A2A_SHARE_SAVE_button" value="TEXT" type="radio"<?php if( $options['button'] == 'TEXT' ) echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
+					<input name="A2A_SHARE_SAVE_button" value="TEXT" id="A2A_SHARE_SAVE_button_is_text" type="radio"<?php if( $options['button'] == 'TEXT' ) echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
 					<span style="margin:0 9px;vertical-align:middle"><?php _e("Text only"); ?>:</span>
 				</label>
-				<input name="A2A_SHARE_SAVE_button_text" type="text" class="code" size="50" onclick="e=document.getElementsByName('A2A_SHARE_SAVE_button');e[e.length-1].checked=true" style="vertical-align:middle;width:150px" value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share','add-to-any'); ?>" />
+				<input name="A2A_SHARE_SAVE_button_text" type="text" class="code" size="50" onclick="document.getElementById('A2A_SHARE_SAVE_button_is_text').checked=true" style="vertical-align:middle;width:150px" value="<?php echo ( trim($options['button_text']) != '' ) ? stripslashes($options['button_text']) : __('Share','add-to-any'); ?>" />
+				<br>
+				<label>
+					<input name="A2A_SHARE_SAVE_button" value="NONE" type="radio"<?php if( $options['button'] == 'NONE' ) echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
+					<span style="margin:0 9px;vertical-align:middle"><?php _e("None"); ?></span>
+				</label>
 				
 			</fieldset></td>
 			</tr>

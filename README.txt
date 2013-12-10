@@ -3,13 +3,13 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, myspace, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, messenger, stumbleupon, technorati, lockerz, addthis, sexybookmarks, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 3.8
-Stable tag: 1.2.7.5
+Stable tag: 1.2.7.6
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
 == Description ==
 
-The WordPress sharing plugin to help people **share**, **bookmark**, and **email** your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
+The WordPress sharing plugin to help people share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
 <a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> (demo)
 
@@ -235,6 +235,12 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.7.6 =
+* Add option to disable universal sharing button
+ * Disables the universal sharing button in automatic placement and ADDTOANY_SHARE_SAVE_KIT
+ * The universal sharing button is still available via ADDTOANY_SHARE_SAVE_BUTTON (see FAQ)
+* Fix fieldset focusing in admin
 
 = 1.2.7.5 =
 * Update Facebook Like button
