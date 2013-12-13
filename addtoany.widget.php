@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * AddToAny WordPress Widget
+ */
 	
 class A2A_SHARE_SAVE_Widget extends WP_Widget {
 	/** constructor */
@@ -56,7 +60,7 @@ class A2A_SHARE_SAVE_Widget extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<a href="options-general.php?page=add-to-any.php"><?php _e("Settings", "add-to-any"); ?>...</a>
+			<a href="options-general.php?page=add-to-any.php"><?php _e("AddToAny Settings", "add-to-any"); ?>...</a>
 		</p>
 		<?php
 	}
