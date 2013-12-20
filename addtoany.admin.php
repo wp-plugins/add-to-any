@@ -279,7 +279,7 @@ function A2A_SHARE_SAVE_options_page() {
 						<span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plusone.png'; ?>" width="32" height="20" alt="Google +1" /></span>
 					</li>
 					<li id="a2a_wp_google_plus_share" class="addtoany_special_service" title="Google+ Share button">
-						<span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plus_share.png'; ?>" width="57" height="20" alt="Google+ Share" /></span>
+						<span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plus_share.png'; ?>" width="56" height="20" alt="Google+ Share" /></span>
 					</li>
 					<li id="a2a_wp_pinterest_pin" class="addtoany_special_service" title="Pinterest Pin It button">
 						<span><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/pinterest_pin.png'; ?>" width="40" height="20" alt="Pinterest Pin It" /></span>
