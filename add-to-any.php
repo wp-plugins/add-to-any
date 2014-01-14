@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.7.8
+Version: 1.2.7.9
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -204,7 +204,8 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$safe_name = $active_service;
 			$name = $service['name'];
 			
-			if (isset($service['href'])) {
+			// If HREF specified, presume custom service (except if it's "print")
+			if ( isset( $service['href'] ) && $safe_name != 'print' ) {
 				$custom_service = TRUE;
 				$href = $service['href'];
 				if (isset($service['href_js_esc'])) {
