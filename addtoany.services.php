@@ -389,9 +389,17 @@ $A2A_SHARE_SAVE_services = Array(
 		"name" => "Viadeo",
 		"icon" => "viadeo",
 	),
+	"wanelo" => Array(
+		"name" => "Wanelo",
+		"icon" => "wanelo",
+	),
 	"webnews" => Array(
 		"name" => "Webnews",
 		"icon" => "webnews",
+	),
+	"whatsapp" => Array(
+		"name" => "WhatsApp",
+		"icon" => "whatsapp",
 	),
 	"wists" => Array(
 		"name" => "Wists",
