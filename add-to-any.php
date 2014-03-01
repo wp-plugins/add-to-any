@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.8.4
+Version: 1.2.8.5
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -695,7 +695,7 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 	);
 	
 	if ( ! $is_feed ) {
-		$container_wrap_open = '<div class="addtoany_share_save_container">';
+		$container_wrap_open = '<div class="addtoany_share_save_container %s">'; // Contains placeholder
 		$container_wrap_close = '</div>';
 	} else { // Is feed
 		$container_wrap_open = '<p>';
@@ -710,11 +710,11 @@ function A2A_SHARE_SAVE_add_to_content($content) {
 	
 	if ($options['position'] == 'both' || $options['position'] == 'top') {
 		// Prepend to content
-		$content = $container_wrap_open.ADDTOANY_SHARE_SAVE_KIT($kit_args) . $container_wrap_close . $content;
+		$content = sprintf( $container_wrap_open, 'addtoany_content_top' ) . ADDTOANY_SHARE_SAVE_KIT($kit_args) . $container_wrap_close . $content;
 	}
 	if ( $options['position'] == 'bottom' || $options['position'] == 'both') {
 		// Append to content
-		$content .= $container_wrap_open.ADDTOANY_SHARE_SAVE_KIT($kit_args) . $container_wrap_close;
+		$content .= sprintf( $container_wrap_open, 'addtoany_content_bottom' ) . ADDTOANY_SHARE_SAVE_KIT($kit_args) . $container_wrap_close;
 	}
 	
 	return $content;
