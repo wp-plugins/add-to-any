@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.8.5
+Version: 1.2.8.6
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -761,8 +761,8 @@ add_action('wp_print_styles', 'A2A_SHARE_SAVE_stylesheet');
  */
 
 function A2A_SHARE_SAVE_refresh_cache() {
-	$contents = wp_remote_fopen("http://www.addtoany.com/ext/updater/files_list/");
-	$file_urls = explode("\n", $contents, 20);
+	$contents = wp_remote_fopen( 'http://www.addtoany.com/ext/updater/files_list/' );
+	$file_urls = explode( "\n", $contents, 20 );
 	$upload_dir = wp_upload_dir();
 	
 	// Make directory if needed
@@ -771,30 +771,30 @@ function A2A_SHARE_SAVE_refresh_cache() {
 		return array( 'error' => $message );
 	}
 	
-	if (count($file_urls) > 0) {
-		for ($i = 0; $i < count($file_urls); $i++) {
+	if ( count( $file_urls ) > 0 ) {
+		for ( $i = 0; $i < count( $file_urls ); $i++ ) {
 			// Download files
-			$file_url = $file_urls[$i];
-			$file_name = substr(strrchr($file_url, '/'), 1, 99);
+			$file_url = trim( $file_urls[$i] );
+			$file_name = substr( strrchr( $file_url, '/' ), 1, 99 );
 			
 			// Place files in uploads/addtoany directory
-			wp_get_http($file_url, $upload_dir['basedir'] . '/addtoany/' . $file_name);
+			wp_get_http( $file_url, $upload_dir['basedir'] . '/addtoany/' . $file_name );
 		}
 	}
 }
 
 function A2A_SHARE_SAVE_schedule_cache() {
 	// WP "Cron" requires WP version 2.1
-	$timestamp = wp_next_scheduled('A2A_SHARE_SAVE_refresh_cache');
+	$timestamp = wp_next_scheduled( 'A2A_SHARE_SAVE_refresh_cache' );
 	if ( ! $timestamp) {
 		// Only schedule if currently unscheduled
-		wp_schedule_event(time(), 'daily', 'A2A_SHARE_SAVE_refresh_cache');
+		wp_schedule_event( time(), 'daily', 'A2A_SHARE_SAVE_refresh_cache' );
 	}
 }
 
 function A2A_SHARE_SAVE_unschedule_cache() {
-	$timestamp = wp_next_scheduled('A2A_SHARE_SAVE_refresh_cache');
-	wp_unschedule_event($timestamp, 'A2A_SHARE_SAVE_refresh_cache');
+	$timestamp = wp_next_scheduled( 'A2A_SHARE_SAVE_refresh_cache' );
+	wp_unschedule_event( $timestamp, 'A2A_SHARE_SAVE_refresh_cache' );
 }
 
 
