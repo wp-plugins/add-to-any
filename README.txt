@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, buffer, stumbleupon, technorati, lockerz, addthis, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.2.8.6
+Stable tag: 1.2.8.7
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -11,18 +11,20 @@ Share buttons for WordPress including AddToAny's universal sharing button, Faceb
 
 The WordPress sharing plugin to help people share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
-<a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> (demo)
+<a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> demo
 
-Social share icons let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services. Additional 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button.
+AddToAny's customizable social share icons let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services. Additional 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button.
 
 This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu based on each visitor's usage. The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web-based emailer or desktop program.
 
 * **New**: Vector sharing buttons
-* SVG sharing icons for the most popular services (and more to come)
-* Smart Menu & Kit with individual share links
+* SVG sharing icons for the most popular services
+* Universal Sharing Menu & Kit with individual share links
+* Custom sharing icons
 * Choose exactly where you want AddToAny to appear
 * Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
 * WordPress optimized with asynchronous script loading
+* Mobile optimized for sharing to native apps or to web apps per service
 * Localized in English, Chinese, Spanish, Arabic, French, Portuguese, Japanese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
 * Easily <a href="http://www.addtoany.com/buttons/customize/wordpress">customizable</a> for beginners or advanced users, and <a href="/plugins/add-to-any/faq/" title="See 'How can I add both the universal button and the individual icons to another area of my theme?'">highly extensible</a> for developers and designers
 * Supports theme features such as HTML5 & XHTML, widgets, infinite scroll, post formats
@@ -210,7 +212,7 @@ The Google+ Share Button width can be changed using CSS code, for instance: `.a2
 
 = Does the plugin output W3C valid code? =
 
-Yes, this plugin outputs 100% W3C valid XHTML & HTML5 and W3C valid CSS 3 by default.
+Yes, this plugin outputs 100% W3C valid HTML5 & XHTML and W3C valid CSS 3 by default.
 
 If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like, Tweet, and +1 buttons inside of the iframes.
 
@@ -238,6 +240,9 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.8.7 =
+* Fix code styling
 
 = 1.2.8.6 =
 * Fix advanced caching option (most sites should not use this option)

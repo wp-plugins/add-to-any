@@ -32,7 +32,7 @@ function A2A_SHARE_SAVE_meta_box_content( $post ) {
 
 function A2A_SHARE_SAVE_meta_box_save( $post_id ) {
 	// If this is an autosave, this form has not been submitted, so we don't want to do anything.
-	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 		return $post_id;
 
 	// Save sharing_disabled if "Show sharing buttons" checkbox is unchecked
@@ -79,30 +79,30 @@ function A2A_SHARE_SAVE_migrate_options() {
 	
 	$namespace = 'A2A_SHARE_SAVE_';
 	
-	foreach ($options as $option_name => $option_value) {
+	foreach ( $options as $option_name => $option_value ) {
 		$old_option_name = $namespace . $option_name;
-		$old_option_value = get_option($old_option_name);
+		$old_option_value = get_option( $old_option_name );
 		
-		if($old_option_value === FALSE) {
+		if( $old_option_value === false ) {
 			// Default value
-			$options[$option_name] = $option_value;
+			$options[ $option_name ] = $option_value;
 		} else {
 			// Old value
-			$options[$option_name] = $old_option_value;
+			$options[ $option_name ] = $old_option_value;
 		}
 		
-		delete_option($old_option_name);
+		delete_option( $old_option_name );
 	}
 	
-	update_option('addtoany_options', $options);
+	update_option( 'addtoany_options', $options );
 	
 	$deprecated_options = array(
 		'button_opens_new_window',
 		'hide_embeds',
 	);
 	
-	foreach ($deprecated_options as $option_name) {
-		delete_option($namespace . $option_name);
+	foreach ( $deprecated_options as $option_name ) {
+		delete_option( $namespace . $option_name );
 	}
 	
 }
@@ -138,7 +138,7 @@ function A2A_SHARE_SAVE_enqueue_pointer_script_style( $hook_suffix ) {
 	}
 	
 }
-if ( !$A2A_SHARE_SAVE_options ) {
+if ( ! $A2A_SHARE_SAVE_options ) {
 	// Only show the pointer when no AddToAny options have been set
 	add_action( 'admin_enqueue_scripts', 'A2A_SHARE_SAVE_enqueue_pointer_script_style' );
 }
@@ -179,7 +179,7 @@ function A2A_SHARE_SAVE_options_page() {
 		$A2A_SHARE_SAVE_services;
 	
 	// Require admin privs
-	if ( ! current_user_can('manage_options') )
+	if ( ! current_user_can( 'manage_options' ) )
 		return false;
 	
 	$new_options = array();
@@ -187,31 +187,31 @@ function A2A_SHARE_SAVE_options_page() {
 	$namespace = 'A2A_SHARE_SAVE_';
 	
 	// Make available services extensible via plugins, themes (functions.php), etc.
-	$A2A_SHARE_SAVE_services = apply_filters('A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services);
+	$A2A_SHARE_SAVE_services = apply_filters( 'A2A_SHARE_SAVE_services', $A2A_SHARE_SAVE_services );
 
-	if (isset($_POST['Submit'])) {
+	if ( isset( $_POST['Submit'] ) ) {
 		
 		// Nonce verification 
-		check_admin_referer('add-to-any-update-options');
+		check_admin_referer( 'add-to-any-update-options' );
 
 		$new_options['position'] = ($_POST['A2A_SHARE_SAVE_position']) ? @$_POST['A2A_SHARE_SAVE_position'] : 'bottom';
-		$new_options['display_in_posts_on_front_page'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts_on_front_page']=='1') ? '1':'-1';
-		$new_options['display_in_posts_on_archive_pages'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts_on_archive_pages']=='1') ? '1':'-1';
-		$new_options['display_in_excerpts'] = (@$_POST['A2A_SHARE_SAVE_display_in_excerpts']=='1') ? '1':'-1';
-		$new_options['display_in_posts'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts']=='1') ? '1':'-1';
-		$new_options['display_in_pages'] = (@$_POST['A2A_SHARE_SAVE_display_in_pages']=='1') ? '1':'-1';
-		$new_options['display_in_feed'] = (@$_POST['A2A_SHARE_SAVE_display_in_feed']=='1') ? '1':'-1';
-		$new_options['show_title'] = (@$_POST['A2A_SHARE_SAVE_show_title']=='1') ? '1':'-1';
-		$new_options['onclick'] = (@$_POST['A2A_SHARE_SAVE_onclick']=='1') ? '1':'-1';
+		$new_options['display_in_posts_on_front_page'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts_on_front_page'] == '1') ? '1' : '-1';
+		$new_options['display_in_posts_on_archive_pages'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts_on_archive_pages'] == '1') ? '1' : '-1';
+		$new_options['display_in_excerpts'] = (@$_POST['A2A_SHARE_SAVE_display_in_excerpts']=='1') ? '1' : '-1';
+		$new_options['display_in_posts'] = (@$_POST['A2A_SHARE_SAVE_display_in_posts']=='1') ? '1' : '-1';
+		$new_options['display_in_pages'] = (@$_POST['A2A_SHARE_SAVE_display_in_pages']=='1') ? '1' : '-1';
+		$new_options['display_in_feed'] = (@$_POST['A2A_SHARE_SAVE_display_in_feed']=='1') ? '1' : '-1';
+		$new_options['show_title'] = (@$_POST['A2A_SHARE_SAVE_show_title']=='1') ? '1' : '-1';
+		$new_options['onclick'] = (@$_POST['A2A_SHARE_SAVE_onclick'] == '1') ? '1' : '-1';
 		$new_options['icon_size'] = @$_POST['A2A_SHARE_SAVE_icon_size'];
 		$new_options['button'] = @$_POST['A2A_SHARE_SAVE_button'];
 		$new_options['button_custom'] = @$_POST['A2A_SHARE_SAVE_button_custom'];
-		$new_options['additional_js_variables'] = trim(@$_POST['A2A_SHARE_SAVE_additional_js_variables']);
-		$new_options['inline_css'] = (@$_POST['A2A_SHARE_SAVE_inline_css']=='1') ? '1':'-1';
-		$new_options['cache'] = (@$_POST['A2A_SHARE_SAVE_cache']=='1') ? '1':'-1';
+		$new_options['additional_js_variables'] = trim( @$_POST['A2A_SHARE_SAVE_additional_js_variables'] );
+		$new_options['inline_css'] = (@$_POST['A2A_SHARE_SAVE_inline_css']=='1') ? '1' : '-1';
+		$new_options['cache'] = (@$_POST['A2A_SHARE_SAVE_cache']=='1') ? '1' : '-1';
 		
 		// Schedule cache refresh?
-		if (@$_POST['A2A_SHARE_SAVE_cache']=='1') {
+		if ( @$_POST['A2A_SHARE_SAVE_cache'] == '1' ) {
 			A2A_SHARE_SAVE_schedule_cache();
 			A2A_SHARE_SAVE_refresh_cache();
 		} else {
@@ -219,75 +219,75 @@ function A2A_SHARE_SAVE_options_page() {
 		}
 		
 		// Store desired text if 16 x 16px buttons or text-only is chosen:
-		if( $new_options['button'] == 'favicon.png|16|16' )
+		if ( $new_options['button'] == 'favicon.png|16|16' )
 			$new_options['button_text'] = $_POST['A2A_SHARE_SAVE_button_favicon_16_16_text'];
-		elseif( $new_options['button'] == 'share_16_16.png|16|16' )
+		elseif ( $new_options['button'] == 'share_16_16.png|16|16' )
 			$new_options['button_text'] = $_POST['A2A_SHARE_SAVE_button_share_16_16_text'];
 		else
-			$new_options['button_text'] = ( trim($_POST['A2A_SHARE_SAVE_button_text']) != '' ) ? $_POST['A2A_SHARE_SAVE_button_text'] : __('Share','add-to-any');
+			$new_options['button_text'] = ( trim( $_POST['A2A_SHARE_SAVE_button_text'] ) != '' ) ? $_POST['A2A_SHARE_SAVE_button_text'] : __('Share','add-to-any');
 			
 		// Store chosen individual services to make active
 		$active_services = Array();
-		if ( ! isset($_POST['A2A_SHARE_SAVE_active_services']))
-			$_POST['A2A_SHARE_SAVE_active_services'] = Array();
+		if ( ! isset( $_POST['A2A_SHARE_SAVE_active_services'] ) )
+			$_POST['A2A_SHARE_SAVE_active_services'] = array();
 		foreach ( $_POST['A2A_SHARE_SAVE_active_services'] as $dummy=>$sitename )
-			$active_services[] = substr($sitename, 7);
+			$active_services[] = substr( $sitename, 7 );
 		$new_options['active_services'] = $active_services;
 		
 		// Store special service options
 		$new_options['special_facebook_like_options'] = array(
-			'verb' => ((@$_POST['addtoany_facebook_like_verb'] == 'recommend') ? 'recommend' : 'like')
+			'verb' => ( (@$_POST['addtoany_facebook_like_verb'] == 'recommend') ? 'recommend' : 'like' )
 		);
 		$new_options['special_twitter_tweet_options'] = array(
-			'show_count' => ((@$_POST['addtoany_twitter_tweet_show_count'] == '1') ? '1' : '-1')
+			'show_count' => ( ( @$_POST['addtoany_twitter_tweet_show_count'] == '1' ) ? '1' : '-1' )
 		);
 		$new_options['special_google_plusone_options'] = array(
-			'show_count' => ((@$_POST['addtoany_google_plusone_show_count'] == '1') ? '1' : '-1')
+			'show_count' => ( ( @$_POST['addtoany_google_plusone_show_count'] == '1' ) ? '1' : '-1' )
 		);
 		$new_options['special_google_plus_share_options'] = array(
-			'show_count' => ((@$_POST['addtoany_google_plus_share_show_count'] == '1') ? '1' : '-1')
+			'show_count' => ( ( @$_POST['addtoany_google_plus_share_show_count'] == '1' ) ? '1' : '-1' )
 		);
 		$new_options['special_pinterest_pin_options'] = array(
-			'show_count' => ((@$_POST['addtoany_pinterest_pin_show_count'] == '1') ? '1' : '-1')
+			'show_count' => ( ( @$_POST['addtoany_pinterest_pin_show_count'] == '1' ) ? '1' : '-1' )
 		);
 		
-		update_option('addtoany_options', $new_options);
+		update_option( 'addtoany_options', $new_options );
 		
 		?>
-		<div class="updated fade"><p><strong><?php _e('Settings saved.'); ?></strong></p></div>
+		<div class="updated fade"><p><strong><?php _e( 'Settings saved.' ); ?></strong></p></div>
 		<?php
 		
-	} else if (isset($_POST['Reset'])) {
+	} else if ( isset( $_POST['Reset'] ) ) {
 		// Nonce verification 
-		check_admin_referer('add-to-any-update-options');
+		check_admin_referer( 'add-to-any-update-options' );
 		
-		delete_option('addtoany_options');
+		delete_option( 'addtoany_options' );
 	}
 
-	$options = get_option('addtoany_options');
+	$options = get_option( 'addtoany_options' );
 	
-	function position_in_content($options, $option_box = FALSE) {
+	function position_in_content( $options, $option_box = false ) {
 		
-		if ( ! isset($options['position'])) {
+		if ( ! isset( $options['position'] ) ) {
 			$options['position'] = 'bottom';
 		}
 		
 		$positions = array(
 			'bottom' => array(
-				'selected' => ('bottom' == $options['position']) ? ' selected="selected"' : '',
-				'string' => __('bottom', 'add-to-any')
+				'selected' => ( 'bottom' == $options['position'] ) ? ' selected="selected"' : '',
+				'string' => __( 'bottom', 'add-to-any' )
 			),
 			'top' => array(
-				'selected' => ('top' == $options['position']) ? ' selected="selected"' : '',
-				'string' => __('top', 'add-to-any')
+				'selected' => ( 'top' == $options['position'] ) ? ' selected="selected"' : '',
+				'string' => __( 'top', 'add-to-any' )
 			),
 			'both' => array(
-				'selected' => ('both' == $options['position']) ? ' selected="selected"' : '',
-				'string' => __('top &amp; bottom', 'add-to-any')
+				'selected' => ( 'both' == $options['position'] ) ? ' selected="selected"' : '',
+				'string' => __( 'top &amp; bottom', 'add-to-any' )
 			)
 		);
 		
-		if ($option_box) {
+		if ( $option_box ) {
 			$html = '</label>';
 			$html .= '<label>'; // Label needed to prevent checkmark toggle on SELECT click 
 			$html .= '<select name="A2A_SHARE_SAVE_position">';
@@ -358,9 +358,9 @@ function A2A_SHARE_SAVE_options_page() {
 					// Show all services
 					foreach ($A2A_SHARE_SAVE_services as $service_safe_name=>$site) { 
 						if (isset($site['href']))
-							$custom_service = TRUE;
+							$custom_service = true;
 						else
-							$custom_service = FALSE;
+							$custom_service = false;
 						if ( ! isset($site['icon']))
 							$site['icon'] = 'default';
 					?>
@@ -575,9 +575,9 @@ function A2A_SHARE_SAVE_options_page() {
 
 // Admin page header
 function A2A_SHARE_SAVE_admin_head() {
-	if (isset($_GET['page']) && $_GET['page'] == 'add-to-any.php') {
+	if ( isset( $_GET['page'] ) && $_GET['page'] == 'add-to-any.php' ) {
 		
-		$options = get_option('addtoany_options');
+		$options = get_option( 'addtoany_options' );
 		
 	?>
 	<script type="text/javascript"><!--
@@ -897,10 +897,10 @@ function A2A_SHARE_SAVE_admin_head() {
 	}
 }
 
-add_filter('admin_head', 'A2A_SHARE_SAVE_admin_head');
+add_filter( 'admin_head', 'A2A_SHARE_SAVE_admin_head' );
 
 
 
 function A2A_SHARE_SAVE_scripts() {
-	wp_enqueue_script('jquery-ui-sortable');
+	wp_enqueue_script( 'jquery-ui-sortable' );
 }
