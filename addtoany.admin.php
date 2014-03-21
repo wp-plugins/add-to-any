@@ -207,6 +207,8 @@ function A2A_SHARE_SAVE_options_page() {
 		$new_options['button'] = @$_POST['A2A_SHARE_SAVE_button'];
 		$new_options['button_custom'] = @$_POST['A2A_SHARE_SAVE_button_custom'];
 		$new_options['additional_js_variables'] = trim( @$_POST['A2A_SHARE_SAVE_additional_js_variables'] );
+		$new_options['custom_icons'] = (@$_POST['A2A_SHARE_SAVE_custom_icons']=='url') ? 'url' : '-1';
+		$new_options['custom_icons_url'] = @$_POST['A2A_SHARE_SAVE_custom_icons_url'];
 		$new_options['inline_css'] = (@$_POST['A2A_SHARE_SAVE_inline_css']=='1') ? '1' : '-1';
 		$new_options['cache'] = (@$_POST['A2A_SHARE_SAVE_cache']=='1') ? '1' : '-1';
 		
@@ -533,19 +535,30 @@ function A2A_SHARE_SAVE_options_page() {
 			<tr valign="top">
 			<th scope="row"><?php _e('Advanced Options', 'add-to-any'); ?></th>
 			<td><fieldset>
+				<label for="A2A_SHARE_SAVE_custom_icons">
+					<input name="A2A_SHARE_SAVE_custom_icons" id="A2A_SHARE_SAVE_custom_icons" type="checkbox"<?php if($options['custom_icons']=='url') echo ' checked="checked"'; ?> value="url"/>
+				<?php _e('Use custom icons. URL:', 'add-to-any'); ?>
+				</label>
+				<input name="A2A_SHARE_SAVE_custom_icons_url" type="text" class="code" size="50" style="vertical-align:middle" placeholder="//example.com/blog/uploads/addtoany/icons/custom/" value="<?php echo $options['custom_icons_url']; ?>" />
+				<p class="description">
+					<?php _e("Specify the URL of the directory containing your custom icons. For example, a URL of <code>//example.com/blog/uploads/addtoany/icons/custom/</code> containing <code>facebook.png</code> and <code>twitter.png</code>. Be sure that custom icon filenames match the icon filenames in <code>plugins/add-to-any/icons</code>. For AddToAny's Universal Button, select Image URL and specify the URL of your AddToAny universal sharing icon (<a href=\"#\" onclick=\"document.getElementsByName('A2A_SHARE_SAVE_button_custom')[0].focus();return false\">above</a>).", "add-to-any"); ?>
+				</p>
+				<br/>
 				<label for="A2A_SHARE_SAVE_inline_css">
 					<input name="A2A_SHARE_SAVE_inline_css" id="A2A_SHARE_SAVE_inline_css" type="checkbox"<?php if($options['inline_css']!='-1') echo ' checked="checked"'; ?> value="1"/>
-				<?php _e('Use CSS stylesheet', 'add-to-any'); ?>
+				<?php _e('Use default CSS', 'add-to-any'); ?>
 				</label>
+				<p class="description">
+					<?php _e("Only disable AddToAny's default stylesheet if you already have the necessary CSS code applied to your AddToAny buttons.", "add-to-any"); ?>
+				</p>
 				<br/>
 				<label for="A2A_SHARE_SAVE_cache">
 					<input name="A2A_SHARE_SAVE_cache" id="A2A_SHARE_SAVE_cache" type="checkbox"<?php if($options['cache']=='1') echo ' checked="checked"'; ?> value="1"/>
-				<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?> <strong>**</strong>
+				<?php _e('Cache AddToAny locally with daily cache updates', 'add-to-any'); ?>
 				</label>
-				<br/><br/>
-				<div class="setting-description">
-					<strong>**</strong> <?php _e("Only consider for sites with frequently returning visitors. Since many visitors will have AddToAny cached in their browser already, serving AddToAny locally from your site will be slower for those visitors.  Be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
-				</div>
+				<p class="description">
+					<?php _e("Most sites should not use this option. By default, AddToAny loads asynchronously and most efficiently. Since many visitors will have AddToAny cached in their browser already, serving AddToAny locally from your site will be slower for those visitors. If local caching is enabled, be sure to set far future cache/expires headers for image files in your <code>uploads/addtoany</code> directory.", "add-to-any"); ?>
+				</p>
 			</fieldset></td>
 			</tr>
 		</table>

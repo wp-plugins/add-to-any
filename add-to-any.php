@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: http://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.2.8.7
+Version: 1.2.9
 Author: micropat
 Author URI: http://www.addtoany.com/
 */
@@ -112,13 +112,19 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 		$args['no_universal_button'] = true;
 	}
 	
-	// Set a2a_kit_size_## class name unless "icon_size" is set to '16'
-	if ( ! $options['icon_size'] )
-		$icon_size = ' a2a_kit_size_32';
-	elseif ( $options['icon_size'] == '16' )
+	// Custom icons enabled?
+	$custom_icons = ( isset( $options['custom_icons'] ) && $options['custom_icons'] == 'url' && isset( $options['custom_icons_url'] ) ) ? true : false;
+	
+	// Set a2a_kit_size_## class name unless "icon_size" is set to '16' or custom icons are enabled
+	if ( $custom_icons ) {
 		$icon_size = '';
-	else
+	} elseif ( ! $options['icon_size'] ) {
+		$icon_size = ' a2a_kit_size_32';
+	} elseif ( $options['icon_size'] == '16' ) {
+		$icon_size = '';
+	} else {
 		$icon_size = ' a2a_kit_size_' . $options['icon_size'] . '';
+	}
 	
 	if ( ! isset( $args['html_container_open'] ) ) {
 		$args['html_container_open'] = '<div class="a2a_kit' . $icon_size . ' a2a_target addtoany_list" id="wpa2a_' . $_addtoany_counter . '">'; // ID is later removed by JS (for AJAX)
@@ -187,6 +193,16 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	// False only if "icon_size" is set to '16'
 	$large_icons = ( isset( $options['icon_size'] ) && $options['icon_size'] == '16' ) ? false : true;
 	
+	// Directory of either custom icons or the packaged icons
+	if ( isset( $options['custom_icons'] ) && $options['custom_icons'] == 'url' && isset( $options['custom_icons_url'] ) ) {
+		// Custom icons expected at a specified URL, i.e. //example.com/blog/uploads/addtoany/icons/custom/
+		$icons_dir = $options['custom_icons_url'];
+		$custom_icons = true;
+	} else {
+		// Packaged 16px icons
+		$icons_dir = $A2A_SHARE_SAVE_plugin_url_path . '/icons/';
+	}
+	
 	$active_services = $options['active_services'];
 	
 	$ind_html = "" . $html_container_open;
@@ -206,8 +222,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$special_args = $args;
 			$special_args['output_later'] = true;
 			$link = ADDTOANY_SHARE_SAVE_SPECIAL( $active_service, $special_args );
-		}
-		else {
+		} else {
 			$service = $A2A_SHARE_SAVE_services[ $active_service ];
 			$safe_name = $active_service;
 			$name = $service['name'];
@@ -236,11 +251,17 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$height = ( isset( $service['icon_height'] ) ) ? $service['icon_height'] : '16';
 			
 			$url = ( $custom_service ) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
-			$src = ( $icon_url ) ? $icon_url : $A2A_SHARE_SAVE_plugin_url_path . "/icons/" . $icon . ".png";
+			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . ".png";
 			$class_attr = ( $custom_service ) ? "" : " class=\"a2a_button_$safe_name\"";
 			
+			// Remove all dimention values if using custom icons
+			if ( isset( $custom_icons ) ) {
+				$width = '';
+				$height = '';
+			}
+			
 			$link = $html_wrap_open . "<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
-			$link .= ( $large_icons ) ? "" : "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
+			$link .= ( $large_icons && ! isset( $custom_icons ) ) ? "" : "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 			$link .= "</a>" . $html_wrap_close;
 		}
 		
@@ -261,8 +282,8 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 
 	global $A2A_SHARE_SAVE_plugin_url_path, $_addtoany_targets, $_addtoany_counter, $_addtoany_init;
 	
-	$linkname = (isset($args['linkname'])) ? $args['linkname'] : FALSE;
-	$linkurl = (isset($args['linkurl'])) ? $args['linkurl'] : FALSE;
+	$linkname = (isset($args['linkname'])) ? $args['linkname'] : false;
+	$linkurl = (isset($args['linkurl'])) ? $args['linkurl'] : false;
 	$_addtoany_targets = ( isset( $_addtoany_targets ) ) ? $_addtoany_targets : array();
 
 	$args = array_merge($args, A2A_SHARE_SAVE_link_vars($linkname, $linkurl)); // linkname_enc, etc.
@@ -569,7 +590,7 @@ function A2A_SHARE_SAVE_footer_script() {
 	
 	$javascript_footer = "\n" . '<script type="text/javascript">' . "<!--\n"
 		. "wpa2a.targets=["
-			. implode( ",", $_addtoany_targets)
+			. implode( ",", $_addtoany_targets )
 		. "];\n"
 		. "wpa2a.html_done=true;"
 		. "if(wpa2a.script_ready&&!wpa2a.done)wpa2a.init();" // External script may load before html_done=true, but will only init if html_done=true.  So call wpa2a.init() if external script is ready, and if wpa2a.init() hasn't been called already.  Otherwise, wait for callback to call wpa2a.init()

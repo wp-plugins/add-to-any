@@ -1,9 +1,9 @@
 === Share Buttons by AddToAny ===
 Contributors: micropat
-Tags: sharing, share, sharethis, bookmarking, social, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, email, e-mail, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook like, like, twitter, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, buffer, stumbleupon, technorati, lockerz, addthis, sociable, sharedaddy, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
+Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, buffer, stumbleupon, bitly, technorati, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.2.8.7
+Stable tag: 1.2.9
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -11,26 +11,52 @@ Share buttons for WordPress including AddToAny's universal sharing button, Faceb
 
 The WordPress sharing plugin to help people share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
+AddToAny's customizable social share icons let you optimize your blog posts & pages for specific social sites.
+
+= Share Buttons =
+
+* **New**: Vector sharing buttons (SVG sharing icons)
+* Universal Sharing Button and Smart Menu
+* Sharing Kit for individual share links
+* **New**: Custom sharing icons
+* Choose from over 100 individual services
+* 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button
+* Universal email sharing makes it easy to share via Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web and native apps
+
 <a href="http://www.addtoany.com/" title="Sharing buttons">Share Buttons</a> demo
 
-AddToAny's customizable social share icons let you optimize your blog posts & pages for specific social sites.  Choose from over 100 individual services. Additional 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button.
+= Analytics Integration =
 
-This sharing plugin lets you customize the AddToAny universal Smart Menu, which places the services visitors use at the top of the menu based on each visitor's usage. The Email tab makes it easy to share via Google Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web-based emailer or desktop program.
+* Automatic Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>) for sharing analytics
+* Track shared links with bit.ly, awe.sm, goo.gl, and custom URL shorteners
 
-* **New**: Vector sharing buttons
-* SVG sharing icons for the most popular services
-* Universal Sharing Menu & Kit with individual share links
-* Custom sharing icons
-* Choose exactly where you want AddToAny to appear
-* Google Analytics integration (<a href="http://www.addtoany.com/ext/google_analytics/">access guide</a>)
-* WordPress optimized with asynchronous script loading
-* Mobile optimized for sharing to native apps or to web apps per service
-* Localized in English, Chinese, Spanish, Arabic, French, Portuguese, Japanese, Italian, Dutch, Danish, Catalan, Persian, Russian, Turkish, Albanian, Romanian, Belarusian, Greek, Irish
-* Easily <a href="http://www.addtoany.com/buttons/customize/wordpress">customizable</a> for beginners or advanced users, and <a href="/plugins/add-to-any/faq/" title="See 'How can I add both the universal button and the individual icons to another area of my theme?'">highly extensible</a> for developers and designers
+= WordPress Optimized =
+
+* Loads asynchronously so your content always loads before or in parallel with AddToAny
 * Supports theme features such as HTML5 & XHTML, widgets, infinite scroll, post formats
+
+= Mobile Optimized & Retina Ready =
+
+* AddToAny gives users the choice in sharing from a service's native app or from a web app
+* For example, choose between Twitter's native app or Twitter's mobile web app
+* AddToAny's SVG icons are lightweight and pixel-perfect at any size
+
+= Customizable & Extensible =
+
+* Choose exactly where you want AddToAny to appear
+* Easily <a href="http://www.addtoany.com/buttons/customize/wordpress">customize sharing</a> on your WordPress site
+* <a href="/plugins/add-to-any/faq/">Highly extensible</a> for developers and designers
+* Custom icons let you use any icons at any location (media uploads directory, CDN, etc.)
 * Many more publisher and user features
 
-With **years of active development**, over **2.9 million downloads**, and **ongoing support from the community**, this plugin still strives to be the best WordPress plugin for sharing. Thanks for your feedback!
+= Wide Support =
+
+* Over 8 years of active development 
+* Over 2.9 million downloads
+* Translated into dozens of languages
+* Ongoing support from the community
+
+This plugin still strives to be the best WordPress plugin for sharing, and development is fueled by your praise and feedback.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
@@ -90,6 +116,10 @@ Try running Facebook's <a href="https://developers.facebook.com/tools/debug">URL
 To change the title, description and/or image on Facebook, your theme's header file should be modified according to <a href="https://developers.facebook.com/docs/opengraph/">Facebook's OpenGraph specification</a>. With WordPress, this can be accomplished with plugins such as the <a href="http://wordpress.org/plugins/wordpress-seo/">WordPress SEO by Yoast</a> or the <a href="http://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>.  Please see those plugins for details, and post in the WordPress or plugin author's forums for more support.
 
 For more technical information on setting your pages up for Facebook sharing, see "Facebook Sharing Checklist" in <a href="https://developers.facebook.com/docs/plugins/checklist/">Facebook's documentation</a>.
+
+= How can I use custom icons? =
+
+Upload sharing icons in a single directory to a public location, and make sure the icon filenames match the icon filenames packaged in the AddToAny plugin. In your Admin panel, go to `Settings` > `AddToAny` > `Advanced Options` > check the "Use custom icons" checkbox and specify the URL to your custom icons directory (including the trailing `/`). For AddToAny's universal button, go to Universal Button, select `Image URL` and specify the exact location of your AddToAny universal sharing icon (including the filename).
 
 = How can I add both the universal button and the individual icons to another area of my theme? =
 
@@ -240,6 +270,12 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal sharing menu
 
 == Changelog ==
+
+= 1.2.9 =
+* New Custom Icons option in the Advanced Options section
+ * Use any icons at any location (media uploads directory, CDN, etc.)
+ * This new method for using custom icons permits plugin updates that do not overwrite custom icons
+* Improve descriptions in settings
 
 = 1.2.8.7 =
 * Fix code styling
