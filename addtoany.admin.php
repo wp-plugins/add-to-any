@@ -503,12 +503,12 @@ function A2A_SHARE_SAVE_options_page() {
 			<td><fieldset>
 				<label>
 					<input name="A2A_SHARE_SAVE_onclick" type="checkbox"<?php if($options['onclick']=='1') echo ' checked="checked"'; ?> value="1"/>
-					<?php _e('Only show the menu when the user clicks the Share/Save button', 'add-to-any'); ?>
+					<?php _e('Only show the universal share menu when the user <em>clicks</em> the universal share button', 'add-to-any'); ?>
 				</label>
 				<br />
 				<label>
 					<input name="A2A_SHARE_SAVE_show_title" type="checkbox"<?php if($options['show_title']=='1') echo ' checked="checked"'; ?> value="1"/>
-					<?php _e('Show the title of the post (or page) within the menu', 'add-to-any'); ?>
+					<?php _e('Show the title of the page within the universal share menu', 'add-to-any'); ?>
 				</label>
 			</fieldset></td>
 			</tr>
@@ -541,7 +541,7 @@ function A2A_SHARE_SAVE_options_page() {
 				</label>
 				<input name="A2A_SHARE_SAVE_custom_icons_url" type="text" class="code" size="50" style="vertical-align:middle" placeholder="//example.com/blog/uploads/addtoany/icons/custom/" value="<?php echo $options['custom_icons_url']; ?>" />
 				<p class="description">
-					<?php _e("Specify the URL of the directory containing your custom icons. For example, a URL of <code>//example.com/blog/uploads/addtoany/icons/custom/</code> containing <code>facebook.png</code> and <code>twitter.png</code>. Be sure that custom icon filenames match the icon filenames in <code>plugins/add-to-any/icons</code>. For AddToAny's Universal Button, select Image URL and specify the URL of your AddToAny universal sharing icon (<a href=\"#\" onclick=\"document.getElementsByName('A2A_SHARE_SAVE_button_custom')[0].focus();return false\">above</a>).", "add-to-any"); ?>
+					<?php _e("Specify the URL of the directory containing your custom icons. For example, a URL of <code>//example.com/blog/uploads/addtoany/icons/custom/</code> containing <code>facebook.png</code> and <code>twitter.png</code>. Be sure that custom icon filenames match the icon filenames in <code>plugins/add-to-any/icons</code>. For AddToAny's Universal Button, select Image URL and specify the URL of your AddToAny universal share icon (<a href=\"#\" onclick=\"document.getElementsByName('A2A_SHARE_SAVE_button_custom')[0].focus();return false\">above</a>).", "add-to-any"); ?>
 				</p>
 				<br/>
 				<label for="A2A_SHARE_SAVE_inline_css">

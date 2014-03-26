@@ -3,7 +3,7 @@ Contributors: micropat
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, +1, plus 1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, buffer, stumbleupon, bitly, technorati, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.2.9.1
+Stable tag: 1.2.9.2
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -11,12 +11,12 @@ Share buttons for WordPress including AddToAny's universal sharing button, Faceb
 
 The WordPress sharing plugin to help people share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
-AddToAny's customizable social share icons let you optimize your blog posts & pages for specific social sites.
+AddToAny's customizable platform and social share icons let you optimize your site's blog posts & pages for the best social sharing engagement.
 
 = Share Buttons =
 
 * **New**: Vector sharing buttons (SVG sharing icons)
-* Universal Sharing Button and Smart Menu
+* Universal Share Button and Smart Menu
 * Sharing Kit for individual share links
 * **New**: Custom sharing icons
 * Choose from over 100 individual services
@@ -56,7 +56,7 @@ AddToAny's customizable social share icons let you optimize your blog posts & pa
 * Translated into dozens of languages
 * Ongoing support from the community
 
-This plugin still strives to be the best WordPress plugin for sharing, and development is fueled by your praise and feedback.
+This plugin always strives to be the best WordPress plugin for sharing. Development is fueled by your praise and feedback.
 
 <a href="http://www.addtoany.com/share_save" title="Share">Share this</a> plugin
 
@@ -77,7 +77,7 @@ See also:
 
 = Where are the options, and how can I customize the sharing plugin? =
 
-In your Admin panel, go to `Settings` > `AddToAny`.  Among other options, you can choose individual sharing icons, a universal sharing button, and official 3rd party sharing buttons (Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, Google +1 Button) to display, and where and how to display them.
+In your Admin panel, go to `Settings` > `AddToAny`. Among other options, you can choose individual sharing icons, a universal share button, and official 3rd party sharing buttons (Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, Google +1 Button) to display, and where and how to display them.
 
 To place the buttons as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
 
@@ -119,7 +119,7 @@ For more technical information on setting your pages up for Facebook sharing, se
 
 = How can I use custom icons? =
 
-Upload sharing icons in a single directory to a public location, and make sure the icon filenames match the icon filenames packaged in the AddToAny plugin. In your Admin panel, go to `Settings` > `AddToAny` > `Advanced Options` > check the "Use custom icons" checkbox and specify the URL to your custom icons directory (including the trailing `/`). For AddToAny's universal button, go to Universal Button, select `Image URL` and specify the exact location of your AddToAny universal sharing icon (including the filename).
+Upload sharing icons in a single directory to a public location, and make sure the icon filenames match the icon filenames packaged in the AddToAny plugin. In your Admin panel, go to `Settings` > `AddToAny` > `Advanced Options` > check the "Use custom icons" checkbox and specify the URL to your custom icons directory (including the trailing `/`). For AddToAny's universal button, go to Universal Button, select `Image URL` and specify the exact location of your AddToAny universal share icon (including the filename).
 
 = How can I add both the universal button and the individual icons to another area of my theme? =
 
@@ -263,13 +263,18 @@ Upload the plugin directory (including all files and directories within) to the 
 == Screenshots ==
 
 1. Large vector sharing buttons (SVG icons) are pixel-perfect on Retina and high-DPI dispays
-2. Share/Save sharing button features Facebook, Twitter, and a universal sharing icon
-3. Drop-down universal sharing menu that appears instantly when visitors use the share button
+2. Share/Save sharing button features Facebook, Twitter, and a universal share icon
+3. Drop-down universal share menu that appears instantly when visitors use the share button
 4. Email tab, with direct links to the most popular web-based emailers' auto-filled Compose page, a web-based sender for use with any email address, and a link for desktop email applications
 5. Settings panel
-6. Color chooser for your universal sharing menu
+6. Color chooser for your universal share menu
 
 == Changelog ==
+
+= 1.2.9.2 =
+* Fix transparency on AddToAny's universal share icon
+* Add addtoany_sharing_disabled hook to programmatically disable sharing
+* Update Menu Options
 
 = 1.2.9.1 =
 * Update template code
