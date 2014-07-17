@@ -240,10 +240,6 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Meneame",
 		"icon" => "meneame",
 	),
-	"mister_wong" => array(
-		"name" => "Mister-Wong",
-		"icon" => "mister-wong",
-	),
 	"myspace" => array(
 		"name" => "MySpace",
 		"icon" => "myspace",
@@ -432,10 +428,6 @@ $A2A_SHARE_SAVE_services = array(
 	"yahoo_messenger" => array(
 		"name" => "Yahoo Messenger",
 		"icon" => "yim",
-	),
-	"yigg" => array(
-		"name" => "YiGG",
-		"icon" => "yigg",
 	),
 	"yoolink" => array(
 		"name" => "Yoolink",
