@@ -2,8 +2,8 @@
 Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, technorati, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
-Tested up to: 3.9.2
-Stable tag: 1.3.4
+Tested up to: 4.0
+Stable tag: 1.3.5
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
 
@@ -273,11 +273,15 @@ Upload the plugin directory (including all files and directories within) to the 
 1. Large vector sharing buttons (SVG icons) are pixel-perfect on Retina and high-DPI dispays
 2. Share/Save sharing button features Facebook, Twitter, and a universal share icon
 3. Drop-down universal share menu that appears instantly when visitors use the share button
-4. Email tab, with direct links to the most popular web-based emailers' auto-filled Compose page, a web-based sender for use with any email address, and a link for desktop email applications
+4. Modal universal share menu that includes all services
 5. Settings panel
 6. Color chooser for your universal share menu
 
 == Changelog ==
+
+= 1.3.5 =
+* Fix 'small icon + text' double-icon issue where the AddToAny Kit icon would appear in addition to packaged icon
+* Adjust default placement options for better control over the excepts option
 
 = 1.3.4 =
 * Fix large text-only icon where the AddToAny universal icon was appearing

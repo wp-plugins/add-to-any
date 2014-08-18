@@ -511,15 +511,7 @@ function A2A_SHARE_SAVE_options_page() {
 				<label>
 					<input id="A2A_SHARE_SAVE_display_in_posts" name="A2A_SHARE_SAVE_display_in_posts" type="checkbox"<?php 
 						if ( ! isset( $options['display_in_posts'] ) || $options['display_in_posts'] != '-1' ) echo ' checked="checked"'; ?> value="1"/>
-					<?php printf(__('Display at the %s of posts', 'add-to-any'), position_in_content($options, TRUE)); ?> <strong>*</strong>
-				</label>
-				<br/>
-				<label>
-					&nbsp; &nbsp; &nbsp; <input class="A2A_SHARE_SAVE_child_of_display_in_posts" name="A2A_SHARE_SAVE_display_in_excerpts" type="checkbox"<?php 
-						if ( ! isset( $options['display_in_excerpts'] ) || $options['display_in_excerpts'] != '-1' ) echo ' checked="checked"';
-						if ( isset( $options['display_in_posts'] ) && $options['display_in_posts'] == '-1' ) echo ' disabled="disabled"';
-						?> value="1"/>
-					<?php printf(__('Display at the %s of post excerpts', 'add-to-any'), position_in_content($options)); ?>
+					<?php printf(__('Display at the %s of posts', 'add-to-any'), position_in_content( $options, true )); ?>
 				</label>
 				<br/>
 				<label>
@@ -527,7 +519,7 @@ function A2A_SHARE_SAVE_options_page() {
 						if ( ! isset( $options['display_in_posts_on_front_page'] ) || $options['display_in_posts_on_front_page'] != '-1' ) echo ' checked="checked"';
 						if ( isset( $options['display_in_posts'] ) && $options['display_in_posts'] == '-1' ) echo ' disabled="disabled"';
 						?> value="1"/>
-					<?php printf(__('Display at the %s of posts on the front page', 'add-to-any'), position_in_content($options)); ?>
+					<?php printf(__('Display at the %s of posts on the front page', 'add-to-any'), position_in_content( $options )); ?>
 				</label>
 				<br/>
 				<label>
@@ -535,7 +527,7 @@ function A2A_SHARE_SAVE_options_page() {
 						if ( ! isset( $options['display_in_posts_on_archive_pages'] ) || $options['display_in_posts_on_archive_pages'] != '-1' ) echo ' checked="checked"';
 						if ( isset( $options['display_in_posts'] ) && $options['display_in_posts'] == '-1' ) echo ' disabled="disabled"';
 						?> value="1"/>
-					<?php printf(__('Display at the %s of posts on archive pages', 'add-to-any'), position_in_content($options)); ?>
+					<?php printf(__('Display at the %s of posts on archive pages', 'add-to-any'), position_in_content( $options )); ?>
 				</label>
 				<br/>
 				<label>
@@ -543,12 +535,19 @@ function A2A_SHARE_SAVE_options_page() {
 						if ( ! isset( $options['display_in_feed'] ) || $options['display_in_feed'] != '-1' ) echo ' checked="checked"'; 
 						if ( isset( $options['display_in_posts'] ) && $options['display_in_posts'] == '-1' ) echo ' disabled="disabled"';
 						?> value="1"/>
-					<?php printf(__('Display at the %s of posts in the feed', 'add-to-any'), position_in_content($options)); ?>
+					<?php printf(__('Display at the %s of posts in the feed', 'add-to-any'), position_in_content( $options )); ?>
+				</label>
+				<br/>
+				<label>
+					<input name="A2A_SHARE_SAVE_display_in_excerpts" type="checkbox"<?php 
+						if ( ! isset( $options['display_in_excerpts'] ) || $options['display_in_excerpts'] != '-1' ) echo ' checked="checked"';
+						?> value="1"/>
+					<?php printf(__('Display at the %s of excerpts', 'add-to-any'), position_in_content( $options, false )); ?>
 				</label>
 				<br/>
 				<label>
 					<input name="A2A_SHARE_SAVE_display_in_pages" type="checkbox"<?php if ( ! isset( $options['display_in_pages'] ) || $options['display_in_pages'] != '-1' ) echo ' checked="checked"'; ?> value="1"/>
-					<?php printf(__('Display at the %s of pages', 'add-to-any'), position_in_content($options, TRUE)); ?>
+					<?php printf(__('Display at the %s of pages', 'add-to-any'), position_in_content( $options, false )); ?>
 				</label>
 				<br/><br/>
 				<div class="setting-description">
@@ -720,7 +719,7 @@ function A2A_SHARE_SAVE_options_page() {
 	
 	<h2><?php _e('Like this plugin?','add-to-any'); ?></h2>
 	<p><?php _e('<a href="http://wordpress.org/extend/plugins/add-to-any/">Give it a good rating</a> on WordPress.org.','add-to-any'); ?></p>
-	<p><?php _e('<a href="http://www.addtoany.com/share_save?linkname=WordPress%20Share%20%2F%20Bookmark%20Plugin%20by%20AddToAny.com&amp;linkurl=http%3A%2F%2Fwordpress.org%2Fextend%2Fplugins%2Fadd-to-any%2F">Share it</a> with your friends.','add-to-any'); ?> <a href="https://www.facebook.com/AddToAny" target="_blank">Facebook</a> / <a href="https://twitter.com/AddToAny" target="_blank">Twitter</a></p>
+	<p><?php _e('<a href="http://www.addtoany.com/share_save#title=WordPress%20Share%20Plugin%20by%20AddToAny.com&amp;url=http%3A%2F%2Fwordpress.org%2Fplugins%2Fadd-to-any%2F">Share it</a> and follow <a href="http://www.addtoany.com/">AddToAny</a> on <a href="https://www.facebook.com/AddToAny" target="_blank">Facebook</a> &amp; <a href="https://twitter.com/AddToAny" target="_blank">Twitter</a>.','add-to-any'); ?></p>
 	
 	<h2><?php _e('Need support?','add-to-any'); ?></h2>
 	<p><?php _e('See the <a href="http://wordpress.org/extend/plugins/add-to-any/faq/">FAQs</a>.','add-to-any'); ?></p>
