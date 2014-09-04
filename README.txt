@@ -1,11 +1,11 @@
 === Share Buttons by AddToAny ===
 Contributors: micropat, addtoany
-Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, technorati, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
+Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.0
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 
-Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, StumbleUpon and many more.
+Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
 == Description ==
 
@@ -279,9 +279,15 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Changelog ==
 
+= 1.3.6 =
+* Add LINE
+* Add Mixi
+* Add Hacker News
+* Update Twitter icon
+
 = 1.3.5 =
 * Fix 'small icon + text' double-icon issue where the AddToAny Kit icon would appear in addition to packaged icon
-* Adjust default placement options for better control over the excepts option
+* Adjust default placement options for better control over the excerpts option
 
 = 1.3.4 =
 * Fix large text-only icon where the AddToAny universal icon was appearing
