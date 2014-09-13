@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Share Buttons by AddToAny
-Plugin URI: http://www.addtoany.com/
+Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.3.6
+Version: 1.3.7
 Author: AddToAny
-Author URI: http://www.addtoany.com/
+Author URI: https://www.addtoany.com/
 */
 
 if ( ! isset( $A2A_locale ) ) {
@@ -381,7 +381,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 			$button	= '<img src="' . $button_src . '"' . $button_width . $button_height . ' alt="Share"/>';
 		}
 		
-		$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd' . $button_class . ' addtoany_share_save" href="http://www.addtoany.com/share_save' .$button_href_querystring . '"' . $button_id
+		$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd' . $button_class . ' addtoany_share_save" href="https://www.addtoany.com/share_save' .$button_href_querystring . '"' . $button_id
 			. $style . $button_target
 			. '>' . $button . '</a>';
 	
@@ -409,7 +409,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		// If doing AJAX (the DOING_AJAX constant can be unreliable)
 		if ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) {
 			$javascript_button_config = "<script type=\"text/javascript\"><!--\n"
-				. "wpa2a.targets.push("
+				. "if(wpa2a.targets)wpa2a.targets.push("
 					. $button_config
 				. ");\n";
 			
@@ -534,6 +534,8 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 	$options = get_option( 'addtoany_options' );
 	
 	$floating_html = '';
+	
+	// Overridable by args below
 	$vertical_type = ( isset( $options['floating_vertical'] ) && 'none' != $options['floating_vertical'] ) ? $options['floating_vertical'] : false;
 	$horizontal_type = ( isset( $options['floating_horizontal'] ) && 'none' != $options['floating_horizontal'] ) ? $options['floating_horizontal'] : false;
 
@@ -544,7 +546,7 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 		'linkname_enc' => '',
 		'linkurl_enc' => '',
 		'use_current_page' => true,
-		'output_later' => true,
+		'output_later' => false,
 		'is_kit' => true,
 		'no_addtoany_list_classname' => true,
 		'no_special_services' => true,
@@ -554,8 +556,17 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
+	
+	// Individual floating type args can override saved options
+	if ( isset( $args['vertical_type'] ) && $args['vertical_type'] === true ) {
+		$vertical_type = true;
+	}
+	if ( isset( $args['horizontal_type'] ) && $args['horizontal_type'] === true ) {
+		$horizontal_type = true;
+	}
 
 	// If either floating type is enabled
+	// Expect either a string from options, or a boolean from args
 	if ( $vertical_type || $horizontal_type ) {
 		// Vertical type?
 		if ( $vertical_type ) {
@@ -568,9 +579,9 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 			$args['kit_additional_classes'] = 'a2a_floating_style a2a_vertical_style';
 			
 			// Add declarations to Kit style attribute
-			if ( 'left_docked' == $vertical_type ) {
+			if ( 'left_docked' === $vertical_type ) {
 				$args['kit_style'] = 'left:' . $offset . ';top:' . $position . ';';
-			} elseif ( 'right_docked' == $vertical_type ) {
+			} elseif ( 'right_docked' === $vertical_type ) {
 				$args['kit_style'] = 'right:' . $offset . ';top:' . $position . ';';
 			}
 			
@@ -588,9 +599,9 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 			$args['kit_additional_classes'] = 'a2a_floating_style a2a_default_style';
 			
 			// Add declarations to Kit style attribute
-			if ( 'left_docked' == $horizontal_type ) {
+			if ( 'left_docked' === $horizontal_type ) {
 				$args['kit_style'] = 'bottom:' . $offset . ';left:' . $position . ';';
-			} elseif ( 'right_docked' == $horizontal_type ) {
+			} elseif ( 'right_docked' === $horizontal_type ) {
 				$args['kit_style'] = 'bottom:' . $offset . ';right:' . $position . ';';
 			}
 			
