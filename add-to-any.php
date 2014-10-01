@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.3.7
+Version: 1.3.8
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -534,10 +534,22 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 	$options = get_option( 'addtoany_options' );
 	
 	$floating_html = '';
-	
+
 	// Overridable by args below
 	$vertical_type = ( isset( $options['floating_vertical'] ) && 'none' != $options['floating_vertical'] ) ? $options['floating_vertical'] : false;
 	$horizontal_type = ( isset( $options['floating_horizontal'] ) && 'none' != $options['floating_horizontal'] ) ? $options['floating_horizontal'] : false;
+
+	if ( is_singular() ) {
+		// Disabled for this singular post?
+		$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
+		$sharing_disabled = apply_filters( 'addtoany_sharing_disabled', $sharing_disabled );
+		
+		if ( ! empty( $sharing_disabled ) ) {
+			// Overridable by args below
+			$vertical_type   = false;
+			$horizontal_type = false;
+		}
+	}
 
 	// Args are just passed on to ADDTOANY_SHARE_SAVE_KIT for now
 	$defaults = array(
