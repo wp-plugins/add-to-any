@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.1
-Stable tag: 1.3.8.1
+Stable tag: 1.4
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -15,11 +15,12 @@ AddToAny's customizable platform and social share icons let you optimize your si
 
 = Share Buttons =
 
-* **New**: Floating share buttons — responsive & customizable, vertical & horizontal
+* **New**: AddToAny share counters — fast & official counts in the same style
+* Floating share buttons — responsive & customizable, vertical & horizontal
 * Vector sharing buttons (SVG sharing icons)
 * Universal Share Button and Smart Menu
 * Sharing Kit for individual share links
-* Custom sharing icons
+* Custom share icons
 * Choose from over 100 individual services
 * 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button
 * Universal email sharing makes it easy to share via Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web and native apps
@@ -36,6 +37,7 @@ AddToAny's customizable platform and social share icons let you optimize your si
 
 * Automatic Google Analytics integration (<a href="https://www.addtoany.com/ext/google_analytics/">access guide</a>) for sharing analytics
 * Track shared links with bit.ly, awe.sm, goo.gl, and custom URL shorteners
+* Display share counts on posts and pages
 
 = WordPress Optimized =
 
@@ -289,6 +291,12 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal share menu
 
 == Changelog ==
+
+= 1.4 =
+* New: Share counters in the same style for Facebook, Twitter, Pinterest, Linkedin and Reddit!
+ * In Settings > AddToAny > Standalone Buttons, click the down arrow and toggle the "Show count" checkbox for any supported service
+* Floating buttons do not display share counts in this release
+* Update CSS to support AddToAny share counters
 
 = 1.3.8.1 =
 * Add LINE icon (thanks tokyodev)
@@ -1212,6 +1220,9 @@ Upload the plugin directory (including all files and directories within) to the 
 * PHP4 legacy and compatibility fixes
 
 == Upgrade Notice ==
+
+= 1.4 =
+AddToAny share counters are now available for supported standalone buttons! For Facebook, Twitter, Pinterest, Reddit and Linkedin, click the down arrow and toggle the "Show count" checkbox.
 
 = 1.3.1 =
 Floating share buttons are now responsive by default, ready for mobile & tablets. You can toggle responsiveness and set responsive breakpoints in the "Floating" tab of Settings > AddToAny.

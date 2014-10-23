@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.3.8.1
+Version: 1.4
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -259,6 +259,14 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			} else {
 				$custom_service = false;
 			}
+			
+			// AddToAny counter enabled?
+			$counter_enabled = ( ! isset( $is_floating ) // Disable counters on floating buttons for now
+				&& in_array( $active_service, array( 'facebook', 'twitter', 'pinterest', 'linkedin', 'reddit' ) )
+				&& isset( $options['special_' . $active_service . '_options'] )
+				&& isset( $options['special_' . $active_service . '_options']['show_count'] ) 
+				&& $options['special_' . $active_service . '_options']['show_count'] == '1' 
+			) ? true : false;
 	
 			$icon_url = ( isset( $service['icon_url'] ) ) ? $service['icon_url'] : false;
 			$icon = ( isset( $service['icon'] ) ) ? $service['icon'] : 'default'; // Just the icon filename
@@ -267,9 +275,10 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			
 			$url = ( $custom_service ) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
 			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . ".png";
-			$class_attr = ( $custom_service ) ? "" : " class=\"a2a_button_$safe_name\"";
+			$counter = ( $counter_enabled ) ? ' a2a_counter' : '';
+			$class_attr = ( $custom_service ) ? '' : ' class="a2a_button_' . $safe_name . $counter . '"';
 			
-			// Remove all dimention values if using custom icons
+			// Remove all dimension values if using custom icons
 			if ( isset( $custom_icons ) ) {
 				$width = '';
 				$height = '';
@@ -559,6 +568,7 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 		'linkurl_enc' => '',
 		'use_current_page' => true,
 		'output_later' => false,
+		'is_floating' => true,
 		'is_kit' => true,
 		'no_addtoany_list_classname' => true,
 		'no_special_services' => true,
@@ -912,7 +922,7 @@ function A2A_SHARE_SAVE_stylesheet() {
 	// Use stylesheet?
 	if ( ! isset( $options['inline_css'] ) || $options['inline_css'] != '-1' && ! is_admin() ) {
 	
-		wp_enqueue_style( 'A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.7' );
+		wp_enqueue_style( 'A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.8' );
 	
 		// wp_add_inline_style requires WP 3.3+
 		if ( '3.3' <= get_bloginfo( 'version' ) ) {
