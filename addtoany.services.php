@@ -212,6 +212,10 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Jumptags",
 		"icon" => "jumptags",
 	),
+	"kakao" => array(
+		"name" => "Kakao",
+		"icon" => "kakao",
+	),
 	"khabbr" => array(
 		"name" => "Khabbr",
 		"icon" => "khabbr",
@@ -333,6 +337,10 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "QQ",
 		"icon" => "qq",
 	),
+	"qzone" => array(
+		"name" => "Qzone",
+		"icon" => "qzone",
+	),
 	"rediff" => array(
 		"name" => "Rediff MyPage",
 		"icon" => "rediff",
@@ -448,6 +456,10 @@ $A2A_SHARE_SAVE_services = array(
 	"youmob" => array(
 		"name" => "YouMob",
 		"icon" => "youmob",
+	),
+	"yummly" => array(
+		"name" => "Yummly",
+		"icon" => "yummly",
 	),
 	"dihitt" => array(
 		"name" => "diHITT",

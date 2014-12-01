@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.4.1
+Version: 1.5
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -113,8 +113,10 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = false ) {
 	// a2a_kit_size_32 if no icon size, or no_small_icons arg is true
 	} elseif ( ! isset( $options['icon_size'] ) || isset( $args['no_small_icons'] ) && true == $args['no_small_icons'] ) {
 		$icon_size = ' a2a_kit_size_32';
+	// a2a_kit_size_16
 	} elseif ( isset( $options['icon_size'] ) && $options['icon_size'] == '16' ) {
 		$icon_size = '';
+	// a2a_kit_size_## custom icon size
 	} else {
 		$icon_size = ' a2a_kit_size_' . $options['icon_size'] . '';
 	}
@@ -285,7 +287,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			}
 			
 			$link = $html_wrap_open . "<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
-			$link .= ( $large_icons && ! isset( $custom_icons ) ) ? "" : "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
+			$link .= ( $large_icons && ! isset( $custom_icons ) && ! $custom_service ) ? "" : "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
 			$link .= "</a>" . $html_wrap_close;
 		}
 		

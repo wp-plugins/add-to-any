@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.1
-Stable tag: 1.4.1
+Stable tag: 1.5
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -97,7 +97,7 @@ To further customize AddToAny, see the <a href="https://www.addtoany.com/buttons
 
 Try temporarily switching themes and disabling other plugins to identify a potential conflict. If you find a conflict, try contacting that theme or plugin author. If an issue persists on a default theme with all other plugins disabled, perform a google search across the WordPress forums using a query such as: <a href="https://www.google.com/#q=site:wordpress.org%2Fsupport+-reviews+addtoany+">site:wordpress.org/support -reviews addtoany [your issue issue here]</a>
 
-Feel free to <a href="http://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, and provide a link to your site, and any other potentially relevant information.
+Feel free to <a href="http://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, provide a link to your site, and any other potentially relevant information.
 
 = Why isn't the universal drop-down menu appearing? =
 
@@ -200,12 +200,12 @@ If you want to customize the shared URL and title for these icons, use the follo
 You can create a plugin or customize the following PHP sample code to add to your theme's function.php file:
 
 `function addtoany_add_services( $services ) {
-	$services['google_example'] = array(
-		'name'        => 'Google Example',
-		'icon_url'    => 'http://www.google.com/favicon.ico',
+	$services['example_service'] = array(
+		'name'        => 'Example Service',
+		'icon_url'    => 'https://www.google.com/favicon.ico',
 		'icon_width'  => 16,
 		'icon_height' => 16,
-		'href'        => 'http://www.example.com/add?linkurl=A2A_LINKURL&amp;linkname=A2A_LINKNAME'
+		'href'        => 'http://www.example.com/share?url=A2A_LINKURL&amp;title=A2A_LINKNAME'
 	);
 	return $services;
 }
@@ -267,7 +267,7 @@ Yes, this plugin outputs 100% W3C valid HTML5 & XHTML and W3C valid CSS 3 by def
 
 If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like, Tweet, and +1 buttons inside of the iframes.
 
-Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> are taken very seriously.
+Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> compatibility are taken seriously.
 
 = How can I move the plugin's inline CSS into my theme's main external stylesheet? =
 
@@ -291,6 +291,14 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal share menu
 
 == Changelog ==
+
+= 1.5 =
+* Custom icon sizes (applied to AddToAny vector icons)
+* Fix custom standalone service icons when used with large icons
+* Add Kakao
+* Add Qzone
+* Add Yummly
+* Update Wykop icon
 
 = 1.4.1 =
 * Update CSS to fix Facebook Like button verical aligment caused by Facebook's inline styling change
