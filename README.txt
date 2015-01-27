@@ -2,14 +2,14 @@
 Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 1.5
+Tested up to: 4.2
+Stable tag: 1.5.1
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
 == Description ==
 
-The WordPress sharing plugin to help people share, bookmark, and email your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
+The WordPress sharing plugin to help people share, save, and email your posts and pages using any service, such as Facebook, Twitter, Pinterest, Google, Reddit, Tumblr, StumbleUpon, LinkedIn, and well over 100 more sharing and social bookmarking sites.
 
 AddToAny's customizable platform and social share icons let you optimize your site's blog posts & pages for the best social sharing engagement.
 
@@ -19,9 +19,9 @@ AddToAny's customizable platform and social share icons let you optimize your si
 * Floating share buttons — responsive & customizable, vertical & horizontal
 * Vector sharing buttons (SVG sharing icons)
 * Universal Share Button and Smart Menu
-* Sharing Kit for individual share links
+* Individual share links
 * Custom share icons
-* Choose from over 100 individual services
+* Choose from over 100 services
 * 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button
 * Universal email sharing makes it easy to share via Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web and native apps
 
@@ -61,8 +61,8 @@ AddToAny's customizable platform and social share icons let you optimize your si
 
 = Wide Support =
 
-* Over 8 years of active development 
-* Over 3 million downloads
+* Over 8 years of active development
+* Over 3.5 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
@@ -97,7 +97,7 @@ To further customize AddToAny, see the <a href="https://www.addtoany.com/buttons
 
 Try temporarily switching themes and disabling other plugins to identify a potential conflict. If you find a conflict, try contacting that theme or plugin author. If an issue persists on a default theme with all other plugins disabled, perform a google search across the WordPress forums using a query such as: <a href="https://www.google.com/#q=site:wordpress.org%2Fsupport+-reviews+addtoany+">site:wordpress.org/support -reviews addtoany [your issue issue here]</a>
 
-Feel free to <a href="http://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, provide a link to your site, and any other potentially relevant information.
+Feel free to <a href="https://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, provide a link to your site, and any other potentially relevant information.
 
 = Why isn't the universal drop-down menu appearing? =
 
@@ -121,9 +121,9 @@ You can also customize the shared URL like so:
 
 Facebook does link sharing differently than most other services. Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services that accept common parameters, Facebook only accepts a URL, then Facebook scans the actual page for details. To change the title, description or image on Facebook, you will need to modify your theme or use another plugin that filters your theme.
 
-Try running Facebook's <a href="https://developers.facebook.com/tools/debug">URL Debugger</a> on your pages to see how Facebook reads your site.
+Try running Facebook's <a href="https://developers.facebook.com/tools/debug">URL Debugger</a> on your pages to see how Facebook reads your site. "Fetch new scrape information" to test site changes and clear Facebook's cache of a page.
 
-To change the title, description and/or image on Facebook, your theme's header file should be modified according to <a href="https://developers.facebook.com/docs/opengraph/">Facebook's OpenGraph specification</a>. With WordPress, this can be accomplished with plugins such as the <a href="http://wordpress.org/plugins/wordpress-seo/">WordPress SEO by Yoast</a> or the <a href="http://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>.  Please see those plugins for details, and post in the WordPress or plugin author's forums for more support.
+To change the title, description and/or image on Facebook, your theme's header file should be modified according to <a href="https://developers.facebook.com/docs/opengraph/">Facebook's OpenGraph specification</a>. With WordPress, this can be accomplished with plugins such as the <a href="https://wordpress.org/plugins/wordpress-seo/">WordPress SEO by Yoast</a> or the <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>.  Please see those plugins for details, and post in the WordPress or plugin author's forums for more support.
 
 For more technical information on setting your pages up for Facebook sharing, see "Facebook Sharing Checklist" in <a href="https://developers.facebook.com/docs/plugins/checklist/">Facebook's documentation</a>.
 
@@ -291,6 +291,13 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your universal share menu
 
 == Changelog ==
+
+= 1.5.1 =
+* Update Print icon
+* Update YouMob icon
+* Update Symbaloo icon
+* Update Qzone (QQ) icon
+* Remove allvoices, arto, bebo, funp, jumptags, khabbr, linkagogo, linkatopia, nowpublic, orkut, phonefavs, startaid, technotizie, wists, xerpi
 
 = 1.5 =
 * Custom icon sizes (applied to AddToAny vector icons)
