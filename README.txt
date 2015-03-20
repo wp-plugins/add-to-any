@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.2
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -62,7 +62,7 @@ AddToAny's customizable platform and social share icons let you optimize your si
 = Wide Support =
 
 * Over 8 years of active development
-* Over 3.5 million downloads
+* Over 3.6 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
@@ -99,15 +99,11 @@ Try temporarily switching themes and disabling other plugins to identify a poten
 
 Feel free to <a href="https://wordpress.org/support/plugin/add-to-any">post here</a>, where the community can hopefully help you. Describe the issue, what troubleshooting you have already done, provide a link to your site, and any other potentially relevant information.
 
-= Why isn't the universal drop-down menu appearing? =
+= The share buttons are not displaying for me. Why, and what should I try? =
 
-It's likely because your theme wasn't <a href="http://codex.wordpress.org/Theme_Development#Plugin_API_Hooks">coded properly</a>.  With many themes you can use the Theme Editor to edit your theme's `header.php` and `footer.php` files.
+Something on your own device/browser/connection is likely filtering out major social buttons.
 
-In `header.php` place the following line of code just before the `</head>` line:
-`<?php wp_head(); ?>`
-
-In `footer.php` place the following line of code just before the `</body>` line:
-`<?php wp_footer(); ?>`
+Try another web browser, device, and/or Internet connection to see if the buttons appear. Tools like browserling.com or browserstack.com will give you an idea of what other people are seeing. The usual cause for this uncommon issue is 3rd party browser add-on software that blocks ads and optionally filters out major social buttons. Some security apps and Internet connections have an option to filter social buttons. Usually a social filter option is disabled by default, but if you find that some software is inappropriately filtering AddToAny buttons, <a href="https://www.addtoany.com/contact/">let AddToAny know</a>.
 
 = Is there a shortcode for sharing? =
 
@@ -273,10 +269,6 @@ If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 the
 
 Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> compatibility are taken seriously.
 
-= How can I move the plugin's inline CSS into my theme's main external stylesheet? =
-
-Go to `Settings` > `AddToAny` > uncheck `Use inline CSS` and place the CSS code in your theme's main stylesheet.
-
 = Why does the menu appear behind embedded objects (like Flash)? =
 
 Please read <a href="https://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have the plugin <a href="https://www.addtoany.com/buttons/customize/hide_embeds">hide intersecting embedded objects</a>. Just copy & paste the recommended code into the Additional Options box in `Settings` > `AddToAny`, then save changes.
@@ -296,6 +288,12 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Changelog ==
 
+= 1.5.4 =
+* New optional sharing header to easily place a label above the default share buttons
+ * Accepts HTML
+* Fix text width of counters where long numbers would break to a newline (thanks Chris)
+* Remove old Additional Options note in settings
+
 = 1.5.3 =
 * <a href="https://www.addtoany.com/buttons/customize/wordpress/events" title="Track shares, or change the shared URL">Share event handling</a> comes to the WordPress plugin!
 * This means you can track and modify the share with some JavaScripting
@@ -303,6 +301,7 @@ Upload the plugin directory (including all files and directories within) to the 
  * Google Analytics integration is automatic as always
  * Modify the shared URL
  * Modify the shared Title for services that accept a Title directly (i.e. Twitter, but not Facebook)
+* Update asynchronous loading to use new callbacks property
 * Add Renren
 * Remove blip, iwiw
 
