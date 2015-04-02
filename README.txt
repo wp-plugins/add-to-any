@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.2
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -43,6 +43,7 @@ AddToAny's customizable platform and social share icons let you optimize your si
 
 * Loads asynchronously so your content always loads before or in parallel with AddToAny
 * Supports theme features such as HTML5 & XHTML, widgets, infinite scroll, post formats
+* Supports multilingual sites and multisite networks
 * No signup, no login, no account necessary
 
 = Mobile Optimized & Retina Ready =
@@ -287,6 +288,9 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your share menus
 
 == Changelog ==
+
+= 1.5.5 =
+* Support multilingual sites using WPML, including Polylang
 
 = 1.5.4 =
 * New optional sharing header to easily place a label above the default share buttons
