@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.2
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -63,13 +63,13 @@ AddToAny's customizable platform and social share icons let you optimize your si
 = Wide Support =
 
 * Over 8 years of active development
-* Over 3.6 million downloads
+* Over 3.7 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
 This plugin always strives to be the best WordPress plugin for sharing. Development is fueled by your praise and feedback.
 
-<a href="https://www.addtoany.com/share_save" title="Share">Share this</a> plugin
+<a href="https://www.addtoany.com/share_save" title="Share">Share</a> this plugin
 
 See also:
 
@@ -79,8 +79,15 @@ See also:
 <a href="https://www.addtoany.com/blog/">AddToAny Blog</a> | <a href="https://www.addtoany.com/privacy">Privacy Policy</a>
 
 == Installation ==
+In WordPress:
 
-1. Upload the `add-to-any` directory (including all files within) to the `/wp-content/plugins/` directory
+1. Go to `Plugins` > `Add New` > search for `addtoany`
+1. Press `Install Now` for the AddToAny plugin
+1. Press `Activate Plugin`
+
+To install manually instead:
+
+1. Upload the `add-to-any` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the `Plugins` menu in WordPress
 1. Optional settings are available in `Settings` > `AddToAny`
 
@@ -288,6 +295,10 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your share menus
 
 == Changelog ==
+
+= 1.5.6 =
+* Bulgarian translation (by <a href="http://melleum.com/">Artem Delik</a>)
+* Update French translation to resolve missing placement options
 
 = 1.5.5 =
 * Support multilingual sites using WPML, including Polylang
