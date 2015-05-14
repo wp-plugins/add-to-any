@@ -269,6 +269,13 @@ function A2A_SHARE_SAVE_options_page() {
 			$new_options['inline_css'] = ( isset( $_POST['A2A_SHARE_SAVE_inline_css'] ) && $_POST['A2A_SHARE_SAVE_inline_css'] == '1') ? '1' : '-1';
 			$new_options['cache'] = ( isset( $_POST['A2A_SHARE_SAVE_cache'] ) && $_POST['A2A_SHARE_SAVE_cache'] == '1' ) ? '1' : '-1';
 			
+			$custom_post_types = array_values( get_post_types( array( 'public' => true, '_builtin' => false ), 'objects' ) );
+			foreach ( $custom_post_types as $custom_post_type_obj ) {
+				$placement_name = $custom_post_type_obj->name;
+				$new_options['display_in_cpt_' . $placement_name] = ( isset( $_POST['A2A_SHARE_SAVE_display_in_cpt_' . $placement_name] ) 
+					&& $_POST['A2A_SHARE_SAVE_display_in_cpt_' . $placement_name] == '1' ) ? '1' : '-1';
+			}
+			
 			// Schedule cache refresh?
 			if ( isset( $_POST['A2A_SHARE_SAVE_cache'] ) && $_POST['A2A_SHARE_SAVE_cache'] == '1' ) {
 				A2A_SHARE_SAVE_schedule_cache();
@@ -577,6 +584,20 @@ function A2A_SHARE_SAVE_options_page() {
 					<input name="A2A_SHARE_SAVE_display_in_pages" type="checkbox"<?php if ( ! isset( $options['display_in_pages'] ) || $options['display_in_pages'] != '-1' ) echo ' checked="checked"'; ?> value="1"/>
 					<?php printf(__('Display at the %s of pages', 'add-to-any'), position_in_content( $options, false )); ?>
 				</label>
+				
+			<?php 
+				$custom_post_types = array_values( get_post_types( array( 'public' => true, '_builtin' => false ), 'objects' ) );
+				foreach ( $custom_post_types as $custom_post_type_obj ) :
+					$placement_label = $custom_post_type_obj->labels->name;
+					$placement_name = $custom_post_type_obj->name;
+			?>
+				<br/>
+				<label>
+					<input name="A2A_SHARE_SAVE_display_in_cpt_<?php echo $placement_name; ?>" type="checkbox"<?php if ( ! isset( $options['display_in_cpt_' . $placement_name] ) || $options['display_in_cpt_' . $placement_name] != '-1' ) echo ' checked="checked"'; ?> value="1"/>
+					<?php printf(__('Display at the %s of %s', 'add-to-any'), position_in_content( $options, false ), esc_html( $placement_label ) ); ?>
+				</label>
+			<?php endforeach; ?>
+				
 				<br/><br/>
 				<div class="setting-description">
 					<?php _e("See <a href=\"widgets.php\" title=\"Theme Widgets\">Widgets</a> and <a href=\"options-general.php?page=add-to-any.php&action=floating\" title=\"AddToAny Floating Share Buttons\">Floating</a> for additional placement options. For advanced placement, see <a href=\"http://wordpress.org/plugins/add-to-any/faq/\">the FAQs</a>.", "add-to-any"); ?>

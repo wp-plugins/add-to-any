@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.3
-Stable tag: 1.5.6.1
+Stable tag: 1.5.8
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -162,49 +162,6 @@ If you want to hardcode the shared current URL and modify the title (server-side
 	ADDTOANY_SHARE_SAVE_KIT( array( 'linkname' => ( is_home() ? get_bloginfo( 'description' ) : wp_title( '', false ) ), 'linkurl' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ) );
 } ?>`
 
-= How can I add just the universal button to another area of my theme? =
-
-In the Theme Editor, you will place this line of code where you want the button to appear in your theme:
-
-`<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_BUTTON' ) ) { ADDTOANY_SHARE_SAVE_BUTTON(); } ?>`
-
-If you want to customize the shared URL and title for this button, use the following code as a template:
-
-`<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_BUTTON' ) ) { 
-	ADDTOANY_SHARE_SAVE_BUTTON( array( 'linkname' => 'Example Page', 'linkurl' => 'http://example.com/page.html' ) );
-} ?>`
-
-= How can I add just the individual icons to another area of my theme? =
-
-In the Theme Editor, place this line of code where you want the individual icons to appear in your theme (within an HTML list):
-
-`<?php echo '<div class="a2a_kit a2a_kit_size_32 addtoany_list">';
-if ( function_exists( 'ADDTOANY_SHARE_SAVE_ICONS' ) ) { ADDTOANY_SHARE_SAVE_ICONS(); }
-echo '</div>'; ?>`
-
-If you want to customize the shared URL and title for these icons, use the following code as a template:
-
-`<?php
-if ( function_exists( 'ADDTOANY_SHARE_SAVE_ICONS' ) ) {
-	echo '<div class="a2a_kit a2a_kit_size_32 addtoany_list">';
-	ADDTOANY_SHARE_SAVE_ICONS( array(
-		'linkname' => 'Example Page', 'linkurl' => 'http://example.com/page.html'
-	) );
-	echo '</div>';
-} ?>`
-
-(If you are using the small icons, remove `a2a_kit_size_32` from the line `<div class="a2a_kit a2a_kit_size_32 addtoany_list">` so that you have `<div class="a2a_kit addtoany_list">`.)
-
-Or you can place the icons as individual links without styling:
-
-`<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_ICONS' ) ) { ADDTOANY_SHARE_SAVE_ICONS(); } ?>`
-
-If you want to customize the shared URL and title for these icons, use the following code as a template:
-
-`<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_ICONS' ) ) {
-	ADDTOANY_SHARE_SAVE_ICONS( array( 'linkname' => 'Example Page', 'linkurl' => 'http://example.com/page.html' ) );
-} ?>`
-
 = How can I add a new custom standalone service? =
 You can create a plugin or customize the following PHP sample code to add to your theme's function.php file:
 
@@ -245,6 +202,27 @@ An older method was to insert the following tag into the page or post (HTML tab)
 
 Go to `Settings` > `AddToAny` > uncheck `Display at the top or bottom of posts on archive pages`. Archive pages include Category, Tag, Author, Date, and also Search pages.
 
+= How can I programmatically remove the button(s)? =
+
+In your theme's `functions.php`, you can add a filter to disable AddToAny sharing.
+
+Disable AddToAny sharing in specific categories, for example:
+`function addtoany_disable_sharing_in_some_categories() {
+	// Examples of in_category usage: https://codex.wordpress.org/Function_Reference/in_category
+	if ( in_category( array( 'my_category_1_slug', 'my_category_2_slug' ) ) ) {
+		return true;
+	}
+}
+add_filter( 'addtoany_sharing_disabled', 'addtoany_disable_sharing_in_some_categories' );`
+
+Disable AddToAny sharing on a custom post type, for example:
+`function addtoany_disable_sharing_on_my_custom_post_type() {
+	if ( 'my_custom_post_type' == get_post_type() ) {
+		return true;
+	}
+}
+add_filter( 'addtoany_sharing_disabled', 'addtoany_disable_sharing_on_my_custom_post_type' );`
+
 = How can I position a vertical floating share buttons bar relative to content? =
 
 In settings, disable the default placement of the Vertical Buttons. In your theme's file(s), find the parent element that you want to position the vertical bar to (the parent element should have a specified width), then add the following PHP sample code as a child of that parent element:
@@ -280,7 +258,7 @@ Regardless of circumstances for passing W3C tests, the plugin will always output
 
 = Why does the menu appear behind embedded objects (like Flash)? =
 
-Please read <a href="https://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have the plugin <a href="https://www.addtoany.com/buttons/customize/hide_embeds">hide intersecting embedded objects</a>. Just copy & paste the recommended code into the Additional Options box in `Settings` > `AddToAny`, then save changes.
+Please read <a href="https://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have the plugin <a href="https://www.addtoany.com/buttons/customize/wordpress/hide_embeds">hide intersecting embedded objects</a>.
 
 = For a WordPress Multisite Network (MS), how can I set the plugin as a "Must-Use" plugin to automatically execute for all blogs? =
 
@@ -296,6 +274,13 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your share menus
 
 == Changelog ==
+
+= 1.5.8 =
+* Toggle share buttons on custom post types in AddToAny settings
+ * Supports WooCommerce Product post types
+ * Supports bbPress Forum, Topic, Reply post types
+* Remove QQ (use Qzone)
+* Remove border from buttons that some themes add to links in posts
 
 = 1.5.7 =
 * <a href="https://www.addtoany.com/buttons/customize/wordpress/icon_color">Custom color share buttons</a> have arrived!

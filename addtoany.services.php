@@ -266,11 +266,6 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Print",
 		"icon" => "print",
 	),
-	"print" => array(
-		"name" => "Print",
-		"icon" => "print",
-		"href" => "javascript:print()",
-	),
 	"printfriendly" => array(
 		"name" => "PrintFriendly",
 		"icon" => "printfriendly",
@@ -282,10 +277,6 @@ $A2A_SHARE_SAVE_services = array(
 	"pusha" => array(
 		"name" => "Pusha",
 		"icon" => "pusha",
-	),
-	"qq" => array(
-		"name" => "QQ",
-		"icon" => "qzone",
 	),
 	"qzone" => array(
 		"name" => "Qzone",
