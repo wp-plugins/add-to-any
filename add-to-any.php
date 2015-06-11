@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.5.8
+Version: 1.5.9
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -219,10 +219,12 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	if ( isset( $options['custom_icons'] ) && $options['custom_icons'] == 'url' && isset( $options['custom_icons_url'] ) ) {
 		// Custom icons expected at a specified URL, i.e. //example.com/blog/uploads/addtoany/icons/custom/
 		$icons_dir = $options['custom_icons_url'];
+		$icons_type = ( isset( $options['custom_icons_type'] ) ) ? $options['custom_icons_type'] : 'png';
 		$custom_icons = true;
 	} else {
 		// Packaged 16px icons
 		$icons_dir = $A2A_SHARE_SAVE_plugin_url_path . '/icons/';
+		$icons_type = 'png';
 	}
 	
 	// Use default services if services have not been selected yet
@@ -272,22 +274,22 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	
 			$icon_url = ( isset( $service['icon_url'] ) ) ? $service['icon_url'] : false;
 			$icon = ( isset( $service['icon'] ) ) ? $service['icon'] : 'default'; // Just the icon filename
-			$width = ( isset( $service['icon_width'] ) ) ? $service['icon_width'] : '16';
-			$height = ( isset( $service['icon_height'] ) ) ? $service['icon_height'] : '16';
+			$width_attr = ( isset( $service['icon_width'] ) ) ? ' width="' . $service['icon_width'] . '"' : ' width="16"';
+			$height_attr = ( isset( $service['icon_height'] ) ) ? ' height="' . $service['icon_height'] . '"' : ' height="16"';
 			
 			$url = ( $custom_service ) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
-			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . ".png";
+			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . '.' . $icons_type;
 			$counter = ( $counter_enabled ) ? ' a2a_counter' : '';
 			$class_attr = ( $custom_service ) ? '' : ' class="a2a_button_' . $safe_name . $counter . '"';
 			
-			// Remove all dimension values if using custom icons
+			// Remove dimension attributes if using custom icons
 			if ( isset( $custom_icons ) ) {
-				$width = '';
-				$height = '';
+				$width_attr = '';
+				$height_attr = '';
 			}
 			
 			$link = $html_wrap_open . "<a$class_attr href=\"$url\" title=\"$name\" rel=\"nofollow\" target=\"_blank\">";
-			$link .= ( $large_icons && ! isset( $custom_icons ) && ! $custom_service ) ? "" : "<img src=\"$src\" width=\"$width\" height=\"$height\" alt=\"$name\"/>";
+			$link .= ( $large_icons && ! isset( $custom_icons ) && ! $custom_service ) ? "" : "<img src=\"$src\"" . $width_attr . $height_attr . " alt=\"$name\"/>";
 			$link .= "</a>" . $html_wrap_close;
 		}
 		

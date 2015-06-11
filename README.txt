@@ -1,9 +1,9 @@
 === Share Buttons by AddToAny ===
 Contributors: micropat, addtoany
-Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, plus 1, google +1, google plus, google plus one, plus one, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpmu, Add to Any, AddToAny
+Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, google +1, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.3
-Stable tag: 1.5.8
+Stable tag: 1.5.9
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -63,7 +63,7 @@ AddToAny's customizable platform and social share icons let you optimize your si
 = Wide Support =
 
 * Over 8 years of active development
-* Over 3.8 million downloads
+* Over 3.9 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
@@ -140,14 +140,12 @@ Since 2006, AddToAny is trusted across the web to always route to each service's
 
 Upload sharing icons in a single directory to a public location, and make sure the icon filenames match the icon filenames packaged in the AddToAny plugin. In your Admin panel, go to `Settings` > `AddToAny` > `Advanced Options` > check the "Use custom icons" checkbox and specify the URL to your custom icons directory (including the trailing `/`). For AddToAny's universal button, go to Universal Button, select `Image URL` and specify the exact location of your AddToAny universal share icon (including the filename).
 
-= How can I add both the universal button and the individual icons to another area of my theme? =
+= How can I place the share buttons in a specific area of my site? =
 
 In the Theme Editor, place this code block where you want the button and individual icons to appear in your theme:
-
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { ADDTOANY_SHARE_SAVE_KIT(); } ?>`
 
-If you want to customize the shared URL and title for the universal button and standalone services, use the following code as a template:
-
+If you want to customize the shared URL and title, use the following code as a template:
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
 	ADDTOANY_SHARE_SAVE_KIT( array( 'linkname' => 'Example Page', 'linkurl' => 'http://example.com/page.html' ) );
 } ?>`
@@ -236,7 +234,7 @@ In settings, disable the default placement of the Vertical Buttons. In your them
 
 = Why does the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, or Google +1 Button have so much whitespace to the right of it? =
 
-The minimum width for the Facebook Like Button is 90 pixels. This is required to display the total number of Likes to the right of the button.  See Facebook's <a href="http://developers.facebook.com/docs/reference/plugins/like">Like Button documentation</a> for details
+The minimum width for the Facebook Like Button is 90 pixels. This is required to display the total number of Likes to the right of the button.  See Facebook's <a href="https://developers.facebook.com/docs/plugins/like-button">Like Button documentation</a> for details
 
 It's not recommended, but you can change the width of the Facebook Like Button using CSS code, for instance: `.a2a_button_facebook_like { width:50px !important; }`
 
@@ -254,7 +252,7 @@ Yes, this plugin outputs 100% W3C valid HTML5 & XHTML and W3C valid CSS 3 by def
 
 If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 theme, note that the button iframes use the `scrolling` attribute, which is valid XHTML but the attribute has been deprecated in HTML5. It's needed to prevent scrollbars from appearing over the Like, Tweet, and +1 buttons inside of the iframes.
 
-Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="http://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="http://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> compatibility are taken seriously.
+Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="https://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="https://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> compatibility are taken seriously.
 
 = Why does the menu appear behind embedded objects (like Flash)? =
 
@@ -274,6 +272,11 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your share menus
 
 == Changelog ==
+
+= 1.5.9 =
+* Accept custom icons of all file types such as png, svg, gif, jpg, webp, etc.
+* Remove empty width and height attributes on custom icons for W3C validation
+* AddToAny is certified as multilingual-ready by <a href="https://wpml.org/">WPML</a>
 
 = 1.5.8 =
 * Toggle share buttons on custom post types in AddToAny settings
@@ -833,10 +836,10 @@ Upload the plugin directory (including all files and directories within) to the 
 * Major changes to plugin CSS stylesheet to support A2A Kit (official standalone services)
 * Standalone services are no longer list items within an unordered list container
 * Button is no longer a list item
-* Button/standalones now follow the HTML markup layout suggested by the <a href="https://www.addtoany.com/buttons/customize/standalone_services">AddToAny Kit</a>
+* Button/standalones now follow the HTML markup layout suggested by the <a href="https://www.addtoany.com/buttons/customize/wordpress/standalone_services">AddToAny Kit</a>
 
 = .9.9.6.5 =
-* Add class-names to use official <a href="https://www.addtoany.com/buttons/customize/standalone_services">Standalone Services Kit</a>
+* Add class-names to use official <a href="https://www.addtoany.com/buttons/customize/wordpress/standalone_services">Standalone Services Kit</a>
  * Google Analytics stats for individual services
 * Dutch translation (by Rene from <a href="http://wpwebshop.com/premium-wordpress-plugins/">WordPress Webshop</a>)
 
