@@ -1,9 +1,9 @@
 === Share Buttons by AddToAny ===
 Contributors: micropat, addtoany
-Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, google +1, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any, AddToAny
+Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, google +1, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, instagram, behance, flickr, foursquare, vimeo, youtube, feed, rss, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.3
-Stable tag: 1.5.9
+Stable tag: 1.6
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -13,14 +13,13 @@ The WordPress sharing plugin to help people share, save, and email your posts an
 
 AddToAny's customizable platform and social share icons let you optimize your site's blog posts & pages for the best social sharing engagement.
 
-= Share Buttons =
+= Share Buttons & Follow Buttons =
 
 * **Counters** — fast & official share counts in the same style
 * **Floating** share buttons — responsive & customizable, vertical & horizontal
-* **Vector** sharing buttons (SVG sharing icons)
+* **Vector** share & follow buttons (SVG icons)
 * **Universal** Share Button and Smart Menu
-* Individual share links
-* Custom share icons
+* Individual share links and custom share icons
 * Choose from over 100 services
 * 3rd party buttons include the Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button and Google +1 Button
 * Universal email sharing makes it easy to share via Gmail, Yahoo! Mail, Outlook.com (Hotmail), AOL Mail, and any other web and native apps
@@ -63,7 +62,7 @@ AddToAny's customizable platform and social share icons let you optimize your si
 = Wide Support =
 
 * Over 8 years of active development
-* Over 3.9 million downloads
+* Over 4 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
@@ -264,7 +263,7 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Screenshots ==
 
-1. Vector sharing buttons (SVG icons) are pixel-perfect on Retina and high-PPI dispays
+1. AddToAny vector share buttons (SVG icons) are pixel-perfect on Retina and high-PPI dispays
 2. Traditional Share/Save button features Facebook, Twitter, and a generic share icon
 3. Mini share menu that drops down when visitors use the universal share button
 4. Full universal share menu modal that includes all services
@@ -272,6 +271,11 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your share menus
 
 == Changelog ==
+
+= 1.6 =
+* <a href="https://www.addtoany.com/buttons/customize/wordpress/follow_buttons">Follow buttons</a> have arrived for WordPress!
+* Includes Instagram, YouTube, Vimeo, Flickr, Foursquare, Behance, and RSS
+* Go to `Appearance` > `Customize` or `Appearance` > `Widgets` to setup your follow buttons
 
 = 1.5.9 =
 * Accept custom icons of all file types such as png, svg, gif, jpg, webp, etc.
@@ -1267,6 +1271,9 @@ Upload the plugin directory (including all files and directories within) to the 
 * PHP4 legacy and compatibility fixes
 
 == Upgrade Notice ==
+
+= 1.6 =
+Follow buttons are now available! Look for the AddToAny Follow widget in Appearance > Customize or Appearance > Widgets.
 
 = 1.5.3 =
 Switch to the Large or Custom icon size if you haven't already - AddToAny's vector icons are way better than the traditional Small icons.

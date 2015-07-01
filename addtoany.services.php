@@ -384,3 +384,81 @@ $A2A_SHARE_SAVE_services = array(
 	),
 
 );
+
+$A2A_FOLLOW_services = array(
+	'facebook' => array( 
+		'name' => 'Facebook', 
+		'href' => 'https://www.facebook.com/${id}',	
+		'icon' => 'facebook', 
+	),
+	'twitter' => array( 
+		'name' => 'Twitter', 
+		'href' => 'https://twitter.com/${id}',	
+		'icon' => 'twitter', 
+	),
+	'instagram' => array( 
+		'name' => 'Instagram', 
+		'href' => 'https://instagram.com/${id}',	
+		'icon' => 'instagram', 
+	),
+	'pinterest' => array( 
+		'name' => 'Pinterest', 
+		'href' => 'https://www.pinterest.com/${id}',	
+		'icon' => 'pinterest', 
+	),
+	'behance' => array( 
+		'name' => 'Behance', 
+		'href' => 'https://www.behance.net/${id}',	
+		'icon' => 'behance', 
+	),
+	'flickr' => array( 
+		'name' => 'Flickr', 
+		'href' => 'https://www.flickr.com/photos/${id}',	
+		'icon' => 'flickr', 
+	),
+	'foursquare' => array( 
+		'name' => 'Foursquare', 
+		'href' => 'https://foursquare.com/${id}',	
+		'icon' => 'foursquare', 
+	),
+	'google_plus' => array( 
+		'name' => 'Google+', 
+		'href' => 'https://plus.google.com/+${id}',	
+		'icon' => 'google_plus', 
+	),
+	'linkedin' => array( 
+		'name' => 'LinkedIn', 
+		'href' => 'https://www.linkedin.com/in/${id}',	
+		'icon' => 'linkedin', 
+	),
+	'linkedin_company' => array( 
+		'name' => 'LinkedIn Company', 
+		'href' => 'https://www.linkedin.com/company/${id}',	
+		'icon' => 'linkedin', 
+	),
+	'tumblr' => array( 
+		'name' => 'Tumblr', 
+		'href' => 'http://${id}.tumblr.com',	
+		'icon' => 'tumblr', 
+	),
+	'vimeo' => array( 
+		'name' => 'Vimeo', 
+		'href' => 'https://vimeo.com/${id}',	
+		'icon' => 'vimeo', 
+	),
+	'youtube' => array( 
+		'name' => 'YouTube', 
+		'href' => 'https://www.youtube.com/user/${id}',	
+		'icon' => 'youtube', 
+	),
+	'youtube_channel' => array( 
+		'name' => 'YouTube Channel', 
+		'href' => 'https://www.youtube.com/channel/${id}',	
+		'icon' => 'youtube', 
+	),
+	'feed' => array( 
+		'name' => 'RSS Feed', 
+		'href' => 'http://www.example.com/feed/',
+		'icon' => 'feed', 
+	),
+);
