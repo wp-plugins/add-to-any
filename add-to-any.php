@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.6
+Version: 1.6.0.1
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -249,6 +249,8 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	
 	foreach( $active_services as $active_service ) {
 		
+		$custom_service = false;
+		
 		if ( ! in_array( $active_service, $service_codes ) )
 			continue;
 
@@ -279,8 +281,6 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 				$href = str_replace( "A2A_LINKURL", $href_linkurl, $href );
 				$href = str_replace( "A2A_LINKNAME", $href_linkname, $href );
 				$href = str_replace( " ", "%20", $href );
-			} else {
-				$custom_service = false;
 			}
 			
 			// AddToAny counter enabled?
@@ -297,7 +297,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$width_attr = ( isset( $service['icon_width'] ) ) ? ' width="' . $service['icon_width'] . '"' : ' width="16"';
 			$height_attr = ( isset( $service['icon_height'] ) ) ? ' height="' . $service['icon_height'] . '"' : ' height="16"';
 			
-			$url = ( $href ) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
+			$url = ( isset( $href ) ) ? $href : "http://www.addtoany.com/add_to/" . $safe_name . "?linkurl=" . $linkurl_enc . "&amp;linkname=" . $linkname_enc;
 			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . '.' . $icons_type;
 			$counter = ( $counter_enabled ) ? ' a2a_counter' : '';
 			$class_attr = ( $custom_service ) ? '' : ' class="a2a_button_' . $safe_name . $counter . '"';
