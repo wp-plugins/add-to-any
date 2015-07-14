@@ -36,11 +36,11 @@ class A2A_SHARE_SAVE_Widget extends WP_Widget {
 		
 		$args = wp_parse_args( $args, $defaults );
 		extract( $args );
-		$title = apply_filters( 'widget_title', $instance['title'] );
 		
 		echo $before_widget;
 		
-		if ( $title ) {
+		if ( isset( $instance ) && ! empty( $instance['title'] ) ) {
+			$title = apply_filters( 'widget_title', $instance['title'] );
 			echo $before_title . $title . $after_title;
 		}
 		
@@ -101,11 +101,11 @@ class A2A_Follow_Widget extends WP_Widget {
 		
 		$args = wp_parse_args( $args, $defaults );
 		extract( $args );
-		$title = apply_filters( 'widget_title', $instance['title'] );
 		
 		echo $before_widget;
 		
-		if ( $title ) {
+		if ( isset( $instance ) && ! empty( $instance['title'] ) ) {
+			$title = apply_filters( 'widget_title', $instance['title'] );
 			echo $before_title . $title . $after_title;
 		}
 		

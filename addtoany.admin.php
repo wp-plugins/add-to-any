@@ -1018,7 +1018,7 @@ function A2A_SHARE_SAVE_admin_head() {
 		foreach ($active_services as $service) {
 			if ( $admin_services_saved )
 				$service = substr( $service, 7 ); // Remove a2a_wp_
-			$active_services_quoted .= '"' . esc_js( $service ) . '"';
+			$active_services_quoted .= json_encode( $service );
 			if ( $service != $active_services_last )
 				$active_services_quoted .= ',';
 			

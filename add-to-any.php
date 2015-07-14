@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.6.0.1
+Version: 1.6.1
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -266,7 +266,14 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			// If Follow kit and HREF specified
 			if ( $is_follow && isset( $service['href'] ) ) {
 				$follow_id = $buttons[ $active_service ]['id'];
-				$href = str_replace( '${id}', $follow_id, $service['href'] );
+				if ( 'feed' == $safe_name ) {
+					// For "feed" service, stored ID value is actually the URL
+					$href = $follow_id;
+				} else {
+					// For all other services, replace
+					$href = str_replace( '${id}', $follow_id, $service['href'] );
+				}
+				$href = ( 'feed' == $safe_name ) ? $follow_id : $href ;
 			// Else if Share Kit and HREF specified, presume custom service
 			} elseif ( isset( $service['href'] ) ) {
 				$custom_service = true;
@@ -435,8 +442,10 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 				. "url:location.href}";
 			$_addtoany_targets[] = $button_config;
 		} else {
-			$button_config = "\n{title:'". esc_js($linkname) . "',"
-				. "url:'" . $linkurl . "'}";
+			// wp_json_encode available since 4.1
+			$linkname_sanitized = function_exists( 'wp_json_encode' ) ? wp_json_encode ( $linkname ) : json_encode( $linkname );
+			$button_config = "\n{title:". $linkname_sanitized . ','
+				. 'url:"' . $linkurl . '"}';
 			$_addtoany_targets[] = $button_config;
 		}
 		
@@ -447,7 +456,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 					. $button_config
 				. ");\n";
 			
-			if ( ! $_addtoany_init) {
+			if ( ! $_addtoany_init ) {
 				// Catch post-load event to support infinite scroll (and more?)
 				$javascript_button_config .= "\nif('function'===typeof(jQuery))"
 					. "jQuery(document).ready(function($){"
@@ -462,7 +471,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		}
 		else $javascript_button_config = '';
 		
-		if ( ! $_addtoany_init) {
+		if ( ! $_addtoany_init ) {
 			$javascript_load_early = "\n<script type=\"text/javascript\"><!--\n"
 				. "wpa2a.script_load();"
 				. "\n//--></script>\n";

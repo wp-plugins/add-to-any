@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, google +1, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, instagram, behance, flickr, foursquare, vimeo, youtube, feed, rss, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.3
-Stable tag: 1.6.0.1
+Stable tag: 1.6.1
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -253,6 +253,17 @@ If you use the Facebook Like, Twitter Tweet or Google +1 buttons in an HTML5 the
 
 Regardless of circumstances for passing W3C tests, the plugin will always output semantically valid and robot-readable code, so publishers do not have to worry about search engine crawler errors due to invalid code. Both <a href="https://en.wikipedia.org/wiki/Web_standards">web standards</a> and <a href="https://en.wikipedia.org/wiki/Cross-browser">cross-browser</a> compatibility are taken seriously.
 
+= How can I load the buttons after content insertion with AJAX and infinite scroll? =
+
+Fire the standard `post-load` event to have the plugin initiate AddToAny buttons:
+`jQuery( 'body' ).trigger( 'post-load' );`
+
+A few prerequisites:
+
+ * The response has an `HTTP_X_REQUESTED_WITH` header set to `xmlhttprequest`
+ * `jQuery` available
+ * AddToAny script blocks in the response need to execute, so don't use jQuery's `load` method *with a selector expression*. Selector expression usage with that method will cause script blocks in the response <a href="https://api.jquery.com/load/#script-execution">to be stripped out</a>
+
 = Why does the menu appear behind embedded objects (like Flash)? =
 
 Please read <a href="https://www.addtoany.com/buttons/customize/show_over_embeds">this document</a> for an explanation and possible fix. For WordPress, an easier fix is to have the plugin <a href="https://www.addtoany.com/buttons/customize/wordpress/hide_embeds">hide intersecting embedded objects</a>.
@@ -271,6 +282,12 @@ Upload the plugin directory (including all files and directories within) to the 
 6. Color chooser for your share menus
 
 == Changelog ==
+
+= 1.6.1 =
+* Titles with special characters are sanitized differently
+ * Using `wp_json_encode` (or `json_encode`) instead of `esc_js` for sanitizing JavaScript strings (thanks Nigel Fish)
+* Fix issue where the new feed button pointed to an example URL instead of the saved URL (thanks debij)
+* Resolve Follow widget notice when widget is empty in debug mode
 
 = 1.6.0.1 =
 * Resolve notices in debug mode
