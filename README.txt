@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: sharing, share, share this, bookmarking, social, share button, share buttons, share links, social share, social sharing, social bookmarking, social bookmarks, socialize, bookmark, bookmarks, save, Post, posts, page, pages, images, image, admin, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, +1, google +1, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, instagram, behance, flickr, foursquare, vimeo, youtube, feed, rss, lockerz, addthis, sociable, sharedaddy, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any, AddToAny
 Requires at least: 2.8
 Tested up to: 4.3
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 
 Share buttons for WordPress including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
 
@@ -159,20 +159,35 @@ If you want to hardcode the shared current URL and modify the title (server-side
 	ADDTOANY_SHARE_SAVE_KIT( array( 'linkname' => ( is_home() ? get_bloginfo( 'description' ) : wp_title( '', false ) ), 'linkurl' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ) );
 } ?>`
 
-= How can I add a new custom standalone service? =
+= How can I add a custom standalone share button? =
 You can create a plugin or customize the following example PHP code to add to your theme's function.php file:
 
 `function addtoany_add_services( $services ) {
-	$services['example_service'] = array(
-		'name'        => 'Example Service',
+	$services['example_share_service'] = array(
+		'name'        => 'Example Share Service',
 		'icon_url'    => 'https://www.google.com/favicon.ico',
 		'icon_width'  => 32,
 		'icon_height' => 32,
-		'href'        => 'http://www.example.com/share?url=A2A_LINKURL&amp;title=A2A_LINKNAME'
+		'href'        => 'https://www.example.com/share?url=A2A_LINKURL&amp;title=A2A_LINKNAME'
 	);
 	return $services;
 }
 add_filter( 'A2A_SHARE_SAVE_services', 'addtoany_add_services', 10, 1 );`
+
+= How can I add a custom follow button? =
+You can create a plugin or customize the following example PHP code to add to your theme's function.php file:
+
+`function addtoany_add_follow_services( $services ) {
+	$services['example_follow_service'] = array(
+		'name'        => 'Example Follow Service',
+		'icon_url'    => 'https://www.google.com/favicon.ico',
+		'icon_width'  => 32,
+		'icon_height' => 32,
+		'href'        => 'https://www.example.com/ID'
+	);
+	return $services;
+}
+add_filter( 'A2A_FOLLOW_services', 'addtoany_add_follow_services', 10, 1 );`
 
 = How can I align the sharing button(s) to the center or to the right side of posts? =
 It depends on your theme, but you can try adding the following CSS code to your main stylesheet.
@@ -283,10 +298,15 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Changelog ==
 
-= 1.6.2 =
-* Support AJAX loading from `admin-ajax.php`
+= 1.6.3 =
 * Fix Google+ follow button URL by removing the hardcoded `+` (thanks foxtucker)
  * Be sure to add the `+` to your `ID` if you have a Google+ custom URL.
+* Custom follow services can be added to the Follow widget using the `A2A_FOLLOW_services` filter hook (see the FAQ)
+* Harden CSS vertical alignment of custom icon images and Tweet button
+* Change admin heading to `<h1>` for improved accessibility
+
+= 1.6.2 =
+* Support AJAX loading from `admin-ajax.php`
 * Update CSS to fix alignment issues in some themes with button images and the Facebook Like button
 * Add small follow icons (Instagram, YouTube, Vimeo, Flickr, Foursquare, Behance, and RSS PNGs)
 * Add Known
@@ -1301,7 +1321,7 @@ Upload the plugin directory (including all files and directories within) to the 
 
 == Upgrade Notice ==
 
-= 1.6.2 =
+= 1.6.3 =
 If you configured a Google+ follow button through an AddToAny Follow widget, the automatic `+` in your URL has been removed to permit default Google+ URLs which do not have a `+` preceding the ID number. Be sure to add the `+` back if you have a Google+ custom URL.
 
 = 1.6 =

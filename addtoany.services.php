@@ -427,7 +427,7 @@ $A2A_FOLLOW_services = array(
 	),
 	'google_plus' => array( 
 		'name' => 'Google+', 
-		'href' => 'https://plus.google.com/+${id}',	
+		'href' => 'https://plus.google.com/${id}',	
 		'icon' => 'google_plus', 
 	),
 	'linkedin' => array( 

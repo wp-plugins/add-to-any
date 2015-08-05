@@ -3,7 +3,7 @@
 Plugin Name: Share Buttons by AddToAny
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.  [<a href="options-general.php?page=add-to-any.php">Settings</a>]
-Version: 1.6.2
+Version: 1.6.3
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 */
@@ -273,7 +273,12 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 					// For all other services, replace
 					$href = str_replace( '${id}', $follow_id, $service['href'] );
 				}
-				$href = ( 'feed' == $safe_name ) ? $follow_id : $href ;
+				$href = ( 'feed' == $safe_name ) ? $follow_id : $href;
+				
+				// If icon_url is set, presume custom service
+				if ( isset( $service['icon_url'] ) ) {
+					$custom_service = true;
+				}
 			// Else if Share Kit and HREF specified, presume custom service
 			} elseif ( isset( $service['href'] ) ) {
 				$custom_service = true;
@@ -1009,7 +1014,7 @@ function A2A_SHARE_SAVE_stylesheet() {
 	// Use stylesheet?
 	if ( ! isset( $options['inline_css'] ) || $options['inline_css'] != '-1' && ! is_admin() ) {
 	
-		wp_enqueue_style( 'A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.10' );
+		wp_enqueue_style( 'A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.11' );
 	
 		// wp_add_inline_style requires WP 3.3+
 		if ( '3.3' <= get_bloginfo( 'version' ) ) {

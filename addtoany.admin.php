@@ -399,7 +399,7 @@ function A2A_SHARE_SAVE_options_page() {
 	
 	<div class="wrap">
 	
-	<h2><?php _e( 'AddToAny Share Settings', 'add-to-any' ); ?></h2>
+	<h1><?php _e( 'AddToAny Share Settings', 'add-to-any' ); ?></h1>
 	
 	<h2 class="nav-tab-wrapper">
 		<a href="<?php echo admin_url( 'options-general.php?page=add-to-any.php' ); ?>" class="nav-tab<?php if ( 'default' == $current_screen ) echo ' nav-tab-active'; ?>"><?php esc_html_e( 'Standard' ); ?></a>
